@@ -43,6 +43,7 @@
     "pg-native": "^1.10.0",
     "run-sequence": "^1.2.2",
     "sequelize": "^3.26.0",
+    "serve-favicon": "^2.3.2",
     "standard": "^8.5.0",
     "volleyball": "^1.4.1"
   }

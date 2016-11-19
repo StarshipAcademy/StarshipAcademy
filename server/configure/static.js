@@ -1,5 +1,6 @@
 const path = require('path');
 const express = require('express');
+var favicon = require('serve-favicon');
 
 module.exports = (app) => {
   const root = app.getValue('projectRoot');
@@ -9,4 +10,5 @@ module.exports = (app) => {
 
   app.use(express.static(npmPath));
   app.use(express.static(browserPath));
+  app.use(favicon(app.getValue('faviconPath')));
 };
