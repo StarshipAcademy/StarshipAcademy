@@ -6,6 +6,7 @@
     "no-extra-semi": 2,
     "semi-spacing": [2, { "before": false, "after": true }],
     "no-unused-vars": 1,
-    "no-undef": 1
+    "no-undef": 1,
+    "eqeqeq": 1
   }
 }

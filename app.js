@@ -7,9 +7,12 @@ const _Port = 3001;
 const Promise = require('bluebird');
 let io = null;
 
-// Need to promisify somehow for better practice.
-startDB();
-server.on('request', require('./server'));
-io = require('./server/sockets')(server);
+const doISync = require('cli-interact').getYesNo;
+let syncTruth = doISync(chalk.cyan('Rick, do you wanna get savage on this database? (Force Sync)'));
 
-server.listen(_Port, () => console.log(chalk.magenta(`Meme magic has begun on Port ${_Port}`)));
+startDB(syncTruth)
+  .then(() => server.on('request', require('./server')))
+  .then(() => io = require('./server/sockets')(server))
+  .catch(err => console.error(err))
+  .finally(() => server.listen(_Port, () => console.log(chalk.magenta(`Meme magic has begun on Port ${_Port}`)))
+);

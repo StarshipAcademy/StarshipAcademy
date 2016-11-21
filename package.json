@@ -1,7 +1,7 @@
 {
-  "name": "sequelize-review",
+  "name": "meme-magic",
   "version": "0.0.1",
-  "description": "A small app to help teach Sequelize aliases/relationships.",
+  "description": "A medium sized back-end boiler plate, with very little done on the front.",
   "main": "app.js",
   "scripts": {
     "start": "nodemon --watch server -e js,html app.js",
@@ -20,6 +20,7 @@
     "body-parser": "^1.15.2",
     "bootstrap": "^3.3.7",
     "chalk": "^1.1.3",
+    "cli-interact": "^0.1.9",
     "eslint-config": "^0.3.0",
     "eslint-config-semistandard": "^7.0.0",
     "eslint-config-standard": "^6.2.1",
@@ -39,6 +40,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^2.2.0",
+    "nodemon": "^1.11.0",
     "pg": "^6.1.0",
     "pg-native": "^1.10.0",
     "run-sequence": "^1.2.2",
