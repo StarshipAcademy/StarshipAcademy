@@ -2,8 +2,9 @@
 
 const path = require('path');
 let app = require('express')();
+const _db = require('./db/db');
 
-require('./configure')(app);
+require('./configure')(app, _db);
 
 app.use('/api', require('./routes'));
 

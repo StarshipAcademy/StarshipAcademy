@@ -8,5 +8,9 @@
     "no-unused-vars": 1,
     "no-undef": 1,
     "eqeqeq": 1
-  }
+  },
+
+  "ecmaFeatures": {
+     "jsx": true
+   }
 }
