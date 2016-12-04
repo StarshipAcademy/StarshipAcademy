@@ -2,7 +2,6 @@
 
 const db = require('./db');
 const chalk = require('chalk');
-const Promise = require('bluebird');
 
 require('./models');
 

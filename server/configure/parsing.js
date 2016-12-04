@@ -20,7 +20,8 @@ module.exports = (app, _db) => {
     secret: secrets.SessionKey,
     store: sessionStore,
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: true,
+    cookie: {test: 'Testing...'}
   }));
 
   app.use(passport.initialize());

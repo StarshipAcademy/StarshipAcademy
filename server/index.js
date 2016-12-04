@@ -1,7 +1,6 @@
 'use strict';
 
-const path = require('path');
-let app = require('express')();
+const app = require('express')();
 const _db = require('./db/db');
 
 require('./configure')(app, _db);
@@ -9,6 +8,7 @@ require('./configure')(app, _db);
 app.use('/api', require('./routes'));
 
 app.get('/*', (req, res) => {
+  console.log(req.session);
   res.sendFile(app.getValue('indexPath'));
 });
 
