@@ -7,6 +7,6 @@ module.exports = (app, _db) => {
   require('./app-variables')(app);
   app.use(app.getValue('log'));
 
-  require('./static')(app);
   require('./parsing')(app, _db);
+  require('./static')(app);
 };

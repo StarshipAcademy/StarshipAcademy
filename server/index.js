@@ -4,6 +4,7 @@ const app = require('express')();
 const _db = require('./db/db');
 
 require('./configure')(app, _db);
+require('./sessions')(app);
 
 app.use('/api', require('./routes'));
 
