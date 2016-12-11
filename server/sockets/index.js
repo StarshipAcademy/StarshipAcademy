@@ -20,14 +20,15 @@ module.exports = (server) => {
     let ipAddress = socket.request.connection.remoteAddress;
 
     if (!currentSockets.some(e => e.address == ipAddress)) {
-      currentSockets.push({
+      let currentSocket = {
         id: socket.id,
         name: socket.name,
         time: new Date(),
         address: ipAddress
-      });
+      };
+      currentSockets.push();
       console.log(chalk.magenta(`${socket.name} wants Memes REAL-TIME.`));
-
+      socket.emit('InitUser', currentSocket);
     } else {
       console.log(chalk.red(`${socket.name} is already being delivered Memes.`));
       console.log(chalk.red(`Rick, I don't like this guy.`));

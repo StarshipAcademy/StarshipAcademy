@@ -13,5 +13,4 @@ startDB(syncTruth)
   .then(() => server.on('request', require('./server')))
   .then(() => io = require('./server/sockets')(server))
   .catch(err => console.error(err))
-  .finally(() => server.listen(_Port, () => console.log(chalk.magenta(`Meme magic has begun on Port ${_Port}`)))
-);
+  .finally(() => server.listen(_Port, () => console.log(chalk.magenta(`Meme magic has begun on Port ${_Port}`))));
