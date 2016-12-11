@@ -23608,11 +23608,9 @@
 	
 	exports.default = function (state, reducers, action) {
 	  var reducedState = Object.assign({}, state);
-	  console.log(reducedState);
 	  reducers.forEach(function (reducer) {
 	    reducedState = reducer(reducedState, action);
 	  });
-	  console.log(reducedState);
 	  return reducedState;
 	};
 
@@ -23658,7 +23656,6 @@
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _initialState2.default;
 	  var action = arguments[1];
 	
-	  console.log(action);
 	  switch (action.type) {
 	    case _constants.CHANGE_WELCOME:
 	      return _extends({}, state, {
@@ -36798,7 +36795,7 @@
 	
 	var _reactRedux = __webpack_require__(184);
 	
-	var _actionCreators = __webpack_require__(451);
+	var _actionCreators = __webpack_require__(448);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -36808,9 +36805,10 @@
 	
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	  return {
-	    handleChange: function handleChange(evt) {
+	    handleSubmit: function handleSubmit(evt) {
 	      evt.preventDefault();
-	      dispatch((0, _actionCreators.changeWelcomeText)(evt.target.value));
+	      dispatch((0, _actionCreators.changeWelcomeText)(evt.target.textField.value));
+	      evt.target.textField.value = '';
 	    }
 	  };
 	};
@@ -36843,7 +36841,7 @@
 	
 	exports.default = function (_ref) {
 	  var welcomeText = _ref.welcomeText,
-	      handleChange = _ref.handleChange;
+	      handleSubmit = _ref.handleSubmit;
 	  return _react2.default.createElement(
 	    'div',
 	    { style: _styles2.default.test },
@@ -36854,7 +36852,7 @@
 	      welcomeText,
 	      ' '
 	    ),
-	    _react2.default.createElement(_BasicSingleLineInput2.default, { handleChange: handleChange })
+	    _react2.default.createElement(_BasicSingleLineInput2.default, { handleSubmit: handleSubmit })
 	  );
 	};
 
@@ -36899,14 +36897,14 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	exports.default = function (_ref) {
-	  var handleChange = _ref.handleChange;
+	  var handleSubmit = _ref.handleSubmit;
 	  return _react2.default.createElement(
 	    'div',
 	    { style: _styles2.default.container },
 	    _react2.default.createElement(
 	      'form',
-	      null,
-	      _react2.default.createElement(_TextField2.default, { hintText: 'Would you like a different welcome text?', underlineShow: false, onChange: handleChange })
+	      { type: 'submit', onSubmit: handleSubmit },
+	      _react2.default.createElement(_TextField2.default, { hintText: 'Would you like a different welcome text?', underlineShow: false, name: 'textField', autoComplete: 'off' })
 	    )
 	  );
 	};
@@ -38612,7 +38610,27 @@
 	};
 
 /***/ },
-/* 448 */,
+/* 448 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.changeWelcomeText = undefined;
+	
+	var _constants = __webpack_require__(214);
+	
+	var createWelcomeText = function createWelcomeText(text) {
+	  return { type: _constants.CHANGE_WELCOME, welcomeText: text };
+	};
+	
+	var changeWelcomeText = exports.changeWelcomeText = function changeWelcomeText(text) {
+	  return createWelcomeText(text);
+	};
+
+/***/ },
 /* 449 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -46325,27 +46343,6 @@
 	/******/ ])
 	});
 	;
-
-/***/ },
-/* 451 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.changeWelcomeText = undefined;
-	
-	var _constants = __webpack_require__(214);
-	
-	var createWelcomeText = function createWelcomeText(text) {
-	  return { type: _constants.CHANGE_WELCOME, welcomeText: text };
-	};
-	
-	var changeWelcomeText = exports.changeWelcomeText = function changeWelcomeText(text) {
-	  return createWelcomeText(text);
-	};
 
 /***/ }
 /******/ ]);

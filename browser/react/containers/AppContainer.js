@@ -7,9 +7,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleChange: (evt) => {
+  handleSubmit: (evt) => {
     evt.preventDefault();
-    dispatch(changeWelcomeText(evt.target.value));
+    dispatch(changeWelcomeText(evt.target.textField.value));
+    evt.target.textField.value = '';
   }
 });
 

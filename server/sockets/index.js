@@ -27,6 +27,7 @@ module.exports = (server) => {
         address: ipAddress
       });
       console.log(chalk.magenta(`${socket.name} wants Memes REAL-TIME.`));
+
     } else {
       console.log(chalk.red(`${socket.name} is already being delivered Memes.`));
       console.log(chalk.red(`Rick, I don't like this guy.`));

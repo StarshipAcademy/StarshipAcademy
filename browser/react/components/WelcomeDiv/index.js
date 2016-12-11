@@ -2,9 +2,9 @@ import React from 'react';
 import styles from './styles';
 import BasicSingleLineInput from '../BasicSingleLineInput';
 
-export default ({ welcomeText, handleChange }) => (
+export default ({ welcomeText, handleSubmit }) => (
   <div style={styles.test}>
     <h1> { welcomeText } </h1>
-    <BasicSingleLineInput handleChange={handleChange} />
+    <BasicSingleLineInput handleSubmit={handleSubmit} />
   </div>
 );
