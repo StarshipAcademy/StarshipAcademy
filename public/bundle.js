@@ -72,7 +72,7 @@
 	
 	var _containers = __webpack_require__(422);
 	
-	var _sockets = __webpack_require__(448);
+	var _sockets = __webpack_require__(449);
 	
 	var _sockets2 = _interopRequireDefault(_sockets);
 	
@@ -23608,11 +23608,11 @@
 	
 	exports.default = function (state, reducers, action) {
 	  var reducedState = Object.assign({}, state);
-	
+	  console.log(reducedState);
 	  reducers.forEach(function (reducer) {
 	    reducedState = reducer(reducedState, action);
 	  });
-	
+	  console.log(reducedState);
 	  return reducedState;
 	};
 
@@ -23648,8 +23648,6 @@
 	
 	var _constants = __webpack_require__(214);
 	
-	var _constants2 = _interopRequireDefault(_constants);
-	
 	var _initialState = __webpack_require__(210);
 	
 	var _initialState2 = _interopRequireDefault(_initialState);
@@ -23660,8 +23658,9 @@
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _initialState2.default;
 	  var action = arguments[1];
 	
+	  console.log(action);
 	  switch (action.type) {
-	    case _constants2.default:
+	    case _constants.CHANGE_WELCOME:
 	      return _extends({}, state, {
 	        welcomeText: action.welcomeText
 	      });
@@ -36791,52 +36790,32 @@
 	  value: true
 	});
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
 	var _WelcomeDiv = __webpack_require__(424);
 	
 	var _WelcomeDiv2 = _interopRequireDefault(_WelcomeDiv);
 	
-	var _styles = __webpack_require__(447);
+	var _reactRedux = __webpack_require__(184);
 	
-	var _styles2 = _interopRequireDefault(_styles);
+	var _actionCreators = __webpack_require__(451);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var mapStateToProps = function mapStateToProps(state) {
+	  return _extends({}, state);
+	};
 	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var AppContainer = function (_Component) {
-	  _inherits(AppContainer, _Component);
-	
-	  function AppContainer(props) {
-	    _classCallCheck(this, AppContainer);
-	
-	    return _possibleConstructorReturn(this, (AppContainer.__proto__ || Object.getPrototypeOf(AppContainer)).call(this, props));
-	  }
-	
-	  _createClass(AppContainer, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: _styles2.default.containerClasses.join(' ') },
-	        _react2.default.createElement(_WelcomeDiv2.default, { welcomeText: 'Welcome to Meme Magic.' })
-	      );
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+	  return {
+	    handleChange: function handleChange(evt) {
+	      evt.preventDefault();
+	      dispatch((0, _actionCreators.changeWelcomeText)(evt.target.value));
 	    }
-	  }]);
+	  };
+	};
 	
-	  return AppContainer;
-	}(_react.Component);
-	
-	exports.default = AppContainer;
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_WelcomeDiv2.default);
 
 /***/ },
 /* 424 */
@@ -36863,7 +36842,8 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	exports.default = function (_ref) {
-	  var welcomeText = _ref.welcomeText;
+	  var welcomeText = _ref.welcomeText,
+	      handleChange = _ref.handleChange;
 	  return _react2.default.createElement(
 	    'div',
 	    { style: _styles2.default.test },
@@ -36874,7 +36854,7 @@
 	      welcomeText,
 	      ' '
 	    ),
-	    _react2.default.createElement(_BasicSingleLineInput2.default, null)
+	    _react2.default.createElement(_BasicSingleLineInput2.default, { handleChange: handleChange })
 	  );
 	};
 
@@ -36890,7 +36870,6 @@
 	exports.default = {
 	  test: {
 	    marginTop: '5em',
-	    marginBottom: '10em',
 	    textAlign: 'center'
 	  }
 	};
@@ -36913,13 +36892,22 @@
 	
 	var _TextField2 = _interopRequireDefault(_TextField);
 	
+	var _styles = __webpack_require__(447);
+	
+	var _styles2 = _interopRequireDefault(_styles);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	exports.default = function () {
+	exports.default = function (_ref) {
+	  var handleChange = _ref.handleChange;
 	  return _react2.default.createElement(
 	    'div',
-	    null,
-	    _react2.default.createElement(_TextField2.default, { hintText: 'Would you like a different welcome text?' })
+	    { style: _styles2.default.container },
+	    _react2.default.createElement(
+	      'form',
+	      null,
+	      _react2.default.createElement(_TextField2.default, { hintText: 'Would you like a different welcome text?', underlineShow: false, onChange: handleChange })
+	    )
 	  );
 	};
 
@@ -38618,11 +38606,14 @@
 	  value: true
 	});
 	exports.default = {
-	  containerClasses: ['container']
+	  container: {
+	    marginTop: '5em'
+	  }
 	};
 
 /***/ },
-/* 448 */
+/* 448 */,
+/* 449 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38631,7 +38622,7 @@
 	  value: true
 	});
 	
-	var _socketIo = __webpack_require__(449);
+	var _socketIo = __webpack_require__(450);
 	
 	var _socketIo2 = _interopRequireDefault(_socketIo);
 	
@@ -38646,7 +38637,7 @@
 	exports.default = socket;
 
 /***/ },
-/* 449 */
+/* 450 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -46334,6 +46325,27 @@
 	/******/ ])
 	});
 	;
+
+/***/ },
+/* 451 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.changeWelcomeText = undefined;
+	
+	var _constants = __webpack_require__(214);
+	
+	var createWelcomeText = function createWelcomeText(text) {
+	  return { type: _constants.CHANGE_WELCOME, welcomeText: text };
+	};
+	
+	var changeWelcomeText = exports.changeWelcomeText = function changeWelcomeText(text) {
+	  return createWelcomeText(text);
+	};
 
 /***/ }
 /******/ ]);

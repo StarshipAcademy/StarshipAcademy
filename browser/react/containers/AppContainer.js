@@ -1,18 +1,16 @@
-import React, { Component } from 'react';
 import WelcomeDiv from '../components/WelcomeDiv';
-import styles from './styles';
+import { connect } from 'react-redux';
+import { changeWelcomeText } from '../../redux/action-creators';
 
-export default class AppContainer extends Component {
+const mapStateToProps = state => ({
+  ...state
+});
 
-  constructor (props) {
-    super(props);
+const mapDispatchToProps = dispatch => ({
+  handleChange: (evt) => {
+    evt.preventDefault();
+    dispatch(changeWelcomeText(evt.target.value));
   }
+});
 
-  render () {
-    return (
-      <div className={styles.containerClasses.join(' ')}>
-        <WelcomeDiv welcomeText={'Welcome to Meme Magic.'} />
-      </div>
-    );
-  }
-}
+export default connect(mapStateToProps, mapDispatchToProps)(WelcomeDiv);
