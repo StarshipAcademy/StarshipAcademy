@@ -72,11 +72,17 @@
 	
 	var _containers = __webpack_require__(422);
 	
+	var _actionCreators = __webpack_require__(448);
+	
 	var _sockets = __webpack_require__(449);
 	
 	var _sockets2 = _interopRequireDefault(_sockets);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var fetchText = function fetchText() {
+	  _store2.default.dispatch((0, _actionCreators.fetchWelcomeText)());
+	};
 	
 	(0, _reactTapEventPlugin2.default)();
 	
@@ -89,7 +95,7 @@
 	    _react2.default.createElement(
 	      _reactRouter.Router,
 	      { history: _reactRouter.browserHistory },
-	      _react2.default.createElement(_reactRouter.Route, { path: '/', component: _containers.AppContainer })
+	      _react2.default.createElement(_reactRouter.Route, { path: '/', component: _containers.AppContainer, onEnter: fetchText })
 	    )
 	  )
 	), document.getElementById('react-app'));
@@ -38618,16 +38624,46 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.changeWelcomeText = undefined;
+	exports.fetchWelcomeText = exports.changeWelcomeText = undefined;
 	
 	var _constants = __webpack_require__(214);
+	
+	var _axios = __webpack_require__(451);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var createWelcomeText = function createWelcomeText(text) {
 	  return { type: _constants.CHANGE_WELCOME, welcomeText: text };
 	};
 	
 	var changeWelcomeText = exports.changeWelcomeText = function changeWelcomeText(text) {
-	  return createWelcomeText(text);
+	  return function (dispatch) {
+	    _axios2.default.put('/api/sessions', { welcomeText: text }).then(function () {
+	      dispatch(createWelcomeText(text));
+	    }).catch(function () {
+	      console.log('Changing Welcome Text Failed.');
+	    });
+	  };
+	};
+	
+	var fetchWelcomeText = exports.fetchWelcomeText = function fetchWelcomeText() {
+	  return function (dispatch) {
+	    _axios2.default.get('/api/sessions').then(function (res) {
+	      return res.data;
+	    }).then(function (_ref) {
+	      var session = _ref.session;
+	
+	      if (session.welcomeText) {
+	        dispatch(createWelcomeText(session.welcomeText));
+	      } else {
+	        console.log('No previous welcome text.');
+	      }
+	    }).catch(function () {
+	      console.log('Fetching Welcome Text Failed.');
+	    });
+	  };
 	};
 
 /***/ },
