@@ -9,8 +9,14 @@ import { AppContainer } from './containers';
 
 import SOCKET from '../sockets';
 
+// Hack for mobile support for materialize-ui
 injectTapEventPlugin();
 
+/*
+  Provider = react-redux supplying context of store.
+  Mui = materialize-ui providing a default theme for itself.
+  Router = react-router
+*/
 ReactDOM.render(
   <Provider store={store}>
     <MuiThemeProvider>

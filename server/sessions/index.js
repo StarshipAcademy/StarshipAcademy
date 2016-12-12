@@ -1,6 +1,9 @@
 'use strict';
 const parseurl = require('parseurl');
 
+/*
+  Very basic use of session configuration that simply monitors your views to any URL.
+*/
 module.exports = (app) => {
   app.use((req, res, next) => {
     let views = req.session.views;

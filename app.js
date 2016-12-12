@@ -9,6 +9,7 @@ let io = null;
 const doISync = require('cli-interact').getYesNo;
 const syncTruth = doISync(chalk.cyan('Rick, do you wanna get savage on this database? (Force Sync)'));
 
+// The order of initializing the backend.
 startDB(syncTruth)
   .then(() => server.on('request', require('./server')))
   .then(() => io = require('./server/sockets')(server))

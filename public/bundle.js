@@ -78,8 +78,14 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	// Hack for mobile support for materialize-ui
 	(0, _reactTapEventPlugin2.default)();
 	
+	/*
+	  Provider = react-redux supplying context of store.
+	  Mui = materialize-ui providing a default theme for itself.
+	  Router = react-router
+	*/
 	_reactDom2.default.render(_react2.default.createElement(
 	  _reactRedux.Provider,
 	  { store: _store2.default },
@@ -23548,6 +23554,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	// Very standard.
 	exports.default = (0, _redux.createStore)(_reducers2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default, (0, _reduxLogger2.default)({ collapsed: true })));
 
 /***/ },
@@ -23574,6 +23581,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	// My custom combine reducers in action.
 	exports.default = function () {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _initialState2.default;
 	  var action = arguments[1];
@@ -23590,6 +23598,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	// I prefer having a hardcoded initial state so we can have an idea of what it looks like.
 	var initialState = {
 	  welcomeText: 'Welcome to Meme Magic.'
 	};
@@ -23606,6 +23615,7 @@
 	  value: true
 	});
 	
+	// This design pattern helps avoid the nesting problem that combineReducers creates.
 	exports.default = function (state, reducers, action) {
 	  var reducedState = Object.assign({}, state);
 	  reducers.forEach(function (reducer) {
@@ -23630,6 +23640,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	//File to use to explain to superReducer what its reducers are.
 	exports.default = [_welcomeReducer2.default];
 
 /***/ },
@@ -36803,6 +36814,7 @@
 	  return _extends({}, state);
 	};
 	
+	// Handles the enter key changing the welcomeText.
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	  return {
 	    handleSubmit: function handleSubmit(evt) {
@@ -38632,6 +38644,7 @@
 	  return { type: _constants.CHANGE_WELCOME, welcomeText: text };
 	};
 	
+	// Used by the front end to live change the welcomeText.
 	var changeWelcomeText = exports.changeWelcomeText = function changeWelcomeText(text) {
 	  return function (dispatch) {
 	    _axios2.default.put('/api/sessions', { welcomeText: text }).then(function () {
@@ -38642,11 +38655,15 @@
 	  };
 	};
 	
+	// This function is run by sockets after they've initialized a user.
 	var fetchWelcomeText = exports.fetchWelcomeText = function fetchWelcomeText() {
 	  return function (dispatch) {
+	    // Fetch the recently reset session information.
 	    _axios2.default.get('/api/sessions').then(function (res) {
 	      return res.data;
-	    }).then(function (_ref) {
+	    })
+	    // Now reset the data.
+	    .then(function (_ref) {
 	      var session = _ref.session;
 	
 	      if (session.welcomeText) {
@@ -40181,10 +40198,12 @@
 	  _store2.default.dispatch((0, _actionCreators.fetchWelcomeText)());
 	};
 	
+	// Redirect a user.
 	socket.on('KickTroll', function () {
 	  window.location = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
 	});
 	
+	// After we have initialized a user, lets get their information again.
 	socket.on('InitUser', function (currentSocket) {
 	  _axios2.default.post('/api/sessions', currentSocket).then(function () {
 	    fetchText();

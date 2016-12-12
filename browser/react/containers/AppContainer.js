@@ -4,6 +4,7 @@ import { changeWelcomeText } from '../../redux/action-creators';
 
 const mapStateToProps = state => ({ ...state });
 
+// Handles the enter key changing the welcomeText.
 const mapDispatchToProps = dispatch => ({
   handleSubmit: (evt) => {
     evt.preventDefault();

@@ -8,10 +8,12 @@ const fetchText = () => {
   store.dispatch(fetchWelcomeText());
 };
 
+// Redirect a user.
 socket.on('KickTroll', () => {
   window.location = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
 });
 
+// After we have initialized a user, lets get their information again.
 socket.on('InitUser', (currentSocket) => {
   axios.post('/api/sessions', currentSocket)
     .then(() => {

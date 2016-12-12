@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 var favicon = require('serve-favicon');
 
+// Serve up my chosen static files as well as my favicon.
 module.exports = (app) => {
   const root = app.getValue('projectRoot');
 

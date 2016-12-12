@@ -5,6 +5,7 @@ const chalk = require('chalk');
 
 require('./models');
 
+// The exported function that takes a param as to whether or not to sync the db.
 const syncDB = (sync = false) => {
   return db.sync({force: sync})
     .then(() => {
