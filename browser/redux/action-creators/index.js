@@ -27,5 +27,5 @@ export const fetchWelcomeText = () => dispatch => {
     })
     .catch(() => {
       console.log('Fetching Welcome Text Failed.');
-    })
-}
+    });
+};
