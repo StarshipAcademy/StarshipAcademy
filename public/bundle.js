@@ -40165,7 +40165,7 @@
 	  value: true
 	});
 	
-	var _socket = __webpack_require__(476);
+	var _socket = __webpack_require__(475);
 	
 	var _socket2 = _interopRequireDefault(_socket);
 	
@@ -40191,8 +40191,7 @@
 	exports.default = socket;
 
 /***/ },
-/* 475 */,
-/* 476 */
+/* 475 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -40200,10 +40199,10 @@
 	 * Module dependencies.
 	 */
 	
-	var url = __webpack_require__(477);
-	var parser = __webpack_require__(482);
-	var Manager = __webpack_require__(489);
-	var debug = __webpack_require__(479)('socket.io-client');
+	var url = __webpack_require__(476);
+	var parser = __webpack_require__(481);
+	var Manager = __webpack_require__(488);
+	var debug = __webpack_require__(478)('socket.io-client');
 	
 	/**
 	 * Module exports.
@@ -40302,12 +40301,12 @@
 	 * @api public
 	 */
 	
-	exports.Manager = __webpack_require__(489);
-	exports.Socket = __webpack_require__(515);
+	exports.Manager = __webpack_require__(488);
+	exports.Socket = __webpack_require__(514);
 
 
 /***/ },
-/* 477 */
+/* 476 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
@@ -40315,8 +40314,8 @@
 	 * Module dependencies.
 	 */
 	
-	var parseuri = __webpack_require__(478);
-	var debug = __webpack_require__(479)('socket.io-client:url');
+	var parseuri = __webpack_require__(477);
+	var debug = __webpack_require__(478)('socket.io-client:url');
 	
 	/**
 	 * Module exports.
@@ -40389,7 +40388,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 478 */
+/* 477 */
 /***/ function(module, exports) {
 
 	/**
@@ -40434,7 +40433,7 @@
 
 
 /***/ },
-/* 479 */
+/* 478 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -40444,7 +40443,7 @@
 	 * Expose `debug()` as the module.
 	 */
 	
-	exports = module.exports = __webpack_require__(480);
+	exports = module.exports = __webpack_require__(479);
 	exports.log = log;
 	exports.formatArgs = formatArgs;
 	exports.save = save;
@@ -40608,7 +40607,7 @@
 
 
 /***/ },
-/* 480 */
+/* 479 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -40624,7 +40623,7 @@
 	exports.disable = disable;
 	exports.enable = enable;
 	exports.enabled = enabled;
-	exports.humanize = __webpack_require__(481);
+	exports.humanize = __webpack_require__(480);
 	
 	/**
 	 * The currently active debug mode names, and names to skip.
@@ -40811,7 +40810,7 @@
 
 
 /***/ },
-/* 481 */
+/* 480 */
 /***/ function(module, exports) {
 
 	/**
@@ -40942,7 +40941,7 @@
 
 
 /***/ },
-/* 482 */
+/* 481 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -40950,11 +40949,11 @@
 	 * Module dependencies.
 	 */
 	
-	var debug = __webpack_require__(479)('socket.io-parser');
-	var json = __webpack_require__(483);
-	var Emitter = __webpack_require__(485);
-	var binary = __webpack_require__(486);
-	var isBuf = __webpack_require__(488);
+	var debug = __webpack_require__(478)('socket.io-parser');
+	var json = __webpack_require__(482);
+	var Emitter = __webpack_require__(484);
+	var binary = __webpack_require__(485);
+	var isBuf = __webpack_require__(487);
 	
 	/**
 	 * Protocol version.
@@ -41352,14 +41351,14 @@
 
 
 /***/ },
-/* 483 */
+/* 482 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/*! JSON v3.3.2 | http://bestiejs.github.io/json3 | Copyright 2012-2014, Kit Cambridge | http://kit.mit-license.org */
 	;(function () {
 	  // Detect the `define` function exposed by asynchronous module loaders. The
 	  // strict `define` check is necessary for compatibility with `r.js`.
-	  var isLoader = "function" === "function" && __webpack_require__(484);
+	  var isLoader = "function" === "function" && __webpack_require__(483);
 	
 	  // A set of types used to distinguish objects from primitives.
 	  var objectTypes = {
@@ -42261,7 +42260,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(199)(module), (function() { return this; }())))
 
 /***/ },
-/* 484 */
+/* 483 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
@@ -42269,7 +42268,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ },
-/* 485 */
+/* 484 */
 /***/ function(module, exports) {
 
 	
@@ -42439,7 +42438,7 @@
 
 
 /***/ },
-/* 486 */
+/* 485 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/*global Blob,File*/
@@ -42448,8 +42447,8 @@
 	 * Module requirements
 	 */
 	
-	var isArray = __webpack_require__(487);
-	var isBuf = __webpack_require__(488);
+	var isArray = __webpack_require__(486);
+	var isBuf = __webpack_require__(487);
 	
 	/**
 	 * Replaces every Buffer | ArrayBuffer in packet with a numbered placeholder.
@@ -42587,7 +42586,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 487 */
+/* 486 */
 /***/ function(module, exports) {
 
 	module.exports = Array.isArray || function (arr) {
@@ -42596,7 +42595,7 @@
 
 
 /***/ },
-/* 488 */
+/* 487 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
@@ -42616,7 +42615,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 489 */
+/* 488 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -42624,15 +42623,15 @@
 	 * Module dependencies.
 	 */
 	
-	var eio = __webpack_require__(490);
-	var Socket = __webpack_require__(515);
-	var Emitter = __webpack_require__(516);
-	var parser = __webpack_require__(482);
-	var on = __webpack_require__(518);
-	var bind = __webpack_require__(519);
-	var debug = __webpack_require__(479)('socket.io-client:manager');
-	var indexOf = __webpack_require__(513);
-	var Backoff = __webpack_require__(521);
+	var eio = __webpack_require__(489);
+	var Socket = __webpack_require__(514);
+	var Emitter = __webpack_require__(515);
+	var parser = __webpack_require__(481);
+	var on = __webpack_require__(517);
+	var bind = __webpack_require__(518);
+	var debug = __webpack_require__(478)('socket.io-client:manager');
+	var indexOf = __webpack_require__(512);
+	var Backoff = __webpack_require__(520);
 	
 	/**
 	 * IE6+ hasOwnProperty
@@ -43182,19 +43181,19 @@
 
 
 /***/ },
+/* 489 */
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	module.exports = __webpack_require__(490);
+
+
+/***/ },
 /* 490 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 	module.exports = __webpack_require__(491);
-
-
-/***/ },
-/* 491 */
-/***/ function(module, exports, __webpack_require__) {
-
-	
-	module.exports = __webpack_require__(492);
 	
 	/**
 	 * Exports parser
@@ -43202,25 +43201,25 @@
 	 * @api public
 	 *
 	 */
-	module.exports.parser = __webpack_require__(499);
+	module.exports.parser = __webpack_require__(498);
 
 
 /***/ },
-/* 492 */
+/* 491 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module dependencies.
 	 */
 	
-	var transports = __webpack_require__(493);
-	var Emitter = __webpack_require__(485);
-	var debug = __webpack_require__(479)('engine.io-client:socket');
-	var index = __webpack_require__(513);
-	var parser = __webpack_require__(499);
-	var parseuri = __webpack_require__(478);
-	var parsejson = __webpack_require__(514);
-	var parseqs = __webpack_require__(507);
+	var transports = __webpack_require__(492);
+	var Emitter = __webpack_require__(484);
+	var debug = __webpack_require__(478)('engine.io-client:socket');
+	var index = __webpack_require__(512);
+	var parser = __webpack_require__(498);
+	var parseuri = __webpack_require__(477);
+	var parsejson = __webpack_require__(513);
+	var parseqs = __webpack_require__(506);
 	
 	/**
 	 * Module exports.
@@ -43347,9 +43346,9 @@
 	 */
 	
 	Socket.Socket = Socket;
-	Socket.Transport = __webpack_require__(498);
-	Socket.transports = __webpack_require__(493);
-	Socket.parser = __webpack_require__(499);
+	Socket.Transport = __webpack_require__(497);
+	Socket.transports = __webpack_require__(492);
+	Socket.parser = __webpack_require__(498);
 	
 	/**
 	 * Creates transport of the given type.
@@ -43944,17 +43943,17 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 493 */
+/* 492 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module dependencies
 	 */
 	
-	var XMLHttpRequest = __webpack_require__(494);
-	var XHR = __webpack_require__(496);
-	var JSONP = __webpack_require__(510);
-	var websocket = __webpack_require__(511);
+	var XMLHttpRequest = __webpack_require__(493);
+	var XHR = __webpack_require__(495);
+	var JSONP = __webpack_require__(509);
+	var websocket = __webpack_require__(510);
 	
 	/**
 	 * Export transports.
@@ -44004,12 +44003,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 494 */
+/* 493 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {// browser shim for xmlhttprequest module
 	
-	var hasCORS = __webpack_require__(495);
+	var hasCORS = __webpack_require__(494);
 	
 	module.exports = function (opts) {
 	  var xdomain = opts.xdomain;
@@ -44048,7 +44047,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 495 */
+/* 494 */
 /***/ function(module, exports) {
 
 	
@@ -44071,18 +44070,18 @@
 
 
 /***/ },
-/* 496 */
+/* 495 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module requirements.
 	 */
 	
-	var XMLHttpRequest = __webpack_require__(494);
-	var Polling = __webpack_require__(497);
-	var Emitter = __webpack_require__(485);
-	var inherit = __webpack_require__(508);
-	var debug = __webpack_require__(479)('engine.io-client:polling-xhr');
+	var XMLHttpRequest = __webpack_require__(493);
+	var Polling = __webpack_require__(496);
+	var Emitter = __webpack_require__(484);
+	var inherit = __webpack_require__(507);
+	var debug = __webpack_require__(478)('engine.io-client:polling-xhr');
 	
 	/**
 	 * Module exports.
@@ -44495,19 +44494,19 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 497 */
+/* 496 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Module dependencies.
 	 */
 	
-	var Transport = __webpack_require__(498);
-	var parseqs = __webpack_require__(507);
-	var parser = __webpack_require__(499);
-	var inherit = __webpack_require__(508);
-	var yeast = __webpack_require__(509);
-	var debug = __webpack_require__(479)('engine.io-client:polling');
+	var Transport = __webpack_require__(497);
+	var parseqs = __webpack_require__(506);
+	var parser = __webpack_require__(498);
+	var inherit = __webpack_require__(507);
+	var yeast = __webpack_require__(508);
+	var debug = __webpack_require__(478)('engine.io-client:polling');
 	
 	/**
 	 * Module exports.
@@ -44520,7 +44519,7 @@
 	 */
 	
 	var hasXHR2 = (function () {
-	  var XMLHttpRequest = __webpack_require__(494);
+	  var XMLHttpRequest = __webpack_require__(493);
 	  var xhr = new XMLHttpRequest({ xdomain: false });
 	  return null != xhr.responseType;
 	})();
@@ -44746,15 +44745,15 @@
 
 
 /***/ },
-/* 498 */
+/* 497 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Module dependencies.
 	 */
 	
-	var parser = __webpack_require__(499);
-	var Emitter = __webpack_require__(485);
+	var parser = __webpack_require__(498);
+	var Emitter = __webpack_require__(484);
 	
 	/**
 	 * Module exports.
@@ -44907,22 +44906,22 @@
 
 
 /***/ },
-/* 499 */
+/* 498 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module dependencies.
 	 */
 	
-	var keys = __webpack_require__(500);
-	var hasBinary = __webpack_require__(501);
-	var sliceBuffer = __webpack_require__(502);
-	var after = __webpack_require__(503);
-	var utf8 = __webpack_require__(504);
+	var keys = __webpack_require__(499);
+	var hasBinary = __webpack_require__(500);
+	var sliceBuffer = __webpack_require__(501);
+	var after = __webpack_require__(502);
+	var utf8 = __webpack_require__(503);
 	
 	var base64encoder;
 	if (global && global.ArrayBuffer) {
-	  base64encoder = __webpack_require__(505);
+	  base64encoder = __webpack_require__(504);
 	}
 	
 	/**
@@ -44980,7 +44979,7 @@
 	 * Create a blob api even for blob builder when vendor prefixes exist
 	 */
 	
-	var Blob = __webpack_require__(506);
+	var Blob = __webpack_require__(505);
 	
 	/**
 	 * Encodes a packet.
@@ -45523,7 +45522,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 500 */
+/* 499 */
 /***/ function(module, exports) {
 
 	
@@ -45548,7 +45547,7 @@
 
 
 /***/ },
-/* 501 */
+/* 500 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
@@ -45556,7 +45555,7 @@
 	 * Module requirements.
 	 */
 	
-	var isArray = __webpack_require__(487);
+	var isArray = __webpack_require__(486);
 	
 	/**
 	 * Module exports.
@@ -45613,7 +45612,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 502 */
+/* 501 */
 /***/ function(module, exports) {
 
 	/**
@@ -45648,7 +45647,7 @@
 
 
 /***/ },
-/* 503 */
+/* 502 */
 /***/ function(module, exports) {
 
 	module.exports = after
@@ -45682,7 +45681,7 @@
 
 
 /***/ },
-/* 504 */
+/* 503 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/*! https://mths.be/wtf8 v1.0.0 by @mathias */
@@ -45921,7 +45920,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(199)(module), (function() { return this; }())))
 
 /***/ },
-/* 505 */
+/* 504 */
 /***/ function(module, exports) {
 
 	/*
@@ -45994,7 +45993,7 @@
 
 
 /***/ },
-/* 506 */
+/* 505 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -46097,7 +46096,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 507 */
+/* 506 */
 /***/ function(module, exports) {
 
 	/**
@@ -46140,7 +46139,7 @@
 
 
 /***/ },
-/* 508 */
+/* 507 */
 /***/ function(module, exports) {
 
 	
@@ -46152,7 +46151,7 @@
 	};
 
 /***/ },
-/* 509 */
+/* 508 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -46226,7 +46225,7 @@
 
 
 /***/ },
-/* 510 */
+/* 509 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
@@ -46234,8 +46233,8 @@
 	 * Module requirements.
 	 */
 	
-	var Polling = __webpack_require__(497);
-	var inherit = __webpack_require__(508);
+	var Polling = __webpack_require__(496);
+	var inherit = __webpack_require__(507);
 	
 	/**
 	 * Module exports.
@@ -46464,19 +46463,19 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 511 */
+/* 510 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module dependencies.
 	 */
 	
-	var Transport = __webpack_require__(498);
-	var parser = __webpack_require__(499);
-	var parseqs = __webpack_require__(507);
-	var inherit = __webpack_require__(508);
-	var yeast = __webpack_require__(509);
-	var debug = __webpack_require__(479)('engine.io-client:websocket');
+	var Transport = __webpack_require__(497);
+	var parser = __webpack_require__(498);
+	var parseqs = __webpack_require__(506);
+	var inherit = __webpack_require__(507);
+	var yeast = __webpack_require__(508);
+	var debug = __webpack_require__(478)('engine.io-client:websocket');
 	var BrowserWebSocket = global.WebSocket || global.MozWebSocket;
 	
 	/**
@@ -46488,7 +46487,7 @@
 	var WebSocket = BrowserWebSocket;
 	if (!WebSocket && typeof window === 'undefined') {
 	  try {
-	    WebSocket = __webpack_require__(512);
+	    WebSocket = __webpack_require__(511);
 	  } catch (e) { }
 	}
 	
@@ -46745,13 +46744,13 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 512 */
+/* 511 */
 /***/ function(module, exports) {
 
 	/* (ignored) */
 
 /***/ },
-/* 513 */
+/* 512 */
 /***/ function(module, exports) {
 
 	
@@ -46766,7 +46765,7 @@
 	};
 
 /***/ },
-/* 514 */
+/* 513 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -46804,7 +46803,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 515 */
+/* 514 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -46812,13 +46811,13 @@
 	 * Module dependencies.
 	 */
 	
-	var parser = __webpack_require__(482);
-	var Emitter = __webpack_require__(516);
-	var toArray = __webpack_require__(517);
-	var on = __webpack_require__(518);
-	var bind = __webpack_require__(519);
-	var debug = __webpack_require__(479)('socket.io-client:socket');
-	var hasBin = __webpack_require__(520);
+	var parser = __webpack_require__(481);
+	var Emitter = __webpack_require__(515);
+	var toArray = __webpack_require__(516);
+	var on = __webpack_require__(517);
+	var bind = __webpack_require__(518);
+	var debug = __webpack_require__(478)('socket.io-client:socket');
+	var hasBin = __webpack_require__(519);
 	
 	/**
 	 * Module exports.
@@ -47229,7 +47228,7 @@
 
 
 /***/ },
-/* 516 */
+/* 515 */
 /***/ function(module, exports) {
 
 	
@@ -47396,7 +47395,7 @@
 
 
 /***/ },
-/* 517 */
+/* 516 */
 /***/ function(module, exports) {
 
 	module.exports = toArray
@@ -47415,7 +47414,7 @@
 
 
 /***/ },
-/* 518 */
+/* 517 */
 /***/ function(module, exports) {
 
 	
@@ -47445,7 +47444,7 @@
 
 
 /***/ },
-/* 519 */
+/* 518 */
 /***/ function(module, exports) {
 
 	/**
@@ -47474,7 +47473,7 @@
 
 
 /***/ },
-/* 520 */
+/* 519 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
@@ -47482,7 +47481,7 @@
 	 * Module requirements.
 	 */
 	
-	var isArray = __webpack_require__(487);
+	var isArray = __webpack_require__(486);
 	
 	/**
 	 * Module exports.
@@ -47540,7 +47539,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 521 */
+/* 520 */
 /***/ function(module, exports) {
 
 	

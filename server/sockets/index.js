@@ -19,6 +19,9 @@ module.exports = (server) => {
     socket.name = 'memeLover' + totalConnections;
     let ipAddress = socket.request.connection.remoteAddress;
 
+    console.log(currentSockets);
+    console.log(ipAddress);
+
     if (!currentSockets.some(e => e.address == ipAddress)) {
       let currentSocket = {
         id: socket.id,
@@ -26,7 +29,7 @@ module.exports = (server) => {
         time: new Date(),
         address: ipAddress
       };
-      currentSockets.push();
+      currentSockets.push(currentSocket);
       console.log(chalk.magenta(`${socket.name} wants Memes REAL-TIME.`));
       socket.emit('InitUser', currentSocket);
     } else {
