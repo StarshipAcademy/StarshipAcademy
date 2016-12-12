@@ -19,9 +19,6 @@ module.exports = (server) => {
     socket.name = 'memeLover' + totalConnections;
     let ipAddress = socket.request.connection.remoteAddress;
 
-    console.log(currentSockets);
-    console.log(ipAddress);
-
     if (!currentSockets.some(e => e.address == ipAddress)) {
       let currentSocket = {
         id: socket.id,

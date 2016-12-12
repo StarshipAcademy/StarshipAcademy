@@ -72,17 +72,11 @@
 	
 	var _containers = __webpack_require__(422);
 	
-	var _actionCreators = __webpack_require__(448);
-	
 	var _sockets = __webpack_require__(474);
 	
 	var _sockets2 = _interopRequireDefault(_sockets);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var fetchText = function fetchText() {
-	  _store2.default.dispatch((0, _actionCreators.fetchWelcomeText)());
-	};
 	
 	(0, _reactTapEventPlugin2.default)();
 	
@@ -95,7 +89,7 @@
 	    _react2.default.createElement(
 	      _reactRouter.Router,
 	      { history: _reactRouter.browserHistory },
-	      _react2.default.createElement(_reactRouter.Route, { path: '/', component: _containers.AppContainer, onEnter: fetchText })
+	      _react2.default.createElement(_reactRouter.Route, { path: '/', component: _containers.AppContainer })
 	    )
 	  )
 	), document.getElementById('react-app'));
@@ -40173,16 +40167,28 @@
 	
 	var _axios2 = _interopRequireDefault(_axios);
 	
+	var _actionCreators = __webpack_require__(448);
+	
+	var _store = __webpack_require__(208);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var socket = _socket2.default.connect();
+	
+	var fetchText = function fetchText() {
+	  _store2.default.dispatch((0, _actionCreators.fetchWelcomeText)());
+	};
 	
 	socket.on('KickTroll', function () {
 	  window.location = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
 	});
 	
 	socket.on('InitUser', function (currentSocket) {
-	  _axios2.default.post('/api/sessions', currentSocket).then(function () {}).catch(function () {
+	  _axios2.default.post('/api/sessions', currentSocket).then(function () {
+	    fetchText();
+	  }).catch(function () {
 	    console.log('Error initializing user. Kicking now.');
 	    window.location = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
 	  });

@@ -7,12 +7,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Router, Route, browserHistory, IndexRedirect } from 'react-router';
 import { AppContainer } from './containers';
 
-import { fetchWelcomeText } from '../redux/action-creators';
-
-const fetchText = () => {
-  store.dispatch(fetchWelcomeText());
-};
-
 import SOCKET from '../sockets';
 
 injectTapEventPlugin();
@@ -21,7 +15,7 @@ ReactDOM.render(
   <Provider store={store}>
     <MuiThemeProvider>
       <Router history={browserHistory}>
-        <Route path='/' component={AppContainer} onEnter={fetchText} />
+        <Route path='/' component={AppContainer} />
       </Router>
     </MuiThemeProvider>
   </Provider>,
