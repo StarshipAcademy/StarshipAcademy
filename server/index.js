@@ -1,13 +1,20 @@
 'use strict';
 
-const app = require('express')();
-const _db = require('./db/db');
-const chalk = require('chalk');
+import express from 'express';
 
-require('./configure')(app, _db);
-require('./sessions')(app);
+const app = express();
+import _db from './db/db';
+import chalk from 'chalk';
 
-app.use('/api', require('./routes'));
+import configServer from './configure';
+import configSessions from './sessions';
+
+configServer(app, _db);
+configSessions(app);
+
+import Routes from './routes';
+
+app.use('/api', Routes);
 
 app.get('/*', (req, res) => {
   if (req.session.socketData) {
@@ -22,4 +29,4 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500).send(err.message || 'Internal server error.');
 });
 
-module.exports = app;
+export default app;

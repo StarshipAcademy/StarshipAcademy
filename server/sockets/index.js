@@ -1,5 +1,6 @@
-const socketio = require('socket.io');
-const chalk = require('chalk');
+import socketio from 'socket.io';
+import chalk from 'chalk';
+
 let currentSockets = [];
 let totalConnections = 0;
 
@@ -10,7 +11,7 @@ const refreshSockets = (socket) => {
   currentSockets = currentSockets.filter(e => e.id !== socket.id);
 };
 
-module.exports = (server) => {
+export default (server) => {
   if (io) return io;
 
   io = socketio(server);

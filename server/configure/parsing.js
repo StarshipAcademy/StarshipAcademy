@@ -1,12 +1,14 @@
 'use strict';
 
-const BP = require('body-parser');
-const session = require('express-session');
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const secrets = require('../../secrets');
-const passport = require('passport');
+import BP from 'body-parser';
+import session from 'express-session';
+import connectSession from 'connect-session-sequelize';
+import secrets from '../../secrets';
+import passport from 'passport';
 
-module.exports = (app, _db) => {
+const SequelizeStore = connectSession(session.Store);
+
+export default (app, _db) => {
   // Enable body parser.
   app.use(BP.json());
   app.use(BP.urlencoded({extended: true}));

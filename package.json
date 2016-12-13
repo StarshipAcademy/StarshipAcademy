@@ -4,7 +4,7 @@
   "description": "A medium sized back-end boiler plate, with very little done on the front.",
   "main": "app.js",
   "scripts": {
-    "start": "webpack -w & nodemon --watch server -e js,html app.js"
+    "start": "webpack -w & nodemon --watch server -e js,html babelify.js"
   },
   "author": "Eliot Szwajkowski",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.20.2",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
+    "babel-register": "^6.18.0",
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
     "chalk": "^1.1.3",
@@ -31,6 +32,7 @@
     "express": "^4.14.0",
     "express-session": "^1.14.2",
     "glob": "^7.1.1",
+    "immutable": "^3.8.1",
     "jquery": "^3.1.1",
     "material-ui": "^0.16.5",
     "materialize-css": "^0.97.8",

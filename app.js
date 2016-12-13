@@ -1,17 +1,23 @@
 'use strict';
 
-const server = require('http').createServer();
-const startDB = require('./server/db');
-const chalk = require('chalk');
+import myServer from './server';
+
+import HTTP from 'http';
+import startDB from './server/db';
+import chalk from 'chalk';
+
+const server = HTTP.createServer();
 const _Port = 3001;
+
+import ioInit from './server/sockets';
 let io = null;
 
-const doISync = require('cli-interact').getYesNo;
-const syncTruth = doISync(chalk.cyan('Rick, do you wanna get savage on this database? (Force Sync)'));
+import { getYesNo } from 'cli-interact';
+const syncTruth = getYesNo(chalk.cyan('Rick, do you wanna get savage on this database? (Force Sync)'));
 
 // The order of initializing the backend.
 startDB(syncTruth)
-  .then(() => server.on('request', require('./server')))
-  .then(() => io = require('./server/sockets')(server))
+  .then(() => server.on('request', myServer))
+  .then(() => io = ioInit(server))
   .catch(err => console.error(err))
   .finally(() => server.listen(_Port, () => console.log(chalk.magenta(`Meme magic has begun on Port ${_Port}`))));

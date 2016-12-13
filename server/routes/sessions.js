@@ -1,17 +1,18 @@
-const router = require('express').Router();
-const chalk = require('chalk');
+import express from 'express';
+const router = express.Router();
+import chalk from 'chalk';
 /*
   This is an especially odd table to mess with, I would prefer to create
   instance/class methods w hooks etc. on this table. But as far as I can
   tell, there is no way to add definitions to a model after it is created.
   I know I can access $modelOptions directly - but that doesn't seem smart.
 */
-const Sessions = require('../db/db').models.Session;
+import db from '../db/db';
 
 router.route('/')
   .get((req, res, next) => {
     console.log(chalk.cyan('Parsing and fetching Session Data.'));
-    Sessions.findAll()
+    db.models.Session.findAll()
       .then((allSessions) => {
         // TO-DO - Port all this into a .utils file
         /*
@@ -128,4 +129,4 @@ router.route('/')
     res.status(200).json({Message: 'Success'});
   });
 
-module.exports = router;
+export default router;

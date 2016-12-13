@@ -1,15 +1,15 @@
 'use strict';
 
-const Meme = require('./memes');
-const Troll = require('./trolls');
-const User = require('./users');
+import Meme from './memes';
+import Troll from './trolls';
+import User from './users';
 
 // Instantiate M-to-M relationship.
 Troll.belongsToMany(Meme, {through: 'TrollMemes'});
 Meme.belongsToMany(Troll, {through: 'TrollMemes'});
 
-module.exports = {
-  Troll: Troll,
+export default {
   Meme: Meme,
+  Troll: Troll,
   User: User
 };

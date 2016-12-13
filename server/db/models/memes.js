@@ -1,9 +1,9 @@
 'use strict';
 
-const db = require('../db');
+import db from '../db';
 const Type = db.Sequelize;
 
-module.exports = db.define('meme', {
+export default db.define('meme', {
   Title: {
     type: Type.STRING,
     allowNull: false
