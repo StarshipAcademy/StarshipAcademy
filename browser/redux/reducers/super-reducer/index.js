@@ -1,8 +1,14 @@
+import { Map } from 'immutable';
+
+const immutArray = [];
+
 // This design pattern helps avoid the nesting problem that combineReducers creates.
 export default (state, reducers, action) => {
-  let reducedState = Object.assign({}, state);
+  if(immutArray.length === 0) immutArray.push(state);
+
   reducers.forEach(reducer => {
-    reducedState = reducer(reducedState, action);
+    immutArray.push(Map(reducer(immutArray[immutArray.length - 1], action)));
   });
-  return reducedState;
+
+  return immutArray[immutArray.length - 1];
 };

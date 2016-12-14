@@ -2,7 +2,9 @@ import WelcomeDiv from '../components/WelcomeDiv';
 import { connect } from 'react-redux';
 import { changeWelcomeText } from '../../redux/action-creators';
 
-const mapStateToProps = state => ({ ...state });
+const mapStateToProps = state => ({
+  welcomeText: state.get('welcomeText')
+});
 
 // Handles the enter key changing the welcomeText.
 const mapDispatchToProps = dispatch => ({
