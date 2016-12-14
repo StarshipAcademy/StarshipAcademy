@@ -18,12 +18,19 @@ export default (app, _db) => {
   const sessionStore = new SequelizeStore({db: _db});
   sessionStore.sync();
 
+  // Create a date a year from now.
+  let aYearFromNow = new Date();
+  aYearFromNow.setYear(aYearFromNow.getFullYear() + 1);
+
   // Instantiate the use of the session store.
   app.use(session({
     secret: secrets.SessionKey,
     store: sessionStore,
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: {
+      expires: aYearFromNow
+    }
   }));
 
   // Enable passport.
