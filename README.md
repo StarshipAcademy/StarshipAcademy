@@ -19,9 +19,9 @@ B:
 
   Make a `secrets.js` file in the root directory. It should contain:
 
-  export default {
+  `export default {
     SessionKey: 'WhateverYouWant'
-  };
+  };`
 
 That's it. Enjoy.
 
