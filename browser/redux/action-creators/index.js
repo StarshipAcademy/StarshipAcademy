@@ -1,9 +1,11 @@
 import {
-  CHANGE_WELCOME
+  CHANGE_WELCOME,
+  SET_INITIALIZED
 } from '../constants';
 import axios from 'axios';
 
 const createWelcomeText = (text) => ({ type: CHANGE_WELCOME, welcomeText: text });
+const createInitialized = () => ({ type: SET_INITIALIZED });
 
 // Used by the front end to live change the welcomeText.
 export const changeWelcomeText = text => dispatch => {
@@ -27,8 +29,10 @@ export const fetchWelcomeText = () => dispatch => {
     .then(({ session }) => {
       if (session.welcomeText) {
         dispatch(createWelcomeText(session.welcomeText));
+        dispatch(createInitialized());
       } else {
         console.log('No previous welcome text.');
+        dispatch(createInitialized());
       }
     })
     .catch(() => {

@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { changeWelcomeText } from '../../redux/action-creators';
 
 const mapStateToProps = state => ({
-  welcomeText: state.get('welcomeText')
+  welcomeText: state.get('welcomeText'),
+  isInitialized: state.get('isInitialized')
 });
 
 // Handles the enter key changing the welcomeText.

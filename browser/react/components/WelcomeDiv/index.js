@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
 import styles from './styles';
 import BasicSingleLineInput from '../BasicSingleLineInput';
+import InitialLoading from '../InitialLoading';
 
 export default class WelcomeDiv extends Component {
   render () {
-    const { welcomeText, handleSubmit } = this.props;
+    const { welcomeText, handleSubmit, isInitialized } = this.props;
 
     return (
+
       <div style={styles.test}>
-        <h1> { welcomeText } </h1>
-        <BasicSingleLineInput handleSubmit={handleSubmit} />
+      {
+        isInitialized ?
+        (<div>
+          <h1> { welcomeText } </h1>
+          <BasicSingleLineInput handleSubmit={handleSubmit} />
+        </div>) :
+        (<InitialLoading />)
+      }
       </div>
     );
   }
