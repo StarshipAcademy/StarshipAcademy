@@ -6,6 +6,7 @@ import store from '../redux/store';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Router, Route, browserHistory, IndexRedirect } from 'react-router';
 import { AppContainer } from './containers';
+import 'aframe';
 
 import SOCKET from '../sockets';
 
