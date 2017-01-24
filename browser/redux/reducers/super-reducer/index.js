@@ -23,7 +23,6 @@ export default (state, reducers, action) => {
     );
   });
 
-  console.log(Tivo.last().get('isInitialized'));
   // Return the new last state.
   return Tivo.last();
 };

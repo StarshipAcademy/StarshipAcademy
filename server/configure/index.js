@@ -8,7 +8,7 @@ export default (app, _db) => {
   // Force the context of this.
   app.setValue = app.set.bind(app);
   // Make a function that gets the path to this app.
-  app.getValue = (path) => app.get(path);
+  app.getValue = path => app.get(path);
 
   // Use the two above functions to give myself properties.
   setVariables(app);

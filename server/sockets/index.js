@@ -4,7 +4,7 @@ import chalk from 'chalk';
 let currentSockets = [];
 let totalConnections = 0;
 
-let io = null;
+let IO = null;
 
 // Essentially filters through all of the sockets and ensures that we have no duplicate sockets.
 const refreshSockets = (socket) => {
@@ -12,11 +12,12 @@ const refreshSockets = (socket) => {
 };
 
 export default (server) => {
-  if (io) return io;
+  if (server == undefined) return IO;
+  if (IO) return IO;
 
-  io = socketio(server);
+  IO = socketio(server);
 
-  io.on('connection', (socket) => {
+  IO.on('connection', (socket) => {
     totalConnections++;
     socket.name = 'memeLover' + totalConnections;
     // Snatch a users IP.
@@ -55,6 +56,4 @@ export default (server) => {
       refreshSockets(socket);
     });
   });
-
-  return io;
 };
