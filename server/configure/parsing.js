@@ -33,6 +33,9 @@ export default (app, _db) => {
     }
   }));
 
+  // TO-DO - Discover the implications of passport session and express session
+  // playing together. How will it impact what I do with users?
+
   // Enable passport.
   app.use(passport.initialize());
   app.use(passport.session());

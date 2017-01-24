@@ -10,7 +10,6 @@ const server = HTTP.createServer();
 const _Port = 3001;
 
 import ioInit from './server/sockets';
-let io = null;
 
 import { getYesNo } from 'cli-interact';
 const syncTruth = getYesNo(chalk.cyan('Rick, do you wanna get savage on this database? (Force Sync)'));
@@ -18,6 +17,6 @@ const syncTruth = getYesNo(chalk.cyan('Rick, do you wanna get savage on this dat
 // The order of initializing the backend.
 startDB(syncTruth)
   .then(() => server.on('request', myServer))
-  .then(() => io = ioInit(server))
+  .then(() => ioInit(server))
   .catch(err => console.error(err))
   .finally(() => server.listen(_Port, () => console.log(chalk.magenta(`Meme magic has begun on Port ${_Port}`))));

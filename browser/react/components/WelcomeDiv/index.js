@@ -11,11 +11,13 @@ export default class WelcomeDiv extends Component {
 
       <div style={styles.test}>
       {
-        isInitialized ?
+        isInitialized
+         ?
         (<div>
           <h1> { welcomeText } </h1>
           <BasicSingleLineInput handleSubmit={handleSubmit} />
-        </div>) :
+        </div>)
+         :
         (<InitialLoading />)
       }
       </div>
