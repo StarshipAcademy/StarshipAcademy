@@ -11,6 +11,9 @@ module.exports = {
   context: __dirname,
   devtool: 'source-map',
   module: {
+    noParse: [
+      /node_modules\/aframe\/dist\/aframe.js/
+    ],
     loaders: [
       {
         test: /jsx?$/,
