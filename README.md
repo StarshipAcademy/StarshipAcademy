@@ -1,7 +1,7 @@
 ## Meme Magic
 
 It's a terrible name, I know. Doesn't summarize this app at all. Here it is:
-Meme Magic is a heavy handed backend boiler plate with some very light front end stuff set up. What little is set up on the front end is beautiful (PropTypes, Immutable.js for Redux Store, ES6, AFrame and its cleaner Reactified Counterpart), and the backend is fully set eeeexcept your choice of login systen at the moment.
+Meme Magic is a heavy handed backend boiler plate with some very light front end stuff set up. What little is set up on the front end is beautiful (PropTypes, Immutable.js for Redux Store, ES6, AFrame and its cleaner Reactified Counterpart), and the backend is fully set except your choice of login systen at the moment.
 
 ## Motivation
 
