@@ -10,7 +10,5 @@
     "eqeqeq": 1
   },
 
-  "ecmaFeatures": {
-     "jsx": true
-   }
+  "ecmaFeatures": {}
 }

@@ -3,10 +3,10 @@
 const webpack = require('webpack');
 
 module.exports = {
-  entry: './browser/react/index.js',
+  entry: './browser/src',
   output: {
     path: __dirname,
-    filename: './public/bundle.js'
+    filename: './browser/bundle.js'
   },
   context: __dirname,
   devtool: 'source-map',
@@ -20,7 +20,7 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         loader: 'babel',
         query: {
-          presets: ['react', 'es2015'],
+          presets: ['es2015'],
           plugins: ['transform-object-rest-spread']
         }
       }
