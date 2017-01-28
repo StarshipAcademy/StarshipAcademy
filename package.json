@@ -4,7 +4,8 @@
   "description": "A medium sized back-end boiler plate, with very little done on the front.",
   "main": "app.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack -w",
+    "dev": "nodemon --watch server -e js,html babelify.js",
     "start": "webpack -w & nodemon --watch server -e js,html babelify.js"
   },
   "author": "Eliot Szwajkowski",
@@ -55,6 +56,7 @@
     "express-session": "^1.14.2",
     "glob": "^7.1.1",
     "immutable": "^3.8.1",
+    "json-loader": "^0.5.4",
     "jquery": "^3.1.1",
     "lodash": "^4.17.2",
     "material-ui": "^0.16.5",

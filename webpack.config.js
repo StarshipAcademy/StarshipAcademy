@@ -15,8 +15,11 @@ module.exports = {
       /node_modules\/aframe\/dist\/aframe.js/
     ],
     loaders: [
+      { 
+        test: /\.json$/, loader: "json-loader" 
+      },
       {
-        test: /jsx?$/,
+        test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel',
         query: {
@@ -24,6 +27,14 @@ module.exports = {
           plugins: ['transform-object-rest-spread']
         }
       }
+      // {
+      //   test: /\.css$/,
+      //   loader: 'style-loader!css-loader'
+      // },
+      // {
+      //   json: /\.json$/,
+      //   loader: 'json-loader'
+      // }
     ]
   }
 };

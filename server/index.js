@@ -17,9 +17,9 @@ import Routes from './routes';
 app.use('/api', Routes);
 
 app.get('/*', (req, res) => {
-  if (req.session.socketData) {
-    console.log(chalk.magenta(`A user @ ${req.session.socketData.address} just visited the site.`));
-  }
+  // if (req.session.socketData) {
+  //   console.log(chalk.magenta(`A user @ ${req.session.socketData.address} just visited the site.`));
+  // }
   res.sendFile(app.getValue('indexPath'));
 });
 
