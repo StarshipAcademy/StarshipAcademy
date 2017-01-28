@@ -4,8 +4,8 @@
   "description": "A medium sized back-end boiler plate, with very little done on the front.",
   "main": "app.js",
   "scripts": {
-    "build": "webpack -w",
-    "start": "babel-node --presets es2015 app.js",
+    "build": "webpack -w && node babelify.js",
+    "start": "babel-node --presets es2015 server",
     "dev": "webpack -w && nodemon --watch app.js -e js,html babelify.js"
   },
   "author": "Eliot Szwajkowski",
