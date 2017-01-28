@@ -1,5 +1,5 @@
 'use strict';
-
+require('babel-register');
 import myServer from './server';
 
 import HTTP from 'http';
