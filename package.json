@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "build": "webpack -w",
-    "start": "babel-node --presets es2015 server",
-    "dev": "webpack -w && nodemon --watch server -e js,html babelify.js"
+    "start": "babel-node --presets es2015 app.js",
+    "dev": "webpack -w && nodemon --watch app.js -e js,html babelify.js"
   },
   "author": "Eliot Szwajkowski",
   "license": "ISC",
