@@ -6,6 +6,7 @@
 		<script type="text/javascript" src="/materialize-css/dist/js/materialize.min.js"></script>
 		<script src="/jquery/dist/jquery.min.js"></script>
 		<script src="/bundle.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<script src="https://github.com/ngokevin/aframe-physics-components/blob/master/dist/aframe-physics-components.min.js"></script>
 		<script src="./src/components/BulletSpawning.js"></script>
 		<script src="./src/components/Explode.js"></script>
@@ -13,6 +14,9 @@
 		<script src="./src/components/Projectile.js"></script>
 	</head>
 	<body>
+		<i class="fa fa-crosshairs" style="color: #41EF39; position: absolute; top: 49%; left: 49.5%; z-index: 9999" aria-hidden="true">
+		</i>
+
 		<a-scene physics-world="gravity: 0 0 0">
 			<a-asset>
 				<img id="space" src="./src/assets/images/space.jpg">
