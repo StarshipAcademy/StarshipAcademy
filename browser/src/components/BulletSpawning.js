@@ -34,6 +34,7 @@ AFRAME.registerComponent('spawner', {
         z: entityRotation.z + rotation.z
       });
     });
+    console.log('SPAWNING');
     el.sceneEl.appendChild(entity);
   }
 });
