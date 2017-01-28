@@ -44,7 +44,7 @@ AFRAME.registerComponent('fence', {
       minZ = thisdepth / 2 + z0;
       maxZ = ( -1 * thisdepth / 2 ) + z0;
 
-      var position = this.el.getComputedAttribute('position');
+      var position = this.el.getAttribute('position');
 
       position.x = Math.min( minX, position.x);
       position.x = Math.max( maxX, position.x);
