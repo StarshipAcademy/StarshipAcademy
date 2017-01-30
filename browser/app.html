@@ -12,12 +12,14 @@
 		<script src="./src/components/Explode.js"></script>
 		<script src="./src/components/onClickListener.js"></script>
 		<script src="./src/components/Projectile.js"></script>
+		<script src="./src/components/scene-load.js"></script>
+		<script src="./src/components/publish.js"></script>
 	</head>
 	<body>
 		<i class="fa fa-crosshairs" style="color: #41EF39; position: absolute; top: 49%; left: 49.5%; z-index: 9999" aria-hidden="true">
 		</i>
 
-		<a-scene physics-world="gravity: 0 0 0">
+		<a-scene physics-world="gravity: 0 0 0" scene-load>
 			<a-asset>
 				<img id="space" src="./src/assets/images/space.jpg">
 				<img id="asteroid" src="./src/assets/images/asteroid.jpg">
