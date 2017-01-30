@@ -14,6 +14,7 @@
 		<script src="./src/components/Projectile.js"></script>
 	</head>
 	<body>
+
 		<i class="fa fa-crosshairs" style="color: #41EF39; position: absolute; top: 49%; left: 49.5%; z-index: 9999" aria-hidden="true">
 		</i>
 
@@ -21,6 +22,8 @@
 			<a-asset>
 				<img id="space" src="./src/assets/images/space.jpg">
 				<img id="asteroid" src="./src/assets/images/asteroid.jpg">
+
+				<audio id="gameplay" src="./src/assets/sounds/SpaceCube.ogg">
 
 				<a-asset-item id="arc170-obj" src="./src/assets/models/arc170/arc170.obj"></a-asset-item>
         <a-asset-item id="arc170-mtl" src="./src/assets/models/arc170/arc170.mtl"></a-asset-item>
@@ -40,7 +43,10 @@
 
       <a-camera id="player" spawner="mixin: laser; on: click" click-listener look-controls wasd-controls="fly: true; acceleration: 4001">
           <a-obj-model rotation="0 180 0" src="#arc170-obj" mtl="#arc170-mtl" position="0 -4 2"></a-obj-model>
+					<a-entity position="0 0 0" sound="src: #gameplay; autoplay: true; loop: true; volume: 2"></a-entity>
+					<a-entity position="-1 0 0" sound="src: #gameplay; autoplay: true; loop: true; volume: 2"></a-entity>
       </a-camera>
+
 
       <a-entity entity-generator="mixin: asteroid1 position; num: 150;"></a-entity>
       <a-entity entity-generator="mixin: asteroid2 position; num: 150;"></a-entity>
