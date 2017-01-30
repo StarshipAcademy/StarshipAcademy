@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 window.socket = io.connect();
 
 import { putUserOnDOM, addFirstPersonProperties } from '../utils';
-import '../aframeComponents/publish-location';
+import '../src/components/publish';
 
 // `publish-location`, `camera`, `look-controls`, `wasd-controls` are set only
 // on the user that the scene belongs to, so that only that scene can be manipulated
@@ -59,3 +59,5 @@ socket.on('removeUser', userId => {
   scene.remove(avatarToBeRemoved); // Remove from scene
   avatarToBeRemoved.parentNode.removeChild(avatarToBeRemoved); // Remove from DOM
 });
+
+export default socket;
