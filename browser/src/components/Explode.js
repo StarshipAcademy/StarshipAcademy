@@ -11,6 +11,8 @@ AFRAME.registerComponent('explode', {
     console.log('UPDATE');
   },
 
+// KF: There's a lot going on in this explode function as well...consider making this code more modular and therefore more readable.
+// animateObjects could be a separate function, for example.
   explode: function () {
     var object3D = this.el.getObject3D('mesh');
     var scene = this.el.sceneEl.object3D;

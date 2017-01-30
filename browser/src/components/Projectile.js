@@ -13,6 +13,7 @@ AFRAME.registerComponent('projectile', {
     },
 
 
+    // KF: Same comment as in other places - this is a big function and could be made more modular/readable, especially lines 32-52
     tick: function () {
       let intersect = (laser, asteroid) => {
         var x = Math.max(asteroid.minX, Math.min(laser.x, asteroid.maxX));

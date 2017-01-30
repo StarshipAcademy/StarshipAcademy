@@ -17,6 +17,11 @@ export default (server) => {
 
   IO = socketio(server);
 
+  // KF: There's a lottttt of code in the callback below. I know quite a bit of it is console logs and 
+  // comments, but you could still consider making it a bit more modular, e.g. functions to initializeSocket and disconnectSocket.
+  // You could then do !currentSockets.some(e => e.address == ipAddress) ? initializeSocket(socket) : disconnectSocket(socket) to
+  // make this look a lot nicer.
+
   IO.on('connection', (socket) => {
     totalConnections++;
     socket.name = 'memeLover' + totalConnections;
