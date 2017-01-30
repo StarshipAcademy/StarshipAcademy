@@ -31,19 +31,19 @@
         <a-mixin id="position" random-spherical-position="radius: 40; startX: 0; lengthX: 360; startY: 0; lengthY: 360" random-rotation random-position="min: -100 -100 -100; max: 100 100 100"></a-mixin>
 
 				<a-mixin id="laser"
-					geometry="primitive: cylinder; radius: 0.1;"
+					geometry="primitive: cylinder; radius: 0.1; height: 8"
 					rotation="-90 0 0"
 					translate="0 -2 0"
 					material="color: yellow; metalness: 0.2; opacity: 0.8; roughness: 0.3"
-					projectile="speed: 0.2"></a-mixin>
+					projectile="speed: 0.02"></a-mixin>
       </a-asset>
 
-      <a-camera id="player" spawner="mixin: laser; on: click" click-listener look-controls wasd-controls="fly: true; acceleration: 9001">
+      <a-camera id="player" spawner="mixin: laser; on: click" click-listener look-controls wasd-controls="fly: true; acceleration: 4001">
           <a-obj-model rotation="0 180 0" src="#arc170-obj" mtl="#arc170-mtl" position="0 -4 2"></a-obj-model>
       </a-camera>
 
-      <a-entity entity-generator="mixin: asteroid1 position; num: 200;"></a-entity>
-      <a-entity entity-generator="mixin: asteroid2 position; num: 200;"></a-entity>
+      <a-entity entity-generator="mixin: asteroid1 position; num: 150;"></a-entity>
+      <a-entity entity-generator="mixin: asteroid2 position; num: 150;"></a-entity>
 
 			<a-sky src="./src/assets/images/space.jpg"></a-sky>
 

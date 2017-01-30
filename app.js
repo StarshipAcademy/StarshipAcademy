@@ -11,11 +11,11 @@ const _Port = 9001;
 
 import ioInit from './server/sockets';
 
-import { getYesNo } from 'cli-interact';
-const syncTruth = getYesNo(chalk.cyan('Do you wanna get savage on this database? (Force Sync)'));
+// import { getYesNo } from 'cli-interact';
+// const syncTruth = getYesNo(chalk.cyan('Do you wanna get savage on this database? (Force Sync)'));
 
 // The order of initializing the backend.
-startDB(syncTruth)
+startDB(false)
   .then(() => server.on('request', myServer))
   .then(() => ioInit(server))
   .catch(err => console.error(err))
