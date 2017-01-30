@@ -19,7 +19,7 @@
 		<i class="fa fa-crosshairs" style="color: #41EF39; position: absolute; top: 49%; left: 49.5%; z-index: 9999" aria-hidden="true">
 		</i>
 
-		<a-scene physics-world="gravity: 0 0 0" scene-load>
+		<a-scene id="scene" physics-world="gravity: 0 0 0" scene-load>
 			<a-asset>
 				<img id="space" src="./src/assets/images/space.jpg">
 				<img id="asteroid" src="./src/assets/images/asteroid.jpg">
@@ -44,12 +44,12 @@
 					sound="src: #laser_shot; on: click; autoplay: true; volume: 1"></a-mixin>
       </a-asset>
 
-      <a-camera id="player" spawner="mixin: laser; on: click" click-listener look-controls wasd-controls="fly: true; acceleration: 4001">
+      <!-- <a-camera id="player" spawner="mixin: laser; on: click" click-listener look-controls wasd-controls="fly: true; acceleration: 4001" publish>
           <a-obj-model rotation="0 180 0" src="#arc170-obj" mtl="#arc170-mtl" position="0 -4 2"></a-obj-model>
 					<a-entity position="2 0 0" sound="src: #gameplay; autoplay: true; loop: true; volume: 0.1"></a-entity>
 					<a-entity position="-2 0 0" sound="src: #gameplay; autoplay: true; loop: true; volume: 0.1"></a-entity>
       </a-camera>
-
+ -->
 
       <a-entity entity-generator="mixin: asteroid1 position; num: 150;"></a-entity>
       <a-entity entity-generator="mixin: asteroid2 position; num: 150;"></a-entity>

@@ -2,7 +2,7 @@ import io from 'socket.io-client';
 // All A-Frame components need access to the socket instance
 window.socket = io.connect();
 
-import { putUserOnDOM, addFirstPersonProperties } from '../utils';
+import { putSelfOnDOM, putUserOnDOM, addFirstPersonProperties } from '../utils';
 import '../src/components/publish';
 
 // `publish-location`, `camera`, `look-controls`, `wasd-controls` are set only
@@ -16,8 +16,8 @@ socket.on('connect', () => {
 });
 
 socket.on('createUser', user => {
-  const avatar = putUserOnDOM(user);
-  addFirstPersonProperties(avatar);
+  const avatar = putSelfOnDOM(user);
+
   socket.emit('getOthers');
 });
 
