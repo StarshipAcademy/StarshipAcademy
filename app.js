@@ -13,12 +13,9 @@ import ioInit from './server/sockets';
 
 // import { getYesNo } from 'cli-interact';
 // const syncTruth = getYesNo(chalk.cyan('Do you wanna get savage on this database? (Force Sync)'));
-console.log('AAAAAAAAAAAAAAA')
+
 // The order of initializing the backend.
-startDB(false) //change back to syncTruth to use db
-  .then(() => {
-    console.log('BBBBBBBBBBBB')
-  })
+startDB(false)
   .then(() => server.on('request', myServer))
   .then(() => ioInit(server))
   .catch(err => console.error(err))
