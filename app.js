@@ -1,5 +1,5 @@
 'use strict';
-
+require('babel-register');
 import myServer from './server';
 
 import HTTP from 'http';
@@ -7,7 +7,7 @@ import startDB from './server/db';
 import chalk from 'chalk';
 
 const server = HTTP.createServer();
-const _Port = 9001;
+const _Port = process.env.PORT || 9001;
 
 import ioInit from './server/sockets';
 
