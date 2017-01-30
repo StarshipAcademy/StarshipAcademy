@@ -2,7 +2,7 @@ import AFRAME from 'aframe';
 
 let hasGottenOthers = false;
 
-export default AFRAME.registerComponent('publish-location', {
+export default AFRAME.registerComponent('publish', {
   tick: function () {
     socket.on('startTick', () => hasGottenOthers = true);
     if (hasGottenOthers) {
