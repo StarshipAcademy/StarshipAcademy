@@ -70319,7 +70319,7 @@
 						"directUrl": "https://raw.githubusercontent.com/donmccurdy/cannon.js/v0.6.2-dev1/package.json"
 					}
 				},
-				"/Users/hyperion/Desktop/StarshipAcademy/node_modules/aframe-physics-system"
+				"/Users/jimmy/Desktop/StarshipAcademy/node_modules/aframe-physics-system"
 			]
 		],
 		"_from": "donmccurdy/cannon.js#v0.6.2-dev1",
@@ -70349,10 +70349,10 @@
 			"/aframe-physics-system"
 		],
 		"_resolved": "git://github.com/donmccurdy/cannon.js.git#022e8ba53fa83abf0ad8a0e4fd08623123838a17",
-		"_shasum": "459de1c678da363e04e86d55f3edc36ffb6e0aac",
+		"_shasum": "c848672e786ec9875bbc8685b6a0420cc8a252c8",
 		"_shrinkwrap": null,
 		"_spec": "cannon@github:donmccurdy/cannon.js#v0.6.2-dev1",
-		"_where": "/Users/hyperion/Desktop/StarshipAcademy/node_modules/aframe-physics-system",
+		"_where": "/Users/jimmy/Desktop/StarshipAcademy/node_modules/aframe-physics-system",
 		"author": {
 			"name": "Stefan Hedman",
 			"email": "schteppe@gmail.com",
@@ -86709,7 +86709,7 @@
 	        targetPosition = this.targetPosition;
 	
 	    position.copy(this.el.getAttribute('position'));
-	    targetPosition.copy(this.checkpoint.object3D.getWorldPosition());
+	    targetPosition.copy(this.checkpoint.getAttribute('position'));
 	    // TODO - Cleverer ways around this?
 	    targetPosition.y = position.y;
 	    offset.copy(targetPosition).sub(position);
@@ -92663,7 +92663,7 @@
 	  },
 	
 	  play: function () { this.el.addEventListener('click', this.fire); },
-	  pause: function () { this.el.removeEventListener('click', this.fire); },
+	  pause: function () { this.el.addEventListener('click', this.fire); },
 	  remove: function () { this.pause(); },
 	
 	  fire: function () {
@@ -93079,7 +93079,7 @@
 	
 	      if (!mesh) { return; }
 	
-	      position.copy(el.object3D.getWorldPosition());
+	      position.copy(el.getAttribute('position'));
 	
 	      // Update collisions.
 	      this.els.forEach(intersect);
@@ -93098,13 +93098,10 @@
 	
 	      // AABB collision detection
 	      function intersect (el) {
-	        var radius, mesh;
+	        var radius,
+	            mesh = el.getObject3D('mesh');
 	
-	        if (!el.isEntity) { return; }
-	
-	        mesh = el.getObject3D('mesh');
-	
-	        if (!mesh || !mesh.geometry) { return; }
+	        if (!mesh) return;
 	
 	        mesh.getWorldPosition(meshPosition);
 	        mesh.geometry.computeBoundingSphere();
