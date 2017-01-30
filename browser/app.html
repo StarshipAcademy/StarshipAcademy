@@ -39,17 +39,14 @@
 					rotation="-90 0 0"
 					translate="0 -2 0"
 					material="color: yellow; metalness: 0.2; opacity: 0.8; roughness: 0.3"
-					projectile="speed: 0.02"></a-mixin>
+					projectile="speed: 0.02"
+					sound="src: #laser_shot; on: click; autoplay: true; volume: 1"></a-mixin>
       </a-asset>
 
       <a-camera id="player" spawner="mixin: laser; on: click" click-listener look-controls wasd-controls="fly: true; acceleration: 4001">
           <a-obj-model rotation="0 180 0" src="#arc170-obj" mtl="#arc170-mtl" position="0 -4 2"></a-obj-model>
-          
-          <a-entity position="0 0 0" sound="src: #laser_shot; on: click; volume: .25">
-          <a-entity position="-1 0 0" sound="src: #laser_shot; on: click; volume: .25">
-
-					<a-entity position="0 0 0" sound="src: #gameplay; autoplay: true; loop: true; volume: 1"></a-entity>
-					<a-entity position="-1 0 0" sound="src: #gameplay; autoplay: true; loop: true; volume: 1"></a-entity>
+					<a-entity position="2 0 0" sound="src: #gameplay; autoplay: true; loop: true; volume: 0.1"></a-entity>
+					<a-entity position="-2 0 0" sound="src: #gameplay; autoplay: true; loop: true; volume: 0.1"></a-entity>
       </a-camera>
 
 
