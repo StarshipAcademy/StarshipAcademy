@@ -93660,8 +93660,6 @@
 
 	'use strict';
 	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-	
 	AFRAME.registerComponent('projectile', {
 	  schema: {
 	    speed: { default: -0.4 },
@@ -93677,8 +93675,6 @@
 	  },
 	
 	  tick: function tick() {
-	    var _this = this;
-	
 	    var intersect = function intersect(laser, asteroid) {
 	      var x = Math.max(asteroid.minX, Math.min(laser.x, asteroid.maxX));
 	      var y = Math.max(asteroid.minY, Math.min(laser.y, asteroid.maxY));
@@ -93691,52 +93687,32 @@
 	    var bullet = this.el;
 	    var hit = false;
 	    if (this.targets.length !== 0 && bullet.parentEl) {
-	      var _ret = function () {
-	        var _hit = function hit(collision) {
-	          if (_hit) {
-	            collision.object.el.emit('hit');
-	          }
+	      for (var i = 0; i < this.targets.length; i++) {
+	        var currentEnemy = this.targets[i].object3D;
+	        var asteroid = {
+	          minX: currentEnemy.position.x - 2,
+	          minY: currentEnemy.position.y - 2,
+	          minZ: currentEnemy.position.z - 2,
+	          maxX: currentEnemy.position.x + 2,
+	          maxY: currentEnemy.position.y + 2,
+	          maxZ: currentEnemy.position.z + 2
 	        };
+	        var laser = bullet.object3D.translateY(this.data.speed).position;
+	        var target = this.targets[i];
 	
-	        for (var i = 0; i < _this.targets.length; i++) {
-	          var currentEnemy = _this.targets[i].object3D;
-	          var asteroid = {
-	            minX: currentEnemy.position.x - 2,
-	            minY: currentEnemy.position.y - 2,
-	            minZ: currentEnemy.position.z - 2,
-	            maxX: currentEnemy.position.x + 2,
-	            maxY: currentEnemy.position.y + 2,
-	            maxZ: currentEnemy.position.z + 2
-	          };
-	          var laser = bullet.object3D.translateY(_this.data.speed).position;
-	          var target = _this.targets[i];
-	
-	          if (intersect(laser, asteroid) && target.parentNode) {
-	            target.parentNode.removeChild(target);
-	            bullet.parentNode.removeChild(bullet);
-	            _this.targets.splice(i, 1);
-	            _hit = true;
-	            return {
-	              v: void 0
-	            };
-	          }
+	        if (intersect(laser, asteroid) && target.parentNode) {
+	          console.log('TARGET TIME FORREAL', target);
+	          target.emit('hit');
+	          target.parentNode.removeChild(target);
+	          bullet.parentNode.removeChild(bullet);
+	          this.targets.splice(i, 1);
+	          return;
 	        }
-	      }();
-	
-	      if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
+	      }
 	    }
 	    bullet.object3D.translateY(this.data.speed);
 	  }
 	});
-	
-	// AFRAME.registerComponent('projectile', {
-	//   schema: {
-	//     speed: { default: -0.4 }
-	//   },
-	//   tick: function () {
-	//     this.el.object3D.translateY(this.data.speed);
-	//   }
-	// });
 
 /***/ },
 /* 114 */
@@ -93780,50 +93756,10 @@
 	        z: entityRotation.z + rotation.z
 	      });
 	    });
-	    console.log('SPAWNING');
+	    console.log('NEW SPAWNING');
 	    el.sceneEl.appendChild(entity);
 	  }
 	});
-	
-	// AFRAME.registerComponent('spawner', {
-	//   schema: {
-	//     on: { default: 'click' },
-	//     mixin: { default: '' }
-	//   },
-	//   /**
-	//    * Add event listener.
-	//    */
-	//   update: function (oldData) {
-	//     this.el.addEventListener(this.data.on, this.spawn.bind(this));
-	//   },
-	//   /**
-	//    * Spawn new entity at entity's current position.
-	//    */
-	//   spawn: function () {
-	//     var el = this.el;
-	//     var entity = document.createElement('a-entity');
-	//     var matrixWorld = el.object3D.matrixWorld;
-	//     var position = new THREE.Vector3();
-	//     var rotation = el.getAttribute('rotation');
-	//     var entityRotation;
-	//     position.setFromMatrixPosition(matrixWorld);
-	//     entity.setAttribute('position', position);
-	//     // Have the spawned entity face the same direction as the entity.
-	//     // Allow the entity to further modify the inherited rotation.
-	//     position.setFromMatrixPosition(matrixWorld);
-	//     entity.setAttribute('position', position);
-	//     entity.setAttribute('mixin', this.data.mixin);
-	//     entity.addEventListener('loaded', function () {
-	//       entityRotation = entity.getAttribute('rotation');
-	//       entity.setAttribute('rotation', {
-	//         x: entityRotation.x + rotation.x,
-	//         y: entityRotation.y + rotation.y,
-	//         z: entityRotation.z + rotation.z
-	//       });
-	//     });
-	//     el.sceneEl.appendChild(entity);
-	//   }
-	// });
 
 /***/ },
 /* 115 */

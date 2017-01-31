@@ -39,32 +39,18 @@ AFRAME.registerComponent('projectile', {
               maxZ: currentEnemy.position.z + 2
             }
             let laser = bullet.object3D.translateY(this.data.speed).position
-              let target = this.targets[i];
+            let target = this.targets[i];
 
             if(intersect(laser, asteroid) && target.parentNode) {
+              console.log('TARGET TIME FORREAL', target);
+              target.emit('hit')
               target.parentNode.removeChild(target)
               bullet.parentNode.removeChild(bullet)
               this.targets.splice(i, 1);
-              hit = true
               return;
-            }
-          }
-          function hit(collision) {
-            if (hit) {
-              collision.object.el.emit('hit')
             }
           }
       }
       bullet.object3D.translateY(this.data.speed)
     }
   });
-
-
-// AFRAME.registerComponent('projectile', {
-//   schema: {
-//     speed: { default: -0.4 }
-//   },
-//   tick: function () {
-//     this.el.object3D.translateY(this.data.speed);
-//   }
-// });
