@@ -1,7 +1,8 @@
 AFRAME.registerComponent('projectile', {
   schema: {
     speed: { default: -0.4 },
-    target: {default: '.enemy'}
+    target: {default: '.enemy'},
+    mixin: {default: ''}
   },
 
   init: function () {
@@ -14,6 +15,7 @@ AFRAME.registerComponent('projectile', {
 
 
     tick: function () {
+
       let intersect = (laser, asteroid) => {
         var x = Math.max(asteroid.minX, Math.min(laser.x, asteroid.maxX));
         var y = Math.max(asteroid.minY, Math.min(laser.y, asteroid.maxY));
@@ -27,6 +29,7 @@ AFRAME.registerComponent('projectile', {
 
       let bullet = this.el;
       let hit = false
+
         if(this.targets.length !== 0 && bullet.parentEl) {
           for (let i = 0; i < this.targets.length; i++ ) {
             let currentEnemy = this.targets[i].object3D
@@ -39,32 +42,19 @@ AFRAME.registerComponent('projectile', {
               maxZ: currentEnemy.position.z + 2
             }
             let laser = bullet.object3D.translateY(this.data.speed).position
-              let target = this.targets[i];
-
+            let target = this.targets[i];
             if(intersect(laser, asteroid) && target.parentNode) {
+              console.log('TARGET TIME FORREAL', target);
+              console.log("helllloooo:", target.getAttribute('position'))
+              let pos = target.getAttribute('position')
+              target.parentNode.appendChild(this.mixin)
               target.parentNode.removeChild(target)
               bullet.parentNode.removeChild(bullet)
               this.targets.splice(i, 1);
-              hit = true
               return;
-            }
-          }
-          function hit(collision) {
-            if (hit) {
-              collision.object.el.emit('hit')
             }
           }
       }
       bullet.object3D.translateY(this.data.speed)
     }
   });
-
-
-// AFRAME.registerComponent('projectile', {
-//   schema: {
-//     speed: { default: -0.4 }
-//   },
-//   tick: function () {
-//     this.el.object3D.translateY(this.data.speed);
-//   }
-// });
