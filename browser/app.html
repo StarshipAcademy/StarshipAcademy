@@ -6,13 +6,6 @@
 		<script src="/jquery/dist/jquery.min.js"></script>
 		<script src="/bundle.js"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- 		<script src="https://github.com/ngokevin/aframe-physics-components/blob/master/dist/aframe-physics-components.min.js"></script> -->
-		<!-- <script src="./src/components/BulletSpawning.js"></script>
-		<script src="./src/components/Explode.js"></script>
-		<script src="./src/components/onClickListener.js"></script>
-		<script src="./src/components/Projectile.js"></script> -->
-	<!-- 	<script src="./src/components/scene-load.js"></script>
-		<script src="./src/components/publish.js"></script> -->
 	</head>
 	<body>
 
@@ -43,20 +36,10 @@
 					projectile="speed: 0.02"
 					sound="src: #laser_shot; on: click; autoplay: true; volume: 1"></a-mixin>
       </a-asset>
-
-      <!-- <a-camera id="player" spawner="mixin: laser; on: click" click-listener look-controls wasd-controls="fly: true; acceleration: 4001" publish>
-          <a-obj-model rotation="0 180 0" src="#arc170-obj" mtl="#arc170-mtl" position="0 -4 2"></a-obj-model>
-					<a-entity position="2 0 0" sound="src: #gameplay; autoplay: true; loop: true; volume: 0.1"></a-entity>
-					<a-entity position="-2 0 0" sound="src: #gameplay; autoplay: true; loop: true; volume: 0.1"></a-entity>
-      </a-camera>
- -->
-
       <a-entity entity-generator="mixin: asteroid1 position; num: 150;"></a-entity>
       <a-entity entity-generator="mixin: asteroid2 position; num: 150;"></a-entity>
 
 			<a-sky src="./src/assets/images/space.jpg"></a-sky>
-
-
     </a-scene>
 	</body>
 </html>
