@@ -57,7 +57,7 @@ socket.on('removeUser', userId => {
   const scene = document.getElementById('scene');
   const avatarToBeRemoved = document.getElementById(userId);
   scene.remove(avatarToBeRemoved); // Remove from scene
-  avatarToBeRemoved.parentNode.removeChild(avatarToBeRemoved); // Remove from DOM
+  // avatarToBeRemoved.parentNode.removeChild(avatarToBeRemoved); // Remove from DOM
 });
 
 export default socket;

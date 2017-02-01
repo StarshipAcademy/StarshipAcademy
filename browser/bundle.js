@@ -52,11 +52,13 @@
 	__webpack_require__(111);
 	__webpack_require__(112);
 	__webpack_require__(113);
+	// require('./components/BulletSpawning');
+	// require('./components/Fence');
 	__webpack_require__(114);
 	__webpack_require__(115);
-	__webpack_require__(116);
-	__webpack_require__(117);
-	__webpack_require__(172);
+	// require('./components/Explode');
+	__webpack_require__(170);
+	__webpack_require__(171);
 
 /***/ },
 /* 1 */
@@ -70322,7 +70324,7 @@
 						"directUrl": "https://raw.githubusercontent.com/donmccurdy/cannon.js/v0.6.2-dev1/package.json"
 					}
 				},
-				"/Users/hyperion/Desktop/StarshipAcademy/node_modules/aframe-physics-system"
+				"/Users/jimmy/Desktop/StarshipAcademy/node_modules/aframe-physics-system"
 			]
 		],
 		"_from": "donmccurdy/cannon.js#v0.6.2-dev1",
@@ -70352,10 +70354,10 @@
 			"/aframe-physics-system"
 		],
 		"_resolved": "git://github.com/donmccurdy/cannon.js.git#022e8ba53fa83abf0ad8a0e4fd08623123838a17",
-		"_shasum": "459de1c678da363e04e86d55f3edc36ffb6e0aac",
+		"_shasum": "c848672e786ec9875bbc8685b6a0420cc8a252c8",
 		"_shrinkwrap": null,
 		"_spec": "cannon@github:donmccurdy/cannon.js#v0.6.2-dev1",
-		"_where": "/Users/hyperion/Desktop/StarshipAcademy/node_modules/aframe-physics-system",
+		"_where": "/Users/jimmy/Desktop/StarshipAcademy/node_modules/aframe-physics-system",
 		"author": {
 			"name": "Stefan Hedman",
 			"email": "schteppe@gmail.com",
@@ -86712,7 +86714,7 @@
 	        targetPosition = this.targetPosition;
 	
 	    position.copy(this.el.getAttribute('position'));
-	    targetPosition.copy(this.checkpoint.object3D.getWorldPosition());
+	    targetPosition.copy(this.checkpoint.getAttribute('position'));
 	    // TODO - Cleverer ways around this?
 	    targetPosition.y = position.y;
 	    offset.copy(targetPosition).sub(position);
@@ -92666,7 +92668,7 @@
 	  },
 	
 	  play: function () { this.el.addEventListener('click', this.fire); },
-	  pause: function () { this.el.removeEventListener('click', this.fire); },
+	  pause: function () { this.el.addEventListener('click', this.fire); },
 	  remove: function () { this.pause(); },
 	
 	  fire: function () {
@@ -93082,7 +93084,7 @@
 	
 	      if (!mesh) { return; }
 	
-	      position.copy(el.object3D.getWorldPosition());
+	      position.copy(el.getAttribute('position'));
 	
 	      // Update collisions.
 	      this.els.forEach(intersect);
@@ -93101,13 +93103,10 @@
 	
 	      // AABB collision detection
 	      function intersect (el) {
-	        var radius, mesh;
+	        var radius,
+	            mesh = el.getObject3D('mesh');
 	
-	        if (!el.isEntity) { return; }
-	
-	        mesh = el.getObject3D('mesh');
-	
-	        if (!mesh || !mesh.geometry) { return; }
+	        if (!mesh) return;
 	
 	        mesh.getWorldPosition(meshPosition);
 	        mesh.geometry.computeBoundingSphere();
@@ -93666,180 +93665,80 @@
 
 	'use strict';
 	
+	// AFRAME.registerComponent('projectile', {
+	//   schema: {
+	//     speed: { default: -0.4 },
+	//     target: {default: '.enemy'},
+	//     mixin: {default: ''}
+	//   },
+	//
+	//   init: function () {
+	//       let enemies = document.querySelectorAll('.enemy')
+	//       this.targets = [];
+	//       for (var i = 0; i < enemies.length; i++) {
+	//         this.targets.push(enemies[i]);
+	//       }
+	//     },
+	//
+	//
+	//     tick: function () {
+	//
+	//       let intersect = (laser, asteroid) => {
+	//         var x = Math.max(asteroid.minX, Math.min(laser.x, asteroid.maxX));
+	//         var y = Math.max(asteroid.minY, Math.min(laser.y, asteroid.maxY));
+	//         var z = Math.max(asteroid.minZ, Math.min(laser.z, asteroid.maxZ));
+	//
+	//         var distance = Math.sqrt((x - laser.x) * (x - laser.x) +
+	//                                  (y - laser.y) * (y - laser.y) +
+	//                                  (z - laser.z) * (z - laser.z));
+	//         return distance < 0.25;
+	//       }
+	//
+	//       let bullet = this.el;
+	//       let hit = false
+	//
+	//         if(this.targets.length !== 0 && bullet.parentEl) {
+	//           for (let i = 0; i < this.targets.length; i++ ) {
+	//             let currentEnemy = this.targets[i].object3D
+	//             let asteroid = {
+	//               minX: currentEnemy.position.x - 2,
+	//               minY: currentEnemy.position.y - 2,
+	//               minZ: currentEnemy.position.z - 2,
+	//               maxX: currentEnemy.position.x + 2,
+	//               maxY: currentEnemy.position.y + 2,
+	//               maxZ: currentEnemy.position.z + 2
+	//             }
+	//             let laser = bullet.object3D.translateY(this.data.speed).position
+	//             let target = this.targets[i];
+	//             if(intersect(laser, asteroid) && target.parentNode) {
+	//               console.log('TARGET TIME FORREAL', target);
+	//               console.log("helllloooo:", target.getAttribute('position'))
+	//               let pos = target.getAttribute('position')
+	//               let explosion = document.createElement()
+	//               target.parentNode.appendChild(explosion)
+	//               target.parentNode.removeChild(target)
+	//               bullet.parentNode.removeChild(bullet)
+	//               this.targets.splice(i, 1);
+	//               return;
+	//             }
+	//           }
+	//       }
+	//       bullet.object3D.translateY(this.data.speed)
+	//     }
+	//   });
+	
 	AFRAME.registerComponent('projectile', {
 	  schema: {
-	    speed: { default: -0.4 },
-	    target: { default: '.enemy' },
-	    mixin: { default: '' }
-	  },
-	
-	  init: function init() {
-	    var enemies = document.querySelectorAll('.enemy');
-	    this.targets = [];
-	    for (var i = 0; i < enemies.length; i++) {
-	      this.targets.push(enemies[i]);
-	    }
+	    speed: { default: -0.4 }
 	  },
 	
 	  tick: function tick() {
-	
-	    var intersect = function intersect(laser, asteroid) {
-	      var x = Math.max(asteroid.minX, Math.min(laser.x, asteroid.maxX));
-	      var y = Math.max(asteroid.minY, Math.min(laser.y, asteroid.maxY));
-	      var z = Math.max(asteroid.minZ, Math.min(laser.z, asteroid.maxZ));
-	
-	      var distance = Math.sqrt((x - laser.x) * (x - laser.x) + (y - laser.y) * (y - laser.y) + (z - laser.z) * (z - laser.z));
-	      return distance < 0.25;
-	    };
-	
-	    var bullet = this.el;
-	    var hit = false;
-	
-	    if (this.targets.length !== 0 && bullet.parentEl) {
-	      for (var i = 0; i < this.targets.length; i++) {
-	        var currentEnemy = this.targets[i].object3D;
-	        var asteroid = {
-	          minX: currentEnemy.position.x - 2,
-	          minY: currentEnemy.position.y - 2,
-	          minZ: currentEnemy.position.z - 2,
-	          maxX: currentEnemy.position.x + 2,
-	          maxY: currentEnemy.position.y + 2,
-	          maxZ: currentEnemy.position.z + 2
-	        };
-	        var laser = bullet.object3D.translateY(this.data.speed).position;
-	        var target = this.targets[i];
-	        if (intersect(laser, asteroid) && target.parentNode) {
-	          console.log('TARGET TIME FORREAL', target);
-	          console.log("helllloooo:", target.getAttribute('position'));
-	          var pos = target.getAttribute('position');
-	          target.parentNode.appendChild(this.mixin);
-	          target.parentNode.removeChild(target);
-	          bullet.parentNode.removeChild(bullet);
-	          this.targets.splice(i, 1);
-	          return;
-	        }
-	      }
-	    }
-	    bullet.object3D.translateY(this.data.speed);
+	    this.el.object3D.translateY(this.data.speed);
 	  }
 	});
 
 /***/ },
 /* 114 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	AFRAME.registerComponent('spawner', {
-	  schema: {
-	    on: { default: 'click' },
-	    mixin: { default: '' }
-	  },
-	  /**
-	   * Add event listener.
-	   */
-	  update: function update(oldData) {
-	    this.el.addEventListener(this.data.on, this.spawn.bind(this));
-	  },
-	  /**
-	   * Spawn new entity at entity's current position.
-	   */
-	  spawn: function spawn() {
-	    var el = this.el;
-	    var entity = document.createElement('a-entity');
-	    var matrixWorld = el.object3D.matrixWorld;
-	    var position = new THREE.Vector3();
-	    var rotation = el.getAttribute('rotation');
-	    var entityRotation;
-	    position.setFromMatrixPosition(matrixWorld);
-	    entity.setAttribute('position', position);
-	    // Have the spawned entity face the same direction as the entity.
-	    // Allow the entity to further modify the inherited rotation.
-	    position.setFromMatrixPosition(matrixWorld);
-	    entity.setAttribute('position', position);
-	    entity.setAttribute('mixin', this.data.mixin);
-	    entity.addEventListener('loaded', function () {
-	      entityRotation = entity.getAttribute('rotation');
-	      entity.setAttribute('rotation', {
-	        x: entityRotation.x + rotation.x,
-	        y: entityRotation.y + rotation.y,
-	        z: entityRotation.z + rotation.z
-	      });
-	    });
-	    console.log('NEW SPAWNING');
-	    el.sceneEl.appendChild(entity);
-	  }
-	});
-
-/***/ },
-/* 115 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	if (typeof AFRAME === 'undefined') {
-	    throw new Error('Component attempted to register before AFRAME was available.');
-	}
-	
-	AFRAME.registerComponent('fence', {
-	    schema: {
-	        width: {
-	            type: 'number',
-	            default: 10
-	        },
-	        depth: {
-	            type: 'number',
-	            default: 10
-	        },
-	        x0: {
-	            type: 'number',
-	            default: 0
-	        },
-	        y0: {
-	            type: 'number',
-	            default: 0
-	        },
-	        z0: {
-	            type: 'number',
-	            default: 0
-	        }
-	    },
-	
-	    tick: function tick() {
-	        var data = this.data;
-	        var thiswidth = data.width;
-	        var thisdepth = data.depth;
-	        var x0 = data.x0;
-	        var y0 = data.y0;
-	        var z0 = data.z0;
-	
-	        minX = thiswidth / 2 + x0;
-	        maxX = -1 * thiswidth / 2 + x0;
-	
-	        minY = thiswidth / 2 + y0;
-	        maxY = -1 * thiswidth / 2 + y0;
-	
-	        minZ = thisdepth / 2 + z0;
-	        maxZ = -1 * thisdepth / 2 + z0;
-	
-	        var position = this.el.getAttribute('position');
-	
-	        position.x = Math.min(minX, position.x);
-	        position.x = Math.max(maxX, position.x);
-	
-	        position.y = Math.min(minY, position.y);
-	        position.y = Math.max(maxY, position.y);
-	
-	        position.z = Math.min(minZ, position.z);
-	        position.z = Math.max(maxZ, position.z);
-	
-	        this.el.setAttribute('position', position);
-	    }
-	
-	});
-
-/***/ },
-/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -93877,7 +93776,7 @@
 	});
 
 /***/ },
-/* 117 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -93890,7 +93789,7 @@
 	
 	var _aframe2 = _interopRequireDefault(_aframe);
 	
-	var _index = __webpack_require__(118);
+	var _index = __webpack_require__(116);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -93903,7 +93802,7 @@
 	});
 
 /***/ },
-/* 118 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -93912,13 +93811,13 @@
 	  value: true
 	});
 	
-	var _socket = __webpack_require__(119);
+	var _socket = __webpack_require__(117);
 	
 	var _socket2 = _interopRequireDefault(_socket);
 	
-	var _utils = __webpack_require__(171);
+	var _utils = __webpack_require__(169);
 	
-	__webpack_require__(116);
+	__webpack_require__(114);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -93977,13 +93876,13 @@
 	  var scene = document.getElementById('scene');
 	  var avatarToBeRemoved = document.getElementById(userId);
 	  scene.remove(avatarToBeRemoved); // Remove from scene
-	  avatarToBeRemoved.parentNode.removeChild(avatarToBeRemoved); // Remove from DOM
+	  // avatarToBeRemoved.parentNode.removeChild(avatarToBeRemoved); // Remove from DOM
 	});
 	
 	exports.default = socket;
 
 /***/ },
-/* 119 */
+/* 117 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -93991,10 +93890,10 @@
 	 * Module dependencies.
 	 */
 	
-	var url = __webpack_require__(120);
-	var parser = __webpack_require__(125);
-	var Manager = __webpack_require__(136);
-	var debug = __webpack_require__(122)('socket.io-client');
+	var url = __webpack_require__(118);
+	var parser = __webpack_require__(123);
+	var Manager = __webpack_require__(134);
+	var debug = __webpack_require__(120)('socket.io-client');
 	
 	/**
 	 * Module exports.
@@ -94093,12 +93992,12 @@
 	 * @api public
 	 */
 	
-	exports.Manager = __webpack_require__(136);
-	exports.Socket = __webpack_require__(165);
+	exports.Manager = __webpack_require__(134);
+	exports.Socket = __webpack_require__(163);
 
 
 /***/ },
-/* 120 */
+/* 118 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
@@ -94106,8 +94005,8 @@
 	 * Module dependencies.
 	 */
 	
-	var parseuri = __webpack_require__(121);
-	var debug = __webpack_require__(122)('socket.io-client:url');
+	var parseuri = __webpack_require__(119);
+	var debug = __webpack_require__(120)('socket.io-client:url');
 	
 	/**
 	 * Module exports.
@@ -94180,7 +94079,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 121 */
+/* 119 */
 /***/ function(module, exports) {
 
 	/**
@@ -94225,7 +94124,7 @@
 
 
 /***/ },
-/* 122 */
+/* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {
@@ -94235,7 +94134,7 @@
 	 * Expose `debug()` as the module.
 	 */
 	
-	exports = module.exports = __webpack_require__(123);
+	exports = module.exports = __webpack_require__(121);
 	exports.log = log;
 	exports.formatArgs = formatArgs;
 	exports.save = save;
@@ -94409,7 +94308,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 123 */
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -94425,7 +94324,7 @@
 	exports.disable = disable;
 	exports.enable = enable;
 	exports.enabled = enabled;
-	exports.humanize = __webpack_require__(124);
+	exports.humanize = __webpack_require__(122);
 	
 	/**
 	 * The currently active debug mode names, and names to skip.
@@ -94615,7 +94514,7 @@
 
 
 /***/ },
-/* 124 */
+/* 122 */
 /***/ function(module, exports) {
 
 	/**
@@ -94770,7 +94669,7 @@
 
 
 /***/ },
-/* 125 */
+/* 123 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -94778,11 +94677,11 @@
 	 * Module dependencies.
 	 */
 	
-	var debug = __webpack_require__(126)('socket.io-parser');
-	var json = __webpack_require__(129);
-	var Emitter = __webpack_require__(132);
-	var binary = __webpack_require__(133);
-	var isBuf = __webpack_require__(135);
+	var debug = __webpack_require__(124)('socket.io-parser');
+	var json = __webpack_require__(127);
+	var Emitter = __webpack_require__(130);
+	var binary = __webpack_require__(131);
+	var isBuf = __webpack_require__(133);
 	
 	/**
 	 * Protocol version.
@@ -95180,7 +95079,7 @@
 
 
 /***/ },
-/* 126 */
+/* 124 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -95190,7 +95089,7 @@
 	 * Expose `debug()` as the module.
 	 */
 	
-	exports = module.exports = __webpack_require__(127);
+	exports = module.exports = __webpack_require__(125);
 	exports.log = log;
 	exports.formatArgs = formatArgs;
 	exports.save = save;
@@ -95354,7 +95253,7 @@
 
 
 /***/ },
-/* 127 */
+/* 125 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -95370,7 +95269,7 @@
 	exports.disable = disable;
 	exports.enable = enable;
 	exports.enabled = enabled;
-	exports.humanize = __webpack_require__(128);
+	exports.humanize = __webpack_require__(126);
 	
 	/**
 	 * The currently active debug mode names, and names to skip.
@@ -95557,7 +95456,7 @@
 
 
 /***/ },
-/* 128 */
+/* 126 */
 /***/ function(module, exports) {
 
 	/**
@@ -95688,14 +95587,14 @@
 
 
 /***/ },
-/* 129 */
+/* 127 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/*! JSON v3.3.2 | http://bestiejs.github.io/json3 | Copyright 2012-2014, Kit Cambridge | http://kit.mit-license.org */
 	;(function () {
 	  // Detect the `define` function exposed by asynchronous module loaders. The
 	  // strict `define` check is necessary for compatibility with `r.js`.
-	  var isLoader = "function" === "function" && __webpack_require__(131);
+	  var isLoader = "function" === "function" && __webpack_require__(129);
 	
 	  // A set of types used to distinguish objects from primitives.
 	  var objectTypes = {
@@ -96594,10 +96493,10 @@
 	  }
 	}).call(this);
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(130)(module), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(128)(module), (function() { return this; }())))
 
 /***/ },
-/* 130 */
+/* 128 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -96613,7 +96512,7 @@
 
 
 /***/ },
-/* 131 */
+/* 129 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
@@ -96621,7 +96520,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ },
-/* 132 */
+/* 130 */
 /***/ function(module, exports) {
 
 	
@@ -96791,7 +96690,7 @@
 
 
 /***/ },
-/* 133 */
+/* 131 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/*global Blob,File*/
@@ -96800,8 +96699,8 @@
 	 * Module requirements
 	 */
 	
-	var isArray = __webpack_require__(134);
-	var isBuf = __webpack_require__(135);
+	var isArray = __webpack_require__(132);
+	var isBuf = __webpack_require__(133);
 	
 	/**
 	 * Replaces every Buffer | ArrayBuffer in packet with a numbered placeholder.
@@ -96939,7 +96838,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 134 */
+/* 132 */
 /***/ function(module, exports) {
 
 	module.exports = Array.isArray || function (arr) {
@@ -96948,7 +96847,7 @@
 
 
 /***/ },
-/* 135 */
+/* 133 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
@@ -96968,7 +96867,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 136 */
+/* 134 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -96976,15 +96875,15 @@
 	 * Module dependencies.
 	 */
 	
-	var eio = __webpack_require__(137);
-	var Socket = __webpack_require__(165);
-	var Emitter = __webpack_require__(166);
-	var parser = __webpack_require__(125);
-	var on = __webpack_require__(168);
-	var bind = __webpack_require__(169);
-	var debug = __webpack_require__(122)('socket.io-client:manager');
-	var indexOf = __webpack_require__(163);
-	var Backoff = __webpack_require__(170);
+	var eio = __webpack_require__(135);
+	var Socket = __webpack_require__(163);
+	var Emitter = __webpack_require__(164);
+	var parser = __webpack_require__(123);
+	var on = __webpack_require__(166);
+	var bind = __webpack_require__(167);
+	var debug = __webpack_require__(120)('socket.io-client:manager');
+	var indexOf = __webpack_require__(161);
+	var Backoff = __webpack_require__(168);
 	
 	/**
 	 * IE6+ hasOwnProperty
@@ -97534,19 +97433,19 @@
 
 
 /***/ },
-/* 137 */
+/* 135 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	module.exports = __webpack_require__(138);
+	module.exports = __webpack_require__(136);
 
 
 /***/ },
-/* 138 */
+/* 136 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	module.exports = __webpack_require__(139);
+	module.exports = __webpack_require__(137);
 	
 	/**
 	 * Exports parser
@@ -97554,25 +97453,25 @@
 	 * @api public
 	 *
 	 */
-	module.exports.parser = __webpack_require__(146);
+	module.exports.parser = __webpack_require__(144);
 
 
 /***/ },
-/* 139 */
+/* 137 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module dependencies.
 	 */
 	
-	var transports = __webpack_require__(140);
-	var Emitter = __webpack_require__(154);
-	var debug = __webpack_require__(158)('engine.io-client:socket');
-	var index = __webpack_require__(163);
-	var parser = __webpack_require__(146);
-	var parseuri = __webpack_require__(121);
-	var parsejson = __webpack_require__(164);
-	var parseqs = __webpack_require__(155);
+	var transports = __webpack_require__(138);
+	var Emitter = __webpack_require__(152);
+	var debug = __webpack_require__(156)('engine.io-client:socket');
+	var index = __webpack_require__(161);
+	var parser = __webpack_require__(144);
+	var parseuri = __webpack_require__(119);
+	var parsejson = __webpack_require__(162);
+	var parseqs = __webpack_require__(153);
 	
 	/**
 	 * Module exports.
@@ -97704,9 +97603,9 @@
 	 */
 	
 	Socket.Socket = Socket;
-	Socket.Transport = __webpack_require__(145);
-	Socket.transports = __webpack_require__(140);
-	Socket.parser = __webpack_require__(146);
+	Socket.Transport = __webpack_require__(143);
+	Socket.transports = __webpack_require__(138);
+	Socket.parser = __webpack_require__(144);
 	
 	/**
 	 * Creates transport of the given type.
@@ -98303,17 +98202,17 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 140 */
+/* 138 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module dependencies
 	 */
 	
-	var XMLHttpRequest = __webpack_require__(141);
-	var XHR = __webpack_require__(143);
-	var JSONP = __webpack_require__(160);
-	var websocket = __webpack_require__(161);
+	var XMLHttpRequest = __webpack_require__(139);
+	var XHR = __webpack_require__(141);
+	var JSONP = __webpack_require__(158);
+	var websocket = __webpack_require__(159);
 	
 	/**
 	 * Export transports.
@@ -98363,12 +98262,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 141 */
+/* 139 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {// browser shim for xmlhttprequest module
 	
-	var hasCORS = __webpack_require__(142);
+	var hasCORS = __webpack_require__(140);
 	
 	module.exports = function (opts) {
 	  var xdomain = opts.xdomain;
@@ -98407,7 +98306,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 142 */
+/* 140 */
 /***/ function(module, exports) {
 
 	
@@ -98430,18 +98329,18 @@
 
 
 /***/ },
-/* 143 */
+/* 141 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module requirements.
 	 */
 	
-	var XMLHttpRequest = __webpack_require__(141);
-	var Polling = __webpack_require__(144);
-	var Emitter = __webpack_require__(154);
-	var inherit = __webpack_require__(156);
-	var debug = __webpack_require__(158)('engine.io-client:polling-xhr');
+	var XMLHttpRequest = __webpack_require__(139);
+	var Polling = __webpack_require__(142);
+	var Emitter = __webpack_require__(152);
+	var inherit = __webpack_require__(154);
+	var debug = __webpack_require__(156)('engine.io-client:polling-xhr');
 	
 	/**
 	 * Module exports.
@@ -98861,19 +98760,19 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 144 */
+/* 142 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Module dependencies.
 	 */
 	
-	var Transport = __webpack_require__(145);
-	var parseqs = __webpack_require__(155);
-	var parser = __webpack_require__(146);
-	var inherit = __webpack_require__(156);
-	var yeast = __webpack_require__(157);
-	var debug = __webpack_require__(158)('engine.io-client:polling');
+	var Transport = __webpack_require__(143);
+	var parseqs = __webpack_require__(153);
+	var parser = __webpack_require__(144);
+	var inherit = __webpack_require__(154);
+	var yeast = __webpack_require__(155);
+	var debug = __webpack_require__(156)('engine.io-client:polling');
 	
 	/**
 	 * Module exports.
@@ -98886,7 +98785,7 @@
 	 */
 	
 	var hasXHR2 = (function () {
-	  var XMLHttpRequest = __webpack_require__(141);
+	  var XMLHttpRequest = __webpack_require__(139);
 	  var xhr = new XMLHttpRequest({ xdomain: false });
 	  return null != xhr.responseType;
 	})();
@@ -99112,15 +99011,15 @@
 
 
 /***/ },
-/* 145 */
+/* 143 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Module dependencies.
 	 */
 	
-	var parser = __webpack_require__(146);
-	var Emitter = __webpack_require__(154);
+	var parser = __webpack_require__(144);
+	var Emitter = __webpack_require__(152);
 	
 	/**
 	 * Module exports.
@@ -99275,22 +99174,22 @@
 
 
 /***/ },
-/* 146 */
+/* 144 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module dependencies.
 	 */
 	
-	var keys = __webpack_require__(147);
-	var hasBinary = __webpack_require__(148);
-	var sliceBuffer = __webpack_require__(149);
-	var after = __webpack_require__(150);
-	var utf8 = __webpack_require__(151);
+	var keys = __webpack_require__(145);
+	var hasBinary = __webpack_require__(146);
+	var sliceBuffer = __webpack_require__(147);
+	var after = __webpack_require__(148);
+	var utf8 = __webpack_require__(149);
 	
 	var base64encoder;
 	if (global && global.ArrayBuffer) {
-	  base64encoder = __webpack_require__(152);
+	  base64encoder = __webpack_require__(150);
 	}
 	
 	/**
@@ -99348,7 +99247,7 @@
 	 * Create a blob api even for blob builder when vendor prefixes exist
 	 */
 	
-	var Blob = __webpack_require__(153);
+	var Blob = __webpack_require__(151);
 	
 	/**
 	 * Encodes a packet.
@@ -99891,7 +99790,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 147 */
+/* 145 */
 /***/ function(module, exports) {
 
 	
@@ -99916,7 +99815,7 @@
 
 
 /***/ },
-/* 148 */
+/* 146 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
@@ -99924,7 +99823,7 @@
 	 * Module requirements.
 	 */
 	
-	var isArray = __webpack_require__(134);
+	var isArray = __webpack_require__(132);
 	
 	/**
 	 * Module exports.
@@ -99982,7 +99881,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 149 */
+/* 147 */
 /***/ function(module, exports) {
 
 	/**
@@ -100017,7 +99916,7 @@
 
 
 /***/ },
-/* 150 */
+/* 148 */
 /***/ function(module, exports) {
 
 	module.exports = after
@@ -100051,7 +99950,7 @@
 
 
 /***/ },
-/* 151 */
+/* 149 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/*! https://mths.be/wtf8 v1.0.0 by @mathias */
@@ -100287,10 +100186,10 @@
 	
 	}(this));
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(130)(module), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(128)(module), (function() { return this; }())))
 
 /***/ },
-/* 152 */
+/* 150 */
 /***/ function(module, exports) {
 
 	/*
@@ -100363,7 +100262,7 @@
 
 
 /***/ },
-/* 153 */
+/* 151 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -100466,7 +100365,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 154 */
+/* 152 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -100635,7 +100534,7 @@
 
 
 /***/ },
-/* 155 */
+/* 153 */
 /***/ function(module, exports) {
 
 	/**
@@ -100678,7 +100577,7 @@
 
 
 /***/ },
-/* 156 */
+/* 154 */
 /***/ function(module, exports) {
 
 	
@@ -100690,7 +100589,7 @@
 	};
 
 /***/ },
-/* 157 */
+/* 155 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -100764,7 +100663,7 @@
 
 
 /***/ },
-/* 158 */
+/* 156 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {
@@ -100774,7 +100673,7 @@
 	 * Expose `debug()` as the module.
 	 */
 	
-	exports = module.exports = __webpack_require__(159);
+	exports = module.exports = __webpack_require__(157);
 	exports.log = log;
 	exports.formatArgs = formatArgs;
 	exports.save = save;
@@ -100948,7 +100847,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 159 */
+/* 157 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -100964,7 +100863,7 @@
 	exports.disable = disable;
 	exports.enable = enable;
 	exports.enabled = enabled;
-	exports.humanize = __webpack_require__(124);
+	exports.humanize = __webpack_require__(122);
 	
 	/**
 	 * The currently active debug mode names, and names to skip.
@@ -101154,7 +101053,7 @@
 
 
 /***/ },
-/* 160 */
+/* 158 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
@@ -101162,8 +101061,8 @@
 	 * Module requirements.
 	 */
 	
-	var Polling = __webpack_require__(144);
-	var inherit = __webpack_require__(156);
+	var Polling = __webpack_require__(142);
+	var inherit = __webpack_require__(154);
 	
 	/**
 	 * Module exports.
@@ -101392,24 +101291,24 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 161 */
+/* 159 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module dependencies.
 	 */
 	
-	var Transport = __webpack_require__(145);
-	var parser = __webpack_require__(146);
-	var parseqs = __webpack_require__(155);
-	var inherit = __webpack_require__(156);
-	var yeast = __webpack_require__(157);
-	var debug = __webpack_require__(158)('engine.io-client:websocket');
+	var Transport = __webpack_require__(143);
+	var parser = __webpack_require__(144);
+	var parseqs = __webpack_require__(153);
+	var inherit = __webpack_require__(154);
+	var yeast = __webpack_require__(155);
+	var debug = __webpack_require__(156)('engine.io-client:websocket');
 	var BrowserWebSocket = global.WebSocket || global.MozWebSocket;
 	var NodeWebSocket;
 	if (typeof window === 'undefined') {
 	  try {
-	    NodeWebSocket = __webpack_require__(162);
+	    NodeWebSocket = __webpack_require__(160);
 	  } catch (e) { }
 	}
 	
@@ -101684,13 +101583,13 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 162 */
+/* 160 */
 /***/ function(module, exports) {
 
 	/* (ignored) */
 
 /***/ },
-/* 163 */
+/* 161 */
 /***/ function(module, exports) {
 
 	
@@ -101705,7 +101604,7 @@
 	};
 
 /***/ },
-/* 164 */
+/* 162 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -101743,7 +101642,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 165 */
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -101751,13 +101650,13 @@
 	 * Module dependencies.
 	 */
 	
-	var parser = __webpack_require__(125);
-	var Emitter = __webpack_require__(166);
-	var toArray = __webpack_require__(167);
-	var on = __webpack_require__(168);
-	var bind = __webpack_require__(169);
-	var debug = __webpack_require__(122)('socket.io-client:socket');
-	var hasBin = __webpack_require__(148);
+	var parser = __webpack_require__(123);
+	var Emitter = __webpack_require__(164);
+	var toArray = __webpack_require__(165);
+	var on = __webpack_require__(166);
+	var bind = __webpack_require__(167);
+	var debug = __webpack_require__(120)('socket.io-client:socket');
+	var hasBin = __webpack_require__(146);
 	
 	/**
 	 * Module exports.
@@ -102168,7 +102067,7 @@
 
 
 /***/ },
-/* 166 */
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -102337,7 +102236,7 @@
 
 
 /***/ },
-/* 167 */
+/* 165 */
 /***/ function(module, exports) {
 
 	module.exports = toArray
@@ -102356,7 +102255,7 @@
 
 
 /***/ },
-/* 168 */
+/* 166 */
 /***/ function(module, exports) {
 
 	
@@ -102386,7 +102285,7 @@
 
 
 /***/ },
-/* 169 */
+/* 167 */
 /***/ function(module, exports) {
 
 	/**
@@ -102415,7 +102314,7 @@
 
 
 /***/ },
-/* 170 */
+/* 168 */
 /***/ function(module, exports) {
 
 	
@@ -102506,7 +102405,7 @@
 
 
 /***/ },
-/* 171 */
+/* 169 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -102536,146 +102435,110 @@
 	}
 
 /***/ },
-/* 172 */
+/* 170 */
 /***/ function(module, exports) {
 
 	'use strict';
 	
-	// AFRAME.registerComponent('explode', {
-	//   schema: { on: { default: ''} },
-	
-	//   update: function (previousData) {
-	//     var el = this.el;
-	//     var explode = this.handler = this.explode.bind(this);
-	//     if (previousData) {
-	//       el.removeEventListener(previousData.on, explode);
-	//     }
-	//     el.addEventListener(this.data.on, explode);
-	//   },
-	
-	//   explode: function () {
-	//     var object3D = this.el.getObject3D('mesh');
-	//     console.log('HIT OBJECT', object3D);
-	//     var scene = this.el.sceneEl.object3D;
-	//     var duration = 8000;
-	
-	//     // explode geometry into objects
-	//     // var pieces = explode(object3D.geometry, object3D.material);
-	
-	//     object3D.material.visible = false;
-	
-	//     // animate objects
-	
-	//     function deleteBox() {
-	//       // scene.remove( object3D );
-	//     }
-	
-	//     this.el.removeEventListener(this.data.on, this.handler);
-	
-	//     function explode( geometry, material ) {
-	//       var pieces = new THREE.Group();
-	//       console.log('PIECES', pieces);
-	//       console.log('GEOMETRY', geometry);
-	//       var material = material.clone();
-	//       console.log('MATERIAL', material);
-	//       material.side = THREE.DoubleSide;
-	//     }
-	
-	//     function removeBoxFromList( box ) {
-	//     }
-	
-	//     console.log('EXPLODE');
-	//   }
-	// });
-	
-	AFRAME.registerComponent('explode', {
-	  schema: { on: { default: '' } },
-	
-	  update: function update(previousData) {
-	    var el = this.el;
-	    console.log(el);
-	    var explode = this.handler = this.explode.bind(this);
-	    if (previousData) {
-	      el.removeEventListener(previousData.on, explode);
-	    }
-	    el.addEventListener(this.data.on, explode);
+	AFRAME.registerComponent('collider', {
+	  schema: {
+	    target: { default: '.enemy' }
 	  },
 	
-	  explode: function explode() {
-	    var object3D = this.el.getObject3D('mesh');
-	    var scene = this.el.sceneEl.object3D;
-	    var duration = 8000;
-	
-	    // explode geometry into objects
-	    var pieces = explode(object3D.geometry, object3D.material);
-	
-	    object3D.material.visible = false;
-	
-	    // animate objects
-	    for (var i = 0; i < pieces.children.length; i++) {
-	
-	      var object = pieces.children[i];
-	
-	      object.geometry.computeFaceNormals();
-	      var normal = object.geometry.faces[0].normal.clone();
-	      var targetPosition = object.position.clone().add(normal.multiplyScalar(300));
-	      //removeBoxFromList( object3D );
-	      new TWEEN.Tween(object.position).to(targetPosition, duration).onComplete(deleteBox).start();
-	
-	      object.material.opacity = 0;
-	      new TWEEN.Tween(object.material).to({ opacity: 1 }, duration).start();
-	
-	      var rotation = 2 * Math.PI;
-	      var targetRotation = { x: rotation, y: rotation, z: rotation };
-	      new TWEEN.Tween(object.rotation).to(targetRotation, duration).start();
+	  /**
+	   * Calculate targets.
+	   */
+	  init: function init() {
+	    var targetEls = this.el.sceneEl.querySelectorAll(this.data.target);
+	    this.targets = [];
+	    for (var i = 0; i < targetEls.length; i++) {
+	      this.targets.push(targetEls[i].object3D);
 	    }
+	    this.el.object3D.updateMatrixWorld();
+	  },
 	
-	    function deleteBox() {
-	      object3D.remove(pieces);
-	      scene.remove(object3D);
-	    }
+	  /**
+	   * Check for collisions (for cylinder).
+	   */
+	  tick: function tick(t) {
+	    var collisionResults;
+	    var directionVector;
+	    var el = this.el;
+	    var mesh = el.getObject3D('mesh');
+	    var object3D = el.object3D;
+	    var raycaster;
+	    var vertices = mesh.geometry.vertices;
+	    var bottomVertex = vertices[0].clone();
+	    var topVertex = vertices[vertices.length - 1].clone();
 	
-	    object3D.add(pieces);
-	    this.el.removeEventListener(this.data.on, this.handler);
+	    // Calculate absolute positions of start and end of entity.
+	    bottomVertex.applyMatrix4(object3D.matrixWorld);
+	    topVertex.applyMatrix4(object3D.matrixWorld);
 	
-	    function explode(geometry, material) {
-	      var pieces = new THREE.Group();
-	      var material = material.clone();
-	      material.side = THREE.DoubleSide;
-	      for (var i = 0; i < geometry.faces.length; i++) {
-	        var face = geometry.faces[i];
+	    // Direction vector from start to end of entity.
+	    directionVector = topVertex.clone().sub(bottomVertex).normalize();
 	
-	        var vertexA = geometry.vertices[face.a].clone();
-	        var vertexB = geometry.vertices[face.b].clone();
-	        var vertexC = geometry.vertices[face.c].clone();
+	    // Raycast for collision.
+	    raycaster = new THREE.Raycaster(bottomVertex, directionVector, 1);
+	    collisionResults = raycaster.intersectObjects(this.targets, true);
+	    // console.log("RESULTS!ss!",collisionResults)
+	    collisionResults.forEach(function (target) {
+	      // Tell collided entity about the collision.
+	      console.log('TARGET INFO', target);
+	      target.object.el.emit('collider-hit', { target: el });
+	      console.log('HITTING IT UP');
+	    });
+	  }
+	});
+
+/***/ },
+/* 171 */
+/***/ function(module, exports) {
+
+	'use strict';
 	
-	        var geometry2 = new THREE.Geometry();
-	        geometry2.vertices.push(vertexA, vertexB, vertexC);
-	        geometry2.faces.push(new THREE.Face3(0, 1, 2));
+	AFRAME.registerComponent('spawner', {
+	  schema: {
+	    on: { default: 'click' },
+	    mixin: { default: '' }
+	  },
 	
-	        var mesh = new THREE.Mesh(geometry2, material);
-	        mesh.position.sub(geometry2.center());
-	        pieces.add(mesh);
-	      }
-	      //sort the pieces
-	      pieces.children.sort(function (a, b) {
-	        return a.position.z - b.position.z;
-	        //return a.position.x - b.position.x;     // sort x
-	        //return b.position.y - a.position.y;   // sort y
+	  /**
+	   * Add event listener.
+	   */
+	  update: function update(oldData) {
+	    this.el.addEventListener(this.data.on, this.spawn.bind(this));
+	  },
+	
+	  /**
+	   * Spawn new entity at entity's current position.
+	   */
+	  spawn: function spawn() {
+	    var el = this.el;
+	    var entity = document.createElement('a-entity');
+	    var matrixWorld = el.object3D.matrixWorld;
+	    var position = new THREE.Vector3();
+	    var rotation = el.getAttribute('rotation');
+	    var entityRotation;
+	    console.log('WE ARE HERE I PROMISE');
+	
+	    position.setFromMatrixPosition(matrixWorld);
+	    entity.setAttribute('position', position);
+	
+	    // Have the spawned entity face the same direction as the entity.
+	    // Allow the entity to further modify the inherited rotation.
+	    position.setFromMatrixPosition(matrixWorld);
+	    entity.setAttribute('position', position);
+	    entity.setAttribute('mixin', this.data.mixin);
+	    entity.addEventListener('loaded', function () {
+	      entityRotation = entity.getAttribute('rotation');
+	      entity.setAttribute('rotation', {
+	        x: entityRotation.x + rotation.x,
+	        y: entityRotation.y + rotation.y,
+	        z: entityRotation.z + rotation.z
 	      });
-	      pieces.rotation.set(0, 0, 0);
-	      return pieces;
-	    }
-	
-	    function removeBoxFromList(box) {
-	      var objects = scene.children;
-	      for (var i = 0; i < objects.length; i++) {
-	        if (objects[i] === box) {
-	          objects.splice(i, 1);
-	          return;
-	        }
-	      }
-	    }
+	    });
+	    el.sceneEl.appendChild(entity);
 	  }
 	});
 
