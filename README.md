@@ -1,4 +1,4 @@
-##Starshio Academy
+##Starship Academy
 
 Starship Academy is a Multiplayer First-Person Shooter game made with Aframe and Socket.io that can be played in either a 3D web version or in Virtual Reality.
 
