@@ -1,4 +1,4 @@
-export function putSelfOnDOM(user){
+export function putSelfOnDOM(user) {
   const scene = document.getElementById('scene');
   const avatar = document.createElement('a-camera');
 
@@ -11,6 +11,8 @@ export function putSelfOnDOM(user){
   avatar.setAttribute('wasd-controls', 'fly: true; acceleration: 4001');
   avatar.setAttribute('spawner', 'mixin: laser; on: click');
   avatar.setAttribute('click-listener', true);
+  avatar.setAttribute('ship', true);
+
 
   const model = document.createElement('a-obj-model');
   avatar.appendChild(model);
@@ -34,7 +36,7 @@ export function putSelfOnDOM(user){
 
 
 
-export function putUserOnDOM (user) {
+export function putUserOnDOM(user) {
   const scene = document.getElementById('scene');
   const avatar = document.createElement('a-entity');
 
