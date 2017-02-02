@@ -2,6 +2,7 @@
 require('aframe');
 require('aframe-randomizer-components');
 require('aframe-extras');
+require('aframe-alongpath-component');
 require('./components/onClickListener');
 require('./components/EntityGenerator');
 require('./components/Projectile');

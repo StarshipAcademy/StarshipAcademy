@@ -13,14 +13,23 @@
 		</i>
 		<i class="fa fa-crosshairs" style="opacity: .5; font-size: 50px; color: #15abc3; position: absolute; top: 46.85%; left: 48.4%; z-index: 9999" aria-hidden="true">
 		</i> -->
+		<div style="display: flex; justify-content: center; align-items: center; height: 100vh; width:100%; position: absolute;">
+			<i class="fa fa-crosshairs fa-spin" style="opacity: .9; font-size: 56px; color: #8ad5e1; z-index: 9999" aria-hidden="true">
+			</i>
+			</div>
+			<div style="display: flex; justify-content: center; align-items: center; height: 100vh; width:100%; position: absolute;">
+			<i class="fa fa-crosshairs fa-spin" style="opacity: .5; font-size: 50px; color: #15abc3; z-index: 9999" aria-hidden="true">
+		</i>			
+		</div>
 
-		<i class="fa fa-crosshairs fa-spin" style="opacity: .9; font-size: 56px; color: #8ad5e1; position: absolute; top: 47.3%; left: 48.65%; z-index: 9999" aria-hidden="true">
+		<!--
+		<i class="fa fa-crosshairs fa-spin" style="opacity: .9; font-size: 56px; color: #8ad5e1; position: absolute; top: calc(50% - (50/2)+'px'); left: 48.65%; z-index: 9999" aria-hidden="true">
 		</i>
 		<i class="fa fa-crosshairs fa-spin" style="opacity: .5; font-size: 50px; color: #15abc3; position: absolute; top: 47.6%; left: 48.8%; z-index: 9999" aria-hidden="true">
-		</i>
+		</i> -->
 	
 
-		<a-scene id="scene" physics-world="gravity: 0 0 0" scene-load>
+		<a-scene id="scene" physics-world="gravity: 0 0 0" scene-load>			
 			<a-asset>
 				<img id="space" src="./src/assets/images/space.jpg">
 				<img id="asteroid" src="./src/assets/images/asteroid.jpg">
@@ -32,14 +41,18 @@
 				<a-asset-item id="arc170-obj" src="./src/assets/models/arc170/arc170.obj"></a-asset-item>
         <a-asset-item id="arc170-mtl" src="./src/assets/models/arc170/arc170.mtl"></a-asset-item>
 
-        <a-mixin id="asteroid1" geometry="primitive: sphere; radius:2" material="src: #asteroid"></a-mixin>
-        <a-mixin id="asteroid2" geometry="primitive: sphere; radius:4" material="src: #asteroid"></a-mixin>
-        <a-mixin id="octa" geometry="primitive: octahedron; radius:4" material="src:#asteroid"></a-mixin>
+        <a-asset-item id="tiefighter-obj" src="./src/assets/models/tiefighter/tiefighter.obj"></a-asset-item>
+        <a-asset-item id="tiefighter-mtl" src="./src/assets/models/tiefighter/tiefighter.mtl"></a-asset-item>
 
-        <a-mixin id="position" random-spherical-position="radius: 40; startX: 0; lengthX: 360; startY: 0; lengthY: 360" random-rotation random-position="min: -100 -100 -100; max: 100 100 100"></a-mixin>
+
+        <a-mixin id="asteroid1" geometry="primitive: sphere; radius:15" material="src: #asteroid"></a-mixin>
+        <a-mixin id="asteroid2" geometry="primitive: sphere; radius:4" material="src: #asteroid"></a-mixin>
+        <a-mixin id="octa" geometry="primitive: octahedron; radius:15" material="src:#asteroid"></a-mixin>
+
+        <a-mixin id="position" random-spherical-position="radius: 500; startX: 0; lengthX: 360; startY: 0; lengthY: 360" random-rotation random-position="min: -3000 -3000 -3000; max: 3000 3000 3000"></a-mixin>
 
 				<a-mixin id="laser"
-					geometry="primitive: cylinder; radius: 0.2; height: 8"
+					geometry="primitive: cylinder; radius: .8; height: 8"
 					rotation="-90 0 0"
 					translate="0 -2 0"
 					material="color: #ffff00; metalness: 0.2; opacity: 0.6;"
@@ -47,8 +60,10 @@
 					sound="src: #laser_shot; on: click; autoplay: true; volume: 1"></a-mixin>
       </a-asset>
 
-      <a-entity entity-generator="mixin: asteroid1 position; num: 150;"></a-entity>
-      <a-entity entity-generator="mixin: octa position enemy; num: 50;"></a-entity>
+      <a-entity class="enemy" obj-model="obj: #tiefighter-obj; mtl: #tiefighter-mtl" position="20 20 20" alongpath="path:200,111,-222 -300,100,240 214,100,-200; closed:false; dur:8000; delay:4000; inspector:false;"></a-entity>
+
+      <a-entity entity-generator="mixin: asteroid1 position; num: 300;"></a-entity>
+      <a-entity entity-generator="mixin: octa position; num: 300;"></a-entity>
 
 			<a-sky src="./src/assets/images/space.jpg"></a-sky>
 

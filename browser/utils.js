@@ -8,7 +8,7 @@ export function putSelfOnDOM(user) {
   avatar.setAttribute('rotation', `${user.xrot} ${user.yrot} ${user.zrot}`);
   avatar.setAttribute('publish', true);
   avatar.setAttribute('look-controls', true);
-  avatar.setAttribute('wasd-controls', 'fly: true; acceleration: 4001');
+  avatar.setAttribute('wasd-controls', 'fly: true; acceleration: 1000');
   avatar.setAttribute('spawner', 'mixin: laser; on: click');
   avatar.setAttribute('click-listener', true);
   avatar.setAttribute('ship', true);

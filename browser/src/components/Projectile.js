@@ -52,9 +52,9 @@ AFRAME.registerComponent('projectile', {
               target.setAttribute('geometry', {primitive: 'sphere'});
               target.appendChild(animation);
 
-              // target.parentNode.removeChild(target)
               bullet.parentNode.removeChild(bullet);
-              this.targets.splice(i, 1);
+              // this.targets.splice(i, 1);
+              setTimeout(() => { target.parentNode.removeChild(target) }, 1000);
               return;
             }
           }

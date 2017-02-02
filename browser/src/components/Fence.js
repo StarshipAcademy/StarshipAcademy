@@ -8,6 +8,10 @@ AFRAME.registerComponent('fence', {
           type: 'number',
           default: 10
       },
+      height: {
+          type: 'number',
+          default: 10
+      },
       depth: {
           type: 'number',
           default: 10
