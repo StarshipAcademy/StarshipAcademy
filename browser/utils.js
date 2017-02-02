@@ -12,6 +12,7 @@ export function putSelfOnDOM(user) {
   avatar.setAttribute('wasd-controls', 'fly: true; acceleration: 4001');
   avatar.setAttribute('spawner', 'mixin: laser; on: click');
   avatar.setAttribute('click-listener', true);
+  avatar.setAttribute('bullets-fired', 0);
 
   //add model to camera
   const model = document.createElement('a-obj-model');
@@ -35,8 +36,6 @@ export function putSelfOnDOM(user) {
   return avatar;
 }
 
-
-
 export function putUserOnDOM(user) {
   const scene = document.getElementById('scene');
   const avatar = document.createElement('a-entity');
@@ -56,17 +55,44 @@ export function putUserOnDOM(user) {
   model.setAttribute('mtl', '#arc170-mtl');
 
   //add their bullets
-  for (key in user.bullets) {
-    if (!user.bullets[key]) continue;
-    let bulletId = key;
+  Object.keys(user.bullets).forEach(key => {
     let bulletData = user.bullets[key];
+    if (!bulletData) return;
+    let bulletId = key;
 
     const bullet = document.createElement('a-entity');
+    bullet.setAttribute('class', `${user.id}bullet`);
     bullet.setAttribute('id', bulletId);
     bullet.setAttribute('position', new THREE.Vector3(bulletData.pos.x, bulletData.pos.y, bulletData.pos.z));
     bullet.setAttribute('rotation', bulletData.rot);
-    bullet.setAttribute('other-bullet', true);
-  }
+  // bullet.setAttribute('other-bullet', true);
+  })
 
   return avatar;
+}
+
+export function updateUser(user) {
+  const otherAvatar = document.getElementById(user.id);
+
+  otherAvatar.setAttribute('position', `${user.x} ${user.y} ${user.z}`);
+  otherAvatar.setAttribute('rotation', `${user.xrot} ${user.yrot} ${user.zrot}`);
+}
+
+export function updateUsersBullets(user) {
+  //TODO
+}
+
+export function removeUser(userId) {
+  console.log('Removing user.');
+  const scene = document.getElementById('scene');
+  const avatarToBeRemoved = document.getElementById(userId);
+  scene.remove(avatarToBeRemoved);
+  avatarToBeRemoved.parentNode.removeChild(avatarToBeRemoved);
+
+  //remove their bullets
+  let bullets = document.querySelectorAll(`.${userId}bullet`);
+  for (var i = 0; i < bullets.length; i++) {
+    scene.remove(bullet);
+    bullet.parentNode.removeChild(bullet);
+  }
 }
