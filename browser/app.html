@@ -14,15 +14,12 @@
 			<a-asset>
 				<img id="space" src="./src/assets/images/space.jpg">
 				<img id="asteroid" src="./src/assets/images/asteroid.jpg">
+				<img id="explosion" src="./src/assets/images/explosion.jpg">
 
 				<a-asset-item id="arc170-obj" src="./src/assets/models/arc170/arc170.obj"></a-asset-item>
 				<a-asset-item id="arc170-mtl" src="./src/assets/models/arc170/arc170.mtl"></a-asset-item>
 
 				<a-mixin id="octa" geometry="primitive: octahedron; radius:4" material="src:#asteroid">
-					<a-animation attribute="opacity" begin="collider-hit" dur="4000"
-					ease="linear" from="1" to="0"></a-animation>
-					<a-animation attribute="scale" begin="collider-hit" dur="4000"
-					ease="linear" to="0 0 0"></a-animation>
 				</a-mixin>
 
 				<a-mixin id="position" random-spherical-position="radius: 40; startX: 0; lengthX: 360; startY: 0; lengthY: 360" random-rotation random-position="min: -100 -100 -100; max: 100 100 100"></a-mixin>
@@ -34,12 +31,7 @@
 
 			</a-asset>
 
-			<a-octahedron color="#FF9268" radius="10" class="enemy">
-					<a-animation attribute="opacity" begin="collider-hit" dur="4000"
-				ease="linear" from="1" to="0"></a-animation>
-				<a-animation attribute="scale" begin="collider-hit" dur="4000"
-				ease="linear" to="0 0 0"></a-animation>
-			</a-octahedron>
+			<a-octahedron color="#FF9268" radius="10" class="enemy"></a-octahedron>
 
 			<a-camera id="player" spawner="mixin: laser; on: click" click-listener look-controls wasd-controls="fly: true; acceleration: 4001">
           <a-obj-model rotation="0 180 0" src="#arc170-obj" mtl="#arc170-mtl" position="0 -4 2"></a-obj-model>
