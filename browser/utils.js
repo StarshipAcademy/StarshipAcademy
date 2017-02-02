@@ -35,7 +35,6 @@ export function putSelfOnDOM(user) {
 }
 
 
-
 export function putUserOnDOM(user) {
   const scene = document.getElementById('scene');
   const avatar = document.createElement('a-entity');

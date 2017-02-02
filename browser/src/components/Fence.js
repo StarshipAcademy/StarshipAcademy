@@ -30,6 +30,7 @@ AFRAME.registerComponent('fence', {
   tick: function() {
       var data = this.data;
       var thiswidth = data.width;
+      var thisheight = data.height;
       var thisdepth = data.depth;
       var x0 = data.x0;
       var y0 = data.y0;
@@ -38,8 +39,8 @@ AFRAME.registerComponent('fence', {
       minX = thiswidth / 2 + x0;
       maxX = ( -1 * thiswidth / 2 ) + x0;
 
-      minY = thiswidth / 2 + y0;
-      maxY = ( -1 * thiswidth / 2 ) + y0;
+      minY = thisheight / 2 + y0;
+      maxY = ( -1 * thisheight / 2 ) + y0;
 
       minZ = thisdepth / 2 + z0;
       maxZ = ( -1 * thisdepth / 2 ) + z0;

@@ -26,7 +26,7 @@ AFRAME.registerComponent('projectile', {
       }
 
       let bullet = this.el;
-      let hit = false
+      // let hit = false
         if(this.targets.length !== 0 && bullet.parentEl) {
           for (let i = 0; i < this.targets.length; i++ ) {
             let currentEnemy = this.targets[i].object3D
@@ -38,22 +38,31 @@ AFRAME.registerComponent('projectile', {
               maxY: currentEnemy.position.y + 2,
               maxZ: currentEnemy.position.z + 2
             }
-            let laser = bullet.object3D.translateY(this.data.speed).position
-              let target = this.targets[i];
+            let laser = bullet.object3D.translateY(this.data.speed).position;
+            let target = this.targets[i];
 
             if(intersect(laser, asteroid) && target.parentNode) {
-              target.parentNode.removeChild(target)
-              bullet.parentNode.removeChild(bullet)
+              let animation = document.createElement('a-animation');
+              animation.setAttribute('attribute', 'scale');
+              animation.setAttribute('dur', '400');
+              animation.setAttribute('ease', 'linear');
+              animation.setAttribute('to', '0 0 0');
+              
+              target.setAttribute('material', {src: '#explode'});
+              target.setAttribute('geometry', {primitive: 'sphere'});
+              target.appendChild(animation);
+
+              // target.parentNode.removeChild(target)
+              bullet.parentNode.removeChild(bullet);
               this.targets.splice(i, 1);
-              hit = true
               return;
             }
           }
-          function hit(collision) {
-            if (hit) {
-              collision.object.el.emit('hit')
-            }
-          }
+          // function hit(collision) {
+          //   if (hit) {
+          //     collision.object.el.emit('hit')
+          //   }
+          // }
       }
       bullet.object3D.translateY(this.data.speed)
     }
