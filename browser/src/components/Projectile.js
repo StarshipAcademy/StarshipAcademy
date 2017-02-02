@@ -65,6 +65,7 @@ AFRAME.registerComponent('projectile', {
     speed: { default: -0.4 }
   },
   tick: function () {
+    console.log('PROJECT');
     this.el.object3D.translateY(this.data.speed);
   }
 });

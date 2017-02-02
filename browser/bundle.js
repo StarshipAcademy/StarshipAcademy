@@ -93734,6 +93734,7 @@
 	    speed: { default: -0.4 }
 	  },
 	  tick: function tick() {
+	    console.log('PROJECT');
 	    this.el.object3D.translateY(this.data.speed);
 	  }
 	});
@@ -93780,50 +93781,10 @@
 	        z: entityRotation.z + rotation.z
 	      });
 	    });
-	    console.log('SPAWNING');
+	    console.log('NEW SPAWNING');
 	    el.sceneEl.appendChild(entity);
 	  }
 	});
-	
-	// AFRAME.registerComponent('spawner', {
-	//   schema: {
-	//     on: { default: 'click' },
-	//     mixin: { default: '' }
-	//   },
-	//   /**
-	//    * Add event listener.
-	//    */
-	//   update: function (oldData) {
-	//     this.el.addEventListener(this.data.on, this.spawn.bind(this));
-	//   },
-	//   /**
-	//    * Spawn new entity at entity's current position.
-	//    */
-	//   spawn: function () {
-	//     var el = this.el;
-	//     var entity = document.createElement('a-entity');
-	//     var matrixWorld = el.object3D.matrixWorld;
-	//     var position = new THREE.Vector3();
-	//     var rotation = el.getAttribute('rotation');
-	//     var entityRotation;
-	//     position.setFromMatrixPosition(matrixWorld);
-	//     entity.setAttribute('position', position);
-	//     // Have the spawned entity face the same direction as the entity.
-	//     // Allow the entity to further modify the inherited rotation.
-	//     position.setFromMatrixPosition(matrixWorld);
-	//     entity.setAttribute('position', position);
-	//     entity.setAttribute('mixin', this.data.mixin);
-	//     entity.addEventListener('loaded', function () {
-	//       entityRotation = entity.getAttribute('rotation');
-	//       entity.setAttribute('rotation', {
-	//         x: entityRotation.x + rotation.x,
-	//         y: entityRotation.y + rotation.y,
-	//         z: entityRotation.z + rotation.z
-	//       });
-	//     });
-	//     el.sceneEl.appendChild(entity);
-	//   }
-	// });
 
 /***/ },
 /* 115 */
@@ -93990,8 +93951,8 @@
 	});
 	
 	socket.on('createUser', function (user) {
-	  var avatar = (0, _utils.putUserOnDOM)(user);
-	  (0, _utils.addFirstPersonProperties)(avatar);
+	  var avatar = (0, _utils.putSelfOnDOM)(user);
+	
 	  socket.emit('getOthers');
 	});
 	
@@ -94031,7 +93992,7 @@
 	  var scene = document.getElementById('scene');
 	  var avatarToBeRemoved = document.getElementById(userId);
 	  scene.remove(avatarToBeRemoved); // Remove from scene
-	  // avatarToBeRemoved.parentNode.removeChild(avatarToBeRemoved); // Remove from DOM
+	  avatarToBeRemoved.parentNode.removeChild(avatarToBeRemoved); // Remove from DOM
 	});
 	
 	exports.default = socket;
@@ -102568,26 +102529,67 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.putSelfOnDOM = putSelfOnDOM;
 	exports.putUserOnDOM = putUserOnDOM;
-	exports.addFirstPersonProperties = addFirstPersonProperties;
-	function putUserOnDOM(user) {
+	function putSelfOnDOM(user) {
 	  var scene = document.getElementById('scene');
-	  var avatar = document.createElement('a-entity');
+	  var avatar = document.createElement('a-camera');
+	
 	  scene.appendChild(avatar);
 	  avatar.setAttribute('id', user.id);
-	  avatar.setAttribute('geometry', 'primitive', 'box');
-	  avatar.setAttribute('material', 'color', user.color);
 	  avatar.setAttribute('position', user.x + ' ' + user.y + ' ' + user.z);
 	  avatar.setAttribute('rotation', user.xrot + ' ' + user.yrot + ' ' + user.zrot);
+	  avatar.setAttribute('publish', true);
+	  avatar.setAttribute('look-controls', true);
+	  avatar.setAttribute('wasd-controls', 'fly: true; acceleration: 4001');
+	  avatar.setAttribute('spawner', 'mixin: laser; on: click');
+	  avatar.setAttribute('click-listener', true);
+	  avatar.setAttribute('ship', true);
+	
+	  var model = document.createElement('a-obj-model');
+	  avatar.appendChild(model);
+	  model.setAttribute('position', '0 -4 2');
+	  model.setAttribute('rotation', '0 180 0');
+	  model.setAttribute('src', '#arc170-obj');
+	  model.setAttribute('mtl', '#arc170-mtl');
+	
+	  var soundRight = document.createElement('a-entity');
+	  avatar.appendChild(soundRight);
+	  soundRight.setAttribute('position', '2 0 0');
+	  soundRight.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
+	
+	  var soundLeft = document.createElement('a-entity');
+	  avatar.appendChild(soundLeft);
+	  soundLeft.setAttribute('position', '-2 0 0');
+	  soundLeft.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
+	
 	  return avatar;
 	}
 	
-	function addFirstPersonProperties(avatar) {
-	  avatar.setAttribute('publish-location', true);
-	  avatar.setAttribute('camera', true);
-	  avatar.setAttribute('look-controls', true);
-	  avatar.setAttribute('wasd-controls', true);
+	function putUserOnDOM(user) {
+	  var scene = document.getElementById('scene');
+	  var avatar = document.createElement('a-entity');
+	
+	  scene.appendChild(avatar);
+	  avatar.setAttribute('id', user.id);
+	  avatar.setAttribute('position', user.x + ' ' + user.y + ' ' + user.z);
+	  avatar.setAttribute('rotation', user.xrot + ' ' + user.yrot + ' ' + user.zrot);
+	
+	  var model = document.createElement('a-obj-model');
+	  avatar.appendChild(model);
+	  model.setAttribute('position', '0 -4 2');
+	  model.setAttribute('rotation', '0 180 0');
+	  model.setAttribute('src', '#arc170-obj');
+	  model.setAttribute('mtl', '#arc170-mtl');
+	  return avatar;
 	}
+	
+	// export function addFirstPersonProperties (avatar) {
+	//   avatar.setAttribute('publish', true);
+	//   avatar.setAttribute('camera', true);
+	//   avatar.setAttribute('look-controls', true);
+	//   avatar.setAttribute('wasd-controls', true);
+	// }
 
 /***/ },
 /* 172 */
