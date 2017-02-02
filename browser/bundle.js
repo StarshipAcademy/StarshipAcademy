@@ -93734,7 +93734,6 @@
 	    speed: { default: -0.4 }
 	  },
 	  tick: function tick() {
-	    console.log('PROJECT');
 	    this.el.object3D.translateY(this.data.speed);
 	  }
 	});
@@ -93781,7 +93780,6 @@
 	        z: entityRotation.z + rotation.z
 	      });
 	    });
-	    console.log('NEW SPAWNING');
 	    el.sceneEl.appendChild(entity);
 	  }
 	});

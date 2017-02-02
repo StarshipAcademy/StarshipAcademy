@@ -16,6 +16,7 @@
 			<a-asset>
 				<img id="space" src="./src/assets/images/space.jpg">
 				<img id="asteroid" src="./src/assets/images/asteroid.jpg">
+				<img id="explosion" src="./src/assets/images/explosion.jpg">
 
 				<audio id="gameplay" src="./src/assets/sounds/SpaceCube.ogg">
 				<audio id="laser_shot" src="./src/assets/sounds/Laser.ogg">
@@ -35,6 +36,10 @@
 						material="color: green; metalness: 0.2; opacity: 0.4; roughness: 0.3"
 						rotation="90 0 0" projectile collider></a-mixin>
       </a-asset>
+
+			<a-camera id="player" spawner="mixin: laser; on: click" click-listener look-controls wasd-controls="fly: true; acceleration: 4001">
+          <a-obj-model rotation="0 180 0" src="#arc170-obj" mtl="#arc170-mtl" position="0 -4 2"></a-obj-model>
+      </a-camera>
       <!-- <a-entity entity-generator="mixin: asteroid1 position; num: 150;"></a-entity> -->
       <!-- <a-entity entity-generator="mixin: asteroid2 position; num: 150;"></a-entity> -->
 
