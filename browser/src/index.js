@@ -10,3 +10,4 @@ require('./components/Fence');
 require('./components/publish');
 require('./components/scene-load');
 require('./components/Ship');
+require('./components/collider');
