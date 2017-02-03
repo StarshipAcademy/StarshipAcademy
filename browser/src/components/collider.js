@@ -56,10 +56,10 @@ AFRAME.registerComponent('collider', {
       target.object.el.setAttribute('material', {src: '#explosion'});
       target.object.el.setAttribute('geometry', {primitive: 'sphere'});
       target.object.el.appendChild(animation);
-      //
+      // console.log('Target!', target.object.el.parentNode)
       // bullet.parentNode.removeChild(bullet);
       // this.targets.splice(i, 1);
-      // setTimeout(() => {target.parentNode.removeChild(target) }, 4000);
+      setTimeout(() => {target.object.el.parentNode.removeChild(target.object.el) }, 1000);
       // return;
 
     });

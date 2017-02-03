@@ -70088,9 +70088,9 @@
 	  schema: {
 	    radius: {default: 10},
 	    startX: {default: 0},
-	    lengthX: {default: 360},
+	    lengthX: {default: 5000},
 	    startY: {default: 0},
-	    lengthY: {default: 360}
+	    lengthY: {default: 5000}
 	  },
 	
 	  update: function () {
@@ -70323,7 +70323,7 @@
 						"directUrl": "https://raw.githubusercontent.com/donmccurdy/cannon.js/v0.6.2-dev1/package.json"
 					}
 				},
-				"/Users/jimmy/Desktop/StarshipAcademy/node_modules/aframe-physics-system"
+				"/Users/hyperion/Desktop/StarshipAcademy/node_modules/aframe-physics-system"
 			]
 		],
 		"_from": "donmccurdy/cannon.js#v0.6.2-dev1",
@@ -70353,10 +70353,10 @@
 			"/aframe-physics-system"
 		],
 		"_resolved": "git://github.com/donmccurdy/cannon.js.git#022e8ba53fa83abf0ad8a0e4fd08623123838a17",
-		"_shasum": "e4a141f606932bb4ffc026e35010b38aa3b59b0e",
+		"_shasum": "fc8c0e95ba2f83947212d07baa3ef61fbf1d6eb3",
 		"_shrinkwrap": null,
 		"_spec": "cannon@github:donmccurdy/cannon.js#v0.6.2-dev1",
-		"_where": "/Users/jimmy/Desktop/StarshipAcademy/node_modules/aframe-physics-system",
+		"_where": "/Users/hyperion/Desktop/StarshipAcademy/node_modules/aframe-physics-system",
 		"author": {
 			"name": "Stefan Hedman",
 			"email": "schteppe@gmail.com",
@@ -102714,10 +102714,12 @@
 	      target.object.el.setAttribute('material', { src: '#explosion' });
 	      target.object.el.setAttribute('geometry', { primitive: 'sphere' });
 	      target.object.el.appendChild(animation);
-	      //
+	      // console.log('Target!', target.object.el.parentNode)
 	      // bullet.parentNode.removeChild(bullet);
 	      // this.targets.splice(i, 1);
-	      // setTimeout(() => {target.parentNode.removeChild(target) }, 4000);
+	      setTimeout(function () {
+	        target.object.el.parentNode.removeChild(target.object.el);
+	      }, 1000);
 	      // return;
 	    });
 	  }
