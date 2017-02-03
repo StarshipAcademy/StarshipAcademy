@@ -17,9 +17,9 @@ AFRAME.registerComponent('spawner', {
    * Spawn new entity at entity's current position.
    */
   spawn: function() {
+
     var el = this.el;
-    var bulletId = el.getAttribute('bullets-fired');
-    el.setAttribute('bullets-fired', bulletId + 1);
+    var bulletId = el.bulletsFired++;
     var entity = document.createElement('a-entity');
     var matrixWorld = el.object3D.matrixWorld;
     var position = new THREE.Vector3();
@@ -27,12 +27,27 @@ AFRAME.registerComponent('spawner', {
     var entityRotation;
     position.setFromMatrixPosition(matrixWorld);
     entity.setAttribute('position', position);
+
     entity.setAttribute('mixin', this.data.mixin);
+    console.log('ARRGGGG')
     entity.addEventListener('loaded', function() {
+      console.log('AGHH')
       entityRotation = entity.getAttribute('rotation');
-      entity.setAttribute('rotation', rotation);
-    });
+      entity.setAttribute('rotation', {
+        x: entityRotation.x + rotation.x,
+        y: entityRotation.y + rotation.y,
+        z: entityRotation.z + rotation.z
+      });
+    })
+
     // console.log('SPAWNING');
     el.sceneEl.appendChild(entity);
+    el.newBullets.push({
+      id: bulletId,
+      pos: position,
+      rot: rotation
+    })
+    console.log('BULLETS', el.newBullets)
+
   }
 });

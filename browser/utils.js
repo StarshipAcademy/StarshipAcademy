@@ -12,7 +12,10 @@ export function putSelfOnDOM(user) {
   avatar.setAttribute('wasd-controls', 'fly: true; acceleration: 4001');
   avatar.setAttribute('spawner', 'mixin: laser; on: click');
   avatar.setAttribute('click-listener', true);
-  avatar.setAttribute('bullets-fired', 0);
+  avatar.bulletsFired = 0;
+  avatar.newBullets = [];
+  avatar.deadBullets = [];
+
 
   //add model to camera
   const model = document.createElement('a-obj-model');
@@ -36,6 +39,31 @@ export function putSelfOnDOM(user) {
   return avatar;
 }
 
+function createBullets(userId, bullets) {
+  console.log('SSSSSSSSS', bullets)
+  const scene = document.getElementById('scene');
+  Object.keys(bullets).forEach(key => {
+    console.log('key:', key)
+    let bulletData = bullets[key];
+    if (!bulletData) return;
+    let bulletId = key;
+
+    const bullet = document.createElement('a-entity');
+    scene.appendChild(bullet);
+    bullet.setAttribute('class', `${userId}bullet`);
+    bullet.setAttribute('id', bulletId);
+    bullet.setAttribute('position', bulletData.pos);
+    bullet.setAttribute('rotation', {
+      x: bulletData.rot.x - 90,
+      y: bulletData.rot.y,
+      z: bulletData.rot.z
+    });
+    bullet.setAttribute('other-bullet', true);
+    bullet.setAttribute('geometry', 'primitive: cylinder; radius: 0.1; height: 8');
+    bullet.setAttribute('material', 'color: yellow; metalness: 0.2; opacity: 0.8; roughness: 0.3');
+  })
+}
+
 export function putUserOnDOM(user) {
   const scene = document.getElementById('scene');
   const avatar = document.createElement('a-entity');
@@ -55,20 +83,18 @@ export function putUserOnDOM(user) {
   model.setAttribute('mtl', '#arc170-mtl');
 
   //add their bullets
-  Object.keys(user.bullets).forEach(key => {
-    let bulletData = user.bullets[key];
-    if (!bulletData) return;
-    let bulletId = key;
-
-    const bullet = document.createElement('a-entity');
-    bullet.setAttribute('class', `${user.id}bullet`);
-    bullet.setAttribute('id', bulletId);
-    bullet.setAttribute('position', new THREE.Vector3(bulletData.pos.x, bulletData.pos.y, bulletData.pos.z));
-    bullet.setAttribute('rotation', bulletData.rot);
-  // bullet.setAttribute('other-bullet', true);
-  })
+  createBullets(user.id, user.bullets);
 
   return avatar;
+}
+
+function removeBullets(userId, bullets) {
+  const scene = document.getElementById('scene');
+  for (var i = 0; i < bullets.length; i++) {
+    const bullet = document.getElementById(bullets[i].id);
+    scene.remove(bullet);
+    bullet.parentNode.removeChild(bullet);
+  }
 }
 
 export function updateUser(user) {
@@ -76,10 +102,11 @@ export function updateUser(user) {
 
   otherAvatar.setAttribute('position', `${user.x} ${user.y} ${user.z}`);
   otherAvatar.setAttribute('rotation', `${user.xrot} ${user.yrot} ${user.zrot}`);
-}
 
-export function updateUsersBullets(user) {
-  //TODO
+  //update their bullets
+  createBullets(user.id, user.newBullets);
+  removeBullets(user.id, user.deadBullets);
+
 }
 
 export function removeUser(userId) {
@@ -89,7 +116,7 @@ export function removeUser(userId) {
   scene.remove(avatarToBeRemoved);
   avatarToBeRemoved.parentNode.removeChild(avatarToBeRemoved);
 
-  //remove their bullets
+  //remove all their bullets
   let bullets = document.querySelectorAll(`.${userId}bullet`);
   for (var i = 0; i < bullets.length; i++) {
     scene.remove(bullet);

@@ -107439,7 +107439,9 @@
 	   * Spawn new entity at entity's current position.
 	   */
 	  spawn: function spawn() {
+	
 	    var el = this.el;
+	    var bulletId = el.bulletsFired++;
 	    var entity = document.createElement('a-entity');
 	    var matrixWorld = el.object3D.matrixWorld;
 	    var position = new THREE.Vector3();
@@ -107447,12 +107449,11 @@
 	    var entityRotation;
 	    position.setFromMatrixPosition(matrixWorld);
 	    entity.setAttribute('position', position);
-	    // Have the spawned entity face the same direction as the entity.
-	    // Allow the entity to further modify the inherited rotation.
-	    position.setFromMatrixPosition(matrixWorld);
-	    entity.setAttribute('position', position);
+	
 	    entity.setAttribute('mixin', this.data.mixin);
+	    console.log('ARRGGGG');
 	    entity.addEventListener('loaded', function () {
+	      console.log('AGHH');
 	      entityRotation = entity.getAttribute('rotation');
 	      entity.setAttribute('rotation', {
 	        x: entityRotation.x + rotation.x,
@@ -107460,8 +107461,15 @@
 	        z: entityRotation.z + rotation.z
 	      });
 	    });
+	
 	    // console.log('SPAWNING');
 	    el.sceneEl.appendChild(entity);
+	    el.newBullets.push({
+	      id: bulletId,
+	      pos: position,
+	      rot: rotation
+	    });
+	    console.log('BULLETS', el.newBullets);
 	  }
 	});
 
@@ -107557,6 +107565,8 @@
 	    });
 	    if (hasGottenOthers) {
 	      var el = this.el;
+	      var bullets = {};
+	
 	      socket.emit('tick', {
 	        id: el.getAttribute('id'),
 	        x: el.getAttribute('position').x,
@@ -107564,8 +107574,13 @@
 	        z: el.getAttribute('position').z,
 	        xrot: el.getAttribute('rotation').x,
 	        yrot: el.getAttribute('rotation').y,
-	        zrot: el.getAttribute('rotation').z
+	        zrot: el.getAttribute('rotation').z,
+	        newBullets: el.newBullets,
+	        deadBullets: el.deadBullets
 	      });
+	
+	      el.newBullets = [];
+	      el.deadBullets = [];
 	    }
 	  }
 	});
@@ -107616,22 +107631,15 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	// All A-Frame components need access to the socket instance
 	window.socket = _socket2.default.connect();
-	
-	// `publish-location`, `camera`, `look-controls`, `wasd-controls` are set only
-	// on the user that the scene belongs to, so that only that scene can be manipulated
-	// by them.
-	// The other users will get the updated position via sockets.
 	
 	// This is the person who connected
 	socket.on('connect', function () {
-	  console.log('You\'ve made a persistent two-way connection to the server!');
+	  console.log('You\'re connected to the server');
 	});
 	
 	socket.on('createUser', function (user) {
 	  var avatar = (0, _utils.putSelfOnDOM)(user);
-	
 	  socket.emit('getOthers');
 	});
 	
@@ -107642,7 +107650,7 @@
 	  Object.keys(users).forEach(function (user) {
 	    (0, _utils.putUserOnDOM)(users[user]);
 	  });
-	  // This goes to the server, and then goes to `publish-location` to tell the `tick` to start
+	  // This goes to the server, and then goes to `publish` to tell the `tick` to start
 	  socket.emit('haveGottenOthers');
 	  // This goes to the server, and then back to the function with the setInterval
 	  // Needed an intermediary for between when the other components are put on the DOM
@@ -107651,28 +107659,26 @@
 	});
 	
 	// Using a filtered users array, this updates the position & rotation of every other user
+	// If a user's avatar is already on the DOM, update it
+	// If a user's avatar is NOT on the DOM already, add it
 	socket.on('usersUpdated', function (users) {
-	  Object.keys(users).forEach(function (user) {
-	    var otherAvatar = document.getElementById(users[user].id);
-	    // If a user's avatar is NOT on the DOM already, add it
-	    if (otherAvatar === null) {
-	      (0, _utils.putUserOnDOM)(users[user]);
-	    } else {
-	      // If a user's avatar is already on the DOM, update it
-	      otherAvatar.setAttribute('position', users[user].x + ' ' + users[user].y + ' ' + users[user].z);
-	      otherAvatar.setAttribute('rotation', users[user].xrot + ' ' + users[user].yrot + ' ' + users[user].zrot);
-	    }
+	  Object.keys(users).forEach(function (key) {
+	    var user = users[key];
+	    var otherAvatar = document.getElementById(user.id);
+	    otherAvatar ? (0, _utils.updateUser)(user) : (0, _utils.putUserOnDOM)(user);
+	  });
+	});
+	
+	socket.on('bulletsUpdated', function (users) {
+	  Object.keys(users).forEach(function (key) {
+	    var user = users[key];
+	    var otherAvatar = document.getElementById(user.id);
+	    if (otherAvatar) (0, _utils.updateUsersBullets)(user);
 	  });
 	});
 	
 	// Remove a user's avatar when they disconnect from the server
-	socket.on('removeUser', function (userId) {
-	  console.log('Removing user.');
-	  var scene = document.getElementById('scene');
-	  var avatarToBeRemoved = document.getElementById(userId);
-	  scene.remove(avatarToBeRemoved); // Remove from scene
-	  avatarToBeRemoved.parentNode.removeChild(avatarToBeRemoved); // Remove from DOM
-	});
+	socket.on('removeUser', _utils.removeUser);
 	
 	exports.default = socket;
 
@@ -116210,6 +116216,8 @@
 	});
 	exports.putSelfOnDOM = putSelfOnDOM;
 	exports.putUserOnDOM = putUserOnDOM;
+	exports.updateUser = updateUser;
+	exports.removeUser = removeUser;
 	function putSelfOnDOM(user) {
 	  var scene = document.getElementById('scene');
 	  var avatar = document.createElement('a-camera');
@@ -116224,6 +116232,9 @@
 	  avatar.setAttribute('wasd-controls', 'fly: true; acceleration: 4001');
 	  avatar.setAttribute('spawner', 'mixin: laser; on: click');
 	  avatar.setAttribute('click-listener', true);
+	  avatar.bulletsFired = 0;
+	  avatar.newBullets = [];
+	  avatar.deadBullets = [];
 	
 	  //add model to camera
 	  var model = document.createElement('a-obj-model');
@@ -116247,6 +116258,31 @@
 	  return avatar;
 	}
 	
+	function createBullets(userId, bullets) {
+	  console.log('SSSSSSSSS', bullets);
+	  var scene = document.getElementById('scene');
+	  Object.keys(bullets).forEach(function (key) {
+	    console.log('key:', key);
+	    var bulletData = bullets[key];
+	    if (!bulletData) return;
+	    var bulletId = key;
+	
+	    var bullet = document.createElement('a-entity');
+	    scene.appendChild(bullet);
+	    bullet.setAttribute('class', userId + 'bullet');
+	    bullet.setAttribute('id', bulletId);
+	    bullet.setAttribute('position', bulletData.pos);
+	    bullet.setAttribute('rotation', {
+	      x: bulletData.rot.x - 90,
+	      y: bulletData.rot.y,
+	      z: bulletData.rot.z
+	    });
+	    bullet.setAttribute('other-bullet', true);
+	    bullet.setAttribute('geometry', 'primitive: cylinder; radius: 0.1; height: 8');
+	    bullet.setAttribute('material', 'color: yellow; metalness: 0.2; opacity: 0.8; roughness: 0.3');
+	  });
+	}
+	
 	function putUserOnDOM(user) {
 	  var scene = document.getElementById('scene');
 	  var avatar = document.createElement('a-entity');
@@ -116266,19 +116302,44 @@
 	  model.setAttribute('mtl', '#arc170-mtl');
 	
 	  //add their bullets
-	  for (key in user.bullets) {
-	    if (!user.bullets[key]) continue;
-	    var bulletId = key;
-	    var bulletData = user.bullets[key];
-	
-	    var bullet = document.createElement('a-entity');
-	    bullet.setAttribute('id', bulletId);
-	    bullet.setAttribute('position', new THREE.Vector3(bulletData.pos.x, bulletData.pos.y, bulletData.pos.z));
-	    bullet.setAttribute('rotation', bulletData.rot);
-	    bullet.setAttribute('other-bullet', true);
-	  }
+	  createBullets(user.id, user.bullets);
 	
 	  return avatar;
+	}
+	
+	function removeBullets(userId, bullets) {
+	  var scene = document.getElementById('scene');
+	  for (var i = 0; i < bullets.length; i++) {
+	    var _bullet = document.getElementById(bullets[i].id);
+	    scene.remove(_bullet);
+	    _bullet.parentNode.removeChild(_bullet);
+	  }
+	}
+	
+	function updateUser(user) {
+	  var otherAvatar = document.getElementById(user.id);
+	
+	  otherAvatar.setAttribute('position', user.x + ' ' + user.y + ' ' + user.z);
+	  otherAvatar.setAttribute('rotation', user.xrot + ' ' + user.yrot + ' ' + user.zrot);
+	
+	  //update their bullets
+	  createBullets(user.id, user.newBullets);
+	  removeBullets(user.id, user.deadBullets);
+	}
+	
+	function removeUser(userId) {
+	  console.log('Removing user.');
+	  var scene = document.getElementById('scene');
+	  var avatarToBeRemoved = document.getElementById(userId);
+	  scene.remove(avatarToBeRemoved);
+	  avatarToBeRemoved.parentNode.removeChild(avatarToBeRemoved);
+	
+	  //remove all their bullets
+	  var bullets = document.querySelectorAll('.' + userId + 'bullet');
+	  for (var i = 0; i < bullets.length; i++) {
+	    scene.remove(bullet);
+	    bullet.parentNode.removeChild(bullet);
+	  }
 	}
 
 /***/ },
@@ -116290,7 +116351,7 @@
 	AFRAME.registerComponent('other-bullet', {
 	  schema: {
 	    speed: {
-	      default: -0.4
+	      default: 0.02
 	    }
 	  },
 	

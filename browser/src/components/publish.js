@@ -9,8 +9,6 @@ export default AFRAME.registerComponent('publish', {
       const el = this.el;
       const bullets = {};
 
-      //TODO grab new bullets and removed bullets
-
       socket.emit('tick', {
         id: el.getAttribute('id'),
         x: el.getAttribute('position').x,
@@ -19,8 +17,13 @@ export default AFRAME.registerComponent('publish', {
         xrot: el.getAttribute('rotation').x,
         yrot: el.getAttribute('rotation').y,
         zrot: el.getAttribute('rotation').z,
-        bullets
+        newBullets: el.newBullets,
+        deadBullets: el.deadBullets
       });
+
+      el.newBullets = [];
+      el.deadBullets = [];
+
     }
   }
 });
