@@ -60,6 +60,7 @@
 	__webpack_require__(230);
 	__webpack_require__(232);
 	__webpack_require__(269);
+	__webpack_require__(270);
 
 /***/ },
 /* 1 */
@@ -122964,6 +122965,21 @@
 	  }
 	});
 
+
+/***/ },
+/* 270 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	AFRAME.registerComponent('click-listener', {
+	  init: function init() {
+	    var el = this.el;
+	    window.addEventListener('click', function () {
+	      el.emit('click', null, false);
+	    });
+	  }
+	});
 
 /***/ }
 /******/ ]);
