@@ -16,6 +16,10 @@ import Routes from './routes';
 
 app.use('/api', Routes);
 
+app.get('/bundle.js', (req, res) => {
+  res.sendFile(path.join(app.getValue('projectRoot'), './browser/bundle.js'))
+})
+
 app.get('/*', (req, res) => {
   // if (req.session.socketData) {
   //   console.log(chalk.magenta(`A user @ ${req.session.socketData.address} just visited the site.`));
