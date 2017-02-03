@@ -15,7 +15,7 @@ export function putSelfOnDOM(user) {
   avatar.bulletsFired = 0;
   avatar.newBullets = [];
   avatar.deadBullets = [];
-
+  avatar.setAttribute('ship', true);
 
   //add model to camera
   const model = document.createElement('a-obj-model');
@@ -123,3 +123,4 @@ export function removeUser(userId) {
     bullet.parentNode.removeChild(bullet);
   }
 }
+
