@@ -42,7 +42,9 @@ const createAndEmitUser = socket => {
     const userId = socket.id;
     const user = Map(createUser(userId));
     dispatch(addUser(user));
+    console.log('user added')
     socket.on('sceneLoad', () => {
+      console.log('scene loaded')
       socket.emit('createUser', user);
     });
   };
