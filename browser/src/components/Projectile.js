@@ -61,7 +61,7 @@
 AFRAME.registerComponent('projectile', {
   schema: {
     speed: {
-      default: -0.4
+      default: 0.4
     }
   },
   tick: function() {

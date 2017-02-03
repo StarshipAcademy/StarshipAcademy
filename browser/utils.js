@@ -58,7 +58,7 @@ function createBullets(userId, bullets) {
       y: bulletData.rot.y,
       z: bulletData.rot.z
     });
-    bullet.setAttribute('other-bullet', true);
+    bullet.setAttribute('projectile', true);
     bullet.setAttribute('geometry', 'primitive: cylinder; radius: 0.1; height: 8');
     bullet.setAttribute('material', 'color: yellow; metalness: 0.2; opacity: 0.8; roughness: 0.3');
   })
