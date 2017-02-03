@@ -4,7 +4,7 @@
   "description": "A medium sized back-end boiler plate, with very little done on the front.",
   "main": "app.js",
   "scripts": {
-    "build": "webpack -w",
+    "build": "webpack",
     "start": "babel-node --presets es2015 app.js",
     "dev": "webpack -w && nodemon --watch app.js -e js,html babelify.js"
   },
