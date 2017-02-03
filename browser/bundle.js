@@ -49,10 +49,20 @@
 	__webpack_require__(1);
 	__webpack_require__(5);
 	__webpack_require__(6);
+<<<<<<< HEAD
 	__webpack_require__(168);
 	__webpack_require__(169);
 	__webpack_require__(170);
 	__webpack_require__(171);
+=======
+	__webpack_require__(111);
+	__webpack_require__(112);
+	__webpack_require__(113);
+	__webpack_require__(114);
+	__webpack_require__(115);
+	__webpack_require__(116);
+	__webpack_require__(117);
+>>>>>>> master
 	__webpack_require__(172);
 	__webpack_require__(173);
 	__webpack_require__(174);
@@ -70159,11 +70169,19 @@
 
 	module.exports = {
 	  controls:   __webpack_require__(7),
+<<<<<<< HEAD
 	  loaders:    __webpack_require__(145),
 	  misc:       __webpack_require__(154),
 	  physics:    __webpack_require__(8),
 	  primitives: __webpack_require__(161),
 	  shadows:    __webpack_require__(165),
+=======
+	  loaders:    __webpack_require__(88),
+	  misc:       __webpack_require__(97),
+	  physics:    __webpack_require__(8),
+	  primitives: __webpack_require__(104),
+	  shadows:    __webpack_require__(108),
+>>>>>>> master
 	
 	  registerAll: function () {
 	    this.controls.registerAll();
@@ -70183,6 +70201,7 @@
 	var physics = __webpack_require__(8);
 	
 	module.exports = {
+<<<<<<< HEAD
 	  'checkpoint-controls': __webpack_require__(135),
 	  'gamepad-controls':    __webpack_require__(136),
 	  'hmd-controls':        __webpack_require__(139),
@@ -70190,6 +70209,15 @@
 	  'mouse-controls':      __webpack_require__(142),
 	  'touch-controls':      __webpack_require__(143),
 	  'universal-controls':  __webpack_require__(144),
+=======
+	  'checkpoint-controls': __webpack_require__(78),
+	  'gamepad-controls':    __webpack_require__(79),
+	  'hmd-controls':        __webpack_require__(82),
+	  'keyboard-controls':   __webpack_require__(83),
+	  'mouse-controls':      __webpack_require__(85),
+	  'touch-controls':      __webpack_require__(86),
+	  'universal-controls':  __webpack_require__(87),
+>>>>>>> master
 	
 	  registerAll: function (AFRAME) {
 	    if (this._registered) return;
@@ -70219,9 +70247,15 @@
 	
 	module.exports = {
 	  'dynamic-body':   __webpack_require__(69),
+<<<<<<< HEAD
 	  'static-body':    __webpack_require__(131),
 	  'constraint':     __webpack_require__(132),
 	  'system':         __webpack_require__(133),
+=======
+	  'static-body':    __webpack_require__(74),
+	  'constraint':     __webpack_require__(75),
+	  'system':         __webpack_require__(76),
+>>>>>>> master
 	
 	  registerAll: function (AFRAME) {
 	    if (this._registered) return;
@@ -70326,13 +70360,17 @@
 						"directUrl": "https://raw.githubusercontent.com/donmccurdy/cannon.js/v0.6.2-dev1/package.json"
 					}
 				},
+<<<<<<< HEAD
 				"/Users/charitycorcino/StarshipAcademy/node_modules/aframe-physics-system"
+=======
+				"/Users/jimmy/Desktop/StarshipAcademy/node_modules/aframe-physics-system"
+>>>>>>> master
 			]
 		],
 		"_from": "donmccurdy/cannon.js#v0.6.2-dev1",
 		"_id": "cannon@0.6.2",
 		"_inCache": true,
-		"_location": "/aframe-physics-system/cannon",
+		"_location": "/cannon",
 		"_phantomChildren": {},
 		"_requested": {
 			"raw": "cannon@github:donmccurdy/cannon.js#v0.6.2-dev1",
@@ -70356,10 +70394,17 @@
 			"/aframe-physics-system"
 		],
 		"_resolved": "git://github.com/donmccurdy/cannon.js.git#022e8ba53fa83abf0ad8a0e4fd08623123838a17",
+<<<<<<< HEAD
 		"_shasum": "e8931a587c37713c3dc12cf313c923a3a3da36d7",
 		"_shrinkwrap": null,
 		"_spec": "cannon@github:donmccurdy/cannon.js#v0.6.2-dev1",
 		"_where": "/Users/charitycorcino/StarshipAcademy/node_modules/aframe-physics-system",
+=======
+		"_shasum": "e4a141f606932bb4ffc026e35010b38aa3b59b0e",
+		"_shrinkwrap": null,
+		"_spec": "cannon@github:donmccurdy/cannon.js#v0.6.2-dev1",
+		"_where": "/Users/jimmy/Desktop/StarshipAcademy/node_modules/aframe-physics-system",
+>>>>>>> master
 		"author": {
 			"name": "Stefan Hedman",
 			"email": "schteppe@gmail.com",
@@ -85133,7 +85178,11 @@
 	var CANNON = __webpack_require__(9),
 	    mesh2shape = __webpack_require__(71);
 	
+<<<<<<< HEAD
 	__webpack_require__(130);
+=======
+	__webpack_require__(73);
+>>>>>>> master
 	
 	module.exports = {
 	  schema: {
@@ -85385,8 +85434,13 @@
 /* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 	var CANNON = __webpack_require__(72),
 	    quickhull = __webpack_require__(129);
+=======
+	var CANNON = __webpack_require__(9),
+	    quickhull = __webpack_require__(72);
+>>>>>>> master
 	
 	var PI_2 = Math.PI / 2;
 	
@@ -85418,6 +85472,7 @@
 	  } else if (options.type) {
 	    throw new Error('[CANNON.mesh2shape] Invalid type "%s".', options.type);
 	  }
+<<<<<<< HEAD
 	
 	  var geometry = getGeometry(object);
 	
@@ -99981,131 +100036,150 @@
 	    if(doProfiling){
 	        profilingStart = performance.now();
 	    }
+=======
+>>>>>>> master
 	
-	    // Add all friction eqs
-	    for (var i = 0; i < this.frictionEquations.length; i++) {
-	        solver.addEquation(this.frictionEquations[i]);
-	    }
+	  var geometry = getGeometry(object);
 	
-	    var ncontacts = contacts.length;
-	    for(var k=0; k!==ncontacts; k++){
+	  if (!geometry) return null;
 	
-	        // Current contact
-	        var c = contacts[k];
+	  var type = geometry.metadata
+	    ? geometry.metadata.type
+	    : geometry.type;
 	
-	        // Get current collision indeces
-	        var bi = c.bi,
-	            bj = c.bj,
-	            si = c.si,
-	            sj = c.sj;
+	  switch (type) {
+	    case 'BoxGeometry':
+	    case 'BoxBufferGeometry':
+	      return createBoxShape(geometry);
+	    case 'CylinderGeometry':
+	    case 'CylinderBufferGeometry':
+	      return createCylinderShape(geometry);
+	    case 'PlaneGeometry':
+	    case 'PlaneBufferGeometry':
+	      return createPlaneShape(geometry);
+	    case 'SphereGeometry':
+	    case 'SphereBufferGeometry':
+	      return createSphereShape(geometry);
+	    case 'TubeGeometry':
+	      return createTubeShape(geometry);
+	    case 'Geometry':
+	    case 'BufferGeometry':
+	      return createTrimeshShape(geometry);
+	    default:
+	      console.warn('Unrecognized geometry: "%s". Using bounding box as shape.', geometry.type);
+	      return createBoxShape(geometry);
+	  }
+	};
 	
-	        // Get collision properties
-	        var cm;
-	        if(bi.material && bj.material){
-	            cm = this.getContactMaterial(bi.material,bj.material) || this.defaultContactMaterial;
-	        } else {
-	            cm = this.defaultContactMaterial;
-	        }
+	CANNON.mesh2shape.Type = Type;
 	
-	        // c.enabled = bi.collisionResponse && bj.collisionResponse && si.collisionResponse && sj.collisionResponse;
+	/******************************************************************************
+	 * Shape construction
+	 */
 	
-	        var mu = cm.friction;
-	        // c.restitution = cm.restitution;
+	 /**
+	  * @param  {THREE.Geometry} geometry
+	  * @return {CANNON.Shape}
+	  */
+	 function createBoxShape (geometry) {
+	   var vertices = getVertices(geometry);
 	
-	        // If friction or restitution were specified in the material, use them
-	        if(bi.material && bj.material){
-	            if(bi.material.friction >= 0 && bj.material.friction >= 0){
-	                mu = bi.material.friction * bj.material.friction;
-	            }
+	   if (!vertices.length) return null;
 	
-	            if(bi.material.restitution >= 0 && bj.material.restitution >= 0){
-	                c.restitution = bi.material.restitution * bj.material.restitution;
-	            }
-	        }
+	   geometry.computeBoundingBox();
+	   var box = geometry.boundingBox;
+	   return new CANNON.Box(new CANNON.Vec3(
+	     (box.max.x - box.min.x) / 2,
+	     (box.max.y - box.min.y) / 2,
+	     (box.max.z - box.min.z) / 2
+	   ));
+	 }
 	
-			// c.setSpookParams(
-	  //           cm.contactEquationStiffness,
-	  //           cm.contactEquationRelaxation,
-	  //           dt
-	  //       );
+	/**
+	 * Bounding box needs to be computed with the entire mesh, not just geometry.
+	 * @param  {THREE.Object3D} mesh
+	 * @return {CANNON.Shape}
+	 */
+	function createBoundingBoxShape (object) {
+	  var box, shape, localPosition, worldPosition,
+	      helper = new THREE.BoundingBoxHelper(object);
 	
-			solver.addEquation(c);
+	  helper.update();
+	  box = helper.box;
 	
-			// // Add friction constraint equation
-			// if(mu > 0){
+	  if (!isFinite(box.min.lengthSq())) return null;
 	
-			// 	// Create 2 tangent equations
-			// 	var mug = mu * gnorm;
-			// 	var reducedMass = (bi.invMass + bj.invMass);
-			// 	if(reducedMass > 0){
-			// 		reducedMass = 1/reducedMass;
-			// 	}
-			// 	var pool = frictionEquationPool;
-			// 	var c1 = pool.length ? pool.pop() : new FrictionEquation(bi,bj,mug*reducedMass);
-			// 	var c2 = pool.length ? pool.pop() : new FrictionEquation(bi,bj,mug*reducedMass);
-			// 	this.frictionEquations.push(c1, c2);
+	  shape = new CANNON.Box(new CANNON.Vec3(
+	    (box.max.x - box.min.x) / 2,
+	    (box.max.y - box.min.y) / 2,
+	    (box.max.z - box.min.z) / 2
+	  ));
 	
-			// 	c1.bi = c2.bi = bi;
-			// 	c1.bj = c2.bj = bj;
-			// 	c1.minForce = c2.minForce = -mug*reducedMass;
-			// 	c1.maxForce = c2.maxForce = mug*reducedMass;
+	  object.updateMatrixWorld();
+	  worldPosition = new THREE.Vector3();
+	  worldPosition.setFromMatrixPosition(object.matrixWorld);
+	  localPosition = helper.position.sub(worldPosition);
+	  if (localPosition.lengthSq()) {
+	    shape.offset = localPosition;
+	  }
 	
-			// 	// Copy over the relative vectors
-			// 	c1.ri.copy(c.ri);
-			// 	c1.rj.copy(c.rj);
-			// 	c2.ri.copy(c.ri);
-			// 	c2.rj.copy(c.rj);
+	  return shape;
+	}
 	
-			// 	// Construct tangents
-			// 	c.ni.tangents(c1.t, c2.t);
+	/**
+	 * Computes 3D convex hull as a CANNON.ConvexPolyhedron.
+	 * @param  {THREE.Object3D} mesh
+	 * @return {CANNON.Shape}
+	 */
+	function createConvexPolyhedron (object) {
+	  var i, vertices, faces, hull,
+	      eps = 1e-4,
+	      geometry = getGeometry(object);
 	
-	  //           // Set spook params
-	  //           c1.setSpookParams(cm.frictionEquationStiffness, cm.frictionEquationRelaxation, dt);
-	  //           c2.setSpookParams(cm.frictionEquationStiffness, cm.frictionEquationRelaxation, dt);
+	  if (!geometry || !geometry.vertices.length) return null;
 	
-	  //           c1.enabled = c2.enabled = c.enabled;
+	  // Perturb.
+	  for (i = 0; i < geometry.vertices.length; i++) {
+	    geometry.vertices[i].x += (Math.random() - 0.5) * eps;
+	    geometry.vertices[i].y += (Math.random() - 0.5) * eps;
+	    geometry.vertices[i].z += (Math.random() - 0.5) * eps;
+	  }
 	
-			// 	// Add equations to solver
-			// 	solver.addEquation(c1);
-			// 	solver.addEquation(c2);
-			// }
+	  // Compute the 3D convex hull.
+	  hull = quickhull(geometry);
 	
-	        if( bi.allowSleep &&
-	            bi.type === Body.DYNAMIC &&
-	            bi.sleepState  === Body.SLEEPING &&
-	            bj.sleepState  === Body.AWAKE &&
-	            bj.type !== Body.STATIC
-	        ){
-	            var speedSquaredB = bj.velocity.norm2() + bj.angularVelocity.norm2();
-	            var speedLimitSquaredB = Math.pow(bj.sleepSpeedLimit,2);
-	            if(speedSquaredB >= speedLimitSquaredB*2){
-	                bi._wakeUpAfterNarrowphase = true;
-	            }
-	        }
+	  // Convert from THREE.Vector3 to CANNON.Vec3.
+	  vertices = new Array(hull.vertices.length);
+	  for (i = 0; i < hull.vertices.length; i++) {
+	    vertices[i] = new CANNON.Vec3(hull.vertices[i].x, hull.vertices[i].y, hull.vertices[i].z);
+	  }
 	
-	        if( bj.allowSleep &&
-	            bj.type === Body.DYNAMIC &&
-	            bj.sleepState  === Body.SLEEPING &&
-	            bi.sleepState  === Body.AWAKE &&
-	            bi.type !== Body.STATIC
-	        ){
-	            var speedSquaredA = bi.velocity.norm2() + bi.angularVelocity.norm2();
-	            var speedLimitSquaredA = Math.pow(bi.sleepSpeedLimit,2);
-	            if(speedSquaredA >= speedLimitSquaredA*2){
-	                bj._wakeUpAfterNarrowphase = true;
-	            }
-	        }
+	  // Convert from THREE.Face to Array<number>.
+	  faces = new Array(hull.faces.length);
+	  for (i = 0; i < hull.faces.length; i++) {
+	    faces[i] = [hull.faces[i].a, hull.faces[i].b, hull.faces[i].c];
+	  }
 	
-	        // Now we know that i and j are in contact. Set collision matrix state
-			this.collisionMatrix.set(bi, bj, true);
+	  return new CANNON.ConvexPolyhedron(vertices, faces);
+	}
 	
-	        if (!this.collisionMatrixPrevious.get(bi, bj)) {
-	            // First contact!
-	            // We reuse the collideEvent object, otherwise we will end up creating new objects for each new contact, even if there's no event listener attached.
-	            World_step_collideEvent.body = bj;
-	            World_step_collideEvent.contact = c;
-	            bi.dispatchEvent(World_step_collideEvent);
+	/**
+	 * @param  {THREE.Geometry} geometry
+	 * @return {CANNON.Shape}
+	 */
+	function createCylinderShape (geometry) {
+	  var shape,
+	      params = geometry.metadata
+	        ? geometry.metadata.parameters
+	        : geometry.parameters;
+	  shape = new CANNON.Cylinder(
+	    params.radiusTop,
+	    params.radiusBottom,
+	    params.height,
+	    params.radialSegments
+	  );
 	
+<<<<<<< HEAD
 	            World_step_collideEvent.body = bi;
 	            bj.dispatchEvent(World_step_collideEvent);
 	        }
@@ -100120,63 +100194,86 @@
 	        profile.makeContactConstraints = performance.now() - profilingStart;
 	        profilingStart = performance.now();
 	    }
+=======
+	  // Include metadata for serialization.
+	  shape._type = CANNON.Shape.types.CYLINDER; // Patch schteppe/cannon.js#329.
+	  shape.radiusTop = params.radiusTop;
+	  shape.radiusBottom = params.radiusBottom;
+	  shape.height = params.height;
+	  shape.numSegments = params.radialSegments;
+>>>>>>> master
 	
-	    // Wake up bodies
-	    for(i=0; i!==N; i++){
-	        var bi = bodies[i];
-	        if(bi._wakeUpAfterNarrowphase){
-	            bi.wakeUp();
-	            bi._wakeUpAfterNarrowphase = false;
-	        }
-	    }
+	  shape.orientation = new CANNON.Quaternion();
+	  shape.orientation.setFromEuler(THREE.Math.degToRad(-90), 0, 0, 'XYZ').normalize();
+	  return shape;
+	}
 	
-	    // Add user-added constraints
-	    var Nconstraints = constraints.length;
-	    for(i=0; i!==Nconstraints; i++){
-	        var c = constraints[i];
-	        c.update();
-	        for(var j=0, Neq=c.equations.length; j!==Neq; j++){
-	            var eq = c.equations[j];
-	            solver.addEquation(eq);
-	        }
-	    }
+	/**
+	 * @param  {THREE.Object3D} object
+	 * @return {CANNON.Shape}
+	 */
+	function createBoundingCylinderShape (object, options) {
+	  var shape, height, radius,
+	      geometry = getGeometry(object),
+	      axes = ['x', 'y', 'z'],
+	      majorAxis = options.cylinderAxis || 'y',
+	      minorAxes = axes.splice(axes.indexOf(majorAxis), 1) && axes;
 	
-	    // Solve the constrained system
-	    solver.solve(dt,this);
+	  // Compute cylinder dimensions.
+	  geometry.computeBoundingBox();
+	  geometry.computeBoundingSphere();
+	  height = geometry.boundingBox.max[majorAxis] - geometry.boundingBox.min[majorAxis];
+	  radius = 0.5 * Math.max(
+	    geometry.boundingBox.max[minorAxes[0]] - geometry.boundingBox.min[minorAxes[0]],
+	    geometry.boundingBox.max[minorAxes[1]] - geometry.boundingBox.min[minorAxes[1]]
+	  );
 	
-	    if(doProfiling){
-	        profile.solve = performance.now() - profilingStart;
-	    }
+	  // Create shape.
+	  shape = new CANNON.Cylinder(radius, radius, height, 12);
 	
-	    // Remove all contacts from solver
-	    solver.removeAllEquations();
+	  // Include metadata for serialization.
+	  shape._type = CANNON.Shape.types.CYLINDER; // Patch schteppe/cannon.js#329.
+	  shape.radiusTop = radius;
+	  shape.radiusBottom = radius;
+	  shape.height = height;
+	  shape.numSegments = 12;
 	
-	    // Apply damping, see http://code.google.com/p/bullet/issues/detail?id=74 for details
-	    var pow = Math.pow;
-	    for(i=0; i!==N; i++){
-	        var bi = bodies[i];
-	        if(bi.type & DYNAMIC){ // Only for dynamic bodies
-	            var ld = pow(1.0 - bi.linearDamping,dt);
-	            var v = bi.velocity;
-	            v.mult(ld,v);
-	            var av = bi.angularVelocity;
-	            if(av){
-	                var ad = pow(1.0 - bi.angularDamping,dt);
-	                av.mult(ad,av);
-	            }
-	        }
-	    }
+	  shape.orientation = new CANNON.Quaternion();
+	  shape.orientation.setFromEuler(
+	    majorAxis === 'y' ? PI_2 : 0,
+	    majorAxis === 'z' ? PI_2 : 0,
+	    0,
+	    'XYZ'
+	  ).normalize();
+	  return shape;
+	}
 	
-	    this.dispatchEvent(World_step_preStepEvent);
+	/**
+	 * @param  {THREE.Geometry} geometry
+	 * @return {CANNON.Shape}
+	 */
+	function createPlaneShape (geometry) {
+	  geometry.computeBoundingBox();
+	  var box = geometry.boundingBox;
+	  return new CANNON.Box(new CANNON.Vec3(
+	    (box.max.x - box.min.x) / 2 || 0.1,
+	    (box.max.y - box.min.y) / 2 || 0.1,
+	    (box.max.z - box.min.z) / 2 || 0.1
+	  ));
+	}
 	
-	    // Invoke pre-step callbacks
-	    for(i=0; i!==N; i++){
-	        var bi = bodies[i];
-	        if(bi.preStep){
-	            bi.preStep.call(bi);
-	        }
-	    }
+	/**
+	 * @param  {THREE.Geometry} geometry
+	 * @return {CANNON.Shape}
+	 */
+	function createSphereShape (geometry) {
+	  var params = geometry.metadata
+	    ? geometry.metadata.parameters
+	    : geometry.parameters;
+	  return new CANNON.Sphere(params.radius);
+	}
 	
+<<<<<<< HEAD
 	    // Leap frog
 	    // vnew = v + h*f/m
 	    // xnew = x + h*vnew
@@ -100191,36 +100288,90 @@
 	        bodies[i].integrate(dt, quatNormalize, quatNormalizeFast);
 	    }
 	    this.clearForces();
+=======
+	/**
+	 * @param  {THREE.Object3D} object
+	 * @return {CANNON.Shape}
+	 */
+	function createBoundingSphereShape (object, options) {
+	  var geometry = getGeometry(object);
+	  geometry.computeBoundingSphere();
+	  return new CANNON.Sphere(options.sphereRadius || geometry.boundingSphere.radius);
+	}
 	
-	    this.broadphase.dirty = true;
+	/**
+	 * @param  {THREE.Geometry} geometry
+	 * @return {CANNON.Shape}
+	 */
+	function createTubeShape (geometry) {
+	  var tmp = new THREE.BufferGeometry();
+	  tmp.fromGeometry(geometry);
+	  return createTrimeshShape(tmp);
+	}
 	
-	    if(doProfiling){
-	        profile.integrate = performance.now() - profilingStart;
+	/**
+	 * @param  {THREE.Geometry} geometry
+	 * @return {CANNON.Shape}
+	 */
+	function createTrimeshShape (geometry) {
+	  var indices,
+	      vertices = getVertices(geometry);
+	
+	  if (!vertices.length) return null;
+	
+	  indices = Object.keys(vertices).map(Number);
+	  return new CANNON.Trimesh(vertices, indices);
+	}
+>>>>>>> master
+	
+	/******************************************************************************
+	 * Utils
+	 */
+	
+	/**
+	 * Returns a single geometry for the given object. If the object is compound,
+	 * its geometries are automatically merged.
+	 * @param {THREE.Object3D} object
+	 * @return {THREE.Geometry}
+	 */
+	function getGeometry (object) {
+	  var matrix, mesh,
+	      meshes = getMeshes(object),
+	      tmp = new THREE.Geometry(),
+	      combined = new THREE.Geometry();
+	
+	  if (meshes.length === 0) return null;
+	
+	  // Apply scale  – it can't easily be applied to a CANNON.Shape later.
+	  if (meshes.length === 1) {
+	    var position = new THREE.Vector3(),
+	        quaternion = new THREE.Quaternion(),
+	        scale = new THREE.Vector3();
+	    tmp = meshes[0].geometry.clone();
+	    tmp.metadata = meshes[0].geometry.metadata;
+	    meshes[0].updateMatrixWorld();
+	    meshes[0].matrixWorld.decompose(position, quaternion, scale);
+	    return tmp.scale(scale.x, scale.y, scale.z);
+	  }
+	
+	  // Recursively merge geometry, preserving local transforms.
+	  while ((mesh = meshes.pop())) {
+	    mesh.updateMatrixWorld();
+	    if (mesh.geometry instanceof THREE.BufferGeometry) {
+	      tmp.fromBufferGeometry(mesh.geometry);
+	      combined.merge(tmp, mesh.matrixWorld);
+	    } else {
+	      combined.merge(mesh.geometry, mesh.matrixWorld);
 	    }
+	  }
 	
-	    // Update world time
-	    this.time += dt;
-	    this.stepnumber += 1;
+	  matrix = new THREE.Matrix4();
+	  matrix.scale(object.scale);
+	  combined.applyMatrix(matrix);
+	  return combined;
+	}
 	
-	    this.dispatchEvent(World_step_postStepEvent);
-	
-	    // Invoke post-step callbacks
-	    for(i=0; i!==N; i++){
-	        var bi = bodies[i];
-	        var postStep = bi.postStep;
-	        if(postStep){
-	            postStep.call(bi);
-	        }
-	    }
-	
-	    // Sleeping update
-	    if(this.allowSleep){
-	        for(i=0; i!==N; i++){
-	            bodies[i].sleepTick(this.time);
-	        }
-	    }
-	};
-	
+<<<<<<< HEAD
 	World.prototype.emitContactEvents = (function(){
 	    var additions = [];
 	    var removals = [];
@@ -100503,6 +100654,40 @@
 
 /***/ },
 /* 129 */
+=======
+	/**
+	 * @param  {THREE.Geometry} geometry
+	 * @return {Array<number>}
+	 */
+	function getVertices (geometry) {
+	  if (!geometry.attributes) {
+	    geometry = new THREE.BufferGeometry().fromGeometry(geometry);
+	  }
+	  return (geometry.attributes.position || {}).array || [];
+	}
+	
+	/**
+	 * Returns a flat array of THREE.Mesh instances from the given object. If
+	 * nested transformations are found, they are applied to child meshes
+	 * as mesh.userData.matrix, so that each mesh has its position/rotation/scale
+	 * independently of all of its parents except the top-level object.
+	 * @param  {THREE.Object3D} object
+	 * @return {Array<THREE.Mesh>}
+	 */
+	function getMeshes (object) {
+	  var meshes = [];
+	  object.traverse(function (o) {
+	    if (o.type === 'Mesh') {
+	      meshes.push(o);
+	    }
+	  });
+	  return meshes;
+	}
+
+
+/***/ },
+/* 72 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	/**
@@ -100958,7 +101143,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 130 */
+=======
+/* 73 */
+>>>>>>> master
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -101122,7 +101311,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 131 */
+=======
+/* 74 */
+>>>>>>> master
 /***/ function(module, exports, __webpack_require__) {
 
 	var Body = __webpack_require__(70);
@@ -101141,7 +101334,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 132 */
+=======
+/* 75 */
+>>>>>>> master
 /***/ function(module, exports, __webpack_require__) {
 
 	var CANNON = __webpack_require__(9);
@@ -101227,11 +101424,19 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 133 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var CANNON = __webpack_require__(9),
 	    CONSTANTS = __webpack_require__(134),
+=======
+/* 76 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var CANNON = __webpack_require__(9),
+	    CONSTANTS = __webpack_require__(77),
+>>>>>>> master
 	    C_GRAV = CONSTANTS.GRAVITY,
 	    C_MAT = CONSTANTS.CONTACT_MATERIAL;
 	
@@ -101390,7 +101595,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 134 */
+=======
+/* 77 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -101409,7 +101618,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 135 */
+=======
+/* 78 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	var EPS = 0.1;
@@ -101479,7 +101692,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 136 */
+=======
+/* 79 */
+>>>>>>> master
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -101491,8 +101708,13 @@
 	 * https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API/Using_the_Gamepad_API
 	 */
 	
+<<<<<<< HEAD
 	var GamepadButton = __webpack_require__(137),
 	    GamepadButtonEvent = __webpack_require__(138);
+=======
+	var GamepadButton = __webpack_require__(80),
+	    GamepadButtonEvent = __webpack_require__(81);
+>>>>>>> master
 	
 	var JOYSTICK_EPS = 0.2;
 	
@@ -101732,7 +101954,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 137 */
+=======
+/* 80 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	module.exports = Object.assign(function GamepadButton () {}, {
@@ -101759,7 +101985,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 138 */
+=======
+/* 81 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	function GamepadButtonEvent (type, index, details) {
@@ -101773,7 +102003,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 139 */
+=======
+/* 82 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	var radToDeg = THREE.Math.radToDeg,
@@ -101860,10 +102094,17 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 140 */
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(141);
+=======
+/* 83 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(84);
+>>>>>>> master
 	
 	var MAX_DELTA = 0.2,
 	    PROXY_FLAG = '__keyboard-controls-proxy';
@@ -102015,7 +102256,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 141 */
+=======
+/* 84 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	/**
@@ -102752,7 +102997,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 142 */
+=======
+/* 85 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	/**
@@ -102896,7 +103145,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 143 */
+=======
+/* 86 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -102970,7 +103223,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 144 */
+=======
+/* 87 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	/**
@@ -103176,6 +103433,7 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 145 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -103186,6 +103444,18 @@
 	  'object-model': __webpack_require__(150),
 	  'ply-model': __webpack_require__(151),
 	  'three-model': __webpack_require__(153),
+=======
+/* 88 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  'animation-mixer': __webpack_require__(89),
+	  'fbx-model': __webpack_require__(90),
+	  'json-model': __webpack_require__(92),
+	  'object-model': __webpack_require__(93),
+	  'ply-model': __webpack_require__(94),
+	  'three-model': __webpack_require__(96),
+>>>>>>> master
 	
 	  registerAll: function (AFRAME) {
 	    if (this._registered) return;
@@ -103231,7 +103501,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 146 */
+=======
+/* 89 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	var DEFAULT_CLIP = '__auto__';
@@ -103321,10 +103595,17 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 147 */
 /***/ function(module, exports, __webpack_require__) {
 
 	THREE.FBXLoader = __webpack_require__(148);
+=======
+/* 90 */
+/***/ function(module, exports, __webpack_require__) {
+
+	THREE.FBXLoader = __webpack_require__(91);
+>>>>>>> master
 	
 	/**
 	 * fbx-model
@@ -103365,7 +103646,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 148 */
+=======
+/* 91 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	/**
@@ -106533,7 +106818,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 149 */
+=======
+/* 92 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	/**
@@ -106597,7 +106886,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 150 */
+=======
+/* 93 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	/**
@@ -106656,7 +106949,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 151 */
+=======
+/* 94 */
+>>>>>>> master
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -106664,7 +106961,11 @@
 	 *
 	 * Wraps THREE.PLYLoader.
 	 */
+<<<<<<< HEAD
 	THREE.PLYLoader = __webpack_require__(152);
+=======
+	THREE.PLYLoader = __webpack_require__(95);
+>>>>>>> master
 	
 	/**
 	 * Loads, caches, resolves geometries.
@@ -106741,7 +107042,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 152 */
+=======
+/* 95 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	/**
@@ -107225,7 +107530,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 153 */
+=======
+/* 96 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	var DEFAULT_ANIMATION = '__auto__';
@@ -107376,18 +107685,31 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 154 */
+=======
+/* 97 */
+>>>>>>> master
 /***/ function(module, exports, __webpack_require__) {
 
 	var physics = __webpack_require__(8);
 	
 	module.exports = {
+<<<<<<< HEAD
 	  'checkpoint':      __webpack_require__(155),
 	  'grab':            __webpack_require__(156),
 	  'jump-ability':    __webpack_require__(157),
 	  'kinematic-body':  __webpack_require__(158),
 	  'sphere-collider': __webpack_require__(159),
 	  'toggle-velocity': __webpack_require__(160),
+=======
+	  'checkpoint':      __webpack_require__(98),
+	  'grab':            __webpack_require__(99),
+	  'jump-ability':    __webpack_require__(100),
+	  'kinematic-body':  __webpack_require__(101),
+	  'sphere-collider': __webpack_require__(102),
+	  'toggle-velocity': __webpack_require__(103),
+>>>>>>> master
 	
 	  registerAll: function (AFRAME) {
 	    if (this._registered) return;
@@ -107408,7 +107730,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 155 */
+=======
+/* 98 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -107438,7 +107764,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 156 */
+=======
+/* 99 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	/**
@@ -107514,7 +107844,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 157 */
+=======
+/* 100 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	var ACCEL_G = -9.8, // m/s^2
@@ -107582,7 +107916,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 158 */
+=======
+/* 101 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	/**
@@ -107786,7 +108124,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 159 */
+=======
+/* 102 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	/**
@@ -107883,7 +108225,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 160 */
+=======
+/* 103 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	/**
@@ -107924,6 +108270,7 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -107931,6 +108278,15 @@
 	  'a-grid':        __webpack_require__(162),
 	  'a-ocean':        __webpack_require__(163),
 	  'a-tube':        __webpack_require__(164),
+=======
+/* 104 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  'a-grid':        __webpack_require__(105),
+	  'a-ocean':        __webpack_require__(106),
+	  'a-tube':        __webpack_require__(107),
+>>>>>>> master
 	
 	  registerAll: function (AFRAME) {
 	    if (this._registered) return;
@@ -107951,7 +108307,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 162 */
+=======
+/* 105 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	/**
@@ -107981,7 +108341,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 163 */
+=======
+/* 106 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	/**
@@ -108081,7 +108445,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 164 */
+=======
+/* 107 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	/**
@@ -108149,12 +108517,21 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
 	  'shadow':       __webpack_require__(166),
 	  'shadow-light': __webpack_require__(167),
+=======
+/* 108 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  'shadow':       __webpack_require__(109),
+	  'shadow-light': __webpack_require__(110),
+>>>>>>> master
 	
 	  registerAll: function (AFRAME) {
 	    if (this._registered) return;
@@ -108170,7 +108547,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 166 */
+=======
+/* 109 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	/**
@@ -108209,7 +108590,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 167 */
+=======
+/* 110 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	/**
@@ -108369,7 +108754,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 168 */
+=======
+/* 111 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	'use strict';
@@ -108384,7 +108773,11 @@
 	});
 
 /***/ },
+<<<<<<< HEAD
 /* 169 */
+=======
+/* 112 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	'use strict';
@@ -108416,91 +108809,92 @@
 	});
 
 /***/ },
+<<<<<<< HEAD
 /* 170 */
+=======
+/* 113 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	'use strict';
 	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	// AFRAME.registerComponent('projectile', {
+	//   schema: {
+	//     speed: { default: -0.4 },
+	//     target: {default: '.enemy'}
+	//   },
+	//
+	//   init: function () {
+	//       let enemies = document.querySelectorAll('.enemy')
+	//       this.targets = [];
+	//       for (var i = 0; i < enemies.length; i++) {
+	//         this.targets.push(enemies[i]);
+	//       }
+	//     },
+	//
+	//
+	//     tick: function () {
+	//       let intersect = (laser, asteroid) => {
+	//         var x = Math.max(asteroid.minX, Math.min(laser.x, asteroid.maxX));
+	//         var y = Math.max(asteroid.minY, Math.min(laser.y, asteroid.maxY));
+	//         var z = Math.max(asteroid.minZ, Math.min(laser.z, asteroid.maxZ));
+	//
+	//         var distance = Math.sqrt((x - laser.x) * (x - laser.x) +
+	//                                  (y - laser.y) * (y - laser.y) +
+	//                                  (z - laser.z) * (z - laser.z));
+	//         return distance < 0.25;
+	//       }
+	//
+	//       let bullet = this.el;
+	//       let hit = false
+	//         if(this.targets.length !== 0 && bullet.parentEl) {
+	//           for (let i = 0; i < this.targets.length; i++ ) {
+	//             let currentEnemy = this.targets[i].object3D
+	//             let asteroid = {
+	//               minX: currentEnemy.position.x - 2,
+	//               minY: currentEnemy.position.y - 2,
+	//               minZ: currentEnemy.position.z - 2,
+	//               maxX: currentEnemy.position.x + 2,
+	//               maxY: currentEnemy.position.y + 2,
+	//               maxZ: currentEnemy.position.z + 2
+	//             }
+	//             let laser = bullet.object3D.translateY(this.data.speed).position
+	//               let target = this.targets[i];
+	//
+	//             if(intersect(laser, asteroid) && target.parentNode) {
+	//               target.parentNode.removeChild(target)
+	//               bullet.parentNode.removeChild(bullet)
+	//               this.targets.splice(i, 1);
+	//               hit = true
+	//               return;
+	//             }
+	//           }
+	//           function hit(collision) {
+	//             if (hit) {
+	//               collision.object.el.emit('hit')
+	//             }
+	//           }
+	//       }
+	//       bullet.object3D.translateY(this.data.speed)
+	//     }
+	//   });
+	//
 	
 	AFRAME.registerComponent('projectile', {
 	  schema: {
-	    speed: { default: -0.4 },
-	    target: { default: '.enemy' }
+	    speed: { default: -0.4 }
 	  },
-	
-	  init: function init() {
-	    var enemies = document.querySelectorAll('.enemy');
-	    this.targets = [];
-	    for (var i = 0; i < enemies.length; i++) {
-	      this.targets.push(enemies[i]);
-	    }
-	  },
-	
 	  tick: function tick() {
-	    var _this = this;
-	
-	    var intersect = function intersect(laser, asteroid) {
-	      var x = Math.max(asteroid.minX, Math.min(laser.x, asteroid.maxX));
-	      var y = Math.max(asteroid.minY, Math.min(laser.y, asteroid.maxY));
-	      var z = Math.max(asteroid.minZ, Math.min(laser.z, asteroid.maxZ));
-	
-	      var distance = Math.sqrt((x - laser.x) * (x - laser.x) + (y - laser.y) * (y - laser.y) + (z - laser.z) * (z - laser.z));
-	      return distance < 0.25;
-	    };
-	
-	    var bullet = this.el;
-	    var hit = false;
-	    if (this.targets.length !== 0 && bullet.parentEl) {
-	      var _ret = function () {
-	        var _hit = function hit(collision) {
-	          if (_hit) {
-	            collision.object.el.emit('hit');
-	          }
-	        };
-	
-	        for (var i = 0; i < _this.targets.length; i++) {
-	          var currentEnemy = _this.targets[i].object3D;
-	          var asteroid = {
-	            minX: currentEnemy.position.x - 2,
-	            minY: currentEnemy.position.y - 2,
-	            minZ: currentEnemy.position.z - 2,
-	            maxX: currentEnemy.position.x + 2,
-	            maxY: currentEnemy.position.y + 2,
-	            maxZ: currentEnemy.position.z + 2
-	          };
-	          var laser = bullet.object3D.translateY(_this.data.speed).position;
-	          var target = _this.targets[i];
-	
-	          if (intersect(laser, asteroid) && target.parentNode) {
-	            target.parentNode.removeChild(target);
-	            bullet.parentNode.removeChild(bullet);
-	            _this.targets.splice(i, 1);
-	            _hit = true;
-	            return {
-	              v: void 0
-	            };
-	          }
-	        }
-	      }();
-	
-	      if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
-	    }
-	    bullet.object3D.translateY(this.data.speed);
+	    this.el.object3D.translateY(this.data.speed);
 	  }
 	});
-	
-	// AFRAME.registerComponent('projectile', {
-	//   schema: {
-	//     speed: { default: -0.4 }
-	//   },
-	//   tick: function () {
-	//     this.el.object3D.translateY(this.data.speed);
-	//   }
-	// });
 
 /***/ },
+<<<<<<< HEAD
 /* 171 */
+=======
+/* 114 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	'use strict';
@@ -108541,53 +108935,16 @@
 	        z: entityRotation.z + rotation.z
 	      });
 	    });
-	    console.log('SPAWNING');
 	    el.sceneEl.appendChild(entity);
 	  }
 	});
-	
-	// AFRAME.registerComponent('spawner', {
-	//   schema: {
-	//     on: { default: 'click' },
-	//     mixin: { default: '' }
-	//   },
-	//   /**
-	//    * Add event listener.
-	//    */
-	//   update: function (oldData) {
-	//     this.el.addEventListener(this.data.on, this.spawn.bind(this));
-	//   },
-	//   /**
-	//    * Spawn new entity at entity's current position.
-	//    */
-	//   spawn: function () {
-	//     var el = this.el;
-	//     var entity = document.createElement('a-entity');
-	//     var matrixWorld = el.object3D.matrixWorld;
-	//     var position = new THREE.Vector3();
-	//     var rotation = el.getAttribute('rotation');
-	//     var entityRotation;
-	//     position.setFromMatrixPosition(matrixWorld);
-	//     entity.setAttribute('position', position);
-	//     // Have the spawned entity face the same direction as the entity.
-	//     // Allow the entity to further modify the inherited rotation.
-	//     position.setFromMatrixPosition(matrixWorld);
-	//     entity.setAttribute('position', position);
-	//     entity.setAttribute('mixin', this.data.mixin);
-	//     entity.addEventListener('loaded', function () {
-	//       entityRotation = entity.getAttribute('rotation');
-	//       entity.setAttribute('rotation', {
-	//         x: entityRotation.x + rotation.x,
-	//         y: entityRotation.y + rotation.y,
-	//         z: entityRotation.z + rotation.z
-	//       });
-	//     });
-	//     el.sceneEl.appendChild(entity);
-	//   }
-	// });
 
 /***/ },
+<<<<<<< HEAD
 /* 172 */
+=======
+/* 115 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	'use strict';
@@ -108654,7 +109011,11 @@
 	});
 
 /***/ },
+<<<<<<< HEAD
 /* 173 */
+=======
+/* 116 */
+>>>>>>> master
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -108692,7 +109053,11 @@
 	});
 
 /***/ },
+<<<<<<< HEAD
 /* 174 */
+=======
+/* 117 */
+>>>>>>> master
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -108705,7 +109070,11 @@
 	
 	var _aframe2 = _interopRequireDefault(_aframe);
 	
+<<<<<<< HEAD
 	var _index = __webpack_require__(175);
+=======
+	var _index = __webpack_require__(118);
+>>>>>>> master
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -108718,7 +109087,11 @@
 	});
 
 /***/ },
+<<<<<<< HEAD
 /* 175 */
+=======
+/* 118 */
+>>>>>>> master
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -108727,6 +109100,7 @@
 	  value: true
 	});
 	
+<<<<<<< HEAD
 	var _socket = __webpack_require__(176);
 	
 	var _socket2 = _interopRequireDefault(_socket);
@@ -108734,6 +109108,15 @@
 	var _utils = __webpack_require__(228);
 	
 	__webpack_require__(173);
+=======
+	var _socket = __webpack_require__(119);
+	
+	var _socket2 = _interopRequireDefault(_socket);
+	
+	var _utils = __webpack_require__(171);
+	
+	__webpack_require__(116);
+>>>>>>> master
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -108798,7 +109181,11 @@
 	exports.default = socket;
 
 /***/ },
+<<<<<<< HEAD
 /* 176 */
+=======
+/* 119 */
+>>>>>>> master
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -108806,10 +109193,17 @@
 	 * Module dependencies.
 	 */
 	
+<<<<<<< HEAD
 	var url = __webpack_require__(177);
 	var parser = __webpack_require__(182);
 	var Manager = __webpack_require__(193);
 	var debug = __webpack_require__(179)('socket.io-client');
+=======
+	var url = __webpack_require__(120);
+	var parser = __webpack_require__(125);
+	var Manager = __webpack_require__(136);
+	var debug = __webpack_require__(122)('socket.io-client');
+>>>>>>> master
 	
 	/**
 	 * Module exports.
@@ -108908,12 +109302,21 @@
 	 * @api public
 	 */
 	
+<<<<<<< HEAD
 	exports.Manager = __webpack_require__(193);
 	exports.Socket = __webpack_require__(222);
 
 
 /***/ },
 /* 177 */
+=======
+	exports.Manager = __webpack_require__(136);
+	exports.Socket = __webpack_require__(165);
+
+
+/***/ },
+/* 120 */
+>>>>>>> master
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
@@ -108921,8 +109324,13 @@
 	 * Module dependencies.
 	 */
 	
+<<<<<<< HEAD
 	var parseuri = __webpack_require__(178);
 	var debug = __webpack_require__(179)('socket.io-client:url');
+=======
+	var parseuri = __webpack_require__(121);
+	var debug = __webpack_require__(122)('socket.io-client:url');
+>>>>>>> master
 	
 	/**
 	 * Module exports.
@@ -108995,7 +109403,11 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
+<<<<<<< HEAD
 /* 178 */
+=======
+/* 121 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	/**
@@ -109040,7 +109452,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 179 */
+=======
+/* 122 */
+>>>>>>> master
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {
@@ -109050,7 +109466,11 @@
 	 * Expose `debug()` as the module.
 	 */
 	
+<<<<<<< HEAD
 	exports = module.exports = __webpack_require__(180);
+=======
+	exports = module.exports = __webpack_require__(123);
+>>>>>>> master
 	exports.log = log;
 	exports.formatArgs = formatArgs;
 	exports.save = save;
@@ -109224,7 +109644,11 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
+<<<<<<< HEAD
 /* 180 */
+=======
+/* 123 */
+>>>>>>> master
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -109240,7 +109664,11 @@
 	exports.disable = disable;
 	exports.enable = enable;
 	exports.enabled = enabled;
+<<<<<<< HEAD
 	exports.humanize = __webpack_require__(181);
+=======
+	exports.humanize = __webpack_require__(124);
+>>>>>>> master
 	
 	/**
 	 * The currently active debug mode names, and names to skip.
@@ -109430,7 +109858,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 181 */
+=======
+/* 124 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	/**
@@ -109585,7 +110017,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 182 */
+=======
+/* 125 */
+>>>>>>> master
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -109593,11 +110029,19 @@
 	 * Module dependencies.
 	 */
 	
+<<<<<<< HEAD
 	var debug = __webpack_require__(183)('socket.io-parser');
 	var json = __webpack_require__(186);
 	var Emitter = __webpack_require__(189);
 	var binary = __webpack_require__(190);
 	var isBuf = __webpack_require__(192);
+=======
+	var debug = __webpack_require__(126)('socket.io-parser');
+	var json = __webpack_require__(129);
+	var Emitter = __webpack_require__(132);
+	var binary = __webpack_require__(133);
+	var isBuf = __webpack_require__(135);
+>>>>>>> master
 	
 	/**
 	 * Protocol version.
@@ -109995,7 +110439,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 183 */
+=======
+/* 126 */
+>>>>>>> master
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -110005,7 +110453,11 @@
 	 * Expose `debug()` as the module.
 	 */
 	
+<<<<<<< HEAD
 	exports = module.exports = __webpack_require__(184);
+=======
+	exports = module.exports = __webpack_require__(127);
+>>>>>>> master
 	exports.log = log;
 	exports.formatArgs = formatArgs;
 	exports.save = save;
@@ -110169,7 +110621,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 184 */
+=======
+/* 127 */
+>>>>>>> master
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -110185,7 +110641,11 @@
 	exports.disable = disable;
 	exports.enable = enable;
 	exports.enabled = enabled;
+<<<<<<< HEAD
 	exports.humanize = __webpack_require__(185);
+=======
+	exports.humanize = __webpack_require__(128);
+>>>>>>> master
 	
 	/**
 	 * The currently active debug mode names, and names to skip.
@@ -110372,7 +110832,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 185 */
+=======
+/* 128 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	/**
@@ -110503,14 +110967,22 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 186 */
+=======
+/* 129 */
+>>>>>>> master
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/*! JSON v3.3.2 | http://bestiejs.github.io/json3 | Copyright 2012-2014, Kit Cambridge | http://kit.mit-license.org */
 	;(function () {
 	  // Detect the `define` function exposed by asynchronous module loaders. The
 	  // strict `define` check is necessary for compatibility with `r.js`.
+<<<<<<< HEAD
 	  var isLoader = "function" === "function" && __webpack_require__(188);
+=======
+	  var isLoader = "function" === "function" && __webpack_require__(131);
+>>>>>>> master
 	
 	  // A set of types used to distinguish objects from primitives.
 	  var objectTypes = {
@@ -111409,10 +111881,17 @@
 	  }
 	}).call(this);
 	
+<<<<<<< HEAD
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(187)(module), (function() { return this; }())))
 
 /***/ },
 /* 187 */
+=======
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(130)(module), (function() { return this; }())))
+
+/***/ },
+/* 130 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -111428,7 +111907,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 188 */
+=======
+/* 131 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
@@ -111436,7 +111919,11 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ },
+<<<<<<< HEAD
 /* 189 */
+=======
+/* 132 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	
@@ -116369,9 +116856,22 @@
 	 * @api private
 	 */
 	
+<<<<<<< HEAD
 	WS.prototype.write = function (packets) {
 	  var self = this;
 	  this.writable = false;
+=======
+	Emitter.prototype.hasListeners = function(event){
+	  return !! this.listeners(event).length;
+	};
+
+
+/***/ },
+/* 133 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {/*global Blob,File*/
+>>>>>>> master
 	
 	  // encodePacket efficient as it uses WS framing
 	  // no need for encodePayload
@@ -116386,6 +116886,7 @@
 	            opts.compress = packet.options.compress;
 	          }
 	
+<<<<<<< HEAD
 	          if (self.perMessageDeflate) {
 	            var len = 'string' === typeof data ? global.Buffer.byteLength(data) : data.length;
 	            if (len < self.perMessageDeflate.threshold) {
@@ -116393,6 +116894,10 @@
 	            }
 	          }
 	        }
+=======
+	var isArray = __webpack_require__(134);
+	var isBuf = __webpack_require__(135);
+>>>>>>> master
 	
 	        // Sometimes the websocket has already been closed but the browser didn't
 	        // have a chance of informing us about it yet, in that case send will
@@ -116499,13 +117004,21 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
+<<<<<<< HEAD
 /* 219 */
+=======
+/* 134 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	/* (ignored) */
 
 /***/ },
+<<<<<<< HEAD
 /* 220 */
+=======
+/* 135 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	
@@ -116520,6 +117033,7 @@
 	};
 
 /***/ },
+<<<<<<< HEAD
 /* 221 */
 /***/ function(module, exports) {
 
@@ -116559,11 +117073,88 @@
 
 /***/ },
 /* 222 */
+=======
+/* 136 */
+>>>>>>> master
 /***/ function(module, exports, __webpack_require__) {
 
 	
 	/**
 	 * Module dependencies.
+<<<<<<< HEAD
+=======
+	 */
+	
+	var eio = __webpack_require__(137);
+	var Socket = __webpack_require__(165);
+	var Emitter = __webpack_require__(166);
+	var parser = __webpack_require__(125);
+	var on = __webpack_require__(168);
+	var bind = __webpack_require__(169);
+	var debug = __webpack_require__(122)('socket.io-client:manager');
+	var indexOf = __webpack_require__(163);
+	var Backoff = __webpack_require__(170);
+	
+	/**
+	 * IE6+ hasOwnProperty
+	 */
+	
+	var has = Object.prototype.hasOwnProperty;
+	
+	/**
+	 * Module exports
+	 */
+	
+	module.exports = Manager;
+	
+	/**
+	 * `Manager` constructor.
+	 *
+	 * @param {String} engine instance or engine uri/opts
+	 * @param {Object} options
+	 * @api public
+	 */
+	
+	function Manager (uri, opts) {
+	  if (!(this instanceof Manager)) return new Manager(uri, opts);
+	  if (uri && ('object' === typeof uri)) {
+	    opts = uri;
+	    uri = undefined;
+	  }
+	  opts = opts || {};
+	
+	  opts.path = opts.path || '/socket.io';
+	  this.nsps = {};
+	  this.subs = [];
+	  this.opts = opts;
+	  this.reconnection(opts.reconnection !== false);
+	  this.reconnectionAttempts(opts.reconnectionAttempts || Infinity);
+	  this.reconnectionDelay(opts.reconnectionDelay || 1000);
+	  this.reconnectionDelayMax(opts.reconnectionDelayMax || 5000);
+	  this.randomizationFactor(opts.randomizationFactor || 0.5);
+	  this.backoff = new Backoff({
+	    min: this.reconnectionDelay(),
+	    max: this.reconnectionDelayMax(),
+	    jitter: this.randomizationFactor()
+	  });
+	  this.timeout(null == opts.timeout ? 20000 : opts.timeout);
+	  this.readyState = 'closed';
+	  this.uri = uri;
+	  this.connecting = [];
+	  this.lastPing = null;
+	  this.encoding = false;
+	  this.packetBuffer = [];
+	  this.encoder = new parser.Encoder();
+	  this.decoder = new parser.Decoder();
+	  this.autoConnect = opts.autoConnect !== false;
+	  if (this.autoConnect) this.open();
+	}
+	
+	/**
+	 * Propagate given event to sockets and emit on `this`
+	 *
+	 * @api private
+>>>>>>> master
 	 */
 	
 	var parser = __webpack_require__(182);
@@ -116983,6 +117574,7 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -117154,9 +117746,22 @@
 /***/ },
 /* 224 */
 /***/ function(module, exports) {
+=======
+/* 137 */
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	module.exports = __webpack_require__(138);
+
+
+/***/ },
+/* 138 */
+/***/ function(module, exports, __webpack_require__) {
+>>>>>>> master
 
 	module.exports = toArray
 	
+<<<<<<< HEAD
 	function toArray(list, index) {
 	    var array = []
 	
@@ -117174,6 +117779,35 @@
 /* 225 */
 /***/ function(module, exports) {
 
+=======
+	module.exports = __webpack_require__(139);
+	
+	/**
+	 * Exports parser
+	 *
+	 * @api public
+	 *
+	 */
+	module.exports.parser = __webpack_require__(146);
+
+
+/***/ },
+/* 139 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {/**
+	 * Module dependencies.
+	 */
+	
+	var transports = __webpack_require__(140);
+	var Emitter = __webpack_require__(154);
+	var debug = __webpack_require__(158)('engine.io-client:socket');
+	var index = __webpack_require__(163);
+	var parser = __webpack_require__(146);
+	var parseuri = __webpack_require__(121);
+	var parsejson = __webpack_require__(164);
+	var parseqs = __webpack_require__(155);
+>>>>>>> master
 	
 	/**
 	 * Module exports.
@@ -117238,7 +117872,14 @@
 	 * Expose `Backoff`.
 	 */
 	
+<<<<<<< HEAD
 	module.exports = Backoff;
+=======
+	Socket.Socket = Socket;
+	Socket.Transport = __webpack_require__(145);
+	Socket.transports = __webpack_require__(140);
+	Socket.parser = __webpack_require__(146);
+>>>>>>> master
 	
 	/**
 	 * Initialize backoff timer with `opts`.
@@ -117696,9 +118337,26 @@
 					 */
 					var regex = /[^\s,\[\]]+/g;
 	
+<<<<<<< HEAD
 					var point, angles, colors;
 	
 					while ( null != ( part = regex.exec( line ) ) ) {
+=======
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 140 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {/**
+	 * Module dependencies
+	 */
+	
+	var XMLHttpRequest = __webpack_require__(141);
+	var XHR = __webpack_require__(143);
+	var JSONP = __webpack_require__(160);
+	var websocket = __webpack_require__(161);
+>>>>>>> master
 	
 						parts.push( part[ 0 ] );
 	
@@ -117743,9 +118401,21 @@
 								// the part should either be positive integer or -1
 								if ( ! /(-?\d+)/.test( parts[ ind ] ) ) {
 	
+<<<<<<< HEAD
 									continue;
 	
 								}
+=======
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 141 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {// browser shim for xmlhttprequest module
+	
+	var hasCORS = __webpack_require__(142);
+>>>>>>> master
 	
 								// end of current face
 								if ( parts[ ind ] === "-1" ) {
@@ -117761,13 +118431,48 @@
 	
 								} else {
 	
+<<<<<<< HEAD
 									index.push( parseInt( parts[ ind ] ) );
+=======
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 142 */
+/***/ function(module, exports) {
+
+>>>>>>> master
 	
 								}
 	
+<<<<<<< HEAD
 							}
 	
 						}
+=======
+	try {
+	  module.exports = typeof XMLHttpRequest !== 'undefined' &&
+	    'withCredentials' in new XMLHttpRequest();
+	} catch (err) {
+	  // if XMLHttp support is disabled in IE then it will throw
+	  // when trying to create
+	  module.exports = false;
+	}
+
+
+/***/ },
+/* 143 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {/**
+	 * Module requirements.
+	 */
+	
+	var XMLHttpRequest = __webpack_require__(141);
+	var Polling = __webpack_require__(144);
+	var Emitter = __webpack_require__(154);
+	var inherit = __webpack_require__(156);
+	var debug = __webpack_require__(158)('engine.io-client:polling-xhr');
+>>>>>>> master
 	
 						// end
 						if ( /]/.exec( line ) ) {
@@ -117956,10 +118661,29 @@
 							case 'convex':
 								if ( parts.length != 2 ) {
 	
+<<<<<<< HEAD
 									console.warn( 'Invalid format detected for ' + fieldName );
 									break;
 	
 								}
+=======
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 144 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Module dependencies.
+	 */
+	
+	var Transport = __webpack_require__(145);
+	var parseqs = __webpack_require__(155);
+	var parser = __webpack_require__(146);
+	var inherit = __webpack_require__(156);
+	var yeast = __webpack_require__(157);
+	var debug = __webpack_require__(158)('engine.io-client:polling');
+>>>>>>> master
 	
 								property = parts[ 1 ] === 'TRUE' ? true : false;
 	
@@ -117968,7 +118692,15 @@
 	
 						node[ fieldName ] = property;
 	
+<<<<<<< HEAD
 					}
+=======
+	var hasXHR2 = (function () {
+	  var XMLHttpRequest = __webpack_require__(141);
+	  var xhr = new XMLHttpRequest({ xdomain: false });
+	  return null != xhr.responseType;
+	})();
+>>>>>>> master
 	
 					return property;
 	
@@ -118059,9 +118791,27 @@
 	
 					// console.log( data );
 	
+<<<<<<< HEAD
 					if ( typeof data === 'string' ) {
 	
 						if ( /USE/.exec( data ) ) {
+=======
+	  var ipv6 = this.hostname.indexOf(':') !== -1;
+	  return schema + '://' + (ipv6 ? '[' + this.hostname + ']' : this.hostname) + port + this.path + query;
+	};
+
+
+/***/ },
+/* 145 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Module dependencies.
+	 */
+	
+	var parser = __webpack_require__(146);
+	var Emitter = __webpack_require__(154);
+>>>>>>> master
 	
 							var defineKey = /USE\s+?([^\s]+)/.exec( data )[ 1 ];
 	
@@ -118117,11 +118867,38 @@
 	
 						if ( undefined !== data[ 'translation' ] ) {
 	
+<<<<<<< HEAD
 							var t = data.translation;
 	
 							object.position.set( t.x, t.y, t.z );
 	
 						}
+=======
+	Transport.prototype.onClose = function () {
+	  this.readyState = 'closed';
+	  this.emit('close');
+	};
+
+
+/***/ },
+/* 146 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {/**
+	 * Module dependencies.
+	 */
+	
+	var keys = __webpack_require__(147);
+	var hasBinary = __webpack_require__(148);
+	var sliceBuffer = __webpack_require__(149);
+	var after = __webpack_require__(150);
+	var utf8 = __webpack_require__(151);
+	
+	var base64encoder;
+	if (global && global.ArrayBuffer) {
+	  base64encoder = __webpack_require__(152);
+	}
+>>>>>>> master
 	
 						if ( undefined !== data.rotation ) {
 	
@@ -118153,7 +118930,11 @@
 	
 						}
 	
+<<<<<<< HEAD
 						parent.add( object );
+=======
+	var Blob = __webpack_require__(153);
+>>>>>>> master
 	
 					} else if ( 'Background' === data.nodeType ) {
 	
@@ -118388,16 +119169,47 @@
 	
 								}
 	
+<<<<<<< HEAD
 								if ( undefined !== child.transparency ) {
+=======
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 147 */
+/***/ function(module, exports) {
+
+>>>>>>> master
 	
 									var t = child.transparency;
 	
 									// transparency is opposite of opacity
 									material.opacity = Math.abs( 1 - t );
 	
+<<<<<<< HEAD
 									material.transparent = true;
 	
 								}
+=======
+	  for (var i in obj) {
+	    if (has.call(obj, i)) {
+	      arr.push(i);
+	    }
+	  }
+	  return arr;
+	};
+
+
+/***/ },
+/* 148 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {
+	/*
+	 * Module requirements.
+	 */
+	
+	var isArray = __webpack_require__(134);
+>>>>>>> master
 	
 								if ( /DEF/.exec( data.string ) ) {
 	
@@ -118419,7 +119231,22 @@
 	
 									parent.material.name = textureName[ 1 ];
 	
+<<<<<<< HEAD
 									parent.material.map = textureLoader.load( texturePath + textureName[ 1 ] );
+=======
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 149 */
+/***/ function(module, exports) {
+
+	/**
+	 * An abstraction for slicing an arraybuffer even when
+	 * ArrayBuffer.prototype.slice is not supported
+	 *
+	 * @api public
+	 */
+>>>>>>> master
 	
 								}
 	
@@ -118429,7 +119256,24 @@
 	
 						return;
 	
+<<<<<<< HEAD
 					}
+=======
+	  var abv = new Uint8Array(arraybuffer);
+	  var result = new Uint8Array(end - start);
+	  for (var i = start, ii = 0; i < end; i++, ii++) {
+	    result[ii] = abv[i];
+	  }
+	  return result.buffer;
+	};
+
+
+/***/ },
+/* 150 */
+/***/ function(module, exports) {
+
+	module.exports = after
+>>>>>>> master
 	
 					for ( var i = 0, l = data.children.length; i < l; i ++ ) {
 	
@@ -118439,7 +119283,19 @@
 	
 					}
 	
+<<<<<<< HEAD
 				};
+=======
+	function noop() {}
+
+
+/***/ },
+/* 151 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/*! https://mths.be/wtf8 v1.0.0 by @mathias */
+	;(function(root) {
+>>>>>>> master
 	
 				parseNode( getTree( lines ), scene );
 	
@@ -118744,6 +119600,7 @@
 	    this.boundingSphere = new THREE.Sphere()
 	  }
 	
+<<<<<<< HEAD
 	  var positions = this.attributes.position.array
 	  var itemSize = this.attributes.position.itemSize
 	  if (!positions || !itemSize || positions.length < 2) {
@@ -118778,6 +119635,13 @@
 /***/ },
 /* 234 */
 /***/ function(module, exports, __webpack_require__) {
+=======
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(130)(module), (function() { return this; }())))
+
+/***/ },
+/* 152 */
+/***/ function(module, exports) {
+>>>>>>> master
 
 	var wordWrap = __webpack_require__(235)
 	var xtend = __webpack_require__(236)
@@ -119071,7 +119935,11 @@
 	}
 
 /***/ },
+<<<<<<< HEAD
 /* 235 */
+=======
+/* 153 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	var newline = /\n/
@@ -119228,8 +120096,13 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 237 */
 /***/ function(module, exports) {
+=======
+/* 154 */
+/***/ function(module, exports, __webpack_require__) {
+>>>>>>> master
 
 	module.exports = function compile(property) {
 		if (!property || typeof property !== 'string')
@@ -119255,7 +120128,11 @@
 	}
 
 /***/ },
+<<<<<<< HEAD
 /* 239 */
+=======
+/* 155 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	if (typeof Object.create === 'function') {
@@ -119284,6 +120161,7 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -119332,6 +120210,9 @@
 
 /***/ },
 /* 241 */
+=======
+/* 156 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	module.exports = function(dtype) {
@@ -119361,7 +120242,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 242 */
+=======
+/* 157 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	var str = Object.prototype.toString
@@ -119509,7 +120394,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 245 */
+=======
+/* 158 */
+>>>>>>> master
 /***/ function(module, exports, __webpack_require__) {
 
 	/*eslint new-cap:0*/
@@ -119519,9 +120408,22 @@
 	  if (!data) throw new TypeError('must specify data as first parameter')
 	  offset = +(offset || 0) | 0
 	
+<<<<<<< HEAD
 	  if (Array.isArray(data) && Array.isArray(data[0])) {
 	    var dim = data[0].length
 	    var length = data.length * dim
+=======
+	exports = module.exports = __webpack_require__(159);
+	exports.log = log;
+	exports.formatArgs = formatArgs;
+	exports.save = save;
+	exports.load = load;
+	exports.useColors = useColors;
+	exports.storage = 'undefined' != typeof chrome
+	               && 'undefined' != typeof chrome.storage
+	                  ? chrome.storage.local
+	                  : localstorage();
+>>>>>>> master
 	
 	    // no output specified, create a new typed array
 	    if (!output || typeof output === 'string') {
@@ -119887,7 +120789,11 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(250).Buffer))
 
 /***/ },
+<<<<<<< HEAD
 /* 250 */
+=======
+/* 159 */
+>>>>>>> master
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/*!
@@ -119898,7 +120804,16 @@
 	 */
 	/* eslint-disable no-proto */
 	
+<<<<<<< HEAD
 	'use strict'
+=======
+	exports = module.exports = debug.debug = debug;
+	exports.coerce = coerce;
+	exports.disable = disable;
+	exports.enable = enable;
+	exports.enabled = enabled;
+	exports.humanize = __webpack_require__(124);
+>>>>>>> master
 	
 	var base64 = __webpack_require__(251)
 	var ieee754 = __webpack_require__(252)
@@ -120172,11 +121087,27 @@
 	  }
 	  return that
 	}
+<<<<<<< HEAD
 	
 	function fromObject (that, obj) {
 	  if (Buffer.isBuffer(obj)) {
 	    var len = checked(obj.length) | 0
 	    that = createBuffer(that, len)
+=======
+
+
+/***/ },
+/* 160 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {
+	/**
+	 * Module requirements.
+	 */
+	
+	var Polling = __webpack_require__(144);
+	var inherit = __webpack_require__(156);
+>>>>>>> master
 	
 	    if (that.length === 0) {
 	      return that
@@ -120658,8 +121589,35 @@
 	      if (found) return i
 	    }
 	  }
+<<<<<<< HEAD
 	
 	  return -1
+=======
+	};
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 161 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {/**
+	 * Module dependencies.
+	 */
+	
+	var Transport = __webpack_require__(145);
+	var parser = __webpack_require__(146);
+	var parseqs = __webpack_require__(155);
+	var inherit = __webpack_require__(156);
+	var yeast = __webpack_require__(157);
+	var debug = __webpack_require__(158)('engine.io-client:websocket');
+	var BrowserWebSocket = global.WebSocket || global.MozWebSocket;
+	var NodeWebSocket;
+	if (typeof window === 'undefined') {
+	  try {
+	    NodeWebSocket = __webpack_require__(162);
+	  } catch (e) { }
+>>>>>>> master
 	}
 	
 	Buffer.prototype.includes = function includes (val, byteOffset, encoding) {
@@ -120995,12 +121953,27 @@
 	  byteLength = byteLength | 0
 	  if (!noAssert) checkOffset(offset, byteLength, this.length)
 	
+<<<<<<< HEAD
 	  var val = this[offset]
 	  var mul = 1
 	  var i = 0
 	  while (++i < byteLength && (mul *= 0x100)) {
 	    val += this[offset + i] * mul
 	  }
+=======
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 162 */
+/***/ function(module, exports) {
+
+	/* (ignored) */
+
+/***/ },
+/* 163 */
+/***/ function(module, exports) {
+
+>>>>>>> master
 	
 	  return val
 	}
@@ -121011,6 +121984,54 @@
 	  if (!noAssert) {
 	    checkOffset(offset, byteLength, this.length)
 	  }
+<<<<<<< HEAD
+=======
+	  return -1;
+	};
+
+/***/ },
+/* 164 */
+/***/ function(module, exports) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {/**
+	 * JSON parse.
+	 *
+	 * @see Based on jQuery#parseJSON (MIT) and JSON2
+	 * @api private
+	 */
+	
+	var rvalidchars = /^[\],:{}\s]*$/;
+	var rvalidescape = /\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g;
+	var rvalidtokens = /"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g;
+	var rvalidbraces = /(?:^|:|,)(?:\s*\[)+/g;
+	var rtrimLeft = /^\s+/;
+	var rtrimRight = /\s+$/;
+	
+	module.exports = function parsejson(data) {
+	  if ('string' != typeof data || !data) {
+	    return null;
+	  }
+	
+	  data = data.replace(rtrimLeft, '').replace(rtrimRight, '');
+	
+	  // Attempt to parse using the native JSON parser first
+	  if (global.JSON && JSON.parse) {
+	    return JSON.parse(data);
+	  }
+	
+	  if (rvalidchars.test(data.replace(rvalidescape, '@')
+	      .replace(rvalidtokens, ']')
+	      .replace(rvalidbraces, ''))) {
+	    return (new Function('return ' + data))();
+	  }
+	};
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 165 */
+/***/ function(module, exports, __webpack_require__) {
+
+>>>>>>> master
 	
 	  var val = this[offset + --byteLength]
 	  var mul = 1
@@ -121018,8 +122039,18 @@
 	    val += this[offset + --byteLength] * mul
 	  }
 	
+<<<<<<< HEAD
 	  return val
 	}
+=======
+	var parser = __webpack_require__(125);
+	var Emitter = __webpack_require__(166);
+	var toArray = __webpack_require__(167);
+	var on = __webpack_require__(168);
+	var bind = __webpack_require__(169);
+	var debug = __webpack_require__(122)('socket.io-client:socket');
+	var hasBin = __webpack_require__(148);
+>>>>>>> master
 	
 	Buffer.prototype.readUInt8 = function readUInt8 (offset, noAssert) {
 	  if (!noAssert) checkOffset(offset, 1, this.length)
@@ -121664,6 +122695,7 @@
 	  return byteArray
 	}
 	
+<<<<<<< HEAD
 	function base64ToBytes (str) {
 	  return base64.toByteArray(base64clean(str))
 	}
@@ -121684,6 +122716,186 @@
 
 /***/ },
 /* 251 */
+=======
+	Socket.prototype.compress = function (compress) {
+	  this.flags = this.flags || {};
+	  this.flags.compress = compress;
+	  return this;
+	};
+
+
+/***/ },
+/* 166 */
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	/**
+	 * Expose `Emitter`.
+	 */
+	
+	if (true) {
+	  module.exports = Emitter;
+	}
+	
+	/**
+	 * Initialize a new `Emitter`.
+	 *
+	 * @api public
+	 */
+	
+	function Emitter(obj) {
+	  if (obj) return mixin(obj);
+	};
+	
+	/**
+	 * Mixin the emitter properties.
+	 *
+	 * @param {Object} obj
+	 * @return {Object}
+	 * @api private
+	 */
+	
+	function mixin(obj) {
+	  for (var key in Emitter.prototype) {
+	    obj[key] = Emitter.prototype[key];
+	  }
+	  return obj;
+	}
+	
+	/**
+	 * Listen on the given `event` with `fn`.
+	 *
+	 * @param {String} event
+	 * @param {Function} fn
+	 * @return {Emitter}
+	 * @api public
+	 */
+	
+	Emitter.prototype.on =
+	Emitter.prototype.addEventListener = function(event, fn){
+	  this._callbacks = this._callbacks || {};
+	  (this._callbacks['$' + event] = this._callbacks['$' + event] || [])
+	    .push(fn);
+	  return this;
+	};
+	
+	/**
+	 * Adds an `event` listener that will be invoked a single
+	 * time then automatically removed.
+	 *
+	 * @param {String} event
+	 * @param {Function} fn
+	 * @return {Emitter}
+	 * @api public
+	 */
+	
+	Emitter.prototype.once = function(event, fn){
+	  function on() {
+	    this.off(event, on);
+	    fn.apply(this, arguments);
+	  }
+	
+	  on.fn = fn;
+	  this.on(event, on);
+	  return this;
+	};
+	
+	/**
+	 * Remove the given callback for `event` or all
+	 * registered callbacks.
+	 *
+	 * @param {String} event
+	 * @param {Function} fn
+	 * @return {Emitter}
+	 * @api public
+	 */
+	
+	Emitter.prototype.off =
+	Emitter.prototype.removeListener =
+	Emitter.prototype.removeAllListeners =
+	Emitter.prototype.removeEventListener = function(event, fn){
+	  this._callbacks = this._callbacks || {};
+	
+	  // all
+	  if (0 == arguments.length) {
+	    this._callbacks = {};
+	    return this;
+	  }
+	
+	  // specific event
+	  var callbacks = this._callbacks['$' + event];
+	  if (!callbacks) return this;
+	
+	  // remove all handlers
+	  if (1 == arguments.length) {
+	    delete this._callbacks['$' + event];
+	    return this;
+	  }
+	
+	  // remove specific handler
+	  var cb;
+	  for (var i = 0; i < callbacks.length; i++) {
+	    cb = callbacks[i];
+	    if (cb === fn || cb.fn === fn) {
+	      callbacks.splice(i, 1);
+	      break;
+	    }
+	  }
+	  return this;
+	};
+	
+	/**
+	 * Emit `event` with the given args.
+	 *
+	 * @param {String} event
+	 * @param {Mixed} ...
+	 * @return {Emitter}
+	 */
+	
+	Emitter.prototype.emit = function(event){
+	  this._callbacks = this._callbacks || {};
+	  var args = [].slice.call(arguments, 1)
+	    , callbacks = this._callbacks['$' + event];
+	
+	  if (callbacks) {
+	    callbacks = callbacks.slice(0);
+	    for (var i = 0, len = callbacks.length; i < len; ++i) {
+	      callbacks[i].apply(this, args);
+	    }
+	  }
+	
+	  return this;
+	};
+	
+	/**
+	 * Return array of callbacks for `event`.
+	 *
+	 * @param {String} event
+	 * @return {Array}
+	 * @api public
+	 */
+	
+	Emitter.prototype.listeners = function(event){
+	  this._callbacks = this._callbacks || {};
+	  return this._callbacks['$' + event] || [];
+	};
+	
+	/**
+	 * Check if this emitter has `event` handlers.
+	 *
+	 * @param {String} event
+	 * @return {Boolean}
+	 * @api public
+	 */
+	
+	Emitter.prototype.hasListeners = function(event){
+	  return !! this.listeners(event).length;
+	};
+
+
+/***/ },
+/* 167 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	'use strict'
@@ -121893,7 +123105,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 253 */
+=======
+/* 168 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	var toString = {}.toString;
@@ -122151,7 +123367,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 255 */
+=======
+/* 169 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {if (typeof window !== "undefined") {
@@ -122188,8 +123408,13 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 257 */
 /***/ function(module, exports, __webpack_require__) {
+=======
+/* 170 */
+/***/ function(module, exports) {
+>>>>>>> master
 
 	var trim = __webpack_require__(258)
 	  , forEach = __webpack_require__(259)
@@ -122296,7 +123521,11 @@
 
 
 /***/ },
+<<<<<<< HEAD
 /* 260 */
+=======
+/* 171 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	module.exports = function parseBMFontAscii(data) {
@@ -122499,7 +123728,11 @@
 	}
 
 /***/ },
+<<<<<<< HEAD
 /* 262 */
+=======
+/* 172 */
+>>>>>>> master
 /***/ function(module, exports) {
 
 	//Some versions of GlyphDesigner have a typo
@@ -122982,6 +124215,79 @@
 	      $('#menu').replaceWith(newScene);
 	
 	      el.emit('click', null, false);
+	    });
+	  }
+	});
+
+/***/ },
+/* 173 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	AFRAME.registerComponent('collider', {
+	  schema: {
+	    target: { default: '.enemy' }
+	  },
+	
+	  /**
+	   * Calculate targets.
+	   */
+	  init: function init() {
+	    var targetEls = this.el.sceneEl.querySelectorAll(this.data.target);
+	    this.targets = [];
+	    for (var i = 0; i < targetEls.length; i++) {
+	      this.targets.push(targetEls[i].object3D);
+	    }
+	    this.el.object3D.updateMatrixWorld();
+	  },
+	
+	  /**
+	   * Check for collisions (for cylinder).
+	   */
+	  tick: function tick(t) {
+	    var collisionResults;
+	    var directionVector;
+	    var el = this.el;
+	    var mesh = el.getObject3D('mesh');
+	    var object3D = el.object3D;
+	    var raycaster;
+	    var vertices = mesh.geometry.vertices;
+	    // console.log('VERY', vertices);
+	    var bottomVertex = vertices[0].clone();
+	    var topVertex = vertices[vertices.length - 1].clone();
+	
+	    // Calculate absolute positions of start and end of entity.
+	    bottomVertex.applyMatrix4(object3D.matrixWorld);
+	    topVertex.applyMatrix4(object3D.matrixWorld);
+	
+	    // Direction vector from start to end of entity.
+	    directionVector = topVertex.clone().sub(bottomVertex).normalize();
+	
+	    // Raycast for collision.
+	    raycaster = new THREE.Raycaster(bottomVertex, directionVector, 1);
+	    collisionResults = raycaster.intersectObjects(this.targets, true);
+	    // console.log("RESULTS!ss!",collisionResults)
+	    var animation = document.createElement('a-animation');
+	    animation.setAttribute('attribute', 'scale');
+	    animation.setAttribute('dur', '70');
+	    animation.setAttribute('ease', 'linear');
+	    animation.setAttribute('to', '0 0 0');
+	    collisionResults.forEach(function (target) {
+	      // Tell collided entity about the collision.
+	      console.log('TT', target.object.el);
+	      // target.object.el.emit('collider-hit', {target: el});
+	      // console.log('HITTING IT UP');
+	
+	
+	      target.object.el.setAttribute('material', { src: '#explosion' });
+	      target.object.el.setAttribute('geometry', { primitive: 'sphere' });
+	      target.object.el.appendChild(animation);
+	      //
+	      // bullet.parentNode.removeChild(bullet);
+	      // this.targets.splice(i, 1);
+	      // setTimeout(() => {target.parentNode.removeChild(target) }, 4000);
+	      // return;
 	    });
 	  }
 	});
