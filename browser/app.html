@@ -37,17 +37,11 @@
 						rotation="90 0 0" projectile collider></a-mixin>
       </a-asset>
 
-			<a-camera id="player" spawner="mixin: laser; on: click" click-listener look-controls wasd-controls="fly: true; acceleration: 4001">
-          <a-obj-model rotation="0 180 0" src="#arc170-obj" mtl="#arc170-mtl" position="0 -4 2"></a-obj-model>
-      </a-camera>
-      <!-- <a-entity entity-generator="mixin: asteroid1 position; num: 150;"></a-entity> -->
-      <!-- <a-entity entity-generator="mixin: asteroid2 position; num: 150;"></a-entity> -->
-
-			<a-entity entity-generator="mixin: octa position; num: 4;">
+      <a-entity entity-generator="mixin: asteroid1 position; num: 150;"></a-entity>
+      <a-entity entity-generator="mixin: asteroid2 position; num: 150;"></a-entity>
+			<a-entity entity-generator="mixin: octa position; num: 50;">
 
 			<a-sky src="./src/assets/images/space.jpg"></a-sky>
-
-
     </a-scene>
 	</body>
 </html>

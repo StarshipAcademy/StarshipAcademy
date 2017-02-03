@@ -1,19 +1,25 @@
 AFRAME.registerComponent('spawner', {
   schema: {
-    on: { default: 'click' },
-    mixin: { default: '' }
+    on: {
+      default: 'click'
+    },
+    mixin: {
+      default: ''
+    }
   },
   /**
    * Add event listener.
    */
-  update: function (oldData) {
+  update: function(oldData) {
     this.el.addEventListener(this.data.on, this.spawn.bind(this));
   },
   /**
    * Spawn new entity at entity's current position.
    */
-  spawn: function () {
+  spawn: function() {
+
     var el = this.el;
+    var bulletId = el.bulletsFired++;
     var entity = document.createElement('a-entity');
     var matrixWorld = el.object3D.matrixWorld;
     var position = new THREE.Vector3();
@@ -21,12 +27,11 @@ AFRAME.registerComponent('spawner', {
     var entityRotation;
     position.setFromMatrixPosition(matrixWorld);
     entity.setAttribute('position', position);
-    // Have the spawned entity face the same direction as the entity.
-    // Allow the entity to further modify the inherited rotation.
-    position.setFromMatrixPosition(matrixWorld);
-    entity.setAttribute('position', position);
+
     entity.setAttribute('mixin', this.data.mixin);
-    entity.addEventListener('loaded', function () {
+    console.log('ARRGGGG')
+    entity.addEventListener('loaded', function() {
+      console.log('AGHH')
       entityRotation = entity.getAttribute('rotation');
       entity.setAttribute('rotation', {
         x: entityRotation.x + rotation.x,
@@ -35,5 +40,12 @@ AFRAME.registerComponent('spawner', {
       });
     });
     el.sceneEl.appendChild(entity);
+    el.newBullets.push({
+      id: bulletId,
+      pos: position,
+      rot: rotation
+    })
+    console.log('BULLETS', el.newBullets)
+
   }
 });

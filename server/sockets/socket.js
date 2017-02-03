@@ -1,9 +1,9 @@
 const chalk = require('chalk');
-const { Map } = require('immutable');
+const {Map, List} = require('immutable');
 
 const store = require('../redux/store');
-const { createAndEmitUser, updateUserData, removeUserAndEmit } = require('../redux/reducers/user-reducer');
-const { getOtherUsers } = require('../utils');
+const {createAndEmitUser, updateUserData, removeUserAndEmit} = require('../redux/reducers/user-reducer');
+const {getOtherUsers} = require('../utils');
 
 module.exports = io => {
   io.on('connection', socket => {
@@ -14,7 +14,23 @@ module.exports = io => {
 
     // This will send all of the current users to the user that just connected
     socket.on('getOthers', () => {
-      const allUsers = store.getState().users;
+      let allUsers = store.getState().users.toArray();
+      let allUsersObj = {};
+      allUsers.forEach(user => {
+        console.log('CCCCCCCCCCC', user)
+        allUsersObj[user.get('id')] = user.set('bullets', new List())
+      })
+
+      console.log('AAAAAAAAAAAAAAA', allUsersObj)
+
+      let allBullets = store.getState().bullets;
+      allBullets.forEach(bullet => {
+        let user = allUsersObj[bullet.get(userId)];
+        user.set('bullets', user.get('bullets').push(bullet))
+      })
+      console.log('BBBBBBBBBBBBBB', allBullets)
+
+      allUsers = Map(allUsersObj)
       socket.emit('getOthersCallback', getOtherUsers(allUsers, socket.id));
     });
 
@@ -45,5 +61,5 @@ module.exports = io => {
       store.dispatch(removeUserAndEmit(socket));
       console.log(chalk.magenta(`${socket.id} has disconnected`));
     });
-  });
+  })
 };
