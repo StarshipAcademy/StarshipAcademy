@@ -25,6 +25,10 @@ export function putSelfOnDOM(user) {
   model.setAttribute('src', '#arc170-obj');
   model.setAttribute('mtl', '#arc170-mtl');
 
+  //add hud elements
+  const crosshair = document.createElement('crosshair');
+  avatar.appendChild(crosshair);
+
   //add music
   const soundRight = document.createElement('a-entity');
   avatar.appendChild(soundRight);
@@ -123,4 +127,3 @@ export function removeUser(userId) {
     bullet.parentNode.removeChild(bullet);
   }
 }
-
