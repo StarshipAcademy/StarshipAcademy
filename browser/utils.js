@@ -38,11 +38,11 @@ export function putSelfOnDOM(user) {
   // crosshair.setAttribute()
   // crosshair.setAttribute()
 
-  const crosshairAnimation = document.createElement('a-animation')
-  // crosshair.appendChild(crosshairAnimation);
+  // const crosshairAnimation = document.createElement('a-animation')
+  // crosshairImage.appendChild(crosshairAnimation);
   // crosshairAnimation.setAttribute('attribute', 'rotation');
-  // crosshairAnimation.setAttribute('dur', '1000');
-  // crosshairAnimation.setAttribute('to', "0 10 0");
+  // crosshairAnimation.setAttribute('dur', '1000000000');
+  // crosshairAnimation.setAttribute('to', "0 0 0");
   // crosshairAnimation.setAttribute('repeat', 'indefinite')
   // console.log('yo2321 yo234 yo678');
 
@@ -58,10 +58,10 @@ export function putSelfOnDOM(user) {
   const hud2 = document.createElement('a-box');
   avatar.appendChild(hud2);
   hud2.setAttribute('height', '0.1');
-  hud2.setAttribute('width', '0.19');
+  hud2.setAttribute('width', '0.18');
   hud2.setAttribute('depth', '0.001');
   hud2.setAttribute('rotation', '-89 0 0');
-  hud2.setAttribute('position', '-0.37 -0.319 -0.97');
+  hud2.setAttribute('position', '-0.37 -0.319 -0.98');
   hud2.setAttribute('material', "shader:gif; src:#hud2")
 
   const hud3 = document.createElement('a-box');
@@ -72,6 +72,32 @@ export function putSelfOnDOM(user) {
   hud3.setAttribute('rotation', '-85 0 0')
   hud3.setAttribute('position', '-0.005 -0.28 -0.8')
   hud3.setAttribute('material', "src:#hud3")
+
+  const hud4 = document.createElement('a-box');
+  avatar.appendChild(hud4);
+  hud4.setAttribute('height', '0.1');
+  hud4.setAttribute('width', '0.19');
+  hud4.setAttribute('depth', '0.001');
+  hud4.setAttribute('rotation', '-89 0 0');
+  hud4.setAttribute('position', '0.37 -0.319 -0.97');
+  hud4.setAttribute('material', "shader:gif; src:#hud4")
+
+  const hud5 = document.createElement('a-image');
+  avatar.appendChild(hud5);
+  hud5.setAttribute('position', '-0.185 -0.22 -1.1')
+  hud5.setAttribute('rotation', '-40 0 -90')
+  hud5.setAttribute('height', '0.07')
+  hud5.setAttribute('width', '0.13')
+  hud5.setAttribute('material', 'src:#hud5')
+
+  const hud6 = document.createElement('a-image');
+  avatar.appendChild(hud6);
+  hud6.setAttribute('position', '0.17 -0.22 -1.1')
+  hud6.setAttribute('rotation', '-40 0 0')
+  hud6.setAttribute('height', '0.13')
+  hud6.setAttribute('width', '0.07')
+  hud6.setAttribute('material', 'shader: gif; src:#hud6')
+
 
 
   //add music
