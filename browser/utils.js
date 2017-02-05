@@ -26,19 +26,64 @@ export function putSelfOnDOM(user) {
   model.setAttribute('mtl', '#arc170-mtl');
 
   //add hud elements
-  const crosshair = document.createElement('crosshair');
+  const crosshair = document.createElement('a-entity');
   avatar.appendChild(crosshair);
+
+  const crosshairImage = document.createElement('a-image')
+  crosshair.appendChild(crosshairImage)
+  crosshairImage.setAttribute('position', ' 0 0 -1');
+  crosshairImage.setAttribute('src', '#crosshair');
+  crosshairImage.setAttribute('height', '0.15');
+  crosshairImage.setAttribute('width', '0.15');
+  // crosshair.setAttribute()
+  // crosshair.setAttribute()
+
+  const crosshairAnimation = document.createElement('a-animation')
+  // crosshair.appendChild(crosshairAnimation);
+  // crosshairAnimation.setAttribute('attribute', 'rotation');
+  // crosshairAnimation.setAttribute('dur', '1000');
+  // crosshairAnimation.setAttribute('to', "0 10 0");
+  // crosshairAnimation.setAttribute('repeat', 'indefinite')
+  // console.log('yo2321 yo234 yo678');
+
+  const hud1 = document.createElement('a-box');
+  avatar.appendChild(hud1);
+  hud1.setAttribute('height', '0.02');
+  hud1.setAttribute('width', '0.25');
+  hud1.setAttribute('depth', '0.15');
+  hud1.setAttribute('rotation', '60 0 0');
+  hud1.setAttribute('position', '-0.01 -0.25 -1.13');
+  hud1.setAttribute('material', "shader:gif; src:#hud1")
+
+  const hud2 = document.createElement('a-box');
+  avatar.appendChild(hud2);
+  hud2.setAttribute('height', '0.1');
+  hud2.setAttribute('width', '0.19');
+  hud2.setAttribute('depth', '0.001');
+  hud2.setAttribute('rotation', '-89 0 0');
+  hud2.setAttribute('position', '-0.37 -0.319 -0.97');
+  hud2.setAttribute('material', "shader:gif; src:#hud2")
+
+  const hud3 = document.createElement('a-box');
+  avatar.appendChild(hud3);
+  hud3.setAttribute('height', '0.25')
+  hud3.setAttribute('width', '0.36')
+  hud3.setAttribute('depth', '0.001')
+  hud3.setAttribute('rotation', '-85 0 0')
+  hud3.setAttribute('position', '-0.005 -0.28 -0.8')
+  hud3.setAttribute('material', "src:#hud3")
+
 
   //add music
   const soundRight = document.createElement('a-entity');
   avatar.appendChild(soundRight);
   soundRight.setAttribute('position', '2 0 0');
-  soundRight.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
+  // soundRight.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
 
   const soundLeft = document.createElement('a-entity');
   avatar.appendChild(soundLeft);
   soundLeft.setAttribute('position', '-2 0 0');
-  soundLeft.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
+  // soundLeft.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
 
   return avatar;
 }
