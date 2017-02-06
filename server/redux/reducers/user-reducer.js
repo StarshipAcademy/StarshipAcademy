@@ -1,6 +1,6 @@
-const { Map } = require('immutable');
+const {Map} = require('immutable');
 
-const { createUser } = require('../../utils');
+const {createUser} = require('../../utils');
 
 /* --------------- INITIAL STATE --------------- */
 
@@ -9,7 +9,7 @@ const initialState = Map({});
 /* --------------- ACTIONS --------------- */
 
 const ADD_USER = 'ADD_USER';
-const UPDATE_USER_DATA = 'UPDATE_USER_DATA';
+const UPDATE_USER = 'UPDATE_USER';
 const REMOVE_USER = 'REMOVE_USER';
 
 /* --------------- ACTION CREATORS --------------- */
@@ -21,9 +21,9 @@ const addUser = user => {
   };
 };
 
-const updateUserData = userData => {
+const updateUser = userData => {
   return {
-    type: UPDATE_USER_DATA,
+    type: UPDATE_USER,
     userData
   };
 };
@@ -42,9 +42,24 @@ const createAndEmitUser = socket => {
     const userId = socket.id;
     const user = Map(createUser(userId));
     dispatch(addUser(user));
+    console.log('user added')
     socket.on('sceneLoad', () => {
+      console.log('scene loaded')
       socket.emit('createUser', user);
     });
+  };
+};
+
+const updateUserData = userData => {
+  return dispatch => {
+    // userData.newBullets.forEach(bullet => {
+    //   bullet.userId = userData.id;
+    //   dispatch(addBullet(bullet));
+    // });
+    // userData.deadBullets.forEach(bullet => {
+    //   dispatch(removeBullet(bullet));
+    // });
+    dispatch(updateUser(userData));
   };
 };
 
@@ -58,26 +73,26 @@ const removeUserAndEmit = socket => {
 
 /* --------------- REDUCER --------------- */
 
-function userReducer (state = initialState, action) {
+function userReducer(state = initialState, action) {
   switch (action.type) {
 
-    case ADD_USER:
-      return state.set(action.user.get('id'), action.user);
+  case ADD_USER:
+    return state.set(action.user.get('id'), action.user);
 
-    case UPDATE_USER_DATA:
-      return state.mergeIn([action.userData.get('id')], action.userData);
+  case UPDATE_USER:
+    return state.mergeIn([action.userData.get('id')], action.userData);
 
-    case REMOVE_USER:
-      return state.delete(action.userId);
+  case REMOVE_USER:
+    return state.delete(action.userId);
 
-    default:
-      return state;
+  default:
+    return state;
   }
 }
 
 module.exports = {
   ADD_USER,
-  UPDATE_USER_DATA,
+  UPDATE_USER,
   REMOVE_USER,
   createAndEmitUser,
   updateUserData,
