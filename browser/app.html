@@ -9,11 +9,16 @@
 	</head>
 	<body>
 
-
-		<i class="fa fa-crosshairs" style="color: #41EF39; position: absolute; top: 49%; left: 49.5%; z-index: 9999" aria-hidden="true">
-		</i>
-
-
+	
+		<div style="display: flex; justify-content: center; align-items: center; height: 100vh; width:100%; position: absolute;">
+			<i class="fa fa-crosshairs fa-spin" style="opacity: .9; font-size: 56px; color: #8ad5e1; z-index: 9999" aria-hidden="true">
+			</i>
+			</div>
+			<div style="display: flex; justify-content: center; align-items: center; height: 100vh; width:100%; position: absolute;">
+			<i class="fa fa-crosshairs fa-spin" style="opacity: .5; font-size: 50px; color: #15abc3; z-index: 9999" aria-hidden="true">
+		</i>			
+		</div>
+		
 		<a-scene id="scene" scene-load>
 			<a-asset>
 				<img id="space" src="./src/assets/images/space.jpg">
