@@ -9,13 +9,22 @@ export function putSelfOnDOM(user) {
   avatar.setAttribute('rotation', `${user.xrot} ${user.yrot} ${user.zrot}`);
   avatar.setAttribute('publish', true);
   avatar.setAttribute('look-controls', true);
-  avatar.setAttribute('wasd-controls', 'fly: true; acceleration: 4001');
+  avatar.setAttribute('wasd-controls', 'fly: true; acceleration: 1000');
   avatar.setAttribute('spawner', 'mixin: laser; on: click');
   avatar.setAttribute('click-listener', true);
   avatar.bulletsFired = 0;
   avatar.newBullets = [];
   avatar.deadBullets = [];
   avatar.setAttribute('ship', true);
+  avatar.setAttribute('fence', 'width: 4800; height: 4800; depth: 4800');
+
+  //add score 
+  const score = document.createElement('a-entity');
+  avatar.appendChild(score);
+  score.setAttribute('id', 'score');
+  score.setAttribute('position', '-4, 2.3, -3.6');
+  score.setAttribute('rotation', '15, 0, 0');
+  score.setAttribute('bmfont-text', 'text: Score: 0; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6');
 
   //add model to camera
   const model = document.createElement('a-obj-model');
@@ -24,6 +33,7 @@ export function putSelfOnDOM(user) {
   model.setAttribute('rotation', '0 180 0');
   model.setAttribute('src', '#arc170-obj');
   model.setAttribute('mtl', '#arc170-mtl');
+  
 
   //add music
   const soundRight = document.createElement('a-entity');
@@ -38,6 +48,7 @@ export function putSelfOnDOM(user) {
 
   return avatar;
 }
+
 
 function createBullets(userId, bullets) {
   console.log('SSSSSSSSS', bullets)

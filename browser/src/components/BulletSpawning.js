@@ -29,9 +29,9 @@ AFRAME.registerComponent('spawner', {
     entity.setAttribute('position', position);
 
     entity.setAttribute('mixin', this.data.mixin);
-    console.log('ARRGGGG')
+   
     entity.addEventListener('loaded', function() {
-      console.log('AGHH')
+      
       entityRotation = entity.getAttribute('rotation');
       entity.setAttribute('rotation', {
         x: entityRotation.x + rotation.x,

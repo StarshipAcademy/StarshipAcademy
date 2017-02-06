@@ -10,6 +10,7 @@ socket.on('connect', () => {
 });
 
 socket.on('createUser', user => {
+  console.log('adding yourself to the DOM')
   const avatar = putSelfOnDOM(user);
   socket.emit('getOthers');
 });

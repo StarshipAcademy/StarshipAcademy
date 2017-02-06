@@ -9,10 +9,22 @@
 	</head>
 	<body>
 
-		<i class="fa fa-crosshairs" style="color: #41EF39; position: absolute; top: 49%; left: 49.5%; z-index: 9999" aria-hidden="true">
-		</i>
-
-		<a-scene id="scene">
+		<!-- <i class="fa fa-crosshairs" style="color: #41EF39; position: absolute; top: 49%; left: 49.5%; z-index: 9999" aria-hidden="true">
+		</i> -->
+		<div style="display: flex; justify-content: center; align-items: center; height: 100vh; width:100%; position: absolute;">
+			<i class="fa fa-crosshairs fa-spin" style="opacity: .9; font-size: 56px; color: #8ad5e1; z-index: 9999" aria-hidden="true">
+			</i>
+			</div>
+			<div style="display: flex; justify-content: center; align-items: center; height: 100vh; width:100%; position: absolute;">
+			<i class="fa fa-crosshairs fa-spin" style="opacity: .5; font-size: 50px; color: #15abc3; z-index: 9999" aria-hidden="true">
+		</i>			
+		</div>
+		<div style="display: flex; justify-content: center; align-items: center; height: 100vh; width:100%; position: absolute;">
+					<a-entity
+          	bmfont-text="text: Score: ; fnt: ./src/assets/fonts/Orbitron.fnt; fntImage: ./src/assets/fonts/Orbitron.png; color: #00bcd4; letterSpacing: 10">
+          </a-entity>
+		</div>
+		<a-scene id="scene" scene-load>
 			<a-asset>
 				<img id="space" src="./src/assets/images/space.jpg">
 				<img id="asteroid" src="./src/assets/images/asteroid.jpg">
@@ -29,19 +41,34 @@
         <a-mixin id="asteroid1" geometry="primitive: sphere; radius:2" material="src: #asteroid"></a-mixin>
         <a-mixin id="asteroid2" geometry="primitive: sphere; radius:4" material="src: #asteroid"></a-mixin>
 
-        <a-mixin id="position" random-spherical-position="radius: 40; startX: 0; lengthX: 360; startY: 0; lengthY: 360" random-rotation random-position="min: -100 -100 -100; max: 100 100 100"></a-mixin>
+        <a-mixin id="position" random-spherical-position="radius: 40; startX: 0; lengthX: 360; startY: 0; lengthY: 360" random-rotation random-position="min: -400 -400 -400; max: 400 400 400"></a-mixin>
 
 				<a-mixin id="laser"
 						geometry="buffer: false; primitive: cylinder; radius: 0.05;"
 						material="color: green; metalness: 0.2; opacity: 0.4; roughness: 0.3"
-						rotation="90 0 0" projectile collider></a-mixin>
+						rotation="-90 0 0" projectile collider></a-mixin>
       </a-asset>
 
-      <a-entity entity-generator="mixin: asteroid1 position; num: 150;"></a-entity>
-      <a-entity entity-generator="mixin: asteroid2 position; num: 150;"></a-entity>
-			<a-entity entity-generator="mixin: octa position; num: 50;">
+			<a-entity entity-generator="mixin: octa position; num: 600;"></a-entity>
 
 			<a-sky src="./src/assets/images/space.jpg"></a-sky>
     </a-scene>
+    <script>
+    	var enemies = document.querySelectorAll('.enemy');
+      var deadEnemies = [];
+      var points = 0;
+      var increaseCounter = function(e) {
+       	var enemy = e.currentTarget;
+        if (deadEnemies.indexOf(enemy) !== -1) { return; }
+        deadEnemies.push(enemy);
+        points+=1;
+        var score_entity = document.getElementById('score');
+        score_entity.setAttribute('bmfont-text', `text: Score:${points}; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6`);
+      };
+      enemies = Array.prototype.slice.call(enemies);
+      enemies.forEach(function (enemyEl) {
+        enemyEl.addEventListener('hit', increaseCounter);
+      });
+    </script>
 	</body>
 </html>

@@ -26,6 +26,7 @@
   ],
   "dependencies": {
     "aframe": "^0.4.1",
+    "aframe-alongpath-component": "^0.2.2",
     "aframe-animation-component": "^3.0.4",
     "aframe-bmfont-text-component": "^0.1.4",
     "aframe-entity-generator-component": "^3.0.1",
