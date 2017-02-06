@@ -1,12 +1,14 @@
 AFRAME.registerComponent('collider', {
   schema: {
-    target: { default: '.enemy' }
+    target: {
+      default: '.enemy'
+    }
   },
 
   /**
    * Calculate targets.
    */
-  init: function () {
+  init: function() {
     var targetEls = this.el.sceneEl.querySelectorAll(this.data.target);
     this.targets = [];
     for (var i = 0; i < targetEls.length; i++) {
@@ -18,7 +20,7 @@ AFRAME.registerComponent('collider', {
   /**
    * Check for collisions (for cylinder).
    */
-  tick: function (t) {
+  tick: function(t) {
     var collisionResults;
     var directionVector;
     var el = this.el;
@@ -46,20 +48,29 @@ AFRAME.registerComponent('collider', {
     animation.setAttribute('dur', '70');
     animation.setAttribute('ease', 'linear');
     animation.setAttribute('to', '0 0 0');
-    collisionResults.forEach(function (target) {
+    collisionResults.forEach(function(target) {
       // Tell collided entity about the collision.
       console.log('TT', target.object.el);
       // target.object.el.emit('collider-hit', {target: el});
       // console.log('HITTING IT UP');
+      let el = target.object.el;
 
+      socket.emit('removeAsteroid', el.id);
 
-      target.object.el.setAttribute('material', {src: '#explosion'});
-      target.object.el.setAttribute('geometry', {primitive: 'sphere'});
-      target.object.el.appendChild(animation);
+      el.setAttribute('material', {
+        src: '#explosion'
+      });
+      el.setAttribute('geometry', {
+        primitive: 'sphere'
+      });
+      el.appendChild(animation);
+
       //
       // bullet.parentNode.removeChild(bullet);
       // this.targets.splice(i, 1);
-      // setTimeout(() => {target.parentNode.removeChild(target) }, 4000);
+      setTimeout(() => {
+        scene.removeChild(el)
+      }, 1000);
       // return;
 
     });

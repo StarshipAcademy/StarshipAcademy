@@ -3,7 +3,12 @@ const {Map, List} = require('immutable');
 
 const store = require('../redux/store');
 const {createAndEmitUser, updateUserData, removeUserAndEmit} = require('../redux/reducers/user-reducer');
-const {getOtherUsers} = require('../utils');
+const {seedAsteroids, removeAsteroid, addAsteroid} = require('../redux/reducers/asteroid-reducer');
+const {getOtherUsers, createAsteroid} = require('../utils');
+
+console.log('############## about to seed')
+store.dispatch(seedAsteroids());
+console.log('############## seeded')
 
 module.exports = io => {
   io.on('connection', socket => {
@@ -33,6 +38,7 @@ module.exports = io => {
     // This is a check to ensure that all of the existing users exist on the DOM
     // before pushing updates to the backend
     socket.on('haveGottenOthers', () => {
+      console.log('########## got others, getting asteroids')
       let allAsteroids = store.getState().asteroids;
       socket.emit('getAsteroidsCallback', allAsteroids);
     });
@@ -40,6 +46,7 @@ module.exports = io => {
     // This is a check to ensure that all of the existing users exist on the DOM
     // before pushing updates to the backend
     socket.on('haveGottenAsteroids', () => {
+      console.log('########### got asteroids, starting tick');
       socket.emit('startTick');
     });
 
@@ -59,6 +66,15 @@ module.exports = io => {
       userData = Map(userData);
       store.dispatch(updateUserData(userData));
     });
+
+    socket.on('removeAsteroid', id => {
+      console.log('####### removing asteroid')
+      store.dispatch(removeAsteroid(id));
+      let newAsteroid = createAsteroid()
+      console.log('####### creating asteroid', newAsteroid)
+      store.dispatch(addAsteroid(newAsteroid));
+      socket.broadcast.emit('AddAsteroid', newAsteroid);
+    })
 
     socket.on('disconnect', () => {
       store.dispatch(removeUserAndEmit(socket));

@@ -107452,7 +107452,7 @@
 	   */
 	  update: function update(oldData) {
 	    this.el.addEventListener('gamepadbuttondown', function (e) {
-	      console.log('AAAAAAAAAAAAAAAAAAAAAAAA');
+	      console.log('AAAAAAAAAAAAAAAAAAAAAAAA you pressed a button', e);
 	    });
 	    this.el.addEventListener(this.data.on, this.spawn.bind(this));
 	  },
@@ -107673,9 +107673,15 @@
 	  });
 	  // This goes to the server, and then goes to `publish` to tell the `tick` to start
 	  socket.emit('haveGottenOthers');
-	  // This goes to the server, and then back to the function with the setInterval
-	  // Needed an intermediary for between when the other components are put on the DOM
-	  // and the start of the interval loop
+	});
+	
+	socket.on('getAsteroidsCallback', function (asteroids) {
+	  console.log('########### getting asteroids');
+	  Object.keys(asteroids).forEach(function (asteroid) {
+	    (0, _utils.putAsteroidOnDOM)(asteroids[asteroid]);
+	  });
+	  console.log('########### put asteroids on DOM');
+	  socket.emit('haveGottenAsteroids');
 	  socket.emit('readyToReceiveUpdates');
 	});
 	
@@ -107694,9 +107700,15 @@
 	  Object.keys(users).forEach(function (key) {
 	    var user = users[key];
 	    var otherAvatar = document.getElementById(user.id);
-	    if (otherAvatar) (0, _utils.updateUsersBullets)(user);
+	    if (otherAvatar) updateUsersBullets(user);
 	  });
 	});
+	
+	socket.on('AddAsteroid', function (asteroid) {
+	  console.log('########### add an asteroid', asteroid);
+	  (0, _utils.putAsteroidOnDOM)(asteroid);
+	}); //gets an asteroid obj
+	socket.on('removeAsteroid', _utils.removeAsteroid); //gets an id
 	
 	// Remove a user's avatar when they disconnect from the server
 	socket.on('removeUser', _utils.removeUser);
@@ -116239,6 +116251,8 @@
 	exports.putUserOnDOM = putUserOnDOM;
 	exports.updateUser = updateUser;
 	exports.removeUser = removeUser;
+	exports.putAsteroidOnDOM = putAsteroidOnDOM;
+	exports.removeAsteroid = removeAsteroid;
 	function putSelfOnDOM(user) {
 	  var scene = document.getElementById('scene');
 	  var avatar = document.createElement('a-camera');
@@ -116284,6 +116298,7 @@
 	
 	function createBullets(userId, bullets) {
 	  console.log('SSSSSSSSS', bullets);
+	  if (!bullets) return;
 	  var scene = document.getElementById('scene');
 	  Object.keys(bullets).forEach(function (key) {
 	    console.log('key:', key);
@@ -116332,6 +116347,7 @@
 	}
 	
 	function removeBullets(userId, bullets) {
+	  if (!bullets) return;
 	  var scene = document.getElementById('scene');
 	  for (var i = 0; i < bullets.length; i++) {
 	    var _bullet = document.getElementById(bullets[i].id);
@@ -116364,6 +116380,41 @@
 	    scene.remove(bullet);
 	    bullet.parentNode.removeChild(bullet);
 	  }
+	}
+	
+	function putAsteroidOnDOM(asteroid) {
+	  var scene = document.getElementById('scene');
+	  var entity = document.createElement('a-entity');
+	  entity.setAttribute('id', asteroid.id);
+	  entity.setAttribute('position', asteroid.x + ' ' + asteroid.y + ' ' + asteroid.z);
+	  entity.setAttribute('mixin', asteroid.type);
+	  entity.setAttribute('class', 'enemy');
+	
+	  scene.appendChild(entity);
+	}
+	
+	function removeAsteroid(id) {
+	  console.log('Removing asteroid:', id);
+	  var scene = document.getElementById('scene');
+	  var asteroidToBeRemoved = document.getElementById(id);
+	
+	  var animation = document.createElement('a-animation');
+	  animation.setAttribute('attribute', 'scale');
+	  animation.setAttribute('dur', '70');
+	  animation.setAttribute('ease', 'linear');
+	  animation.setAttribute('to', '0 0 0');
+	
+	  asteroidToBeRemoved.setAttribute('material', {
+	    src: '#explosion'
+	  });
+	  asteroidToBeRemoved.setAttribute('geometry', {
+	    primitive: 'sphere'
+	  });
+	  asteroidToBeRemoved.appendChild(animation);
+	  setTimeout(function () {
+	    scene.removeChild(asteroidToBeRemoved);
+	    scene.remove(asteroidToBeRemoved);
+	  }, 1000);
 	}
 
 /***/ },
@@ -116453,7 +116504,9 @@
 	
 	AFRAME.registerComponent('collider', {
 	  schema: {
-	    target: { default: '.enemy' }
+	    target: {
+	      default: '.enemy'
+	    }
 	  },
 	
 	  /**
@@ -116504,15 +116557,24 @@
 	      console.log('TT', target.object.el);
 	      // target.object.el.emit('collider-hit', {target: el});
 	      // console.log('HITTING IT UP');
+	      var el = target.object.el;
 	
+	      socket.emit('removeAsteroid', el.id);
 	
-	      target.object.el.setAttribute('material', { src: '#explosion' });
-	      target.object.el.setAttribute('geometry', { primitive: 'sphere' });
-	      target.object.el.appendChild(animation);
+	      el.setAttribute('material', {
+	        src: '#explosion'
+	      });
+	      el.setAttribute('geometry', {
+	        primitive: 'sphere'
+	      });
+	      el.appendChild(animation);
+	
 	      //
 	      // bullet.parentNode.removeChild(bullet);
 	      // this.targets.splice(i, 1);
-	      // setTimeout(() => {target.parentNode.removeChild(target) }, 4000);
+	      setTimeout(function () {
+	        scene.removeChild(el);
+	      }, 1000);
 	      // return;
 	    });
 	  }

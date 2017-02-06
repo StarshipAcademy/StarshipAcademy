@@ -1,7 +1,7 @@
 import io from 'socket.io-client';
 window.socket = io.connect();
 
-import { putSelfOnDOM, putUserOnDOM, updateUser, removeUser, updateUsersBullets } from '../utils';
+import { putSelfOnDOM, putUserOnDOM, updateUser, removeUser, putAsteroidOnDOM, removeAsteroid } from '../utils';
 import '../src/components/publish';
 
 // This is the person who connected
@@ -24,9 +24,15 @@ socket.on('getOthersCallback', users => {
   });
   // This goes to the server, and then goes to `publish` to tell the `tick` to start
   socket.emit('haveGottenOthers');
-  // This goes to the server, and then back to the function with the setInterval
-  // Needed an intermediary for between when the other components are put on the DOM
-  // and the start of the interval loop
+});
+
+socket.on('getAsteroidsCallback', asteroids => {
+  console.log('########### getting asteroids')
+  Object.keys(asteroids).forEach(asteroid => {
+    putAsteroidOnDOM(asteroids[asteroid])
+  });
+  console.log('########### put asteroids on DOM')
+  socket.emit('haveGottenAsteroids');
   socket.emit('readyToReceiveUpdates');
 });
 
@@ -48,6 +54,12 @@ socket.on('bulletsUpdated', users => {
     if (otherAvatar) updateUsersBullets(user);
   });
 });
+
+socket.on('AddAsteroid', asteroid => {
+  console.log('########### add an asteroid', asteroid)
+  putAsteroidOnDOM(asteroid)
+}); //gets an asteroid obj
+socket.on('removeAsteroid', removeAsteroid); //gets an id
 
 // Remove a user's avatar when they disconnect from the server
 socket.on('removeUser', removeUser);

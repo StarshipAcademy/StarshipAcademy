@@ -12,6 +12,7 @@ import configSessions from './sessions';
 configServer(app, _db);
 configSessions(app);
 
+
 import Routes from './routes';
 
 app.use('/api', Routes);
