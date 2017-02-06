@@ -1,3 +1,7 @@
 node_modules
 browser/bundle.js
+browser/bundle.js.map
+.DS_Store
+browser/.DS_Store
+browser/src/.DS_Store
 TODO.txt
