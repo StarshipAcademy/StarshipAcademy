@@ -1,4 +1,4 @@
-export function putSelfOnDOM(user) {
+sexport function putSelfOnDOM(user) {
   const scene = document.getElementById('scene');
   const avatar = document.createElement('a-camera');
 
@@ -16,6 +16,7 @@ export function putSelfOnDOM(user) {
   avatar.newBullets = [];
   avatar.deadBullets = [];
   avatar.setAttribute('ship', true);
+  avatar.setAttribute('fence', 'width: 4800; height: 4800; depth: 4800');
 
   //add model to camera
   const model = document.createElement('a-obj-model');
@@ -137,6 +138,14 @@ export function putSelfOnDOM(user) {
   hud_top.setAttribute('height', '0.4')
   hud_top.setAttribute('width', '1.5')
   hud_top.setAttribute('material', 'src:#hud_top; opacity: 0.4')
+
+    //add score 
+  const score = document.createElement('a-entity');
+  avatar.appendChild(score);
+  score.setAttribute('id', 'score');
+  score.setAttribute('position', '-4, 2.3, -3.6');
+  score.setAttribute('rotation', '15, 0, 0');
+  score.setAttribute('bmfont-text', 'text: Score: 0; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6');
 
   //add music
   const soundRight = document.createElement('a-entity');
