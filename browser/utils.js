@@ -17,12 +17,12 @@ export function putSelfOnDOM(user) {
   avatar.deadBullets = [];
 
   // determine if user is on a phone or desktop
-  if (AFRAME.utils.device.isMobile()) {
+  if (!AFRAME.utils.device.isMobile()) {
     avatar.setAttribute('wasd-controls', 'fly: true; acceleration: 4001');
     avatar.setAttribute('ship', true);
 
     //add model to camera
-    const model = document.createElement('a-obj-model');
+    let model = document.createElement('a-obj-model');
     avatar.appendChild(model);
     model.setAttribute('position', '0 -4 2');
     model.setAttribute('rotation', '0 180 0');
@@ -32,7 +32,7 @@ export function putSelfOnDOM(user) {
   else {
     avatar.setAttribute('turret', true);
 
-    const model = document.createElement('a-obj-model')
+    let model = document.createElement('a-obj-model')
     avatar.appendChild(model)
     model.setAttribute('position', '0 0 0');
     model.setAttribute('rotation', '0 0 0');
