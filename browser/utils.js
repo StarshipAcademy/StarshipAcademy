@@ -5,25 +5,40 @@ export function putSelfOnDOM(user) {
   //add camera
   scene.appendChild(avatar);
   avatar.setAttribute('id', user.id);
+  console.log('headsetConnected?', AFRAME.utils.device.isMobile());
   avatar.setAttribute('position', `${user.x} ${user.y} ${user.z}`);
   avatar.setAttribute('rotation', `${user.xrot} ${user.yrot} ${user.zrot}`);
   avatar.setAttribute('publish', true);
   avatar.setAttribute('look-controls', true);
-  avatar.setAttribute('wasd-controls', 'fly: true; acceleration: 4001');
   avatar.setAttribute('spawner', 'mixin: laser; on: click');
   avatar.setAttribute('click-listener', true);
   avatar.bulletsFired = 0;
   avatar.newBullets = [];
   avatar.deadBullets = [];
-  avatar.setAttribute('ship', true);
 
-  //add model to camera
-  const model = document.createElement('a-obj-model');
-  avatar.appendChild(model);
-  model.setAttribute('position', '0 -4 2');
-  model.setAttribute('rotation', '0 180 0');
-  model.setAttribute('src', '#arc170-obj');
-  model.setAttribute('mtl', '#arc170-mtl');
+  // determine if user is on a phone or desktop
+  if (AFRAME.utils.device.isMobile()) {
+    avatar.setAttribute('wasd-controls', 'fly: true; acceleration: 4001');
+    avatar.setAttribute('ship', true);
+
+    //add model to camera
+    const model = document.createElement('a-obj-model');
+    avatar.appendChild(model);
+    model.setAttribute('position', '0 -4 2');
+    model.setAttribute('rotation', '0 180 0');
+    model.setAttribute('src', '#arc170-obj');
+    model.setAttribute('mtl', '#arc170-mtl');
+  }
+  else {
+    avatar.setAttribute('turret', true);
+
+    const model = document.createElement('a-obj-model')
+    avatar.appendChild(model)
+    model.setAttribute('position', '0 0 0');
+    model.setAttribute('rotation', '0 0 0');
+    model.setAttribute('src', '#droneBlend');
+    model.setAttribute('mtl', '#droneBlend1');
+  }
 
   //add music
   const soundRight = document.createElement('a-entity');
@@ -123,4 +138,3 @@ export function removeUser(userId) {
     bullet.parentNode.removeChild(bullet);
   }
 }
-
