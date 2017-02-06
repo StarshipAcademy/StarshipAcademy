@@ -21,7 +21,32 @@ function getOtherUsers(users, id) {
   return users.filterNot(userData => userData.get('id') === id);
 }
 
+
+function randomPos() {
+  return Math.floor(Math.random() * (4801) - 2400);
+}
+
+// Asteroid constructor
+function Asteroid(id) {
+  this.id = id;
+  this.x = randomPos();
+  this.y = randomPos();
+  this.z = randomPos();
+// this.xrot = 0;
+// this.yrot = 0;
+// this.zrot = 0;
+}
+
+let asteroidCounter = 0;
+// Create an Asteroid
+function createAsteroid() {
+  const asteroid = new Asteroid(asteroidCounter++);
+  return asteroid;
+}
+
+
 module.exports = {
   createUser,
-  getOtherUsers
+  getOtherUsers,
+  createAsteroid
 };

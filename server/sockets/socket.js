@@ -17,18 +17,14 @@ module.exports = io => {
       let allUsers = store.getState().users.toArray();
       let allUsersObj = {};
       allUsers.forEach(user => {
-        console.log('CCCCCCCCCCC', user)
         allUsersObj[user.get('id')] = user.set('bullets', new List())
       })
-
-      console.log('AAAAAAAAAAAAAAA', allUsersObj)
 
       let allBullets = store.getState().bullets;
       allBullets.forEach(bullet => {
         let user = allUsersObj[bullet.get(userId)];
         user.set('bullets', user.get('bullets').push(bullet))
       })
-      console.log('BBBBBBBBBBBBBB', allBullets)
 
       allUsers = Map(allUsersObj)
       socket.emit('getOthersCallback', getOtherUsers(allUsers, socket.id));
@@ -37,6 +33,13 @@ module.exports = io => {
     // This is a check to ensure that all of the existing users exist on the DOM
     // before pushing updates to the backend
     socket.on('haveGottenOthers', () => {
+      let allAsteroids = store.getState().asteroids;
+      socket.emit('getAsteroidsCallback', allAsteroids);
+    });
+
+    // This is a check to ensure that all of the existing users exist on the DOM
+    // before pushing updates to the backend
+    socket.on('haveGottenAsteroids', () => {
       socket.emit('startTick');
     });
 

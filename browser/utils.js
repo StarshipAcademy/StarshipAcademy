@@ -9,7 +9,10 @@ export function putSelfOnDOM(user) {
   avatar.setAttribute('rotation', `${user.xrot} ${user.yrot} ${user.zrot}`);
   avatar.setAttribute('publish', true);
   avatar.setAttribute('look-controls', true);
-  avatar.setAttribute('wasd-controls', 'fly: true; acceleration: 4001');
+  avatar.setAttribute('gamepad-controls', 'flyEnabled: true; acceleration: 2000');
+
+
+  avatar.setAttribute('wasd-controls', 'fly: true; acceleration: 2000');
   avatar.setAttribute('spawner', 'mixin: laser; on: click');
   avatar.setAttribute('click-listener', true);
   avatar.bulletsFired = 0;

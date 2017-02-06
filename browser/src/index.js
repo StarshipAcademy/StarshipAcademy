@@ -12,3 +12,4 @@ require('./components/scene-load');
 require('./components/OtherBullet');
 require('./components/Ship');
 require('./components/collider');
+require('aframe').registerComponent('gamepad-controls', require('aframe-gamepad-controls'));
