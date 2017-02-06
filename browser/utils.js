@@ -5,11 +5,10 @@ export function putSelfOnDOM(user) {
   //add camera
   scene.appendChild(avatar);
   avatar.setAttribute('id', user.id);
-  console.log('headsetConnected?', AFRAME.utils.device.isMobile());
   avatar.setAttribute('position', `${user.x} ${user.y} ${user.z}`);
   avatar.setAttribute('rotation', `${user.xrot} ${user.yrot} ${user.zrot}`);
   avatar.setAttribute('publish', true);
-  avatar.setAttribute('look-controls', true);
+  // avatar.setAttribute('look-controls', true);
   avatar.setAttribute('spawner', 'mixin: laser; on: click');
   avatar.setAttribute('click-listener', true);
   avatar.bulletsFired = 0;
@@ -22,7 +21,7 @@ export function putSelfOnDOM(user) {
     avatar.setAttribute('ship', true);
 
     //add model to camera
-    let model = document.createElement('a-obj-model');
+    const model = document.createElement('a-obj-model');
     avatar.appendChild(model);
     model.setAttribute('position', '0 -4 2');
     model.setAttribute('rotation', '0 180 0');
@@ -30,26 +29,42 @@ export function putSelfOnDOM(user) {
     model.setAttribute('mtl', '#arc170-mtl');
   }
   else {
-    avatar.setAttribute('turret', true);
+    // avatar.setAttribute('wasd-controls', 'acceleration: 0');
 
-    let model = document.createElement('a-obj-model')
-    avatar.appendChild(model)
-    model.setAttribute('position', '0 0 0');
-    model.setAttribute('rotation', '0 0 0');
-    model.setAttribute('src', '#droneBlend');
-    model.setAttribute('mtl', '#droneBlend1');
+    // avatar.setAttribute('ship', true);
+    const model = document.createElement('a-obj-model');
+    avatar.appendChild(model);
+    model.setAttribute('position', '0 0.07 0.9');
+    model.setAttribute('src', '#turretBot-obj');
+    model.setAttribute('mtl', '#turretBot-mtl');
+    console.log('AVATAR', avatar)
+    console.log('TURRET', model);
+
+    const crosshairs = document.createElement('a-image');
+    avatar.appendChild(crosshairs);
+    crosshairs.setAttribute('position', '0 0 -1');
+    crosshairs.setAttribute('height', '0.2');
+    crosshairs.setAttribute('width', '0.45');
+    crosshairs.setAttribute('src', '#turretCrosshair');
+
+    const hud1 = document.createElement('a-image');
+    avatar.appendChild(hud1);
+    hud1.setAttribute('position', '0 0 -1');
+    hud1.setAttribute('width', '1.5');
+    hud1.setAttribute('height', '1.05');
+    hud1.setAttribute('src', '#turretHud1')
   }
 
   //add music
-  const soundRight = document.createElement('a-entity');
-  avatar.appendChild(soundRight);
-  soundRight.setAttribute('position', '2 0 0');
-  soundRight.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
-
-  const soundLeft = document.createElement('a-entity');
-  avatar.appendChild(soundLeft);
-  soundLeft.setAttribute('position', '-2 0 0');
-  soundLeft.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
+  // const soundRight = document.createElement('a-entity');
+  // avatar.appendChild(soundRight);
+  // soundRight.setAttribute('position', '2 0 0');
+  // soundRight.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
+  //
+  // const soundLeft = document.createElement('a-entity');
+  // avatar.appendChild(soundLeft);
+  // soundLeft.setAttribute('position', '-2 0 0');
+  // soundLeft.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
 
   return avatar;
 }
@@ -94,8 +109,14 @@ export function putUserOnDOM(user) {
   avatar.appendChild(model);
   model.setAttribute('position', '0 -4 2');
   model.setAttribute('rotation', '0 180 0');
-  model.setAttribute('src', '#arc170-obj');
-  model.setAttribute('mtl', '#arc170-mtl');
+  if (AFRAME.utils.device.isMobile()) {
+    model.setAttribute('src', '#arc170-obj');
+    model.setAttribute('mtl', '#arc170-mtl');
+  }
+  else {
+    model.setAttribute('src', '#turretBot-obj');
+    model.setAttribute('mtl', '#turretBot-mtl');
+  }
 
   //add their bullets
   createBullets(user.id, user.bullets);
