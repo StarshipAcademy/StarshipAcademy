@@ -98,7 +98,45 @@ export function putSelfOnDOM(user) {
   hud6.setAttribute('width', '0.07')
   hud6.setAttribute('material', 'shader: gif; src:#hud6')
 
+  const hud7 = document.createElement('a-image');
+  avatar.appendChild(hud7);
+  hud7.setAttribute('position', '-0.3 -0.24 -1')
+  hud7.setAttribute('rotation', '0 0 0')
+  hud7.setAttribute('height', '0.09')
+  hud7.setAttribute('width', '0.09')
+  hud7.setAttribute('material', 'src:#hud7; transparent: true')
 
+  const hud8 = document.createElement('a-image');
+  avatar.appendChild(hud8);
+  hud8.setAttribute('position', '0.285 -0.24 -1')
+  hud8.setAttribute('rotation', '0 180 0')
+  hud8.setAttribute('height', '0.09')
+  hud8.setAttribute('width', '0.09')
+  hud8.setAttribute('material', 'src:#hud7')
+
+  const hud9 = document.createElement('a-image');
+  avatar.appendChild(hud9)
+  hud9.setAttribute('position', '-0.75 -0.28 -1.05')
+  hud9.setAttribute('rotation', '-15 90 0')
+  hud9.setAttribute('height', '0.25')
+  hud9.setAttribute('width', '0.4')
+  hud9.setAttribute('material', 'src:#hud9')
+
+  const hud10 = document.createElement('a-image');
+  avatar.appendChild(hud10)
+  hud10.setAttribute('position', '0.75 -0.28 -1.07')
+  hud10.setAttribute('rotation', '15 90 0')
+  hud10.setAttribute('height', '0.25')
+  hud10.setAttribute('width', '0.4')
+  hud10.setAttribute('material', 'src:#hud9')
+
+  const hud_top = document.createElement('a-image');
+  avatar.appendChild(hud_top)
+  hud_top.setAttribute('position', '0 0.14 -0.3')
+  hud_top.setAttribute('rotation', '-25 0 0')
+  hud_top.setAttribute('height', '0.4')
+  hud_top.setAttribute('width', '1.5')
+  hud_top.setAttribute('material', 'src:#hud_top; opacity: 0.4')
 
   //add music
   const soundRight = document.createElement('a-entity');
