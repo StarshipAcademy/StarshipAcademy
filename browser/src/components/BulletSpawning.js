@@ -32,9 +32,7 @@ AFRAME.registerComponent('spawner', {
     entity.setAttribute('position', position);
 
     entity.setAttribute('mixin', this.data.mixin);
-    console.log('ARRGGGG')
     entity.addEventListener('loaded', function() {
-      console.log('AGHH')
       entityRotation = entity.getAttribute('rotation');
       entity.setAttribute('rotation', {
         x: entityRotation.x + rotation.x,
@@ -42,13 +40,15 @@ AFRAME.registerComponent('spawner', {
         z: entityRotation.z + rotation.z
       });
     });
-    el.sceneEl.appendChild(entity);
+    const scene = document.getElementById('scene');
+
+    scene.appendChild(entity);
     el.newBullets.push({
       id: bulletId,
       pos: position,
       rot: rotation
     })
-    console.log('BULLETS', el.newBullets)
+    // console.log('BULLETS', el.newBullets)
 
   }
 });
