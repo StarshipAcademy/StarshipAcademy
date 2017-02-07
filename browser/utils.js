@@ -160,7 +160,7 @@ export function putSelfOnDOM(user) {
 }
 
 function createBullets(userId, bullets) {
-  console.log('SSSSSSSSS', bullets)
+  // console.log('SSSSSSSSS', bullets)
   const scene = document.getElementById('scene');
   Object.keys(bullets).forEach(key => {
     console.log('key:', key)

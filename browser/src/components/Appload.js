@@ -7,7 +7,7 @@ AFRAME.registerComponent('click-list', {
     	var newScene = require('../../body.js')
 
 
- $('#menu').load(newScene);
+ $('#menu').replaceWith(newScene);
 
       el.emit('click', null, false);
     });

@@ -33,17 +33,18 @@ var body = `<body id="mainApp">
         <a-mixin id="asteroid1" geometry="primitive: sphere; radius:2" material="src: #asteroid"></a-mixin>
         <a-mixin id="asteroid2" geometry="primitive: sphere; radius:4" material="src: #asteroid"></a-mixin>
 
+				<a-mixin id="octa" geometry="primitive: octahedron; radius:4" material="src:#asteroid">
+
         <a-mixin id="position" random-spherical-position="radius: 40; startX: 0; lengthX: 360; startY: 0; lengthY: 360" random-rotation random-position="min: -100 -100 -100; max: 100 100 100"></a-mixin>
 
 				<a-mixin id="laser"
 						geometry="buffer: false; primitive: cylinder; radius: 0.05; height: 8"
 						material="color: green; metalness: 0.2; opacity: 0.4; roughness: 0.3"
 						translate="0 -2 0" sound="src: #laser_shot; on: click; autoplay: true; volume: 1"
-						rotation="-90 0 0" projectile="speed: 0.4" collider></a-mixin>
+						rotation="-90 0 0" projectile="speed: 0.2" collider></a-mixin>
 
       </a-asset>
-      <a-entity entity-generator="mixin: asteroid1 position; num: 150;"></a-entity>
-      <a-entity entity-generator="mixin: asteroid2 position; num: 150;"></a-entity>
+
 
 			<a-entity entity-generator="mixin: octa position; num: 50;"></a-entity>
 
@@ -58,6 +59,7 @@ var body = `<body id="mainApp">
            if (deadEnemies.indexOf(enemy) !== -1) { return; }
            deadEnemies.push(enemy);
            points+=1;
+					 console.log("POINTS",points)
            let score_entity = document.getElementById('score');
            score_entity.setAttribute('bmfont-text', "text: Score:" + points + "; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6");
          };
