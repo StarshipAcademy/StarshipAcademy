@@ -1,15 +1,13 @@
 
 AFRAME.registerComponent('click-list', {
-  init: function () {
+  init: function() {
     var el = this.el;
 
-    window.addEventListener('click', function () {
-    	var newScene = require('../../body.js')
+    el.addEventListener('click', function() {
+      var newScene = require('../../body.js')
 
 
- $('#menu').replaceWith(newScene);
-
-      el.emit('click', null, false);
+      $('#scene').replaceWith(newScene);
     });
   }
 });

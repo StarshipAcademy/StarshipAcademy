@@ -1,5 +1,4 @@
-var body = `<body id="mainApp">
-
+var body = `
     <a-scene id="scene" scene-load>
       <a-asset>
         <img id="space" src="./src/assets/images/space.jpg">
@@ -35,17 +34,12 @@ var body = `<body id="mainApp">
 
         <a-mixin id="octa" geometry="primitive: octahedron; radius:4" material="src:#asteroid">
 
-        <!-- <a-mixin id="position" random-spherical-position="radius: 40; startX: 0; lengthX: 360; startY: 0; lengthY: 360" random-rotation random-position="min: -100 -100 -100; max: 100 100 100"></a-mixin> -->
-
         <a-mixin id="laser"
             geometry="buffer: false; primitive: cylinder; radius: 0.05; height: 8"
-            material="color: green; metalness: 0.2; opacity: 0.4; roughness: 0.3"
+            material="color: green; metalness: 0.2; opacity: 1; roughness: 0.3"
             translate="0 -2 0" sound="src: #laser_shot; on: click; autoplay: true; volume: 1"
             rotation="-90 0 0" projectile collider></a-mixin>
       </a-asset>
-      <!-- <a-entity entity-generator="mixin: asteroid1 position; num: 150;"></a-entity>
-      <a-entity entity-generator="mixin: asteroid2 position; num: 150;"></a-entity>
-      <a-entity entity-generator="mixin: octa position; num: 50;"> -->
       <a-sky src="./src/assets/images/space.jpg"></a-sky>
     </a-scene>
     <script>
@@ -65,7 +59,6 @@ var body = `<body id="mainApp">
          enemies.forEach(function (enemyEl) {
            enemyEl.addEventListener('hit', increaseCounter);
          });
-       </script>
-  </body>`
+       </script>`
 
 module.exports = body
