@@ -16,6 +16,7 @@ export function putSelfOnDOM(user) {
   avatar.newBullets = [];
   avatar.deadBullets = [];
   avatar.setAttribute('ship', true);
+  avatar.setAttribute('fence', 'width: 4800; height: 4800; depth: 4800');
 
   //add model to camera
   const model = document.createElement('a-obj-model');
@@ -26,15 +27,13 @@ export function putSelfOnDOM(user) {
   model.setAttribute('mtl', '#arc170-mtl');
 
   //add hud elements
-  const crosshair = document.createElement('a-entity');
-  avatar.appendChild(crosshair);
 
-  const crosshairImage = document.createElement('a-image')
-  crosshair.appendChild(crosshairImage)
-  crosshairImage.setAttribute('position', ' 0 0 -1');
-  crosshairImage.setAttribute('src', '#crosshair');
-  crosshairImage.setAttribute('height', '0.15');
-  crosshairImage.setAttribute('width', '0.15');
+  const crosshair = document.createElement('a-image')
+  avatar.appendChild(crosshair);
+  crosshair.setAttribute('position', ' 0 0 -1');
+  crosshair.setAttribute('height', '0.15');
+  crosshair.setAttribute('width', '0.15');
+  crosshair.setAttribute('src', '#crosshair');
   // crosshair.setAttribute()
   // crosshair.setAttribute()
 
@@ -138,22 +137,30 @@ export function putSelfOnDOM(user) {
   hud_top.setAttribute('width', '1.5')
   hud_top.setAttribute('material', 'src:#hud_top; opacity: 0.4')
 
-  //add music
-  const soundRight = document.createElement('a-entity');
-  avatar.appendChild(soundRight);
-  soundRight.setAttribute('position', '2 0 0');
-  soundRight.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
+    //add score
+  const score = document.createElement('a-entity');
+  avatar.appendChild(score);
+  score.setAttribute('id', 'score');
+  score.setAttribute('position', '-4, 2.3, -3.6');
+  score.setAttribute('rotation', '15, 0, 0');
+  score.setAttribute('bmfont-text', 'text: Score: 0; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6');
 
-  const soundLeft = document.createElement('a-entity');
-  avatar.appendChild(soundLeft);
-  soundLeft.setAttribute('position', '-2 0 0');
-  soundLeft.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
+  //add music
+  // const soundRight = document.createElement('a-entity');
+  // avatar.appendChild(soundRight);
+  // soundRight.setAttribute('position', '2 0 0');
+  // soundRight.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
+  //
+  // const soundLeft = document.createElement('a-entity');
+  // avatar.appendChild(soundLeft);
+  // soundLeft.setAttribute('position', '-2 0 0');
+  // soundLeft.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
 
   return avatar;
 }
 
 function createBullets(userId, bullets) {
-  console.log('SSSSSSSSS', bullets)
+  // console.log('SSSSSSSSS', bullets)
   const scene = document.getElementById('scene');
   Object.keys(bullets).forEach(key => {
     console.log('key:', key)

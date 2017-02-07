@@ -48,7 +48,7 @@ AFRAME.registerComponent('collider', {
     animation.setAttribute('to', '0 0 0');
     collisionResults.forEach(function (target) {
       // Tell collided entity about the collision.
-      console.log('TT', target.object.el);
+      // console.log('TT', target.object.el);
       // target.object.el.emit('collider-hit', {target: el});
       // console.log('HITTING IT UP');
 
@@ -56,6 +56,7 @@ AFRAME.registerComponent('collider', {
       target.object.el.setAttribute('material', {src: '#explosion'});
       target.object.el.setAttribute('geometry', {primitive: 'sphere'});
       target.object.el.appendChild(animation);
+      target.object.el.emit('hit');
       //
       // bullet.parentNode.removeChild(bullet);
       // this.targets.splice(i, 1);
