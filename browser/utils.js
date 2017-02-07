@@ -9,7 +9,10 @@ export function putSelfOnDOM(user) {
   avatar.setAttribute('rotation', `${user.xrot} ${user.yrot} ${user.zrot}`);
   avatar.setAttribute('publish', true);
   avatar.setAttribute('look-controls', true);
-  avatar.setAttribute('wasd-controls', 'fly: true; acceleration: 4001');
+  avatar.setAttribute('gamepad-controls', 'flyEnabled: true; acceleration: 2000');
+
+
+  avatar.setAttribute('wasd-controls', 'fly: true; acceleration: 2000');
   avatar.setAttribute('spawner', 'mixin: laser; on: click');
   avatar.setAttribute('click-listener', true);
   avatar.bulletsFired = 0;
@@ -137,7 +140,7 @@ export function putSelfOnDOM(user) {
   hud_top.setAttribute('width', '1.5')
   hud_top.setAttribute('material', 'src:#hud_top; opacity: 0.4')
 
-    //add score
+  //add score
   const score = document.createElement('a-entity');
   avatar.appendChild(score);
   score.setAttribute('id', 'score');
@@ -160,7 +163,9 @@ export function putSelfOnDOM(user) {
 }
 
 function createBullets(userId, bullets) {
-  // console.log('SSSSSSSSS', bullets)
+  console.log('SSSSSSSSS', bullets)
+  if (!bullets) return;
+
   const scene = document.getElementById('scene');
   Object.keys(bullets).forEach(key => {
     console.log('key:', key)
@@ -209,6 +214,7 @@ export function putUserOnDOM(user) {
 }
 
 function removeBullets(userId, bullets) {
+  if (!bullets) return;
   const scene = document.getElementById('scene');
   for (var i = 0; i < bullets.length; i++) {
     const bullet = document.getElementById(bullets[i].id);
@@ -243,3 +249,39 @@ export function removeUser(userId) {
     bullet.parentNode.removeChild(bullet);
   }
 }
+
+export function putAsteroidOnDOM(asteroid) {
+  const scene = document.getElementById('scene');
+  const entity = document.createElement('a-entity');
+  entity.setAttribute('id', asteroid.id);
+  entity.setAttribute('position', `${asteroid.x} ${asteroid.y} ${asteroid.z}`);
+  entity.setAttribute('mixin', asteroid.type);
+  entity.setAttribute('class', 'enemy');
+
+  scene.appendChild(entity);
+}
+
+export function removeAsteroid(id) {
+  console.log('Removing asteroid:', id);
+  const scene = document.getElementById('scene');
+  const asteroidToBeRemoved = document.getElementById(id);
+
+  let animation = document.createElement('a-animation');
+  animation.setAttribute('attribute', 'scale');
+  animation.setAttribute('dur', '70');
+  animation.setAttribute('ease', 'linear');
+  animation.setAttribute('to', '0 0 0');
+
+  asteroidToBeRemoved.setAttribute('material', {
+    src: '#explosion'
+  });
+  asteroidToBeRemoved.setAttribute('geometry', {
+    primitive: 'sphere'
+  });
+  asteroidToBeRemoved.appendChild(animation);
+  setTimeout(() => {
+    scene.removeChild(asteroidToBeRemoved);
+    scene.remove(asteroidToBeRemoved);
+  }, 1000);
+}
+

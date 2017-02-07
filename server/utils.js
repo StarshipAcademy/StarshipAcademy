@@ -1,4 +1,3 @@
-
 // User constructor
 function User(id) {
   this.id = id;
@@ -21,7 +20,39 @@ function getOtherUsers(users, id) {
   return users.filterNot(userData => userData.get('id') === id);
 }
 
+
+function randomPos() {
+  return Math.floor(Math.random() * (100) - 50);
+}
+
+function randomType() {
+  const types = ['asteroid1', 'asteroid2', 'octa'];
+  return types[Math.floor(Math.random() * (3))];
+}
+
+// Asteroid constructor
+function Asteroid(id) {
+  this.id = id;
+  this.type = randomType();
+  this.x = randomPos();
+  this.y = randomPos();
+  this.z = randomPos();
+// this.xrot = 0;
+// this.yrot = 0;
+// this.zrot = 0;
+}
+
+let asteroidCounter = 0;
+// Create an Asteroid
+function createAsteroid() {
+  // console.log('############## in create function')
+  const asteroid = new Asteroid(asteroidCounter++);
+  console.log
+  return asteroid;
+}
+
 module.exports = {
   createUser,
-  getOtherUsers
+  getOtherUsers,
+  createAsteroid
 };

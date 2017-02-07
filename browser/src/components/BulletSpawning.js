@@ -11,6 +11,9 @@ AFRAME.registerComponent('spawner', {
    * Add event listener.
    */
   update: function(oldData) {
+    this.el.addEventListener('gamepadbuttondown', (e) => {
+      console.log('AAAAAAAAAAAAAAAAAAAAAAAA you pressed a button', e)
+    });
     this.el.addEventListener(this.data.on, this.spawn.bind(this));
   },
   /**
