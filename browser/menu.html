@@ -7,6 +7,8 @@
 		<script src="/bundle.js"></script>
 		<script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
   	<script src="https://rawgit.com/mayognaise/aframe-gif-component/master/dist/aframe-gif-component.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.5.0/annyang.min.js"></script>
+		<script src="aframe-voice-commands.js"></script>
 	</head>
 	<body>
 
@@ -17,6 +19,7 @@
 		      </a-camera>
 		    </a-entity>
 
+
 		 <a-image id="Welcome" position="0 3.5 -75" rotation="20 0 0"
 		      width="50" depth="50" height="75" material="src: #start" click-list>
 		      </a-image>
@@ -26,6 +29,7 @@
 
 		      <a-obj-model position="-40 3.5 -20" rotation="40 20 -30"
 		      width="100" depth="100" height="100" src="#arc170-obj" mtl="#arc170-mtl"></a-obj-model>
+
 			<a-asset>
 
 				<img id="space" src="./src/assets/images/space.jpg">

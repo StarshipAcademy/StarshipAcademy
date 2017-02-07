@@ -1,7 +1,7 @@
 AFRAME.registerComponent('other-bullet', {
   schema: {
     speed: {
-      default: 0.02
+      default: 0.8
     }
   },
 

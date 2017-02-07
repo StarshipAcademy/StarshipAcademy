@@ -1,6 +1,6 @@
 
 AFRAME.registerComponent('click-list', {
-  init: function () {
+  init: function() {
     var el = this.el;
 
     el.addEventListener('click', function () {

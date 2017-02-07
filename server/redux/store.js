@@ -3,10 +3,13 @@ const thunkMiddleware = require('redux-thunk').default;
 
 const {userReducer} = require('./reducers/user-reducer');
 const {bulletReducer} = require('./reducers/bullet-reducer');
+const {asteroidReducer} = require('./reducers/asteroid-reducer');
+
 
 const rootReducer = combineReducers({
   users: userReducer,
-  bullets: bulletReducer
+  bullets: bulletReducer,
+  asteroids: asteroidReducer,
 });
 
 const store = createStore(

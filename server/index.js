@@ -12,9 +12,14 @@ import configSessions from './sessions';
 configServer(app, _db);
 configSessions(app);
 
+
 import Routes from './routes';
 
 app.use('/api', Routes);
+
+app.get('/bundle.js', (req, res) => {
+  res.sendFile(path.join(app.getValue('projectRoot'), './browser/bundle.js'))
+})
 
 app.get('/*', (req, res) => {
   // if (req.session.socketData) {
