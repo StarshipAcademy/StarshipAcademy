@@ -1,4 +1,4 @@
-sexport function putSelfOnDOM(user) {
+export function putSelfOnDOM(user) {
   const scene = document.getElementById('scene');
   const avatar = document.createElement('a-camera');
 
@@ -27,15 +27,13 @@ sexport function putSelfOnDOM(user) {
   model.setAttribute('mtl', '#arc170-mtl');
 
   //add hud elements
-  const crosshair = document.createElement('a-entity');
-  avatar.appendChild(crosshair);
 
-  const crosshairImage = document.createElement('a-image')
-  crosshair.appendChild(crosshairImage)
-  crosshairImage.setAttribute('position', ' 0 0 -1');
-  crosshairImage.setAttribute('src', '#crosshair');
-  crosshairImage.setAttribute('height', '0.15');
-  crosshairImage.setAttribute('width', '0.15');
+  const crosshair = document.createElement('a-image')
+  avatar.appendChild(crosshair);
+  crosshair.setAttribute('position', ' 0 0 -1');
+  crosshair.setAttribute('height', '0.15');
+  crosshair.setAttribute('width', '0.15');
+  crosshair.setAttribute('src', '#crosshair');
   // crosshair.setAttribute()
   // crosshair.setAttribute()
 
@@ -130,33 +128,33 @@ sexport function putSelfOnDOM(user) {
   hud10.setAttribute('height', '0.25')
   hud10.setAttribute('width', '0.4')
   hud10.setAttribute('material', 'src:#hud9')
-
-  const hud_top = document.createElement('a-image');
-  avatar.appendChild(hud_top)
-  hud_top.setAttribute('position', '0 0.14 -0.3')
-  hud_top.setAttribute('rotation', '-25 0 0')
-  hud_top.setAttribute('height', '0.4')
-  hud_top.setAttribute('width', '1.5')
-  hud_top.setAttribute('material', 'src:#hud_top; opacity: 0.4')
-
-    //add score 
-  const score = document.createElement('a-entity');
-  avatar.appendChild(score);
-  score.setAttribute('id', 'score');
-  score.setAttribute('position', '-4, 2.3, -3.6');
-  score.setAttribute('rotation', '15, 0, 0');
-  score.setAttribute('bmfont-text', 'text: Score: 0; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6');
+  
+  // const hud_top = document.createElement('a-image');
+  // avatar.appendChild(hud_top)
+  // hud_top.setAttribute('position', '0 0.14 -0.3')
+  // hud_top.setAttribute('rotation', '-25 0 0')
+  // hud_top.setAttribute('height', '0.4')
+  // hud_top.setAttribute('width', '1.5')
+  // hud_top.setAttribute('material', 'src:#hud_top; opacity: 0.4')
+  //
+  //   //add score
+  // const score = document.createElement('a-entity');
+  // avatar.appendChild(score);
+  // score.setAttribute('id', 'score');
+  // score.setAttribute('position', '-4, 2.3, -3.6');
+  // score.setAttribute('rotation', '15, 0, 0');
+  // score.setAttribute('bmfont-text', 'text: Score: 0; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6');
 
   //add music
-  const soundRight = document.createElement('a-entity');
-  avatar.appendChild(soundRight);
-  soundRight.setAttribute('position', '2 0 0');
-  soundRight.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
-
-  const soundLeft = document.createElement('a-entity');
-  avatar.appendChild(soundLeft);
-  soundLeft.setAttribute('position', '-2 0 0');
-  soundLeft.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
+  // const soundRight = document.createElement('a-entity');
+  // avatar.appendChild(soundRight);
+  // soundRight.setAttribute('position', '2 0 0');
+  // soundRight.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
+  //
+  // const soundLeft = document.createElement('a-entity');
+  // avatar.appendChild(soundLeft);
+  // soundLeft.setAttribute('position', '-2 0 0');
+  // soundLeft.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
 
   return avatar;
 }

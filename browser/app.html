@@ -24,14 +24,21 @@
 				<img id="hud6" src="./src/assets/images/hud_6.gif">
 				<img id="hud7" src="./src/assets/images/hud_7.png">
 				<img id="hud9" src="./src/assets/images/hud_9.png">
-				<img id="hud9" src="./src/assets/images/hud_9.png">
 				<img id="hud_top" src="./src/assets/images/hud_top.png">
 
-				<audio id="gameplay" src="./src/assets/sounds/SpaceCube.ogg">
-				<audio id="laser_shot" src="./src/assets/sounds/Laser.ogg">
+				<img id="turretCrosshair" src="./src/assets/images/turret_crosshair.png">
+				<img id="turretHud1" src="./src/assets/images/turret_hud1.png">
 
+				<audio id="gameplay" src="./src/assets/sounds/SpaceCube.ogg" />
+				<audio id="laser_shot" src="./src/assets/sounds/Laser.ogg" />
+
+				<!-- STARSHIP -->
 				<a-asset-item id="arc170-obj" src="./src/assets/models/arc170/arc170.obj"></a-asset-item>
         <a-asset-item id="arc170-mtl" src="./src/assets/models/arc170/arc170.mtl"></a-asset-item>
+
+				<!-- TURRET -->
+				<!-- <a-asset-item id="turretBot-obj" src="./src/assets/models/turretBot/turretBot.obj"></a-asset-item>
+				<a-asset-item id="turretBot-mtl" src="./src/assets/models/turretBot/turretBot.mtl"></a-asset-item> -->
 
         <a-mixin id="asteroid1" geometry="primitive: sphere; radius:2" material="src: #asteroid"></a-mixin>
         <a-mixin id="asteroid2" geometry="primitive: sphere; radius:4" material="src: #asteroid"></a-mixin>
@@ -49,7 +56,7 @@
       <a-entity entity-generator="mixin: asteroid1 position; num: 150;"></a-entity>
       <a-entity entity-generator="mixin: asteroid2 position; num: 150;"></a-entity>
 
-			<a-entity entity-generator="mixin: octa position; num: 50;">
+			<a-entity entity-generator="mixin: octa position; num: 50;"></a-entity>
 
 			<a-sky src="./src/assets/images/space.jpg"></a-sky>
     </a-scene>

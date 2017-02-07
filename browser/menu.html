@@ -5,12 +5,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<script src="/jquery/dist/jquery.min.js"></script>
 		<script src="/bundle.js"></script>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
+  	<script src="https://rawgit.com/mayognaise/aframe-gif-component/master/dist/aframe-gif-component.min.js"></script>
 	</head>
 	<body id="menu">
-
-		<i class="fa fa-crosshairs" style="color: #41EF39; position: absolute; top: 49%; left: 49.5%; z-index: 9999" aria-hidden="true">
-		</i>
 
 		<a-scene id="scene" physics-world="gravity: 0 0 0">
 			<a-entity position="0 1.8 4">
@@ -25,6 +23,22 @@
 			<a-asset>
 
 				<img id="space" src="./src/assets/images/space.jpg">
+
+				<img id="crosshair" src="./src/assets/images/crosshair.png">
+
+				<img id="hud1" src="./src/assets/images/hud_1.gif">
+				<img id="hud2" src="./src/assets/images/hud_2.gif">
+				<img id="hud3" src="./src/assets/images/hud_3.jpg">
+				<img id="hud4" src="./src/assets/images/hud_4.gif">
+				<img id="hud5" src="./src/assets/images/hud_5.jpg">
+				<img id="hud6" src="./src/assets/images/hud_6.gif">
+				<img id="hud7" src="./src/assets/images/hud_7.png">
+				<img id="hud9" src="./src/assets/images/hud_9.png">
+				<img id="hud_top" src="./src/assets/images/hud_top.png">
+
+				<img id="turretCrosshair" src="./src/assets/images/turret_crosshair.png">
+				<img id="turretHud1" src="./src/assets/images/turret_hud1.png">
+
 				<img id="asteroid" src="./src/assets/images/asteroid.jpg">
 				<img id="start" src="./src/assets/images/startbutton.png">
 
