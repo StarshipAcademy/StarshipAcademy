@@ -163,7 +163,7 @@ export function putSelfOnDOM(user) {
 }
 
 function createBullets(userId, bullets) {
-  console.log('SSSSSSSSS', bullets)
+  // console.log('SSSSSSSSS', bullets)
   if (!bullets) return;
 
   const scene = document.getElementById('scene');
@@ -219,7 +219,6 @@ function removeBullets(userId, bullets) {
   for (var i = 0; i < bullets.length; i++) {
     const bullet = document.getElementById(bullets[i].id);
     scene.remove(bullet);
-    bullet.parentNode.removeChild(bullet);
   }
 }
 
@@ -245,8 +244,7 @@ export function removeUser(userId) {
   //remove all their bullets
   let bullets = document.querySelectorAll(`.${userId}bullet`);
   for (var i = 0; i < bullets.length; i++) {
-    scene.remove(bullet);
-    bullet.parentNode.removeChild(bullet);
+    scene.removeChild(bullets[i]);
   }
 }
 
