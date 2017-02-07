@@ -11,7 +11,6 @@ AFRAME.registerComponent('ship', {
     for (var i = 0; i < asteroidNodes.length; i++) {
       this.targetNodes.push(asteroidNodes[i]);
     }
-    console.log('aaaaaaaaaaa', this.targetNodes)
   },
 
   //TODO when new asteroids are added, add to this.targetNodes

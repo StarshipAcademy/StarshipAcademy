@@ -52,17 +52,16 @@ AFRAME.registerComponent('collider', {
       // target.object.el.emit('collider-hit', {target: el});
       // console.log('HITTING IT UP');
 
-
       target.object.el.setAttribute('material', {src: '#explosion'});
       target.object.el.setAttribute('geometry', {primitive: 'sphere'});
       target.object.el.appendChild(animation);
       target.object.el.emit('hit');
+
       //
       // bullet.parentNode.removeChild(bullet);
       // this.targets.splice(i, 1);
       // setTimeout(() => {target.parentNode.removeChild(target) }, 4000);
       // return;
-
     });
   }
 });

@@ -17,6 +17,7 @@ export function putSelfOnDOM(user) {
   avatar.deadBullets = [];
   avatar.setAttribute('ship', true);
   avatar.setAttribute('fence', 'width: 4800; height: 4800; depth: 4800');
+  avatar.setAttribute('points-counter');
 
   //add model to camera
   const model = document.createElement('a-obj-model');
@@ -34,8 +35,7 @@ export function putSelfOnDOM(user) {
   crosshair.setAttribute('height', '0.15');
   crosshair.setAttribute('width', '0.15');
   crosshair.setAttribute('src', '#crosshair');
-  // crosshair.setAttribute()
-  // crosshair.setAttribute()
+ 
 
   // const crosshairAnimation = document.createElement('a-animation')
   // crosshairImage.appendChild(crosshairAnimation);
@@ -131,20 +131,21 @@ export function putSelfOnDOM(user) {
 
   const hud_top = document.createElement('a-image');
   avatar.appendChild(hud_top)
-  hud_top.setAttribute('position', '0 0.14 -0.3')
+  hud_top.setAttribute('position', '-0.02 0.21 -0.3')
   hud_top.setAttribute('rotation', '-25 0 0')
-  hud_top.setAttribute('height', '0.4')
-  hud_top.setAttribute('width', '1.5')
+  hud_top.setAttribute('height', '0.1')
+  hud_top.setAttribute('width', '1.04')
   hud_top.setAttribute('material', 'src:#hud_top; opacity: 0.4')
 
-    //add score
+   
   const score = document.createElement('a-entity');
   avatar.appendChild(score);
   score.setAttribute('id', 'score');
-  score.setAttribute('position', '-4, 2.3, -3.6');
-  score.setAttribute('rotation', '15, 0, 0');
+  score.setAttribute('position', '-4 1.5 -3.6');
+  score.setAttribute('rotation', '15 0 0');
   score.setAttribute('bmfont-text', 'text: Score: 0; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6');
 
+  // scene.setAttribute('points-component');
   //add music
   // const soundRight = document.createElement('a-entity');
   // avatar.appendChild(soundRight);
@@ -158,6 +159,23 @@ export function putSelfOnDOM(user) {
 
   return avatar;
 }
+
+  // let enemies = document.querySelectorAll('.enemy');
+  // let deadEnemies = [];
+  // let points = 0;
+  // let increaseCounter = function(e) {
+  //   let enemy = e.currentTarget;
+  //   if (deadEnemies.indexOf(enemy) !== -1) { return; }
+  //     deadEnemies.push(enemy);
+  //     points+=1;
+  //     let score_entity = document.getElementById('score');
+  //     score_entity.setAttribute('bmfont-text', `text: Score:${points}; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6`);
+  //   };
+  //   enemies = Array.prototype.slice.call(enemies);
+  //   enemies.forEach(function (enemyEl) {
+  //   enemyEl.addEventListener('hit', increaseCounter);
+  //   });
+
 
 function createBullets(userId, bullets) {
   // console.log('SSSSSSSSS', bullets)
@@ -243,3 +261,5 @@ export function removeUser(userId) {
     bullet.parentNode.removeChild(bullet);
   }
 }
+
+

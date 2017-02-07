@@ -42,6 +42,7 @@ var body = `<body id="mainApp">
 						material="color: green; metalness: 0.2; opacity: 0.4; roughness: 0.3"
 						translate="0 -2 0" sound="src: #laser_shot; on: click; autoplay: true; volume: 1"
 						rotation="-90 0 0" projectile="speed: 0.2" collider></a-mixin>
+				
 
       </a-asset>
 
