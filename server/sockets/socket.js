@@ -70,10 +70,12 @@ module.exports = io => {
     socket.on('removeAsteroid', id => {
       console.log('####### removing asteroid')
       store.dispatch(removeAsteroid(id));
+      socket.broadcast.emit('removeAsteroid', id);
+
       let newAsteroid = createAsteroid()
       console.log('####### creating asteroid', newAsteroid)
       store.dispatch(addAsteroid(newAsteroid));
-      socket.broadcast.emit('AddAsteroid', newAsteroid);
+      socket.broadcast.emit('addAsteroid', newAsteroid);
     })
 
     socket.on('disconnect', () => {

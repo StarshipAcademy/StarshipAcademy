@@ -107704,11 +107704,15 @@
 	  });
 	});
 	
-	socket.on('AddAsteroid', function (asteroid) {
+	socket.on('addAsteroid', function (asteroid) {
 	  console.log('########### add an asteroid', asteroid);
 	  (0, _utils.putAsteroidOnDOM)(asteroid);
 	}); //gets an asteroid obj
-	socket.on('removeAsteroid', _utils.removeAsteroid); //gets an id
+	
+	socket.on('removeAsteroid', function (id) {
+	  console.log('########### remove an asteroid', id);
+	  (0, _utils.removeAsteroid)(id);
+	}); //gets an id
 	
 	// Remove a user's avatar when they disconnect from the server
 	socket.on('removeUser', _utils.removeUser);

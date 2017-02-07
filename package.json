@@ -32,7 +32,6 @@
     "aframe-extras": "^3.2.2",
     "aframe-faceset-component": "^0.3.1",
     "aframe-gamepad-controls": "^0.5.0",
-    "aframe-physics-components": "^1.1.0",
     "aframe-polygon-primitive": "^0.1.0",
     "aframe-randomizer-components": "^3.0.2",
     "aframe-text-component": "^0.3.0",

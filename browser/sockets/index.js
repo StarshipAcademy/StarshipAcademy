@@ -55,11 +55,15 @@ socket.on('bulletsUpdated', users => {
   });
 });
 
-socket.on('AddAsteroid', asteroid => {
+socket.on('addAsteroid', asteroid => {
   console.log('########### add an asteroid', asteroid)
   putAsteroidOnDOM(asteroid)
 }); //gets an asteroid obj
-socket.on('removeAsteroid', removeAsteroid); //gets an id
+
+socket.on('removeAsteroid', id => {
+  console.log('########### remove an asteroid', id)
+  removeAsteroid(id)
+}); //gets an id
 
 // Remove a user's avatar when they disconnect from the server
 socket.on('removeUser', removeUser);
