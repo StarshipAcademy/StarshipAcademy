@@ -7,12 +7,14 @@
 		<script src="/bundle.js"></script>
 		<script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
   	<script src="https://rawgit.com/mayognaise/aframe-gif-component/master/dist/aframe-gif-component.min.js"></script>
+		<script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.2.2/dist/aframe-extras.min.js"></script>
+		<script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v1.2.0/dist/aframe-physics-system.min.js"></script>
 	</head>
 	<body id="menu">
 
 		<a-scene id="scene" physics-world="gravity: 0 0 0">
 			<a-entity position="0 1.8 4">
-		      <a-camera>
+		      <a-camera universal-controls >
 		        <a-cursor color="#4CC3D9"></a-cursor>
 		      </a-camera>
 		    </a-entity>

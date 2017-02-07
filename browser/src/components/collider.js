@@ -26,7 +26,6 @@ AFRAME.registerComponent('collider', {
     var object3D = el.object3D;
     var raycaster;
     var vertices = mesh.geometry.vertices;
-    // console.log('VERY', vertices);
     var bottomVertex = vertices[0].clone();
     var topVertex = vertices[vertices.length - 1].clone();
 
@@ -40,7 +39,6 @@ AFRAME.registerComponent('collider', {
     // Raycast for collision.
     raycaster = new THREE.Raycaster(bottomVertex, directionVector, 1);
     collisionResults = raycaster.intersectObjects(this.targets, true);
-    // console.log("RESULTS!ss!",collisionResults)
     let animation = document.createElement('a-animation');
     animation.setAttribute('attribute', 'scale');
     animation.setAttribute('dur', '70');
