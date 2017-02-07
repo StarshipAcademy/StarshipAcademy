@@ -128,22 +128,22 @@ export function putSelfOnDOM(user) {
   hud10.setAttribute('height', '0.25')
   hud10.setAttribute('width', '0.4')
   hud10.setAttribute('material', 'src:#hud9')
-  
-  // const hud_top = document.createElement('a-image');
-  // avatar.appendChild(hud_top)
-  // hud_top.setAttribute('position', '0 0.14 -0.3')
-  // hud_top.setAttribute('rotation', '-25 0 0')
-  // hud_top.setAttribute('height', '0.4')
-  // hud_top.setAttribute('width', '1.5')
-  // hud_top.setAttribute('material', 'src:#hud_top; opacity: 0.4')
-  //
-  //   //add score
-  // const score = document.createElement('a-entity');
-  // avatar.appendChild(score);
-  // score.setAttribute('id', 'score');
-  // score.setAttribute('position', '-4, 2.3, -3.6');
-  // score.setAttribute('rotation', '15, 0, 0');
-  // score.setAttribute('bmfont-text', 'text: Score: 0; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6');
+
+  const hud_top = document.createElement('a-image');
+  avatar.appendChild(hud_top)
+  hud_top.setAttribute('position', '0 0.14 -0.3')
+  hud_top.setAttribute('rotation', '-25 0 0')
+  hud_top.setAttribute('height', '0.4')
+  hud_top.setAttribute('width', '1.5')
+  hud_top.setAttribute('material', 'src:#hud_top; opacity: 0.4')
+
+    //add score
+  const score = document.createElement('a-entity');
+  avatar.appendChild(score);
+  score.setAttribute('id', 'score');
+  score.setAttribute('position', '-4, 2.3, -3.6');
+  score.setAttribute('rotation', '15, 0, 0');
+  score.setAttribute('bmfont-text', 'text: Score: 0; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6');
 
   //add music
   // const soundRight = document.createElement('a-entity');

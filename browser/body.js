@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<title> Starship Academy </title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<script src="/jquery/dist/jquery.min.js"></script>
-		<script src="/bundle.js"></script>
-		<script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
-  	<script src="https://rawgit.com/mayognaise/aframe-gif-component/master/dist/aframe-gif-component.min.js"></script>
-	</head>
-	<body id="mainApp">
+var body = `<body id="mainApp">
 
 		<a-scene id="scene" scene-load>
 			<a-asset>
@@ -46,12 +36,11 @@
         <a-mixin id="position" random-spherical-position="radius: 40; startX: 0; lengthX: 360; startY: 0; lengthY: 360" random-rotation random-position="min: -100 -100 -100; max: 100 100 100"></a-mixin>
 
 				<a-mixin id="laser"
-					geometry="primitive: cylinder; radius: 0.1; height: 8"
-					rotation="-90 0 0"
-					translate="0 -2 0"
-					material="color: yellow; metalness: 0.2; opacity: 0.8; roughness: 0.3"
-					projectile="speed: 0.02"
-					sound="src: #laser_shot; on: click; autoplay: true; volume: 1"></a-mixin>
+						geometry="buffer: false; primitive: cylinder; radius: 0.05; height: 8"
+						material="color: green; metalness: 0.2; opacity: 0.4; roughness: 0.3"
+						translate="0 -2 0" sound="src: #laser_shot; on: click; autoplay: true; volume: 1"
+						rotation="-90 0 0" projectile="speed: 0.4" collider></a-mixin>
+
       </a-asset>
       <a-entity entity-generator="mixin: asteroid1 position; num: 150;"></a-entity>
       <a-entity entity-generator="mixin: asteroid2 position; num: 150;"></a-entity>
@@ -70,12 +59,13 @@
            deadEnemies.push(enemy);
            points+=1;
            let score_entity = document.getElementById('score');
-           score_entity.setAttribute('bmfont-text', `text: Score:${points}; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6`);
+           score_entity.setAttribute('bmfont-text', "text: Score:" + points + "; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6");
          };
          enemies = Array.prototype.slice.call(enemies);
          enemies.forEach(function (enemyEl) {
            enemyEl.addEventListener('hit', increaseCounter);
          });
        </script>
-	</body>
-</html>
+	</body>`
+
+	module.exports = body

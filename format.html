@@ -1,31 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<title> Starship Academy </title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<script src="/jquery/dist/jquery.min.js"></script>
-		<script src="/bundle.js"></script>
-		<script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
-  	<script src="https://rawgit.com/mayognaise/aframe-gif-component/master/dist/aframe-gif-component.min.js"></script>
-	</head>
-	<body id="menu">
+<body id="mainApp">
 
-		<a-scene id="scene" physics-world="gravity: 0 0 0">
-			<a-entity position="0 1.8 4">
-		      <a-camera>
-		        <a-cursor color="#4CC3D9"></a-cursor>
-		      </a-camera>
-		    </a-entity>
-
-		    <a-image id="orange-cube" position="0 3.5 -2" rotation="30 30 0"
-		      width="100" depth="100" height="100" color="#FFFFFF" material="src: #start"
-		      href="app.html" click-list></a-image>
+		<a-scene id="scene" scene-load>
 			<a-asset>
-
 				<img id="space" src="./src/assets/images/space.jpg">
-
+				<img id="asteroid" src="./src/assets/images/asteroid.jpg">
+				<img id="explosion" src="./src/assets/images/explosion.jpg">
 				<img id="crosshair" src="./src/assets/images/crosshair.png">
-
 				<img id="hud1" src="./src/assets/images/hud_1.gif">
 				<img id="hud2" src="./src/assets/images/hud_2.gif">
 				<img id="hud3" src="./src/assets/images/hud_3.jpg">
@@ -39,11 +19,8 @@
 				<img id="turretCrosshair" src="./src/assets/images/turret_crosshair.png">
 				<img id="turretHud1" src="./src/assets/images/turret_hud1.png">
 
-				<img id="asteroid" src="./src/assets/images/asteroid.jpg">
-				<img id="start" src="./src/assets/images/startbutton.png">
-
-				<audio id="gameplay" src="./src/assets/sounds/SpaceCube.ogg"></audio>
-				<audio id="laser_shot" src="./src/assets/sounds/Laser.ogg"></audio>
+				<audio id="gameplay" src="./src/assets/sounds/SpaceCube.ogg" />
+				<audio id="laser_shot" src="./src/assets/sounds/Laser.ogg" />
 
 				<!-- STARSHIP -->
 				<a-asset-item id="arc170-obj" src="./src/assets/models/arc170/arc170.obj"></a-asset-item>
@@ -51,7 +28,7 @@
 
 				<!-- TURRET -->
 				<!-- <a-asset-item id="turretBot-obj" src="./src/assets/models/turretBot/turretBot.obj"></a-asset-item>
-				<a-asset-item id="turretBot-mtl" src="./src/assets/models/turretBot/turretBot.mtl"></a-asset-item> -->-item>
+				<a-asset-item id="turretBot-mtl" src="./src/assets/models/turretBot/turretBot.mtl"></a-asset-item> -->
 
         <a-mixin id="asteroid1" geometry="primitive: sphere; radius:2" material="src: #asteroid"></a-mixin>
         <a-mixin id="asteroid2" geometry="primitive: sphere; radius:4" material="src: #asteroid"></a-mixin>
@@ -62,16 +39,17 @@
 						geometry="buffer: false; primitive: cylinder; radius: 0.05; height: 8"
 						material="color: green; metalness: 0.2; opacity: 0.4; roughness: 0.3"
 						translate="0 -2 0" sound="src: #laser_shot; on: click; autoplay: true; volume: 1"
-						rotation="-90 0 0" projectile="speed: 0.02" collider></a-mixin>
+						rotation="-90 0 0" projectile="speed: 0.4" collider></a-mixin>
+
       </a-asset>
       <a-entity entity-generator="mixin: asteroid1 position; num: 150;"></a-entity>
       <a-entity entity-generator="mixin: asteroid2 position; num: 150;"></a-entity>
 
+			<a-entity entity-generator="mixin: octa position; num: 50;"></a-entity>
+
 			<a-sky src="./src/assets/images/space.jpg"></a-sky>
-
-
     </a-scene>
-		<script>
+    <script>
        	let enemies = document.querySelectorAll('.enemy');
          let deadEnemies = [];
          let points = 0;
@@ -81,7 +59,7 @@
            deadEnemies.push(enemy);
            points+=1;
            let score_entity = document.getElementById('score');
-           score_entity.setAttribute('bmfont-text', `text: Score:${points}; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6`);
+           score_entity.setAttribute('bmfont-text', "text: Score:" + points + "; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6");
          };
          enemies = Array.prototype.slice.call(enemies);
          enemies.forEach(function (enemyEl) {
@@ -89,4 +67,3 @@
          });
        </script>
 	</body>
-</html>
