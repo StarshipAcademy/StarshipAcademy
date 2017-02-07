@@ -26,8 +26,8 @@ var body = `
         <a-asset-item id="arc170-mtl" src="./src/assets/models/arc170/arc170.mtl"></a-asset-item>
 
         <!-- TURRET -->
-        <!-- <a-asset-item id="turretBot-obj" src="./src/assets/models/turretBot/turretBot.obj"></a-asset-item>
-        <a-asset-item id="turretBot-mtl" src="./src/assets/models/turretBot/turretBot.mtl"></a-asset-item> -->
+        <a-asset-item id="turretBot-obj" src="./src/assets/models/turretBot/turretBot.obj"></a-asset-item>
+        <a-asset-item id="turretBot-mtl" src="./src/assets/models/turretBot/turretBot.mtl"></a-asset-item>
 
         <a-mixin id="asteroid1" geometry="primitive: sphere; radius:2" material="src: #asteroid"></a-mixin>
         <a-mixin id="asteroid2" geometry="primitive: sphere; radius:4" material="src: #asteroid"></a-mixin>
