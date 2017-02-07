@@ -11,6 +11,9 @@ AFRAME.registerComponent('spawner', {
    * Add event listener.
    */
   update: function(oldData) {
+    this.el.addEventListener('gamepadbuttondown', (e) => {
+      console.log('AAAAAAAAAAAAAAAAAAAAAAAA you pressed a button', e)
+    });
     this.el.addEventListener(this.data.on, this.spawn.bind(this));
   },
   /**
@@ -29,7 +32,7 @@ AFRAME.registerComponent('spawner', {
     entity.setAttribute('position', position);
 
     entity.setAttribute('mixin', this.data.mixin);
-  
+
     entity.addEventListener('loaded', function() {
       entityRotation = entity.getAttribute('rotation');
       entity.setAttribute('rotation', {
@@ -38,13 +41,15 @@ AFRAME.registerComponent('spawner', {
         z: entityRotation.z + rotation.z
       });
     });
-    el.sceneEl.appendChild(entity);
+    const scene = document.getElementById('scene');
+
+    scene.appendChild(entity);
     el.newBullets.push({
       id: bulletId,
       pos: position,
       rot: rotation
     })
-    console.log('BULLETS', el.newBullets)
+    // console.log('BULLETS', el.newBullets)
 
   }
 });
