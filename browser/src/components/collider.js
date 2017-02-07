@@ -72,9 +72,12 @@ AFRAME.registerComponent('collider', {
       //target.emit('hit');
 
       const scene = document.getElementById('scene');
+      const score = document.getElementById('score');
+      console.log('score', score)
+      score.addPoint();
       console.log('######### removing', el)
       this.pause()
-      el.parentNode.removeChild(el);
+      scene.removeChild(el);
       console.log('######### el removed', el)
     }
   }

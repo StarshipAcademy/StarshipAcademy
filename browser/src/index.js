@@ -17,8 +17,6 @@ require('aframe-href-component');
 require('./components/Appload');
 require('./components/collider');
 
-require('./components/Points-Counter');
-
 
 require('aframe').registerComponent('gamepad-controls', require('aframe-gamepad-controls'));
 
