@@ -9,7 +9,9 @@ export function putSelfOnDOM(user) {
   avatar.setAttribute('rotation', `${user.xrot} ${user.yrot} ${user.zrot}`);
   avatar.setAttribute('publish', true);
   avatar.setAttribute('look-controls', true);
+  avatar.setAttribute('universal-controls', true)
   avatar.setAttribute('gamepad-controls', 'flyEnabled: true; acceleration: 2000');
+  // avatar.setAttribute('points-counter');
 
 
   avatar.setAttribute('spawner', 'mixin: laser; on: click');
@@ -165,37 +167,54 @@ export function putSelfOnDOM(user) {
 
     const hud_top = document.createElement('a-image');
     avatar.appendChild(hud_top)
-    hud_top.setAttribute('position', '0 0.14 -0.3')
+    hud_top.setAttribute('position', '-.01 0.21 -0.3')
     hud_top.setAttribute('rotation', '-25 0 0')
-    hud_top.setAttribute('height', '0.4')
-    hud_top.setAttribute('width', '1.5')
+    hud_top.setAttribute('height', '0.1')
+    hud_top.setAttribute('width', '1.02')
     hud_top.setAttribute('material', 'src:#hud_top; opacity: 0.4')
   }
 
   //add score
+
   const score = document.createElement('a-entity');
   avatar.appendChild(score);
   score.setAttribute('id', 'score');
-  score.setAttribute('position', '-4, 2.3, -3.6');
-  score.setAttribute('rotation', '15, 0, 0');
+  score.setAttribute('position', '-0.08 -0.20 -1.06');
+  score.setAttribute('rotation', '15 0 0');
+  score.setAttribute('scale', '0.15 0.15 0.15');
   score.setAttribute('bmfont-text', 'text: Score: 0; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6');
+  score.points = 0;
+  score.addPoint = function () {
+    this.setAttribute('bmfont-text', `text: Score:${++this.points}; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6`);
+    if (this.points > 19) {
+      $('#scene').replaceWith(require('./endCredits.js'));
+    }
+  }
 
+  
+  // add music
+
+  // scene.setAttribute('points-component');
   //add music
-  // const soundRight = document.createElement('a-entity');
-  // avatar.appendChild(soundRight);
-  // soundRight.setAttribute('position', '2 0 0');
-  // soundRight.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
-  //
-  // const soundLeft = document.createElement('a-entity');
-  // avatar.appendChild(soundLeft);
-  // soundLeft.setAttribute('position', '-2 0 0');
-  // soundLeft.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
+
+  const soundRight = document.createElement('a-entity');
+  avatar.appendChild(soundRight);
+  soundRight.setAttribute('position', '2 0 0');
+  soundRight.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
+
+  const soundLeft = document.createElement('a-entity');
+  avatar.appendChild(soundLeft);
+  soundLeft.setAttribute('position', '-2 0 0');
+  soundLeft.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
 
   return avatar;
 }
 
+ 
+
+
 function createBullets(userId, bullets) {
-  // console.log('SSSSSSSSS', bullets)
+
   if (!bullets) return;
 
   const scene = document.getElementById('scene');
@@ -279,6 +298,7 @@ export function removeUser(userId) {
     scene.removeChild(bullets[i]);
   }
 }
+
 
 export function putAsteroidOnDOM(asteroid) {
   const scene = document.getElementById('scene');

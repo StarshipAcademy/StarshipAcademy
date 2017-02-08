@@ -1,5 +1,5 @@
 var body = `
-    <a-scene id="scene" scene-load>
+    <a-scene id="scene" scene-load sound="src: url(./src/assets/sounds/Opening.m4a); autoplay: true; volume: 1">
       <a-asset>
         <img id="space" src="./src/assets/images/space.jpg">
         <img id="asteroid" src="./src/assets/images/asteroid.jpg">
@@ -32,7 +32,9 @@ var body = `
         <a-mixin id="asteroid1" geometry="primitive: sphere; radius:2" material="src: #asteroid"></a-mixin>
         <a-mixin id="asteroid2" geometry="primitive: sphere; radius:4" material="src: #asteroid"></a-mixin>
 
+
         <a-mixin id="octa" geometry="primitive: octahedron; radius:4" material="src:#asteroid">
+
 
         <a-mixin id="laser"
             geometry="buffer: false; primitive: cylinder; radius: 0.05; height: 8"
