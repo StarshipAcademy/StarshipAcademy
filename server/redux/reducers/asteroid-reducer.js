@@ -32,7 +32,7 @@ const removeAsteroid = asteroidId => {
 const seedAsteroids = () => {
   return dispatch => {
     console.log('############## in seed function')
-    for (var i = 0; i < 25; i++) {
+    for (var i = 0; i < 500; i++) {
       // console.log('############## in seed function loop')
       dispatch(addAsteroid(createAsteroid()))
     }

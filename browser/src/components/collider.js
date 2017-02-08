@@ -50,6 +50,8 @@ AFRAME.registerComponent('collider', {
       const target = document.getElementById(targetId);
 
       socket.emit('removeAsteroid', targetId);
+      
+      target.emit('hit', targetId);
 
       target.setAttribute('material', {
         src: '#explosion'
@@ -58,6 +60,7 @@ AFRAME.registerComponent('collider', {
         primitive: 'sphere'
       });
 
+   
       let animation = document.createElement('a-animation');
       animation.setAttribute('attribute', 'scale');
       animation.setAttribute('dur', '70');
@@ -65,20 +68,18 @@ AFRAME.registerComponent('collider', {
       animation.setAttribute('to', '0 0 0');
       target.appendChild(animation);
       setTimeout(() => {
-        console.log('removing asteroid after 1 second');
         scene.removeChild(target);
-      }, 4000);
+      }, 8000);
 
-      //target.emit('hit');
 
       const scene = document.getElementById('scene');
       const score = document.getElementById('score');
-      console.log('score', score)
+    
       score.addPoint();
-      console.log('######### removing', el)
+      // console.log('######### removing', el)
       this.pause()
       scene.removeChild(el);
-      console.log('######### el removed', el)
+      // console.log('######### el removed', el)
     }
   }
 });

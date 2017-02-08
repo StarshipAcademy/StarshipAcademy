@@ -201,6 +201,24 @@ export function putSelfOnDOM(user) {
   soundLeft.setAttribute('position', '-2 0 0');
   soundLeft.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
 
+  //add asteroid sounds
+
+  // const asteroidRight = document.createElement('a-entity');
+  // avatar.appendChild(asteroidRight);
+  // asteroidRight.setAttribute('position', '2 0 0');
+  // asteroidRight.setAttribute('sound', 'src: #asteroid_warp; on: hit; autoplay: true; volume: 1');
+  // asteroidRight.addEventListener('hit', function(e) {
+  //   asteroidRight.components.sound.playSound();
+  // });
+
+  // const asteroidLeft = document.createElement('a-entity');
+  // avatar.appendChild(asteroidLeft)
+  // asteroidLeft.setAttribute('position', '2 0 0');
+  // asteroidLeft.setAttribute('sound', 'src: #asteroid_warp; on: hit; autoplay: true; volume: 1');
+  //  asteroidLeft.addEventListener('hit', function(e) {
+  //   asteroidLeft.components.sound.playSound();
+  // });
+
   return avatar;
 }
 
