@@ -22,7 +22,7 @@ export function putSelfOnDOM(user) {
   avatar.setAttribute('fence', 'width: 4800; height: 4800; depth: 4800');
 
 // Determine if user is using a phone or Desktop and assigns them as a ship or a turret
-  if (false) {
+  if (AFRAME.utils.device.isMobile()) {
     avatar.setAttribute('wasd-controls', 'fly: true; acceleration: 0');
     //add model to camera
     const model = document.createElement('a-obj-model');
