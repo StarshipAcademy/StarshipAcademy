@@ -16,5 +16,7 @@ require('aframe-bmfont-text-component');
 require('aframe-href-component');
 require('./components/Appload');
 require('./components/collider');
+require('aframe-gif-shader');
+require('aframe-gif-component');
 require('aframe').registerComponent('gamepad-controls', require('aframe-gamepad-controls'));
 
