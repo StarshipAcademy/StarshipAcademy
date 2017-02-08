@@ -6,7 +6,7 @@ var endCredit = `<a-scene id="scene">
 		    </a-entity>
 
 		 <a-image id="gameOver" position="0 3.5 -100" rotation="20 20 0"
-		      width="100" depth="100" height="100" color="#FFFFFF" material="src: #youWin" sound="src: url(./src/assets/sounds/Closing.m4a); autoplay: true; position: 0 0 0">
+		      width="100" depth="100" height="100" color="#FFFFFF" material="src: #youWin" sound="src: url(./src/assets/sounds/Closing.m4a); autoplay: true; position: 0 0 0; volume: 10">
 		      </a-image>
 			<a-asset>
 
