@@ -191,15 +191,15 @@ export function putSelfOnDOM(user) {
   }
   // scene.setAttribute('points-component');
   //add music
-  // const soundRight = document.createElement('a-entity');
-  // avatar.appendChild(soundRight);
-  // soundRight.setAttribute('position', '2 0 0');
-  // soundRight.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
-  //
-  // const soundLeft = document.createElement('a-entity');
-  // avatar.appendChild(soundLeft);
-  // soundLeft.setAttribute('position', '-2 0 0');
-  // soundLeft.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
+  const soundRight = document.createElement('a-entity');
+  avatar.appendChild(soundRight);
+  soundRight.setAttribute('position', '2 0 0');
+  soundRight.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
+
+  const soundLeft = document.createElement('a-entity');
+  avatar.appendChild(soundLeft);
+  soundLeft.setAttribute('position', '-2 0 0');
+  soundLeft.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
 
   return avatar;
 }
