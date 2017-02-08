@@ -84,5 +84,9 @@
     "standard": "^8.5.0",
     "volleyball": "^1.4.1",
     "webpack": "^1.13.3"
+  },
+  "devDependencies": {
+    "aframe-gif-component": "^0.2.0",
+    "aframe-gif-shader": "^0.2.0"
   }
 }

@@ -6,7 +6,7 @@ var endCredit = `<a-scene id="scene" scene-load>
 		    </a-entity>
 
 		 <a-image id="gameOver" position="0 3.5 -100" rotation="20 20 0"
-		      width="100" depth="100" height="100" color="#FFFFFF" material="src: #youWin" click-list>
+		      width="100" depth="100" height="100" color="#FFFFFF" material="src: #youWin">
 		      </a-image>
 			<a-asset>
 				<img id="space" src="./src/assets/images/space.jpg">
@@ -56,7 +56,7 @@ var endCredit = `<a-scene id="scene" scene-load>
 
 			<a-entity entity-generator="mixin: octa position; num: 50;"></a-entity>
 
-			<a-sky src="./src/assets/images/space.jpg"></a-sky>
+			<a-sky src="./src/assets/images/atmos.jpg"></a-sky>
     </a-scene>
     <script>
        	let enemies = document.querySelectorAll('.enemy');
