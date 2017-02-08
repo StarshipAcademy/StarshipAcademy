@@ -6,7 +6,10 @@ var endCredit = `<a-scene id="scene" scene-load>
 		    </a-entity>
 
 		 <a-image id="gameOver" position="0 3.5 -100" rotation="20 20 0"
-		      width="100" depth="100" height="100" color="#FFFFFF" material="src: #youWin">
+		      width="100" depth="100" height="100" material="src: #youWin">
+		      </a-image>
+		 <a-image id="gameOver" position="0 3.5 100" rotation="20 200 0"
+		      width="200" depth="200" height="200" material="src: #youWin">
 		      </a-image>
 			<a-asset>
 				<img id="space" src="./src/assets/images/space.jpg">
@@ -22,7 +25,7 @@ var endCredit = `<a-scene id="scene" scene-load>
 				<img id="hud7" src="./src/assets/images/hud_7.png">
 				<img id="hud9" src="./src/assets/images/hud_9.png">
 				<img id="hud_top" src="./src/assets/images/hud_top.png">
-				<img id="youWin" src="./src/assets/images/endCredits.png">
+				<img id="youWin" src="./src/assets/images/endCredit.png">
 
 				<img id="turretCrosshair" src="./src/assets/images/turret_crosshair.png">
 				<img id="turretHud1" src="./src/assets/images/turret_hud1.png">
