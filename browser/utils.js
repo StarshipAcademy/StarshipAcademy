@@ -166,16 +166,12 @@ export function putSelfOnDOM(user) {
 
     const hud_top = document.createElement('a-image');
     avatar.appendChild(hud_top)
-    hud_top.setAttribute('position', '0 0.14 -0.3')
+    hud_top.setAttribute('position', '-.01 0.21 -0.3')
     hud_top.setAttribute('rotation', '-25 0 0')
-    hud_top.setAttribute('height', '0.4')
-    hud_top.setAttribute('width', '1.5')
+    hud_top.setAttribute('height', '0.1')
+    hud_top.setAttribute('width', '1.02')
     hud_top.setAttribute('material', 'src:#hud_top; opacity: 0.4')
   }
-
-
-
- 
 
   //add score
 
@@ -187,9 +183,9 @@ export function putSelfOnDOM(user) {
   score.setAttribute('bmfont-text', 'text: Score: 0; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6');
   score.points = 0;
   score.addPoint = function () {
-    if (this.points > 25) {
+    // if (this.points > 25) {
 
-    }
+    // }
     this.setAttribute('bmfont-text', `text: Score:${++this.points}; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6`);
   }
   // scene.setAttribute('points-component');
