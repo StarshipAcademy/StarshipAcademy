@@ -9,6 +9,7 @@ export function putSelfOnDOM(user) {
   avatar.setAttribute('rotation', `${user.xrot} ${user.yrot} ${user.zrot}`);
   avatar.setAttribute('publish', true);
   avatar.setAttribute('look-controls', true);
+  avatar.setAttribute('universal-controls', true)
   avatar.setAttribute('gamepad-controls', 'flyEnabled: true; acceleration: 2000');
   // avatar.setAttribute('points-counter');
 
@@ -341,4 +342,3 @@ export function removeAsteroid(id) {
     scene.remove(asteroidToBeRemoved);
   }, 1000);
 }
-
