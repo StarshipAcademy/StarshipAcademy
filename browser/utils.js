@@ -9,6 +9,7 @@ export function putSelfOnDOM(user) {
   avatar.setAttribute('rotation', `${user.xrot} ${user.yrot} ${user.zrot}`);
   avatar.setAttribute('publish', true);
   avatar.setAttribute('look-controls', true);
+  avatar.setAttribute('universal-controls', true)
   avatar.setAttribute('gamepad-controls', 'flyEnabled: true; acceleration: 2000');
   // avatar.setAttribute('points-counter');
 
@@ -189,13 +190,18 @@ export function putSelfOnDOM(user) {
       $('#scene').replaceWith(require('./endCredits.js'));
     }
   }
+
   
   // add music
+
+  // scene.setAttribute('points-component');
+  //add music
+
   const soundRight = document.createElement('a-entity');
   avatar.appendChild(soundRight);
   soundRight.setAttribute('position', '2 0 0');
   soundRight.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
-  
+
   const soundLeft = document.createElement('a-entity');
   avatar.appendChild(soundLeft);
   soundLeft.setAttribute('position', '-2 0 0');
@@ -328,4 +334,3 @@ export function removeAsteroid(id) {
     scene.remove(asteroidToBeRemoved);
   }, 1000);
 }
-
