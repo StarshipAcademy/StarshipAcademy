@@ -22,7 +22,7 @@ export function putSelfOnDOM(user) {
   avatar.deadBullets = [];
   avatar.setAttribute('fence', 'width: 4800; height: 4800; depth: 4800');
 
-// Determine if user is using a phone or Desktop and assigns them as a ship or a turret
+  // Determine if user is using a phone or Desktop and assigns them as a ship or a turret
   if (AFRAME.utils.device.isMobile()) {
     avatar.setAttribute('wasd-controls', 'fly: true; acceleration: 0');
     //add model to camera
@@ -49,11 +49,10 @@ export function putSelfOnDOM(user) {
     hud1.setAttribute('width', '1.5');
     hud1.setAttribute('height', '1.05');
     hud1.setAttribute('src', '#turretHud1')
-  }
-  else {
+  } else {
     // allow ship to fly around stage
     avatar.setAttribute('ship', true);
-    avatar.setAttribute('wasd-controls', 'fly: true; acceleration: 2000');
+    avatar.setAttribute('wasd-controls', 'fly: true; acceleration: 1000');
 
     //add model to camera
     const model = document.createElement('a-obj-model');
@@ -185,7 +184,7 @@ export function putSelfOnDOM(user) {
   score.setAttribute('scale', '0.15 0.15 0.15');
   score.setAttribute('bmfont-text', 'text: Score: 0; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6');
   score.points = 0;
-  score.addPoint = function () {
+  score.addPoint = function() {
     this.setAttribute('bmfont-text', `text: Score:${++this.points}; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6`);
     if (this.points > 19) {
       $('#scene').replaceWith(require('./endCredits.js'));

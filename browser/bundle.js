@@ -93741,7 +93741,7 @@
 	AFRAME.registerComponent('projectile', {
 	  schema: {
 	    speed: {
-	      default: 0.8
+	      default: 1
 	    }
 	  },
 	  tick: function tick() {
@@ -102591,10 +102591,7 @@
 	  avatar.setAttribute('rotation', user.xrot + ' ' + user.yrot + ' ' + user.zrot);
 	  avatar.setAttribute('publish', true);
 	  avatar.setAttribute('look-controls', true);
-	  avatar.setAttribute('movement-controls', "hmd");
 	  avatar.setAttribute('mouse-controls', true);
-	  avatar.setAttribute('rotataion-controls', "touch-rotation");
-	  // avatar.setAttribute('universal-controls', "mouse-controls")
 	
 	  // avatar.setAttribute('gamepad-controls', 'flyEnabled: true; acceleration: 2000');
 	  // avatar.setAttribute('points-counter');
@@ -102637,7 +102634,7 @@
 	  } else {
 	    // allow ship to fly around stage
 	    avatar.setAttribute('ship', true);
-	    avatar.setAttribute('wasd-controls', 'fly: true; acceleration: 2000');
+	    avatar.setAttribute('wasd-controls', 'fly: true; acceleration: 1000');
 	
 	    //add model to camera
 	    var _model = document.createElement('a-obj-model');
@@ -102920,7 +102917,7 @@
 
 	"use strict";
 	
-	var endCredit = "<a-scene id=\"scene\">\n\t\t\t\t<a-entity position=\"0 1.8 4\">\n\t\t      <a-camera >\n\t\t        <a-cursor color=\"#4CC3D9\"></a-cursor>\n\t\t      </a-camera>\n\t\t    </a-entity>\n\n\t\t <a-image id=\"gameOver\" position=\"0 3.5 -100\" rotation=\"20 20 0\"\n\t\t      width=\"100\" depth=\"100\" height=\"100\" material=\"src: #youWin\">\n\t\t      </a-image>\n\t\t <a-image id=\"gameOver\" position=\"0 3.5 100\" rotation=\"20 200 0\"\n\t\t      width=\"200\" depth=\"200\" height=\"200\" material=\"src: #youWin\">\n\n\t\t      </a-image>\n\t\t\t<a-asset>\n\n\t\t\t\t<img id=\"crosshair\" src=\"./src/assets/images/crosshair.png\">\n\t\t\t\t<img id=\"hud1\" src=\"./src/assets/images/hud_1.gif\">\n\t\t\t\t<img id=\"hud2\" src=\"./src/assets/images/hud_2.gif\">\n\t\t\t\t<img id=\"hud3\" src=\"./src/assets/images/hud_3.jpg\">\n\t\t\t\t<img id=\"hud4\" src=\"./src/assets/images/hud_4.gif\">\n\t\t\t\t<img id=\"hud5\" src=\"./src/assets/images/hud_5.jpg\">\n\t\t\t\t<img id=\"hud6\" src=\"./src/assets/images/hud_6.gif\">\n\t\t\t\t<img id=\"hud7\" src=\"./src/assets/images/hud_7.png\">\n\t\t\t\t<img id=\"hud9\" src=\"./src/assets/images/hud_9.png\">\n\t\t\t\t<img id=\"hud_top\" src=\"./src/assets/images/hud_top.png\">\n\t\t\t\t<img id=\"youWin\" src=\"./src/assets/images/endCredit.png\">\n\n\t\t\t\t<img id=\"youWin\" src=\"./src/assets/images/endCredits.png\">\n\n\t\t\t\t<audio id=\"gameplay\" src=\"./src/assets/sounds/SpaceCube.ogg\" />\n\n      </a-asset>\n\n\n\t\t\t<a-sky src=\"./src/assets/images/atmos.jpg\"></a-sky>\n    </a-scene>";
+	var endCredit = "<a-scene id=\"scene\">\n\t\t\t\t<a-entity position=\"0 1.8 4\">\n\t\t      <a-camera mouse-controls>\n\t\t        <a-cursor color=\"#4CC3D9\"></a-cursor>\n\t\t      </a-camera>\n\t\t    </a-entity>\n\n\t\t <a-image id=\"gameOver\" position=\"0 3.5 -100\" rotation=\"20 20 0\"\n\t\t      width=\"100\" depth=\"100\" height=\"100\" material=\"src: #youWin\" sound=\"src: url(./src/assets/sounds/Closing.m4a); autoplay: true; volume: 10\">\n\t\t      </a-image>\n\t\t <a-image id=\"gameOver\" position=\"0 3.5 100\" rotation=\"20 200 0\"\n\t\t      width=\"200\" depth=\"200\" height=\"200\" material=\"src: #youWin\">\n\n\t\t      </a-image>\n\t\t\t<a-asset>\n\n\t\t\t\t<img id=\"crosshair\" src=\"./src/assets/images/crosshair.png\">\n\t\t\t\t<img id=\"hud1\" src=\"./src/assets/images/hud_1.gif\">\n\t\t\t\t<img id=\"hud2\" src=\"./src/assets/images/hud_2.gif\">\n\t\t\t\t<img id=\"hud3\" src=\"./src/assets/images/hud_3.jpg\">\n\t\t\t\t<img id=\"hud4\" src=\"./src/assets/images/hud_4.gif\">\n\t\t\t\t<img id=\"hud5\" src=\"./src/assets/images/hud_5.jpg\">\n\t\t\t\t<img id=\"hud6\" src=\"./src/assets/images/hud_6.gif\">\n\t\t\t\t<img id=\"hud7\" src=\"./src/assets/images/hud_7.png\">\n\t\t\t\t<img id=\"hud9\" src=\"./src/assets/images/hud_9.png\">\n\t\t\t\t<img id=\"hud_top\" src=\"./src/assets/images/hud_top.png\">\n\t\t\t\t<img id=\"youWin\" src=\"./src/assets/images/endCredit.png\">\n\n\t\t\t\t<img id=\"youWin\" src=\"./src/assets/images/endCredits.png\">\n\n\t\t\t\t<audio id=\"gameplay\" src=\"./src/assets/sounds/SpaceCube.ogg\" />\n\n      </a-asset>\n\n\n\t\t\t<a-sky src=\"./src/assets/images/atmos.jpg\"></a-sky>\n    </a-scene>";
 	
 	module.exports = endCredit;
 
@@ -102933,7 +102930,7 @@
 	AFRAME.registerComponent('other-bullet', {
 	  schema: {
 	    speed: {
-	      default: 0.8
+	      default: 1
 	    }
 	  },
 	
@@ -108619,9 +108616,9 @@
 	        animation.setAttribute('to', '0 0 0');
 	        target.appendChild(animation);
 	        setTimeout(function () {
-	          console.log('removing asteroid after 1 second');
+	          //console.log('removing asteroid after 1 second');
 	          scene.removeChild(target);
-	        }, 4000);
+	        }, 8000);
 	
 	        //target.emit('hit');
 	
@@ -108629,10 +108626,10 @@
 	        var score = document.getElementById('score');
 	        console.log('score', score);
 	        score.addPoint();
-	        console.log('######### removing', el);
+	        //console.log('######### removing', el)
 	        _this.pause();
 	        scene.removeChild(el);
-	        console.log('######### el removed', el);
+	        //console.log('######### el removed', el)
 	      })();
 	    }
 	  }

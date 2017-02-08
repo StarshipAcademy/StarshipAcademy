@@ -65,9 +65,9 @@ AFRAME.registerComponent('collider', {
       animation.setAttribute('to', '0 0 0');
       target.appendChild(animation);
       setTimeout(() => {
-        console.log('removing asteroid after 1 second');
+        //console.log('removing asteroid after 1 second');
         scene.removeChild(target);
-      }, 4000);
+      }, 8000);
 
       //target.emit('hit');
 
@@ -75,10 +75,10 @@ AFRAME.registerComponent('collider', {
       const score = document.getElementById('score');
       console.log('score', score)
       score.addPoint();
-      console.log('######### removing', el)
+      //console.log('######### removing', el)
       this.pause()
       scene.removeChild(el);
-      console.log('######### el removed', el)
+    //console.log('######### el removed', el)
     }
   }
 });
