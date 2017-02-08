@@ -10,6 +10,7 @@ export function putSelfOnDOM(user) {
   avatar.setAttribute('publish', true);
   avatar.setAttribute('look-controls', true);
   avatar.setAttribute('gamepad-controls', 'flyEnabled: true; acceleration: 2000');
+  // avatar.setAttribute('points-counter');
 
 
   avatar.setAttribute('spawner', 'mixin: laser; on: click');
@@ -165,21 +166,29 @@ export function putSelfOnDOM(user) {
 
     const hud_top = document.createElement('a-image');
     avatar.appendChild(hud_top)
-    hud_top.setAttribute('position', '0 0.14 -0.3')
+    hud_top.setAttribute('position', '-.01 0.21 -0.3')
     hud_top.setAttribute('rotation', '-25 0 0')
-    hud_top.setAttribute('height', '0.4')
-    hud_top.setAttribute('width', '1.5')
+    hud_top.setAttribute('height', '0.1')
+    hud_top.setAttribute('width', '1.02')
     hud_top.setAttribute('material', 'src:#hud_top; opacity: 0.4')
   }
 
   //add score
+
   const score = document.createElement('a-entity');
   avatar.appendChild(score);
   score.setAttribute('id', 'score');
-  score.setAttribute('position', '-4, 2.3, -3.6');
-  score.setAttribute('rotation', '15, 0, 0');
+  score.setAttribute('position', '-4 1.5 -3.6');
+  score.setAttribute('rotation', '15 0 0');
   score.setAttribute('bmfont-text', 'text: Score: 0; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6');
-
+  score.points = 0;
+  score.addPoint = function () {
+    if (this.points > 25) {
+      $('#scene').replaceWith(require('./endCredits.js'));
+    }
+    this.setAttribute('bmfont-text', `text: Score:${++this.points}; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6`);
+  }
+  // scene.setAttribute('points-component');
   //add music
   // const soundRight = document.createElement('a-entity');
   // avatar.appendChild(soundRight);
@@ -193,6 +202,23 @@ export function putSelfOnDOM(user) {
 
   return avatar;
 }
+
+  // let enemies = document.querySelectorAll('.enemy');
+  // let deadEnemies = [];
+  // let points = 0;
+  // let increaseCounter = function(e) {
+  //   let enemy = e.currentTarget;
+  //   if (deadEnemies.indexOf(enemy) !== -1) { return; }
+  //     deadEnemies.push(enemy);
+  //     points+=1;
+  //     let score_entity = document.getElementById('score');
+  //     score_entity.setAttribute('bmfont-text', `text: Score:${points}; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6`);
+  //   };
+  //   enemies = Array.prototype.slice.call(enemies);
+  //   enemies.forEach(function (enemyEl) {
+  //   enemyEl.addEventListener('hit', increaseCounter);
+  //   });
+
 
 function createBullets(userId, bullets) {
   // console.log('SSSSSSSSS', bullets)
@@ -280,6 +306,7 @@ export function removeUser(userId) {
   }
 }
 
+
 export function putAsteroidOnDOM(asteroid) {
   const scene = document.getElementById('scene');
   const entity = document.createElement('a-entity');
@@ -314,3 +341,4 @@ export function removeAsteroid(id) {
     scene.remove(asteroidToBeRemoved);
   }, 1000);
 }
+
