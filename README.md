@@ -1,15 +1,26 @@
 ##Starship Academy
 
-Starship Academy is a Multiplayer First-Person Shooter game made with Aframe and Socket.io that can be played in either a 3D web version or in Virtual Reality.
+Starship Academy is a Multiplayer WebVR Space Shooter made with A-Frame and Socket.io.
 
 ## Motivation
 
-Charity, Jimmy, Eric, and Daniel built this game as part of a Capstone for Fullstack Academy. We wanted to build a game that was literally out of this world while incorporating technologies that we have learned throughout our Software Engineering Immersive.
+Charity, Jimmy, Eric, and Daniel built this game for their Capstone during Fullstack Academy's Software Engineering Immersive. They wanted to build a game that was literally out of this world, while incorporating technologies learned throughout the course. This project also gave them a chance to experience working with virtual reality and emerging frameworks like A-Frame.
 
 ## Installation
 To run in the web browser go to:
 
 starshipacademy.herokuapp.com
+
+To run your own server:
+
+(You will need Node and NPM.)
+
+Clone from this repo
+Run ```npm install
+npm run build
+npm start```
+
+Access ```[localhost/your IP]:9001```
 
 ## License
 
