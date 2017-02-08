@@ -18,7 +18,9 @@ var endCredit = `<a-scene id="scene">
 
       </a-asset>
 
+
 			<a-sky src="./src/assets/images/atmos.jpg"></a-sky>
     </a-scene>`
+
 
 	module.exports = endCredit;
