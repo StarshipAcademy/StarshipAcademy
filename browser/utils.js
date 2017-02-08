@@ -9,8 +9,12 @@ export function putSelfOnDOM(user) {
   avatar.setAttribute('rotation', `${user.xrot} ${user.yrot} ${user.zrot}`);
   avatar.setAttribute('publish', true);
   avatar.setAttribute('look-controls', true);
-  avatar.setAttribute('universal-controls', true)
-  avatar.setAttribute('gamepad-controls', 'flyEnabled: true; acceleration: 2000');
+  avatar.setAttribute('movement-controls', "hmd")
+  avatar.setAttribute('mouse-controls', true)
+  avatar.setAttribute('rotataion-controls', "touch-rotation")
+  // avatar.setAttribute('universal-controls', "mouse-controls")
+
+  // avatar.setAttribute('gamepad-controls', 'flyEnabled: true; acceleration: 2000');
   // avatar.setAttribute('points-counter');
 
 
@@ -191,7 +195,7 @@ export function putSelfOnDOM(user) {
     }
   }
 
-  
+
   // add music
 
   // scene.setAttribute('points-component');
@@ -210,7 +214,7 @@ export function putSelfOnDOM(user) {
   return avatar;
 }
 
- 
+
 
 
 function createBullets(userId, bullets) {

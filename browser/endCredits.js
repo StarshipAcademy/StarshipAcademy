@@ -10,6 +10,7 @@ var endCredit = `<a-scene id="scene">
 		      </a-image>
 		 <a-image id="gameOver" position="0 3.5 100" rotation="20 200 0"
 		      width="200" depth="200" height="200" material="src: #youWin">
+
 		      </a-image>
 			<a-asset>
 

@@ -1,5 +1,5 @@
 var body = `
-    <a-scene id="scene" scene-load sound="src: url(./src/assets/sounds/Opening.m4a); autoplay: true; volume: 1">
+    <a-scene id="scene" scene-load sound="src: url(./src/assets/sounds/Opening.m4a); autoplay: true; volume: 10">
       <a-asset>
         <img id="space" src="./src/assets/images/space.jpg">
         <img id="asteroid" src="./src/assets/images/asteroid.jpg">
