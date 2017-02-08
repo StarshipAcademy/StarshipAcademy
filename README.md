@@ -4,7 +4,7 @@ Starship Academy is a Multiplayer WebVR Space Shooter made with A-Frame and Sock
 
 ## Motivation
 
-Charity, Jimmy, Eric, and Daniel built this game for their Capstone during Fullstack Academy's Software Engineering Immersive. They wanted to build a game that was literally out of this world, while incorporating technologies learned throughout the course. This project also gave them a chance to experience working with virtual reality and emerging frameworks like A-Frame.
+Charity, Jimmy, Eric, and Daniel built this game for their Capstone during Fullstack Academy's Software Engineering Immersive. They wanted to build a game that was literally out of this world, while incorporating technologies learned throughout the course. This project also gave them a chance to work with virtual reality and emerging frameworks like A-Frame.
 
 ## Installation
 ### The currently deployed version is available at:
