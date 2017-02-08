@@ -1,8 +1,6 @@
 var body = `<body id="mainApp">
 
 		<a-scene id="scene" scene-load>
-
-			<a-camera universal-controls ></a-camera>
 			<a-asset>
 				<img id="space" src="./src/assets/images/space.jpg">
 				<img id="asteroid" src="./src/assets/images/asteroid.jpg">
