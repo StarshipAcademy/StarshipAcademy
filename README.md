@@ -20,7 +20,11 @@ To run your own server:
 Clone from this repo
 Run 
 
-``` npm install \n npm run build \n npm start ```
+``` npm install
+
+npm run build
+
+npm start ```
 
 Access ```[localhost/your IP]:9001``` in a browser, see above instructions for VR.
 
