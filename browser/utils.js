@@ -183,9 +183,9 @@ export function putSelfOnDOM(user) {
   score.setAttribute('bmfont-text', 'text: Score: 0; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6');
   score.points = 0;
   score.addPoint = function () {
-    // if (this.points > 25) {
-
-    // }
+    if (this.points > 25) {
+      $('#scene').replaceWith(require('./endCredits.js'));
+    }
     this.setAttribute('bmfont-text', `text: Score:${++this.points}; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6`);
   }
   // scene.setAttribute('points-component');
