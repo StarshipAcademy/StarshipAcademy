@@ -1,12 +1,12 @@
 var endCredit = `<a-scene id="scene">
 				<a-entity position="0 1.8 4">
-		      <a-camera >
+		      <a-camera mouse-controls>
 		        <a-cursor color="#4CC3D9"></a-cursor>
 		      </a-camera>
 		    </a-entity>
 
 		 <a-image id="gameOver" position="0 3.5 -100" rotation="20 20 0"
-		      width="100" depth="100" height="100" material="src: #youWin">
+		      width="100" depth="100" height="100" material="src: #youWin" sound="src: url(./src/assets/sounds/Closing.m4a); autoplay: true; volume: 10">
 		      </a-image>
 		 <a-image id="gameOver" position="0 3.5 100" rotation="20 200 0"
 		      width="200" depth="200" height="200" material="src: #youWin">
