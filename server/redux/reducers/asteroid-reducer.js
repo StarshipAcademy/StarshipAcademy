@@ -13,7 +13,7 @@ const REMOVE_ASTEROID = 'REMOVE_ASTEROID';
 /* --------------- ACTION CREATORS --------------- */
 
 const addAsteroid = asteroid => {
-// console.log('in add asteroid')
+  // console.log('in add asteroid')
   return {
     type: ADD_ASTEROID,
     asteroid
@@ -32,7 +32,7 @@ const removeAsteroid = asteroidId => {
 const seedAsteroids = () => {
   return dispatch => {
     console.log('############## in seed function')
-    for (var i = 0; i < 25; i++) {
+    for (var i = 0; i < 300; i++) {
       // console.log('############## in seed function loop')
       dispatch(addAsteroid(createAsteroid()))
     }
