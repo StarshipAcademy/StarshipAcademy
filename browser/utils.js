@@ -21,7 +21,7 @@ export function putSelfOnDOM(user) {
   avatar.setAttribute('fence', 'width: 4800; height: 4800; depth: 4800');
 
 // Determine if user is using a phone or Desktop and assigns them as a ship or a turret
-  if (AFRAME.utils.device.isMobile()) {
+  if (false) {
     avatar.setAttribute('wasd-controls', 'fly: true; acceleration: 0');
     //add model to camera
     const model = document.createElement('a-obj-model');
@@ -178,50 +178,37 @@ export function putSelfOnDOM(user) {
   const score = document.createElement('a-entity');
   avatar.appendChild(score);
   score.setAttribute('id', 'score');
-  score.setAttribute('position', '-4 1.5 -3.6');
+  score.setAttribute('position', '-0.08 -0.20 -1.06');
   score.setAttribute('rotation', '15 0 0');
+  score.setAttribute('scale', '0.15 0.15 0.15');
   score.setAttribute('bmfont-text', 'text: Score: 0; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6');
   score.points = 0;
   score.addPoint = function () {
-    if (this.points > 25) {
+    this.setAttribute('bmfont-text', `text: Score:${++this.points}; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6`);
+    if (this.points > 19) {
       $('#scene').replaceWith(require('./endCredits.js'));
     }
-    this.setAttribute('bmfont-text', `text: Score:${++this.points}; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6`);
   }
-  // scene.setAttribute('points-component');
-  //add music
-  // const soundRight = document.createElement('a-entity');
-  // avatar.appendChild(soundRight);
-  // soundRight.setAttribute('position', '2 0 0');
-  // soundRight.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
-  //
-  // const soundLeft = document.createElement('a-entity');
-  // avatar.appendChild(soundLeft);
-  // soundLeft.setAttribute('position', '-2 0 0');
-  // soundLeft.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
+  
+  // add music
+  const soundRight = document.createElement('a-entity');
+  avatar.appendChild(soundRight);
+  soundRight.setAttribute('position', '2 0 0');
+  soundRight.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
+  
+  const soundLeft = document.createElement('a-entity');
+  avatar.appendChild(soundLeft);
+  soundLeft.setAttribute('position', '-2 0 0');
+  soundLeft.setAttribute('sound', 'src: #gameplay; autoplay: true; loop: true; volume: 0.1');
 
   return avatar;
 }
 
-  // let enemies = document.querySelectorAll('.enemy');
-  // let deadEnemies = [];
-  // let points = 0;
-  // let increaseCounter = function(e) {
-  //   let enemy = e.currentTarget;
-  //   if (deadEnemies.indexOf(enemy) !== -1) { return; }
-  //     deadEnemies.push(enemy);
-  //     points+=1;
-  //     let score_entity = document.getElementById('score');
-  //     score_entity.setAttribute('bmfont-text', `text: Score:${points}; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6`);
-  //   };
-  //   enemies = Array.prototype.slice.call(enemies);
-  //   enemies.forEach(function (enemyEl) {
-  //   enemyEl.addEventListener('hit', increaseCounter);
-  //   });
+ 
 
 
 function createBullets(userId, bullets) {
-  // console.log('SSSSSSSSS', bullets)
+
   if (!bullets) return;
 
   const scene = document.getElementById('scene');
