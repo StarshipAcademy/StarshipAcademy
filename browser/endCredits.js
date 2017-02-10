@@ -6,9 +6,9 @@ var endCredit = `<a-scene id="scene">
 		    </a-entity>
 
 		 <a-image id="gameOver" position="0 3.5 -100" rotation="20 20 0"
-		      width="100" depth="100" height="100" material="src: #youWin" sound="src: url(./src/assets/sounds/Closing.m4a); autoplay: true; volume: 10">
+		      width="200" depth="200" height="200" material="src: #youWin" sound="src: url(./src/assets/sounds/Closing.m4a); autoplay: true; volume: 10">
 		      </a-image>
-		 <a-image id="gameOver" position="0 3.5 100" rotation="20 200 0"
+		 <a-image id="gameOver" position="0 3.5 100" rotation="0 200 0"
 		      width="200" depth="200" height="200" material="src: #youWin">
 
 		      </a-image>
@@ -24,9 +24,8 @@ var endCredit = `<a-scene id="scene">
 				<img id="hud7" src="./src/assets/images/hud_7.png">
 				<img id="hud9" src="./src/assets/images/hud_9.png">
 				<img id="hud_top" src="./src/assets/images/hud_top.png">
-				<img id="youWin" src="./src/assets/images/endCredit.png">
 
-				<img id="youWin" src="./src/assets/images/endCredits.png">
+				<img id="youWin" src="./src/assets/images/endingCredits.png">
 
 				<audio id="gameplay" src="./src/assets/sounds/SpaceCube.ogg" />
 
