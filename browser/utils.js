@@ -11,10 +11,6 @@ export function putSelfOnDOM(user) {
   avatar.setAttribute('look-controls', true);
   avatar.setAttribute('mouse-controls', true)
 
-  // avatar.setAttribute('gamepad-controls', 'flyEnabled: true; acceleration: 2000');
-  // avatar.setAttribute('points-counter');
-
-
   avatar.setAttribute('spawner', 'mixin: laser; on: click');
   avatar.setAttribute('click-listener', true);
   avatar.bulletsFired = 0;
@@ -31,8 +27,6 @@ export function putSelfOnDOM(user) {
     model.setAttribute('position', '0 0.07 0.9');
     model.setAttribute('src', '#turretBot-obj');
     model.setAttribute('mtl', '#turretBot-mtl');
-    // console.log('AVATAR', avatar)
-    // console.log('TURRET', model);
 
     //add hud elements
 
@@ -70,16 +64,6 @@ export function putSelfOnDOM(user) {
     crosshair.setAttribute('height', '0.15');
     crosshair.setAttribute('width', '0.15');
     crosshair.setAttribute('src', '#crosshair');
-    // crosshair.setAttribute()
-    // crosshair.setAttribute()
-
-    // const crosshairAnimation = document.createElement('a-animation')
-    // crosshairImage.appendChild(crosshairAnimation);
-    // crosshairAnimation.setAttribute('attribute', 'rotation');
-    // crosshairAnimation.setAttribute('dur', '1000000000');
-    // crosshairAnimation.setAttribute('to', "0 0 0");
-    // crosshairAnimation.setAttribute('repeat', 'indefinite')
-    // console.log('yo2321 yo234 yo678');
 
     const hud1 = document.createElement('a-box');
     avatar.appendChild(hud1);
@@ -191,10 +175,6 @@ export function putSelfOnDOM(user) {
     }
   }
 
-
-  // add music
-
-  // scene.setAttribute('points-component');
   //add music
 
   const soundRight = document.createElement('a-entity');
@@ -209,9 +189,6 @@ export function putSelfOnDOM(user) {
 
   return avatar;
 }
-
-
-
 
 function createBullets(userId, bullets) {
 
@@ -282,7 +259,6 @@ export function updateUser(user) {
   //update their bullets
   createBullets(user.id, user.newBullets);
   removeBullets(user.id, user.deadBullets);
-
 }
 
 export function removeUser(userId) {
@@ -298,7 +274,6 @@ export function removeUser(userId) {
     scene.removeChild(bullets[i]);
   }
 }
-
 
 export function putAsteroidOnDOM(asteroid) {
   const scene = document.getElementById('scene');

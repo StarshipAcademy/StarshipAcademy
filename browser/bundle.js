@@ -55,17 +55,12 @@
 	__webpack_require__(114);
 	__webpack_require__(115);
 	__webpack_require__(116);
-	__webpack_require__(117);
+	__webpack_require__(172);
 	__webpack_require__(173);
-	__webpack_require__(174);
 	__webpack_require__(175);
-	__webpack_require__(177);
-	__webpack_require__(214);
+	__webpack_require__(212);
+	__webpack_require__(213);
 	__webpack_require__(215);
-	__webpack_require__(217);
-	// require('aframe-gif-shader');
-	// require('aframe-gif-component');
-	__webpack_require__(1).registerComponent('gamepad-controls', __webpack_require__(218));
 
 /***/ },
 /* 1 */
@@ -93646,98 +93641,6 @@
 
 	'use strict';
 	
-	AFRAME.registerComponent('entity-generator', {
-	  schema: {
-	    mixin: { default: '' },
-	    num: { default: 10 }
-	  },
-	
-	  init: function init() {
-	    var data = this.data;
-	    // const randomNum = Math.random() * 15
-	    // Create entities with supplied mixin.
-	    for (var i = 0; i < data.num; i++) {
-	      var entity = document.createElement('a-entity');
-	      entity.setAttribute('mixin', data.mixin);
-	      entity.setAttribute('class', 'enemy');
-	      this.el.appendChild(entity);
-	    }
-	  },
-	  tick: function tick() {
-	    var enemies = document.querySelectorAll('.enemy');
-	
-	    if (enemies.length === 1) {
-	      this.init();
-	    }
-	  }
-	});
-
-/***/ },
-/* 113 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	// AFRAME.registerComponent('projectile', {
-	//   schema: {
-	//     speed: {
-	//       default: -0.4
-	//     },
-	//     target: {
-	//       default: '.enemy'
-	//     }
-	//   },
-	
-	//   init: function() {
-	//     let enemies = document.querySelectorAll('.enemy')
-	//     this.targets = [];
-	//     for (var i = 0; i < enemies.length; i++) {
-	//       this.targets.push(enemies[i]);
-	//     }
-	//   },
-	
-	
-	//   tick: function() {
-	//     let intersect = (laser, asteroid) => {
-	//       var x = Math.max(asteroid.minX, Math.min(laser.x, asteroid.maxX));
-	//       var y = Math.max(asteroid.minY, Math.min(laser.y, asteroid.maxY));
-	//       var z = Math.max(asteroid.minZ, Math.min(laser.z, asteroid.maxZ));
-	
-	//       var distance = Math.sqrt((x - laser.x) * (x - laser.x) +
-	//         (y - laser.y) * (y - laser.y) +
-	//         (z - laser.z) * (z - laser.z));
-	//       return distance < 0.25;
-	//     }
-	
-	//     let bullet = this.el;
-	
-	//     if (this.targets.length !== 0 && bullet.parentEl) {
-	//       for (let i = 0; i < this.targets.length; i++) {
-	//         let currentEnemy = this.targets[i].object3D
-	//         let asteroid = {
-	//           minX: currentEnemy.position.x - 2,
-	//           minY: currentEnemy.position.y - 2,
-	//           minZ: currentEnemy.position.z - 2,
-	//           maxX: currentEnemy.position.x + 2,
-	//           maxY: currentEnemy.position.y + 2,
-	//           maxZ: currentEnemy.position.z + 2
-	//         }
-	//         let laser = bullet.object3D.translateY(this.data.speed).position
-	//         let target = this.targets[i];
-	
-	//         if (intersect(laser, asteroid) && target.parentNode) {
-	//           target.parentNode.removeChild(target)
-	//           bullet.parentNode.removeChild(bullet)
-	//           this.targets.splice(i, 1);
-	//           return;
-	//         }
-	//       }
-	
-	//     }
-	//     bullet.object3D.translateY(this.data.speed)
-	//       }
-	// });
-	
 	AFRAME.registerComponent('projectile', {
 	  schema: {
 	    speed: {
@@ -93750,7 +93653,7 @@
 	});
 
 /***/ },
-/* 114 */
+/* 113 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -93768,9 +93671,6 @@
 	   * Add event listener.
 	   */
 	  update: function update(oldData) {
-	    this.el.addEventListener('gamepadbuttondown', function (e) {
-	      console.log('AAAAAAAAAAAAAAAAAAAAAAAA you pressed a button', e);
-	    });
 	    this.el.addEventListener(this.data.on, this.spawn.bind(this));
 	  },
 	  /**
@@ -93811,7 +93711,7 @@
 	});
 
 /***/ },
-/* 115 */
+/* 114 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -93883,7 +93783,7 @@
 	});
 
 /***/ },
-/* 116 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -93928,7 +93828,7 @@
 	});
 
 /***/ },
-/* 117 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -93941,7 +93841,7 @@
 	
 	var _aframe2 = _interopRequireDefault(_aframe);
 	
-	var _index = __webpack_require__(118);
+	var _index = __webpack_require__(117);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -93955,7 +93855,7 @@
 	});
 
 /***/ },
-/* 118 */
+/* 117 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -93964,13 +93864,13 @@
 	  value: true
 	});
 	
-	var _socket = __webpack_require__(119);
+	var _socket = __webpack_require__(118);
 	
 	var _socket2 = _interopRequireDefault(_socket);
 	
-	var _utils = __webpack_require__(171);
+	var _utils = __webpack_require__(170);
 	
-	__webpack_require__(116);
+	__webpack_require__(115);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -94043,7 +93943,7 @@
 	exports.default = socket;
 
 /***/ },
-/* 119 */
+/* 118 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -94051,10 +93951,10 @@
 	 * Module dependencies.
 	 */
 	
-	var url = __webpack_require__(120);
-	var parser = __webpack_require__(125);
-	var Manager = __webpack_require__(136);
-	var debug = __webpack_require__(122)('socket.io-client');
+	var url = __webpack_require__(119);
+	var parser = __webpack_require__(124);
+	var Manager = __webpack_require__(135);
+	var debug = __webpack_require__(121)('socket.io-client');
 	
 	/**
 	 * Module exports.
@@ -94153,12 +94053,12 @@
 	 * @api public
 	 */
 	
-	exports.Manager = __webpack_require__(136);
-	exports.Socket = __webpack_require__(165);
+	exports.Manager = __webpack_require__(135);
+	exports.Socket = __webpack_require__(164);
 
 
 /***/ },
-/* 120 */
+/* 119 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
@@ -94166,8 +94066,8 @@
 	 * Module dependencies.
 	 */
 	
-	var parseuri = __webpack_require__(121);
-	var debug = __webpack_require__(122)('socket.io-client:url');
+	var parseuri = __webpack_require__(120);
+	var debug = __webpack_require__(121)('socket.io-client:url');
 	
 	/**
 	 * Module exports.
@@ -94240,7 +94140,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 121 */
+/* 120 */
 /***/ function(module, exports) {
 
 	/**
@@ -94285,7 +94185,7 @@
 
 
 /***/ },
-/* 122 */
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {
@@ -94295,7 +94195,7 @@
 	 * Expose `debug()` as the module.
 	 */
 	
-	exports = module.exports = __webpack_require__(123);
+	exports = module.exports = __webpack_require__(122);
 	exports.log = log;
 	exports.formatArgs = formatArgs;
 	exports.save = save;
@@ -94469,7 +94369,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 123 */
+/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -94485,7 +94385,7 @@
 	exports.disable = disable;
 	exports.enable = enable;
 	exports.enabled = enabled;
-	exports.humanize = __webpack_require__(124);
+	exports.humanize = __webpack_require__(123);
 	
 	/**
 	 * The currently active debug mode names, and names to skip.
@@ -94675,7 +94575,7 @@
 
 
 /***/ },
-/* 124 */
+/* 123 */
 /***/ function(module, exports) {
 
 	/**
@@ -94830,7 +94730,7 @@
 
 
 /***/ },
-/* 125 */
+/* 124 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -94838,11 +94738,11 @@
 	 * Module dependencies.
 	 */
 	
-	var debug = __webpack_require__(126)('socket.io-parser');
-	var json = __webpack_require__(129);
-	var Emitter = __webpack_require__(132);
-	var binary = __webpack_require__(133);
-	var isBuf = __webpack_require__(135);
+	var debug = __webpack_require__(125)('socket.io-parser');
+	var json = __webpack_require__(128);
+	var Emitter = __webpack_require__(131);
+	var binary = __webpack_require__(132);
+	var isBuf = __webpack_require__(134);
 	
 	/**
 	 * Protocol version.
@@ -95240,7 +95140,7 @@
 
 
 /***/ },
-/* 126 */
+/* 125 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -95250,7 +95150,7 @@
 	 * Expose `debug()` as the module.
 	 */
 	
-	exports = module.exports = __webpack_require__(127);
+	exports = module.exports = __webpack_require__(126);
 	exports.log = log;
 	exports.formatArgs = formatArgs;
 	exports.save = save;
@@ -95414,7 +95314,7 @@
 
 
 /***/ },
-/* 127 */
+/* 126 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -95430,7 +95330,7 @@
 	exports.disable = disable;
 	exports.enable = enable;
 	exports.enabled = enabled;
-	exports.humanize = __webpack_require__(128);
+	exports.humanize = __webpack_require__(127);
 	
 	/**
 	 * The currently active debug mode names, and names to skip.
@@ -95617,7 +95517,7 @@
 
 
 /***/ },
-/* 128 */
+/* 127 */
 /***/ function(module, exports) {
 
 	/**
@@ -95748,14 +95648,14 @@
 
 
 /***/ },
-/* 129 */
+/* 128 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/*! JSON v3.3.2 | http://bestiejs.github.io/json3 | Copyright 2012-2014, Kit Cambridge | http://kit.mit-license.org */
 	;(function () {
 	  // Detect the `define` function exposed by asynchronous module loaders. The
 	  // strict `define` check is necessary for compatibility with `r.js`.
-	  var isLoader = "function" === "function" && __webpack_require__(131);
+	  var isLoader = "function" === "function" && __webpack_require__(130);
 	
 	  // A set of types used to distinguish objects from primitives.
 	  var objectTypes = {
@@ -96654,10 +96554,10 @@
 	  }
 	}).call(this);
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(130)(module), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(129)(module), (function() { return this; }())))
 
 /***/ },
-/* 130 */
+/* 129 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -96673,7 +96573,7 @@
 
 
 /***/ },
-/* 131 */
+/* 130 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
@@ -96681,7 +96581,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ },
-/* 132 */
+/* 131 */
 /***/ function(module, exports) {
 
 	
@@ -96851,7 +96751,7 @@
 
 
 /***/ },
-/* 133 */
+/* 132 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/*global Blob,File*/
@@ -96860,8 +96760,8 @@
 	 * Module requirements
 	 */
 	
-	var isArray = __webpack_require__(134);
-	var isBuf = __webpack_require__(135);
+	var isArray = __webpack_require__(133);
+	var isBuf = __webpack_require__(134);
 	
 	/**
 	 * Replaces every Buffer | ArrayBuffer in packet with a numbered placeholder.
@@ -96999,7 +96899,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 134 */
+/* 133 */
 /***/ function(module, exports) {
 
 	module.exports = Array.isArray || function (arr) {
@@ -97008,7 +96908,7 @@
 
 
 /***/ },
-/* 135 */
+/* 134 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
@@ -97028,7 +96928,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 136 */
+/* 135 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -97036,15 +96936,15 @@
 	 * Module dependencies.
 	 */
 	
-	var eio = __webpack_require__(137);
-	var Socket = __webpack_require__(165);
-	var Emitter = __webpack_require__(166);
-	var parser = __webpack_require__(125);
-	var on = __webpack_require__(168);
-	var bind = __webpack_require__(169);
-	var debug = __webpack_require__(122)('socket.io-client:manager');
-	var indexOf = __webpack_require__(163);
-	var Backoff = __webpack_require__(170);
+	var eio = __webpack_require__(136);
+	var Socket = __webpack_require__(164);
+	var Emitter = __webpack_require__(165);
+	var parser = __webpack_require__(124);
+	var on = __webpack_require__(167);
+	var bind = __webpack_require__(168);
+	var debug = __webpack_require__(121)('socket.io-client:manager');
+	var indexOf = __webpack_require__(162);
+	var Backoff = __webpack_require__(169);
 	
 	/**
 	 * IE6+ hasOwnProperty
@@ -97594,19 +97494,19 @@
 
 
 /***/ },
+/* 136 */
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	module.exports = __webpack_require__(137);
+
+
+/***/ },
 /* 137 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 	module.exports = __webpack_require__(138);
-
-
-/***/ },
-/* 138 */
-/***/ function(module, exports, __webpack_require__) {
-
-	
-	module.exports = __webpack_require__(139);
 	
 	/**
 	 * Exports parser
@@ -97614,25 +97514,25 @@
 	 * @api public
 	 *
 	 */
-	module.exports.parser = __webpack_require__(146);
+	module.exports.parser = __webpack_require__(145);
 
 
 /***/ },
-/* 139 */
+/* 138 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module dependencies.
 	 */
 	
-	var transports = __webpack_require__(140);
-	var Emitter = __webpack_require__(154);
-	var debug = __webpack_require__(158)('engine.io-client:socket');
-	var index = __webpack_require__(163);
-	var parser = __webpack_require__(146);
-	var parseuri = __webpack_require__(121);
-	var parsejson = __webpack_require__(164);
-	var parseqs = __webpack_require__(155);
+	var transports = __webpack_require__(139);
+	var Emitter = __webpack_require__(153);
+	var debug = __webpack_require__(157)('engine.io-client:socket');
+	var index = __webpack_require__(162);
+	var parser = __webpack_require__(145);
+	var parseuri = __webpack_require__(120);
+	var parsejson = __webpack_require__(163);
+	var parseqs = __webpack_require__(154);
 	
 	/**
 	 * Module exports.
@@ -97764,9 +97664,9 @@
 	 */
 	
 	Socket.Socket = Socket;
-	Socket.Transport = __webpack_require__(145);
-	Socket.transports = __webpack_require__(140);
-	Socket.parser = __webpack_require__(146);
+	Socket.Transport = __webpack_require__(144);
+	Socket.transports = __webpack_require__(139);
+	Socket.parser = __webpack_require__(145);
 	
 	/**
 	 * Creates transport of the given type.
@@ -98363,17 +98263,17 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 140 */
+/* 139 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module dependencies
 	 */
 	
-	var XMLHttpRequest = __webpack_require__(141);
-	var XHR = __webpack_require__(143);
-	var JSONP = __webpack_require__(160);
-	var websocket = __webpack_require__(161);
+	var XMLHttpRequest = __webpack_require__(140);
+	var XHR = __webpack_require__(142);
+	var JSONP = __webpack_require__(159);
+	var websocket = __webpack_require__(160);
 	
 	/**
 	 * Export transports.
@@ -98423,12 +98323,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 141 */
+/* 140 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {// browser shim for xmlhttprequest module
 	
-	var hasCORS = __webpack_require__(142);
+	var hasCORS = __webpack_require__(141);
 	
 	module.exports = function (opts) {
 	  var xdomain = opts.xdomain;
@@ -98467,7 +98367,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 142 */
+/* 141 */
 /***/ function(module, exports) {
 
 	
@@ -98490,18 +98390,18 @@
 
 
 /***/ },
-/* 143 */
+/* 142 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module requirements.
 	 */
 	
-	var XMLHttpRequest = __webpack_require__(141);
-	var Polling = __webpack_require__(144);
-	var Emitter = __webpack_require__(154);
-	var inherit = __webpack_require__(156);
-	var debug = __webpack_require__(158)('engine.io-client:polling-xhr');
+	var XMLHttpRequest = __webpack_require__(140);
+	var Polling = __webpack_require__(143);
+	var Emitter = __webpack_require__(153);
+	var inherit = __webpack_require__(155);
+	var debug = __webpack_require__(157)('engine.io-client:polling-xhr');
 	
 	/**
 	 * Module exports.
@@ -98921,19 +98821,19 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 144 */
+/* 143 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Module dependencies.
 	 */
 	
-	var Transport = __webpack_require__(145);
-	var parseqs = __webpack_require__(155);
-	var parser = __webpack_require__(146);
-	var inherit = __webpack_require__(156);
-	var yeast = __webpack_require__(157);
-	var debug = __webpack_require__(158)('engine.io-client:polling');
+	var Transport = __webpack_require__(144);
+	var parseqs = __webpack_require__(154);
+	var parser = __webpack_require__(145);
+	var inherit = __webpack_require__(155);
+	var yeast = __webpack_require__(156);
+	var debug = __webpack_require__(157)('engine.io-client:polling');
 	
 	/**
 	 * Module exports.
@@ -98946,7 +98846,7 @@
 	 */
 	
 	var hasXHR2 = (function () {
-	  var XMLHttpRequest = __webpack_require__(141);
+	  var XMLHttpRequest = __webpack_require__(140);
 	  var xhr = new XMLHttpRequest({ xdomain: false });
 	  return null != xhr.responseType;
 	})();
@@ -99172,15 +99072,15 @@
 
 
 /***/ },
-/* 145 */
+/* 144 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Module dependencies.
 	 */
 	
-	var parser = __webpack_require__(146);
-	var Emitter = __webpack_require__(154);
+	var parser = __webpack_require__(145);
+	var Emitter = __webpack_require__(153);
 	
 	/**
 	 * Module exports.
@@ -99335,22 +99235,22 @@
 
 
 /***/ },
-/* 146 */
+/* 145 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module dependencies.
 	 */
 	
-	var keys = __webpack_require__(147);
-	var hasBinary = __webpack_require__(148);
-	var sliceBuffer = __webpack_require__(149);
-	var after = __webpack_require__(150);
-	var utf8 = __webpack_require__(151);
+	var keys = __webpack_require__(146);
+	var hasBinary = __webpack_require__(147);
+	var sliceBuffer = __webpack_require__(148);
+	var after = __webpack_require__(149);
+	var utf8 = __webpack_require__(150);
 	
 	var base64encoder;
 	if (global && global.ArrayBuffer) {
-	  base64encoder = __webpack_require__(152);
+	  base64encoder = __webpack_require__(151);
 	}
 	
 	/**
@@ -99408,7 +99308,7 @@
 	 * Create a blob api even for blob builder when vendor prefixes exist
 	 */
 	
-	var Blob = __webpack_require__(153);
+	var Blob = __webpack_require__(152);
 	
 	/**
 	 * Encodes a packet.
@@ -99951,7 +99851,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 147 */
+/* 146 */
 /***/ function(module, exports) {
 
 	
@@ -99976,7 +99876,7 @@
 
 
 /***/ },
-/* 148 */
+/* 147 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
@@ -99984,7 +99884,7 @@
 	 * Module requirements.
 	 */
 	
-	var isArray = __webpack_require__(134);
+	var isArray = __webpack_require__(133);
 	
 	/**
 	 * Module exports.
@@ -100042,7 +99942,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 149 */
+/* 148 */
 /***/ function(module, exports) {
 
 	/**
@@ -100077,7 +99977,7 @@
 
 
 /***/ },
-/* 150 */
+/* 149 */
 /***/ function(module, exports) {
 
 	module.exports = after
@@ -100111,7 +100011,7 @@
 
 
 /***/ },
-/* 151 */
+/* 150 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/*! https://mths.be/wtf8 v1.0.0 by @mathias */
@@ -100347,10 +100247,10 @@
 	
 	}(this));
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(130)(module), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(129)(module), (function() { return this; }())))
 
 /***/ },
-/* 152 */
+/* 151 */
 /***/ function(module, exports) {
 
 	/*
@@ -100423,7 +100323,7 @@
 
 
 /***/ },
-/* 153 */
+/* 152 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -100526,7 +100426,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 154 */
+/* 153 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -100695,7 +100595,7 @@
 
 
 /***/ },
-/* 155 */
+/* 154 */
 /***/ function(module, exports) {
 
 	/**
@@ -100738,7 +100638,7 @@
 
 
 /***/ },
-/* 156 */
+/* 155 */
 /***/ function(module, exports) {
 
 	
@@ -100750,7 +100650,7 @@
 	};
 
 /***/ },
-/* 157 */
+/* 156 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -100824,7 +100724,7 @@
 
 
 /***/ },
-/* 158 */
+/* 157 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {
@@ -100834,7 +100734,7 @@
 	 * Expose `debug()` as the module.
 	 */
 	
-	exports = module.exports = __webpack_require__(159);
+	exports = module.exports = __webpack_require__(158);
 	exports.log = log;
 	exports.formatArgs = formatArgs;
 	exports.save = save;
@@ -101008,7 +100908,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 159 */
+/* 158 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -101024,7 +100924,7 @@
 	exports.disable = disable;
 	exports.enable = enable;
 	exports.enabled = enabled;
-	exports.humanize = __webpack_require__(124);
+	exports.humanize = __webpack_require__(123);
 	
 	/**
 	 * The currently active debug mode names, and names to skip.
@@ -101214,7 +101114,7 @@
 
 
 /***/ },
-/* 160 */
+/* 159 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
@@ -101222,8 +101122,8 @@
 	 * Module requirements.
 	 */
 	
-	var Polling = __webpack_require__(144);
-	var inherit = __webpack_require__(156);
+	var Polling = __webpack_require__(143);
+	var inherit = __webpack_require__(155);
 	
 	/**
 	 * Module exports.
@@ -101452,24 +101352,24 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 161 */
+/* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module dependencies.
 	 */
 	
-	var Transport = __webpack_require__(145);
-	var parser = __webpack_require__(146);
-	var parseqs = __webpack_require__(155);
-	var inherit = __webpack_require__(156);
-	var yeast = __webpack_require__(157);
-	var debug = __webpack_require__(158)('engine.io-client:websocket');
+	var Transport = __webpack_require__(144);
+	var parser = __webpack_require__(145);
+	var parseqs = __webpack_require__(154);
+	var inherit = __webpack_require__(155);
+	var yeast = __webpack_require__(156);
+	var debug = __webpack_require__(157)('engine.io-client:websocket');
 	var BrowserWebSocket = global.WebSocket || global.MozWebSocket;
 	var NodeWebSocket;
 	if (typeof window === 'undefined') {
 	  try {
-	    NodeWebSocket = __webpack_require__(162);
+	    NodeWebSocket = __webpack_require__(161);
 	  } catch (e) { }
 	}
 	
@@ -101744,13 +101644,13 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 162 */
+/* 161 */
 /***/ function(module, exports) {
 
 	/* (ignored) */
 
 /***/ },
-/* 163 */
+/* 162 */
 /***/ function(module, exports) {
 
 	
@@ -101765,7 +101665,7 @@
 	};
 
 /***/ },
-/* 164 */
+/* 163 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -101803,7 +101703,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 165 */
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -101811,13 +101711,13 @@
 	 * Module dependencies.
 	 */
 	
-	var parser = __webpack_require__(125);
-	var Emitter = __webpack_require__(166);
-	var toArray = __webpack_require__(167);
-	var on = __webpack_require__(168);
-	var bind = __webpack_require__(169);
-	var debug = __webpack_require__(122)('socket.io-client:socket');
-	var hasBin = __webpack_require__(148);
+	var parser = __webpack_require__(124);
+	var Emitter = __webpack_require__(165);
+	var toArray = __webpack_require__(166);
+	var on = __webpack_require__(167);
+	var bind = __webpack_require__(168);
+	var debug = __webpack_require__(121)('socket.io-client:socket');
+	var hasBin = __webpack_require__(147);
 	
 	/**
 	 * Module exports.
@@ -102228,7 +102128,7 @@
 
 
 /***/ },
-/* 166 */
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -102397,7 +102297,7 @@
 
 
 /***/ },
-/* 167 */
+/* 166 */
 /***/ function(module, exports) {
 
 	module.exports = toArray
@@ -102416,7 +102316,7 @@
 
 
 /***/ },
-/* 168 */
+/* 167 */
 /***/ function(module, exports) {
 
 	
@@ -102446,7 +102346,7 @@
 
 
 /***/ },
-/* 169 */
+/* 168 */
 /***/ function(module, exports) {
 
 	/**
@@ -102475,7 +102375,7 @@
 
 
 /***/ },
-/* 170 */
+/* 169 */
 /***/ function(module, exports) {
 
 	
@@ -102566,7 +102466,7 @@
 
 
 /***/ },
-/* 171 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -102593,10 +102493,6 @@
 	  avatar.setAttribute('look-controls', true);
 	  avatar.setAttribute('mouse-controls', true);
 	
-	  // avatar.setAttribute('gamepad-controls', 'flyEnabled: true; acceleration: 2000');
-	  // avatar.setAttribute('points-counter');
-	
-	
 	  avatar.setAttribute('spawner', 'mixin: laser; on: click');
 	  avatar.setAttribute('click-listener', true);
 	  avatar.bulletsFired = 0;
@@ -102613,8 +102509,6 @@
 	    model.setAttribute('position', '0 0.07 0.9');
 	    model.setAttribute('src', '#turretBot-obj');
 	    model.setAttribute('mtl', '#turretBot-mtl');
-	    // console.log('AVATAR', avatar)
-	    // console.log('TURRET', model);
 	
 	    //add hud elements
 	
@@ -102652,16 +102546,6 @@
 	    crosshair.setAttribute('height', '0.15');
 	    crosshair.setAttribute('width', '0.15');
 	    crosshair.setAttribute('src', '#crosshair');
-	    // crosshair.setAttribute()
-	    // crosshair.setAttribute()
-	
-	    // const crosshairAnimation = document.createElement('a-animation')
-	    // crosshairImage.appendChild(crosshairAnimation);
-	    // crosshairAnimation.setAttribute('attribute', 'rotation');
-	    // crosshairAnimation.setAttribute('dur', '1000000000');
-	    // crosshairAnimation.setAttribute('to', "0 0 0");
-	    // crosshairAnimation.setAttribute('repeat', 'indefinite')
-	    // console.log('yo2321 yo234 yo678');
 	
 	    var _hud = document.createElement('a-box');
 	    avatar.appendChild(_hud);
@@ -102769,13 +102653,10 @@
 	  score.addPoint = function () {
 	    this.setAttribute('bmfont-text', 'text: Score:' + ++this.points + '; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6');
 	    if (this.points > 19) {
-	      $('#scene').replaceWith(__webpack_require__(172));
+	      $('#scene').replaceWith(__webpack_require__(171));
 	    }
 	  };
 	
-	  // add music
-	
-	  // scene.setAttribute('points-component');
 	  //add music
 	
 	  var soundRight = document.createElement('a-entity');
@@ -102912,7 +102793,7 @@
 	}
 
 /***/ },
-/* 172 */
+/* 171 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -102922,25 +102803,7 @@
 	module.exports = endCredit;
 
 /***/ },
-/* 173 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	AFRAME.registerComponent('other-bullet', {
-	  schema: {
-	    speed: {
-	      default: 1
-	    }
-	  },
-	
-	  tick: function tick() {
-	    this.el.object3D.translateY(this.data.speed);
-	  }
-	});
-
-/***/ },
-/* 174 */
+/* 172 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -103000,10 +102863,10 @@
 	});
 
 /***/ },
-/* 175 */
+/* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(176);
+	__webpack_require__(174);
 	
 	if (typeof AFRAME === 'undefined') {
 	  throw 'Component attempted to register before AFRAME was available.';
@@ -103023,7 +102886,7 @@
 
 
 /***/ },
-/* 176 */
+/* 174 */
 /***/ function(module, exports) {
 
 	/**
@@ -104050,7 +103913,7 @@
 
 
 /***/ },
-/* 177 */
+/* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* global AFRAME, THREE */
@@ -104058,11 +103921,11 @@
 	  throw new Error('Component attempted to register before AFRAME was available.');
 	}
 	
-	var createText = __webpack_require__(178);
-	var loadFont = __webpack_require__(194);
-	var SDFShader = __webpack_require__(212);
+	var createText = __webpack_require__(176);
+	var loadFont = __webpack_require__(192);
+	var SDFShader = __webpack_require__(210);
 	
-	__webpack_require__(213); // Register experimental text primitive
+	__webpack_require__(211); // Register experimental text primitive
 	
 	/**
 	 * bmfont text component for A-Frame.
@@ -104193,17 +104056,17 @@
 
 
 /***/ },
-/* 178 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var createLayout = __webpack_require__(179)
-	var inherits = __webpack_require__(184)
-	var createIndices = __webpack_require__(185)
-	var buffer = __webpack_require__(189)
-	var assign = __webpack_require__(191)
+	var createLayout = __webpack_require__(177)
+	var inherits = __webpack_require__(182)
+	var createIndices = __webpack_require__(183)
+	var buffer = __webpack_require__(187)
+	var assign = __webpack_require__(189)
 	
-	var vertices = __webpack_require__(192)
-	var utils = __webpack_require__(193)
+	var vertices = __webpack_require__(190)
+	var utils = __webpack_require__(191)
 	
 	var Base = THREE.BufferGeometry
 	
@@ -104323,13 +104186,13 @@
 
 
 /***/ },
-/* 179 */
+/* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var wordWrap = __webpack_require__(180)
-	var xtend = __webpack_require__(181)
-	var findChar = __webpack_require__(182)('id')
-	var number = __webpack_require__(183)
+	var wordWrap = __webpack_require__(178)
+	var xtend = __webpack_require__(179)
+	var findChar = __webpack_require__(180)('id')
+	var number = __webpack_require__(181)
 	
 	var X_HEIGHTS = ['x', 'e', 'a', 'o', 'n', 's', 'r', 'c', 'u', 'm', 'v', 'w', 'z']
 	var M_WIDTHS = ['m', 'w']
@@ -104618,7 +104481,7 @@
 	}
 
 /***/ },
-/* 180 */
+/* 178 */
 /***/ function(module, exports) {
 
 	var newline = /\n/
@@ -104750,7 +104613,7 @@
 	}
 
 /***/ },
-/* 181 */
+/* 179 */
 /***/ function(module, exports) {
 
 	module.exports = extend
@@ -104775,7 +104638,7 @@
 
 
 /***/ },
-/* 182 */
+/* 180 */
 /***/ function(module, exports) {
 
 	module.exports = function compile(property) {
@@ -104792,7 +104655,7 @@
 	}
 
 /***/ },
-/* 183 */
+/* 181 */
 /***/ function(module, exports) {
 
 	module.exports = function numtype(num, def) {
@@ -104802,7 +104665,7 @@
 	}
 
 /***/ },
-/* 184 */
+/* 182 */
 /***/ function(module, exports) {
 
 	if (typeof Object.create === 'function') {
@@ -104831,12 +104694,12 @@
 
 
 /***/ },
-/* 185 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var dtype = __webpack_require__(186)
-	var anArray = __webpack_require__(187)
-	var isBuffer = __webpack_require__(188)
+	var dtype = __webpack_require__(184)
+	var anArray = __webpack_require__(185)
+	var isBuffer = __webpack_require__(186)
 	
 	var CW = [0, 2, 3]
 	var CCW = [2, 1, 3]
@@ -104878,7 +104741,7 @@
 	}
 
 /***/ },
-/* 186 */
+/* 184 */
 /***/ function(module, exports) {
 
 	module.exports = function(dtype) {
@@ -104908,7 +104771,7 @@
 
 
 /***/ },
-/* 187 */
+/* 185 */
 /***/ function(module, exports) {
 
 	var str = Object.prototype.toString
@@ -104925,7 +104788,7 @@
 
 
 /***/ },
-/* 188 */
+/* 186 */
 /***/ function(module, exports) {
 
 	/*!
@@ -104952,10 +104815,10 @@
 
 
 /***/ },
-/* 189 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var flatten = __webpack_require__(190)
+	var flatten = __webpack_require__(188)
 	var warned = false;
 	
 	module.exports.attr = setAttribute
@@ -105056,11 +104919,11 @@
 
 
 /***/ },
-/* 190 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*eslint new-cap:0*/
-	var dtype = __webpack_require__(186)
+	var dtype = __webpack_require__(184)
 	module.exports = flattenVertexData
 	function flattenVertexData (data, output, offset) {
 	  if (!data) throw new TypeError('must specify data as first parameter')
@@ -105107,7 +104970,7 @@
 
 
 /***/ },
-/* 191 */
+/* 189 */
 /***/ function(module, exports) {
 
 	/*
@@ -105203,7 +105066,7 @@
 
 
 /***/ },
-/* 192 */
+/* 190 */
 /***/ function(module, exports) {
 
 	module.exports.pages = function pages (glyphs) {
@@ -105286,7 +105149,7 @@
 
 
 /***/ },
-/* 193 */
+/* 191 */
 /***/ function(module, exports) {
 
 	var itemSize = 2
@@ -105330,16 +105193,16 @@
 
 
 /***/ },
-/* 194 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(Buffer) {var xhr = __webpack_require__(199)
+	/* WEBPACK VAR INJECTION */(function(Buffer) {var xhr = __webpack_require__(197)
 	var noop = function(){}
-	var parseASCII = __webpack_require__(205)
-	var parseXML = __webpack_require__(206)
-	var readBinary = __webpack_require__(209)
-	var isBinaryFormat = __webpack_require__(210)
-	var xtend = __webpack_require__(181)
+	var parseASCII = __webpack_require__(203)
+	var parseXML = __webpack_require__(204)
+	var readBinary = __webpack_require__(207)
+	var isBinaryFormat = __webpack_require__(208)
+	var xtend = __webpack_require__(179)
 	
 	var xml2 = (function hasXML2() {
 	  return self.XMLHttpRequest && "withCredentials" in new XMLHttpRequest
@@ -105431,10 +105294,10 @@
 	  }, opt)
 	}
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(195).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(193).Buffer))
 
 /***/ },
-/* 195 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/*!
@@ -105447,9 +105310,9 @@
 	
 	'use strict'
 	
-	var base64 = __webpack_require__(196)
-	var ieee754 = __webpack_require__(197)
-	var isArray = __webpack_require__(198)
+	var base64 = __webpack_require__(194)
+	var ieee754 = __webpack_require__(195)
+	var isArray = __webpack_require__(196)
 	
 	exports.Buffer = Buffer
 	exports.SlowBuffer = SlowBuffer
@@ -107230,7 +107093,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 196 */
+/* 194 */
 /***/ function(module, exports) {
 
 	'use strict'
@@ -107350,7 +107213,7 @@
 
 
 /***/ },
-/* 197 */
+/* 195 */
 /***/ function(module, exports) {
 
 	exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -107440,7 +107303,7 @@
 
 
 /***/ },
-/* 198 */
+/* 196 */
 /***/ function(module, exports) {
 
 	var toString = {}.toString;
@@ -107451,14 +107314,14 @@
 
 
 /***/ },
-/* 199 */
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var window = __webpack_require__(200)
-	var isFunction = __webpack_require__(201)
-	var parseHeaders = __webpack_require__(202)
-	var xtend = __webpack_require__(181)
+	var window = __webpack_require__(198)
+	var isFunction = __webpack_require__(199)
+	var parseHeaders = __webpack_require__(200)
+	var xtend = __webpack_require__(179)
 	
 	module.exports = createXHR
 	createXHR.XMLHttpRequest = window.XMLHttpRequest || noop
@@ -107698,7 +107561,7 @@
 
 
 /***/ },
-/* 200 */
+/* 198 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {if (typeof window !== "undefined") {
@@ -107714,7 +107577,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 201 */
+/* 199 */
 /***/ function(module, exports) {
 
 	module.exports = isFunction
@@ -107735,11 +107598,11 @@
 
 
 /***/ },
-/* 202 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var trim = __webpack_require__(203)
-	  , forEach = __webpack_require__(204)
+	var trim = __webpack_require__(201)
+	  , forEach = __webpack_require__(202)
 	  , isArray = function(arg) {
 	      return Object.prototype.toString.call(arg) === '[object Array]';
 	    }
@@ -107771,7 +107634,7 @@
 	}
 
 /***/ },
-/* 203 */
+/* 201 */
 /***/ function(module, exports) {
 
 	
@@ -107791,10 +107654,10 @@
 
 
 /***/ },
-/* 204 */
+/* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isFunction = __webpack_require__(201)
+	var isFunction = __webpack_require__(199)
 	
 	module.exports = forEach
 	
@@ -107843,7 +107706,7 @@
 
 
 /***/ },
-/* 205 */
+/* 203 */
 /***/ function(module, exports) {
 
 	module.exports = function parseBMFontAscii(data) {
@@ -107956,11 +107819,11 @@
 	}
 
 /***/ },
-/* 206 */
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var parseAttributes = __webpack_require__(207)
-	var parseFromString = __webpack_require__(208)
+	var parseAttributes = __webpack_require__(205)
+	var parseFromString = __webpack_require__(206)
 	
 	//In some cases element.attribute.nodeName can return
 	//all lowercase values.. so we need to map them to the correct 
@@ -108046,7 +107909,7 @@
 	}
 
 /***/ },
-/* 207 */
+/* 205 */
 /***/ function(module, exports) {
 
 	//Some versions of GlyphDesigner have a typo
@@ -108079,7 +107942,7 @@
 	}
 
 /***/ },
-/* 208 */
+/* 206 */
 /***/ function(module, exports) {
 
 	module.exports = (function xmlparser() {
@@ -108111,7 +107974,7 @@
 	})()
 
 /***/ },
-/* 209 */
+/* 207 */
 /***/ function(module, exports) {
 
 	var HEADER = [66, 77, 70]
@@ -108276,10 +108139,10 @@
 	}
 
 /***/ },
-/* 210 */
+/* 208 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(Buffer) {var equal = __webpack_require__(211)
+	/* WEBPACK VAR INJECTION */(function(Buffer) {var equal = __webpack_require__(209)
 	var HEADER = new Buffer([66, 77, 70, 3])
 	
 	module.exports = function(buf) {
@@ -108287,13 +108150,13 @@
 	    return buf.substring(0, 3) === 'BMF'
 	  return buf.length > 4 && equal(buf.slice(0, 4), HEADER)
 	}
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(195).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(193).Buffer))
 
 /***/ },
-/* 211 */
+/* 209 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Buffer = __webpack_require__(195).Buffer; // for use with browserify
+	var Buffer = __webpack_require__(193).Buffer; // for use with browserify
 	
 	module.exports = function (a, b) {
 	    if (!Buffer.isBuffer(a)) return undefined;
@@ -108310,10 +108173,10 @@
 
 
 /***/ },
-/* 212 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var assign = __webpack_require__(191)
+	var assign = __webpack_require__(189)
 	
 	module.exports = function createSDFShader (opt) {
 	  opt = opt || {}
@@ -108379,7 +108242,7 @@
 
 
 /***/ },
-/* 213 */
+/* 211 */
 /***/ function(module, exports) {
 
 	/* global AFRAME */
@@ -108412,7 +108275,7 @@
 
 
 /***/ },
-/* 214 */
+/* 212 */
 /***/ function(module, exports) {
 
 	/* globals AFRAME */
@@ -108514,7 +108377,7 @@
 
 
 /***/ },
-/* 215 */
+/* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -108524,7 +108387,7 @@
 	    var el = this.el;
 	
 	    el.addEventListener('click', function () {
-	      var newScene = __webpack_require__(216);
+	      var newScene = __webpack_require__(214);
 	
 	      $('#scene').replaceWith(newScene);
 	    });
@@ -108532,7 +108395,7 @@
 	});
 
 /***/ },
-/* 216 */
+/* 214 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -108542,7 +108405,7 @@
 	module.exports = body;
 
 /***/ },
-/* 217 */
+/* 215 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -108634,417 +108497,6 @@
 	    }
 	  }
 	});
-
-/***/ },
-/* 218 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Gamepad controls for A-Frame.
-	 *
-	 * For more information about the Gamepad API, see:
-	 * https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API/Using_the_Gamepad_API
-	 */
-	
-	var GamepadButton = __webpack_require__(219),
-	    GamepadButtonEvent = __webpack_require__(220);
-	
-	var MAX_DELTA = 200, // ms
-	    PI_2 = Math.PI / 2;
-	
-	var JOYSTICK_EPS = 0.2;
-	
-	module.exports = {
-	
-	  /*******************************************************************
-	   * Statics
-	   */
-	
-	  GamepadButton: GamepadButton,
-	
-	  /*******************************************************************
-	   * Schema
-	   */
-	
-	  schema: {
-	    // Controller 0-3
-	    controller:        { default: 0, oneOf: [0, 1, 2, 3] },
-	
-	    // Enable/disable features
-	    enabled:           { default: true },
-	    movementEnabled:   { default: true },
-	    lookEnabled:       { default: true },
-	    flyEnabled:        { default: false },
-	    invertAxisY:       { default: false },
-	
-	    // Constants
-	    easing:            { default: 20 },
-	    acceleration:      { default: 65 },
-	    sensitivity:       { default: 0.04 },
-	
-	    // Control axes
-	    pitchAxis:         { default: 'x', oneOf: [ 'x', 'y', 'z' ] },
-	    yawAxis:           { default: 'y', oneOf: [ 'x', 'y', 'z' ] },
-	    rollAxis:          { default: 'z', oneOf: [ 'x', 'y', 'z' ] },
-	
-	    // Debugging
-	    debug:             { default: false }
-	  },
-	
-	  /*******************************************************************
-	   * Core
-	   */
-	
-	  /**
-	   * Called once when component is attached. Generally for initial setup.
-	   */
-	  init: function () {
-	    // Movement
-	    this.velocity = new THREE.Vector3(0, 0, 0);
-	    this.direction = new THREE.Vector3(0, 0, 0);
-	
-	    // Rotation
-	    this.pitch = new THREE.Object3D();
-	    this.yaw = new THREE.Object3D();
-	    this.yaw.position.y = 10;
-	    this.yaw.add(this.pitch);
-	
-	    // Button state
-	    this.buttons = {};
-	
-	    if (!this.getGamepad()) {
-	      console.warn(
-	        'Gamepad #%d not found. Connect controller and press any button to continue.',
-	        this.data.controller
-	      );
-	    }
-	  },
-	
-	  /**
-	   * Called on each iteration of main render loop.
-	   */
-	  tick: function (t, dt) {
-	    this.updateRotation(dt);
-	    this.updatePosition(dt);
-	    this.updateButtonState();
-	  },
-	
-	  /*******************************************************************
-	   * Movement
-	   */
-	
-	  updatePosition: function (dt) {
-	    var data = this.data;
-	    var acceleration = data.acceleration;
-	    var easing = data.easing;
-	    var velocity = this.velocity;
-	    var rollAxis = data.rollAxis;
-	    var pitchAxis = data.pitchAxis;
-	    var el = this.el;
-	    var gamepad = this.getGamepad();
-	
-	    // If data has changed or FPS is too low
-	    // we reset the velocity
-	    if (dt > MAX_DELTA) {
-	      velocity[rollAxis] = 0;
-	      velocity[pitchAxis] = 0;
-	      return;
-	    }
-	
-	    velocity[rollAxis] -= velocity[rollAxis] * easing * dt / 1000;
-	    velocity[pitchAxis] -= velocity[pitchAxis] * easing * dt / 1000;
-	
-	    var position = el.getComputedAttribute('position');
-	
-	    if (data.enabled && data.movementEnabled && gamepad) {
-	      var dpad = this.getDpad(),
-	          inputX = dpad.x || this.getJoystick(0).x,
-	          inputY = dpad.y || this.getJoystick(0).y;
-	      if (Math.abs(inputX) > JOYSTICK_EPS) {
-	        velocity[pitchAxis] += inputX * acceleration * dt / 1000;
-	      }
-	      if (Math.abs(inputY) > JOYSTICK_EPS) {
-	        velocity[rollAxis] += inputY * acceleration * dt / 1000;
-	      }
-	    }
-	
-	    var movementVector = this.getMovementVector(dt);
-	
-	    el.object3D.translateX(movementVector.x);
-	    el.object3D.translateY(movementVector.y);
-	    el.object3D.translateZ(movementVector.z);
-	
-	    el.setAttribute('position', {
-	      x: position.x + movementVector.x,
-	      y: position.y + movementVector.y,
-	      z: position.z + movementVector.z
-	    });
-	  },
-	
-	  getMovementVector: function (dt) {
-	    if (this._getMovementVector) {
-	      return this._getMovementVector(dt);
-	    }
-	
-	    var euler = new THREE.Euler(0, 0, 0, 'YXZ'),
-	        rotation = new THREE.Vector3();
-	
-	    this._getMovementVector = function (dt) {
-	      rotation.copy(this.el.getComputedAttribute('rotation'));
-	      this.direction.copy(this.velocity);
-	      this.direction.multiplyScalar(dt / 1000);
-	      if (!rotation) { return this.direction; }
-	      if (!this.data.flyEnabled) { rotation.x = 0; }
-	      euler.set(
-	        THREE.Math.degToRad(rotation.x),
-	        THREE.Math.degToRad(rotation.y),
-	        0
-	      );
-	      this.direction.applyEuler(euler);
-	      return this.direction;
-	    };
-	
-	    return this._getMovementVector(dt);
-	  },
-	
-	  /*******************************************************************
-	   * Rotation
-	   */
-	
-	  updateRotation: function () {
-	    if (this._updateRotation) {
-	      return this._updateRotation();
-	    }
-	
-	    var initialRotation = new THREE.Vector3(),
-	        prevInitialRotation = new THREE.Vector3(),
-	        prevFinalRotation = new THREE.Vector3();
-	
-	    var tCurrent,
-	        tLastLocalActivity = 0,
-	        tLastExternalActivity = 0;
-	
-	    var ROTATION_EPS = 0.0001,
-	        DEBOUNCE = 500;
-	
-	    this._updateRotation = function () {
-	      if (!this.data.lookEnabled || !this.getGamepad()) {
-	        return;
-	      }
-	
-	      tCurrent = Date.now();
-	      initialRotation.copy(this.el.getAttribute('rotation') || initialRotation);
-	
-	      // If initial rotation for this frame is different from last frame, and
-	      // doesn't match last gamepad state, assume an external component is
-	      // active on this element.
-	      if (initialRotation.distanceToSquared(prevInitialRotation) > ROTATION_EPS
-	          && initialRotation.distanceToSquared(prevFinalRotation) > ROTATION_EPS) {
-	        prevInitialRotation.copy(initialRotation);
-	        tLastExternalActivity = tCurrent;
-	        return;
-	      }
-	
-	      prevInitialRotation.copy(initialRotation);
-	
-	      // If external controls have been active in last 500ms, wait.
-	      if (tCurrent - tLastExternalActivity < DEBOUNCE) {
-	        return;
-	      }
-	
-	      var lookVector = this.getJoystick(1);
-	      if (Math.abs(lookVector.x) <= JOYSTICK_EPS) lookVector.x = 0;
-	      if (Math.abs(lookVector.y) <= JOYSTICK_EPS) lookVector.y = 0;
-	      if (this.data.invertAxisY) lookVector.y = -lookVector.y;
-	
-	      // If external controls have been active more recently than gamepad,
-	      // and gamepad hasn't moved, don't overwrite the existing rotation.
-	      if (tLastExternalActivity > tLastLocalActivity && !lookVector.lengthSq()) {
-	        return;
-	      }
-	
-	      lookVector.multiplyScalar(this.data.sensitivity);
-	      this.yaw.rotation.y -= lookVector.x;
-	      this.pitch.rotation.x -= lookVector.y;
-	      this.pitch.rotation.x = Math.max(-PI_2, Math.min(PI_2, this.pitch.rotation.x));
-	
-	      this.el.setAttribute('rotation', {
-	        x: THREE.Math.radToDeg(this.pitch.rotation.x),
-	        y: THREE.Math.radToDeg(this.yaw.rotation.y),
-	        z: 0
-	      });
-	      prevFinalRotation.copy(this.el.getAttribute('rotation'));
-	      tLastLocalActivity = tCurrent;
-	    };
-	
-	    return this._updateRotation();
-	  },
-	
-	  /*******************************************************************
-	   * Button events
-	   */
-	
-	  updateButtonState: function () {
-	    var gamepad = this.getGamepad();
-	    if (this.data.enabled && gamepad) {
-	
-	      // Fire DOM events for button state changes.
-	      for (var i = 0; i < gamepad.buttons.length; i++) {
-	        if (gamepad.buttons[i].pressed && !this.buttons[i]) {
-	          this.emit(new GamepadButtonEvent('gamepadbuttondown', i, gamepad.buttons[i]));
-	        } else if (!gamepad.buttons[i].pressed && this.buttons[i]) {
-	          this.emit(new GamepadButtonEvent('gamepadbuttonup', i, gamepad.buttons[i]));
-	        }
-	        this.buttons[i] = gamepad.buttons[i].pressed;
-	      }
-	
-	    } else if (Object.keys(this.buttons)) {
-	      // Reset state if controls are disabled or controller is lost.
-	      this.buttons = {};
-	    }
-	  },
-	
-	  emit: function (event) {
-	    // Emit original event.
-	    this.el.emit(event.type, event);
-	
-	    // Emit convenience event, identifying button index.
-	    this.el.emit(
-	      event.type + ':' + event.index,
-	      new GamepadButtonEvent(event.type, event.index, event)
-	    );
-	  },
-	
-	  /*******************************************************************
-	   * Gamepad state
-	   */
-	
-	  /**
-	   * Returns the Gamepad instance attached to the component. If connected,
-	   * a proxy-controls component may provide access to Gamepad input from a
-	   * remote device.
-	   *
-	   * @return {Gamepad}
-	   */
-	  getGamepad: function () {
-	    var localGamepad = navigator.getGamepads
-	          && navigator.getGamepads()[this.data.controller],
-	        proxyControls = this.el.sceneEl.components['proxy-controls'],
-	        proxyGamepad = proxyControls && proxyControls.isConnected()
-	          && proxyControls.getGamepad(this.data.controller);
-	    return proxyGamepad || localGamepad;
-	  },
-	
-	  /**
-	   * Returns the state of the given button.
-	   * @param  {number} index The button (0-N) for which to find state.
-	   * @return {GamepadButton}
-	   */
-	  getButton: function (index) {
-	    return this.getGamepad().buttons[index];
-	  },
-	
-	  /**
-	   * Returns state of the given axis. Axes are labelled 0-N, where 0-1 will
-	   * represent X/Y on the first joystick, and 2-3 X/Y on the second.
-	   * @param  {number} index The axis (0-N) for which to find state.
-	   * @return {number} On the interval [-1,1].
-	   */
-	  getAxis: function (index) {
-	    return this.getGamepad().axes[index];
-	  },
-	
-	  /**
-	   * Returns the state of the given joystick (0 or 1) as a THREE.Vector2.
-	   * @param  {number} id The joystick (0, 1) for which to find state.
-	   * @return {THREE.Vector2}
-	   */
-	  getJoystick: function (index) {
-	    var gamepad = this.getGamepad();
-	    switch (index) {
-	      case 0: return new THREE.Vector2(gamepad.axes[0], gamepad.axes[1]);
-	      case 1: return new THREE.Vector2(gamepad.axes[2], gamepad.axes[3]);
-	      default: throw new Error('Unexpected joystick index "%d".', index);
-	    }
-	  },
-	
-	  /**
-	   * Returns the state of the dpad as a THREE.Vector2.
-	   * @return {THREE.Vector2}
-	   */
-	  getDpad: function () {
-	    var gamepad = this.getGamepad();
-	    if (!gamepad.buttons[GamepadButton.DPAD_RIGHT]) {
-	      return new THREE.Vector2();
-	    }
-	    return new THREE.Vector2(
-	      (gamepad.buttons[GamepadButton.DPAD_RIGHT].pressed ? 1 : 0)
-	      + (gamepad.buttons[GamepadButton.DPAD_LEFT].pressed ? -1 : 0),
-	      (gamepad.buttons[GamepadButton.DPAD_UP].pressed ? -1 : 0)
-	      + (gamepad.buttons[GamepadButton.DPAD_DOWN].pressed ? 1 : 0)
-	    );
-	  },
-	
-	  /**
-	   * Returns true if the gamepad is currently connected to the system.
-	   * @return {boolean}
-	   */
-	  isConnected: function () {
-	    var gamepad = this.getGamepad();
-	    return !!(gamepad && gamepad.connected);
-	  },
-	
-	  /**
-	   * Returns a string containing some information about the controller. Result
-	   * may vary across browsers, for a given controller.
-	   * @return {string}
-	   */
-	  getID: function () {
-	    return this.getGamepad().id;
-	  }
-	};
-
-
-/***/ },
-/* 219 */
-/***/ function(module, exports) {
-
-	module.exports = Object.assign(function GamepadButton () {}, {
-		FACE_1: 0,
-		FACE_2: 1,
-		FACE_3: 2,
-		FACE_4: 3,
-	
-		L_SHOULDER_1: 4,
-		R_SHOULDER_1: 5,
-		L_SHOULDER_2: 6,
-		R_SHOULDER_2: 7,
-	
-		SELECT: 8,
-		START: 9,
-	
-		DPAD_UP: 12,
-		DPAD_DOWN: 13,
-		DPAD_LEFT: 14,
-		DPAD_RIGHT: 15,
-	
-		VENDOR: 16,
-	});
-
-
-/***/ },
-/* 220 */
-/***/ function(module, exports) {
-
-	function GamepadButtonEvent (type, index, details) {
-	  this.type = type;
-	  this.index = index;
-	  this.pressed = details.pressed;
-	  this.value = details.value;
-	}
-	
-	module.exports = GamepadButtonEvent;
-
 
 /***/ }
 /******/ ]);

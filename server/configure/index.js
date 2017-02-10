@@ -4,7 +4,7 @@ import setVariables from './app-variables';
 import setParsing from './parsing';
 import setStatic from './static';
 
-export default (app, _db) => {
+export default (app) => {
   // Force the context of this.
   app.setValue = app.set.bind(app);
   // Make a function that gets the path to this app.
@@ -16,6 +16,6 @@ export default (app, _db) => {
   app.use(app.getValue('log'));
 
   // Configure my static routes and parsing abilities.
-  setParsing(app, _db);
+  setParsing(app);
   setStatic(app);
 };

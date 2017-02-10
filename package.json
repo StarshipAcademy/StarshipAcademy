@@ -1,18 +1,19 @@
 {
-  "name": "meme-magic",
+  "name": "starshipacademy",
   "version": "0.0.1",
-  "description": "A medium sized back-end boiler plate, with very little done on the front.",
+  "description": "",
   "main": "app.js",
   "scripts": {
+    "test": "cross-env NODE_ENV=testing mocha --compilers js:babel-register browser/**/*.test.js server/**/*.test.js",
     "build": "webpack",
     "start": "babel-node --presets es2015 app.js",
     "dev": "webpack -w && nodemon --watch app.js -e js,html babelify.js"
   },
-  "author": "Eliot Szwajkowski",
+  "author": "Charity Corcino, James DiColandrea, Daniel Kang, & Eric Rainville",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/EricTheRed-VT/Starship-Academy"
+    "url": "https://github.com/StarshipAcademy/StarshipAcademy"
   },
   "keywords": [
     "aframe",

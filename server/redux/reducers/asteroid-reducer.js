@@ -16,7 +16,7 @@ const addAsteroid = asteroid => {
   // console.log('in add asteroid')
   return {
     type: ADD_ASTEROID,
-    asteroid
+    asteroid: Map(asteroid)
   };
 };
 
@@ -45,7 +45,7 @@ function asteroidReducer(state = initialState, action) {
   switch (action.type) {
 
   case ADD_ASTEROID:
-    return state.set(action.asteroid.id, action.asteroid);
+    return state.set(action.asteroid.get('id'), action.asteroid);
 
   case REMOVE_ASTEROID:
     return state.delete(action.asteroidId);

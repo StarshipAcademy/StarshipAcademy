@@ -11,9 +11,6 @@ AFRAME.registerComponent('spawner', {
    * Add event listener.
    */
   update: function(oldData) {
-    this.el.addEventListener('gamepadbuttondown', (e) => {
-      console.log('AAAAAAAAAAAAAAAAAAAAAAAA you pressed a button', e)
-    });
     this.el.addEventListener(this.data.on, this.spawn.bind(this));
   },
   /**
@@ -32,7 +29,7 @@ AFRAME.registerComponent('spawner', {
     entity.setAttribute('position', position);
 
     entity.setAttribute('mixin', this.data.mixin);
-   
+
     entity.addEventListener('loaded', function() {
       entityRotation = entity.getAttribute('rotation');
       entity.setAttribute('rotation', {

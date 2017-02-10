@@ -8,10 +8,8 @@ export default (app) => {
 
   const npmPath = path.join(root, './node_modules');
   const browserPath = path.join(root, './browser');
-  const publicPath = path.join(root, './public');
 
   app.use(express.static(npmPath));
   app.use(express.static(browserPath));
-  app.use(express.static(publicPath));
   app.use(favicon(app.getValue('faviconPath')));
 };
