@@ -11,10 +11,6 @@ export function putSelfOnDOM(user) {
   avatar.setAttribute('look-controls', true);
   avatar.setAttribute('mouse-controls', true)
 
-  // avatar.setAttribute('gamepad-controls', 'flyEnabled: true; acceleration: 2000');
-  // avatar.setAttribute('points-counter');
-
-
   avatar.setAttribute('spawner', 'mixin: laser; on: click');
   avatar.setAttribute('click-listener', true);
   avatar.bulletsFired = 0;
@@ -22,7 +18,7 @@ export function putSelfOnDOM(user) {
   avatar.deadBullets = [];
   avatar.setAttribute('fence', 'width: 4800; height: 4800; depth: 4800');
 
-// Determine if user is using a phone or Desktop and assigns them as a ship or a turret
+  // Determine if user is using a phone or Desktop and assigns them as a ship or a turret
   if (AFRAME.utils.device.isMobile()) {
     avatar.setAttribute('wasd-controls', 'fly: true; acceleration: 0');
     //add model to camera
@@ -31,8 +27,6 @@ export function putSelfOnDOM(user) {
     model.setAttribute('position', '0 0.07 0.9');
     model.setAttribute('src', '#turretBot-obj');
     model.setAttribute('mtl', '#turretBot-mtl');
-    // console.log('AVATAR', avatar)
-    // console.log('TURRET', model);
 
     //add hud elements
 
@@ -49,11 +43,10 @@ export function putSelfOnDOM(user) {
     hud1.setAttribute('width', '1.5');
     hud1.setAttribute('height', '1.05');
     hud1.setAttribute('src', '#turretHud1')
-  }
-  else {
+  } else {
     // allow ship to fly around stage
     avatar.setAttribute('ship', true);
-    avatar.setAttribute('wasd-controls', 'fly: true; acceleration: 2000');
+    avatar.setAttribute('wasd-controls', 'fly: true; acceleration: 1000');
 
     //add model to camera
     const model = document.createElement('a-obj-model');
@@ -71,16 +64,6 @@ export function putSelfOnDOM(user) {
     crosshair.setAttribute('height', '0.15');
     crosshair.setAttribute('width', '0.15');
     crosshair.setAttribute('src', '#crosshair');
-    // crosshair.setAttribute()
-    // crosshair.setAttribute()
-
-    // const crosshairAnimation = document.createElement('a-animation')
-    // crosshairImage.appendChild(crosshairAnimation);
-    // crosshairAnimation.setAttribute('attribute', 'rotation');
-    // crosshairAnimation.setAttribute('dur', '1000000000');
-    // crosshairAnimation.setAttribute('to', "0 0 0");
-    // crosshairAnimation.setAttribute('repeat', 'indefinite')
-    // console.log('yo2321 yo234 yo678');
 
     const hud1 = document.createElement('a-box');
     avatar.appendChild(hud1);
@@ -185,17 +168,13 @@ export function putSelfOnDOM(user) {
   score.setAttribute('scale', '0.15 0.15 0.15');
   score.setAttribute('bmfont-text', 'text: Score: 0; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6');
   score.points = 0;
-  score.addPoint = function () {
+  score.addPoint = function() {
     this.setAttribute('bmfont-text', `text: Score:${++this.points}; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6`);
     if (this.points > 19) {
       $('#scene').replaceWith(require('./endCredits.js'));
     }
   }
 
-
-  // add music
-
-  // scene.setAttribute('points-component');
   //add music
 
   const soundRight = document.createElement('a-entity');
@@ -210,9 +189,6 @@ export function putSelfOnDOM(user) {
 
   return avatar;
 }
-
-
-
 
 function createBullets(userId, bullets) {
 
@@ -283,7 +259,6 @@ export function updateUser(user) {
   //update their bullets
   createBullets(user.id, user.newBullets);
   removeBullets(user.id, user.deadBullets);
-
 }
 
 export function removeUser(userId) {
@@ -299,7 +274,6 @@ export function removeUser(userId) {
     scene.removeChild(bullets[i]);
   }
 }
-
 
 export function putAsteroidOnDOM(asteroid) {
   const scene = document.getElementById('scene');

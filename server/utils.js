@@ -1,6 +1,6 @@
 
 function randomPos() {
-  return Math.floor(Math.random() * (100) - 50);
+  return Math.floor(Math.random() * (1500) - 750);
 }
 
 // User constructor

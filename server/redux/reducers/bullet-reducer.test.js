@@ -5,11 +5,12 @@ const chaiImmutable = require('chai-immutable');
 
 chai.use(chaiImmutable);
 
-const {ADD_USER, UPDATE_USER, REMOVE_USER, userReducer} = require('./user-reducer');
+const {ADD_BULLET, REMOVE_BULLET, bulletReducer} = require('./bullet-reducer');
 
-// set up 3 users
-const user = Map({
+// set up 3 bullets
+const bullet = Map({
   id: 'number1',
+  userId: 'user1',
   x: 0,
   y: 1.6,
   z: 5,
@@ -18,8 +19,9 @@ const user = Map({
   zrot: 0
 });
 
-const user2 = Map({
+const bullet2 = Map({
   id: 'number2',
+  userId: 'user2',
   x: 1,
   y: 1.6,
   z: 5,
@@ -28,8 +30,9 @@ const user2 = Map({
   zrot: 0
 });
 
-const user3 = Map({
+const bullet3 = Map({
   id: 'number3',
+  userId: 'user3',
   x: 2,
   y: 1.6,
   z: 5,
@@ -38,8 +41,9 @@ const user3 = Map({
   zrot: 0
 });
 
-const updatedUser1Data = Map({
+const updatedBullet1Data = Map({
   id: 'number1',
+  userId: '1user',
   x: 1,
   y: 2.6,
   z: 6,
@@ -56,23 +60,24 @@ beforeEach(() => {
   emptyInitialState = Map({});
 
   populatedState = Map({
-    'number1': user,
-    'number2': user2
+    'number1': bullet,
+    'number2': bullet2
   });
 });
 
-describe('userReducer', () => {
-  it('adds a user to an initial empty state of users', () => {
+describe('bulletReducer', () => {
+  it('adds a bullet to an initial empty state of bullets', () => {
     const action = {
-      type: ADD_USER,
-      user: user
+      type: ADD_BULLET,
+      bullet: bullet
     };
 
-    const nextState = userReducer(emptyInitialState, action);
+    const nextState = bulletReducer(emptyInitialState, action);
 
     expect(nextState).to.equal(Map({
       'number1': Map({
         id: 'number1',
+        userId: 'user1',
         x: 0,
         y: 1.6,
         z: 5,
@@ -83,19 +88,20 @@ describe('userReducer', () => {
     }));
   });
 
-  it('adds a user to a populated state of users', () => {
+  it('adds a bullet to a populated state of bullets', () => {
     const action = {
-      type: ADD_USER,
-      user: user3
+      type: ADD_BULLET,
+      bullet: bullet3
     };
 
-    const nextState = userReducer(populatedState, action);
+    const nextState = bulletReducer(populatedState, action);
 
     expect(nextState).to.equal(Map({
-      'number1': user,
-      'number2': user2,
+      'number1': bullet,
+      'number2': bullet2,
       'number3': Map({
         id: 'number3',
+        userId: 'user3',
         x: 2,
         y: 1.6,
         z: 5,
@@ -106,63 +112,41 @@ describe('userReducer', () => {
     }));
   });
 
-  it('updates data for user', () => {
+  it('removes a bullet from a populated state', () => {
     const action = {
-      type: UPDATE_USER,
-      userData: updatedUser1Data
+      type: REMOVE_BULLET,
+      bulletId: 'number1'
     };
 
-    const nextState = userReducer(populatedState, action);
+    const nextState = bulletReducer(populatedState, action);
 
     expect(nextState).to.equal(Map({
-      'number1': Map({
-        id: 'number1',
-        x: 1,
-        y: 2.6,
-        z: 6,
-        xrot: 1,
-        yrot: 1,
-        zrot: 1
-      }),
-      'number2': user2
-    }));
-  });
-
-  it('removes a user from a populated state', () => {
-    const action = {
-      type: REMOVE_USER,
-      userId: 'number1'
-    };
-
-    const nextState = userReducer(populatedState, action);
-
-    expect(nextState).to.equal(Map({
-      'number2': user2
+      'number2': bullet2
     }));
   });
 
   it('returns initial empty state when action doesn\'t match', () => {
     const action = {
-      type: 'SOMETHING_ELSE_USER',
-      userId: 'number1'
+      type: 'SOMETHING_ELSE',
+      bulletId: 'number1'
     };
 
-    const nextState = userReducer(emptyInitialState, action);
+    const nextState = bulletReducer(emptyInitialState, action);
 
     expect(nextState).to.equal(Map({}));
   });
 
   it('returns initial populated state when action doesn\'t match', () => {
     const action = {
-      type: 'SOMETHING_ELSE_USER',
-      userId: 'number1'
+      type: 'SOMETHING_ELSE',
+      bulletId: 'number1'
     };
 
-    const nextState = userReducer(populatedState, action);
+    const nextState = bulletReducer(populatedState, action);
 
     expect(nextState).to.equal(Map({
-      'number1': user,
-      'number2': user2
+      'number1': bullet,
+      'number2': bullet2
     }));
   });
 });
