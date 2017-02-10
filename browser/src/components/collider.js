@@ -51,7 +51,7 @@ AFRAME.registerComponent('collider', {
 
       socket.emit('removeAsteroid', targetId);
       
-      target.emit('hit', targetId);
+      // target.emit('hit', targetId);
 
       target.setAttribute('material', {
         src: '#explosion'
@@ -77,7 +77,7 @@ AFRAME.registerComponent('collider', {
     
       score.addPoint();
       // console.log('######### removing', el)
-      this.pause()
+      this.pause();
       scene.removeChild(el);
       // console.log('######### el removed', el)
     }
