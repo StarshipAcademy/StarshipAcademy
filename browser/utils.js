@@ -5,6 +5,7 @@ export function putSelfOnDOM(user) {
   //add camera
   scene.appendChild(avatar);
   avatar.setAttribute('id', user.id);
+  avatar.setAttribute('class', 'me')
   avatar.setAttribute('position', `${user.x} ${user.y} ${user.z}`);
   avatar.setAttribute('rotation', `${user.xrot} ${user.yrot} ${user.zrot}`);
   avatar.setAttribute('publish', true);
@@ -12,7 +13,6 @@ export function putSelfOnDOM(user) {
   avatar.setAttribute('mouse-controls', true)
 
   avatar.setAttribute('spawner', 'mixin: laser; on: click');
-  avatar.setAttribute('click-listener', true);
   avatar.bulletsFired = 0;
   avatar.newBullets = [];
   avatar.deadBullets = [];

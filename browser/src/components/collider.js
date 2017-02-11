@@ -39,7 +39,7 @@ AFRAME.registerComponent('collider', {
     let directionVector = topVertex.clone().sub(bottomVertex).normalize();
 
     // Raycast for collision.
-    let raycaster = new THREE.Raycaster(bottomVertex, directionVector, 1);
+    let raycaster = new THREE.Raycaster(bottomVertex, directionVector, 0, 8);
     const collisionResults = raycaster.intersectObjects(this.targets, true);
 
     if (collisionResults.length) {

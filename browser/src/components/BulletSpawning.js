@@ -10,12 +10,12 @@ AFRAME.registerComponent('spawner', {
   /**
    * Add event listener.
    */
-  update: function(oldData) {
-    this.el.addEventListener(this.data.on, this.spawn.bind(this));
+  init: function() {
+    var me = this;
+    me.spawn.bind(me)
+    window.addEventListener('click', () => me.spawn());
   },
-  /**
-   * Spawn new entity at entity's current position.
-   */
+
   spawn: function() {
 
     var el = this.el;
