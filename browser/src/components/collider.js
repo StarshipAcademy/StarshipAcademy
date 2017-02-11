@@ -66,7 +66,7 @@ AFRAME.registerComponent('collider', {
       target.appendChild(animation);
       setTimeout(() => {
         //console.log('removing asteroid after 1 second');
-        scene.removeChild(target);
+        if (target.parentNode === scene) scene.removeChild(target);
       }, 8000);
 
       //target.emit('hit');
@@ -77,7 +77,7 @@ AFRAME.registerComponent('collider', {
       score.addPoint();
       //console.log('######### removing', el)
       this.pause()
-      scene.removeChild(el);
+      if (el.parentNode === scene) scene.removeChild(el);
     //console.log('######### el removed', el)
     }
   }
