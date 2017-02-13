@@ -60,14 +60,14 @@ AFRAME.registerComponent('collider', {
 
       let animation = document.createElement('a-animation');
       animation.setAttribute('attribute', 'scale');
-      animation.setAttribute('dur', '70');
+      animation.setAttribute('dur', '1000');
       animation.setAttribute('ease', 'linear');
       animation.setAttribute('to', '0 0 0');
       target.appendChild(animation);
       setTimeout(() => {
         //console.log('removing asteroid after 1 second');
         if (target.parentNode === scene) scene.removeChild(target);
-      }, 8000);
+      }, 5000);
 
       //target.emit('hit');
 
