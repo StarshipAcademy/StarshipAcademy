@@ -10,9 +10,9 @@ AFRAME.registerComponent('collider', {
    * Calculate targets.
    */
   init: function() {
-    var targetEls = this.el.sceneEl.querySelectorAll(this.data.target);
+    let targetEls = this.el.sceneEl.querySelectorAll(this.data.target);
     this.targets = [];
-    for (var i = 0; i < targetEls.length; i++) {
+    for (let i = 0; i < targetEls.length; i++) {
       this.targets.push(targetEls[i].object3D);
     }
     this.el.object3D.updateMatrixWorld();
@@ -24,12 +24,12 @@ AFRAME.registerComponent('collider', {
    */
   tick: function(t) {
     // console.log('#### I HAVE NOT COLLIDED')
-    var el = this.el;
-    var mesh = el.getObject3D('mesh');
-    var vertices = mesh.geometry.vertices;
+    let el = this.el;
+    let mesh = el.getObject3D('mesh');
+    let vertices = mesh.geometry.vertices;
     // console.log('VERY', vertices);
-    var bottomVertex = vertices[0].clone();
-    var topVertex = vertices[vertices.length - 1].clone();
+    let bottomVertex = vertices[0].clone();
+    let topVertex = vertices[vertices.length - 1].clone();
 
     // Calculate absolute positions of start and end of entity.
     bottomVertex.applyMatrix4(el.object3D.matrixWorld);

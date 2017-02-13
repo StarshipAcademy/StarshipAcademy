@@ -170,7 +170,7 @@ export function putSelfOnDOM(user) {
   score.points = 0;
   score.addPoint = function() {
     this.setAttribute('bmfont-text', `text: Score:${++this.points}; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6`);
-    if (this.points > 2) endGame();
+    if (this.points > 19) endGame();
   }
 
   //add music
@@ -195,10 +195,10 @@ function endGame() {
   $('.laser').remove();
   $('.me').replaceWith('<a-camera look-controls></a-camera>');
   $('#scene').append(`
-  <a-image id="gameOver" position="0 3.5 -250" rotation="0 20 0" width="200" depth="200" height="200" material="src: #youWin" sound="src: url(./src/assets/sounds/Closing.m4a); autoplay: true; volume: 10"></a-image>
-  <a-image id="gameOver" position="250 3.5 0" rotation="0 290 0" width="200" depth="200" height="200" material="src: #youWin" sound="src: url(./src/assets/sounds/Closing.m4a); autoplay: true; volume: 10"></a-image>
-  <a-image id="gameOver" position="-250 3.5 0" rotation="0 110 0" width="200" depth="200" height="200" material="src: #youWin" sound="src: url(./src/assets/sounds/Closing.m4a); autoplay: true; volume: 10"></a-image>
-  <a-image id="gameOver" position="0 3.5 250" rotation="0 200 0" width="200" depth="200" height="200" material="src: #youWin"></a-image>`);
+  <a-image id="gameOver" position="0 3.5 -250" rotation="0 0 0" width="200" depth="200" height="200" material="src: #youWin" sound="src: url(./src/assets/sounds/Closing.m4a); autoplay: true; volume: 10"></a-image>
+  <a-image id="gameOver" position="250 3.5 0" rotation="0 270 0" width="200" depth="200" height="200" material="src: #youWin" sound="src: url(./src/assets/sounds/Closing.m4a); autoplay: true; volume: 10"></a-image>
+  <a-image id="gameOver" position="-250 3.5 0" rotation="0 90 0" width="200" depth="200" height="200" material="src: #youWin" sound="src: url(./src/assets/sounds/Closing.m4a); autoplay: true; volume: 10"></a-image>
+  <a-image id="gameOver" position="0 3.5 250" rotation="0 180 0" width="200" depth="200" height="200" material="src: #youWin"></a-image>`);
   $('#sky').replaceWith('<a-sky src="./src/assets/images/atmos.jpg"></a-sky>');
 }
 ;

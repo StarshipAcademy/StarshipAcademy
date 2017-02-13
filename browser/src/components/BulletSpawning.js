@@ -11,8 +11,8 @@ AFRAME.registerComponent('spawner', {
    * Add event listener.
    */
   init: function() {
-    var me = this.el;
-    var spawner = this;
+    let me = this.el;
+    let spawner = this;
     spawner.spawn.bind(spawner)
     window.addEventListener('click', () => me.emit('shoot'));
     me.addEventListener('shoot', () => spawner.spawn())
@@ -20,13 +20,13 @@ AFRAME.registerComponent('spawner', {
 
   spawn: function() {
 
-    var el = this.el;
-    var bulletId = el.bulletsFired++;
-    var entity = document.createElement('a-entity');
-    var matrixWorld = el.object3D.matrixWorld;
-    var position = new THREE.Vector3();
-    var rotation = el.getAttribute('rotation');
-    var entityRotation;
+    let el = this.el;
+    let bulletId = el.bulletsFired++;
+    let entity = document.createElement('a-entity');
+    let matrixWorld = el.object3D.matrixWorld;
+    let position = new THREE.Vector3();
+    let rotation = el.getAttribute('rotation');
+    let entityRotation;
     position.setFromMatrixPosition(matrixWorld);
     entity.setAttribute('position', position);
     entity.setAttribute('class', 'laser');

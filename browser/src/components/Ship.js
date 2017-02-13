@@ -8,7 +8,7 @@ AFRAME.registerComponent('ship', {
   init: function() {
     const asteroidNodes = document.querySelectorAll('.enemy')
     this.targetNodes = [];
-    for (var i = 0; i < asteroidNodes.length; i++) {
+    for (let i = 0; i < asteroidNodes.length; i++) {
       this.targetNodes.push(asteroidNodes[i]);
     }
   },
@@ -17,11 +17,11 @@ AFRAME.registerComponent('ship', {
 
   tick: function() {
     let intersect = (shipPosition, asteroid) => {
-      var x = Math.max(asteroid.minX, Math.min(shipPosition.x, asteroid.maxX));
-      var y = Math.max(asteroid.minY, Math.min(shipPosition.y, asteroid.maxY));
-      var z = Math.max(asteroid.minZ, Math.min(shipPosition.z, asteroid.maxZ));
+      let x = Math.max(asteroid.minX, Math.min(shipPosition.x, asteroid.maxX));
+      let y = Math.max(asteroid.minY, Math.min(shipPosition.y, asteroid.maxY));
+      let z = Math.max(asteroid.minZ, Math.min(shipPosition.z, asteroid.maxZ));
 
-      var distance = Math.sqrt((x - shipPosition.x) * (x - shipPosition.x) + (y - shipPosition.y) * (y - shipPosition.y) + (z - shipPosition.z) * (z - shipPosition.z));
+      let distance = Math.sqrt((x - shipPosition.x) * (x - shipPosition.x) + (y - shipPosition.y) * (y - shipPosition.y) + (z - shipPosition.z) * (z - shipPosition.z));
       return distance < 5;
     };
 
