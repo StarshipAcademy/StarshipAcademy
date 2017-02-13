@@ -31,8 +31,6 @@
     "aframe-extras": "^3.2.2",
     "aframe-href-component": "^0.5.1",
     "aframe-polygon-primitive": "^0.1.0",
-    "aframe-text-component": "^0.3.0",
-    "aframe-vrml-component": "^0.1.0",
     "babel": "^6.5.2",
     "babel-cli": "^6.22.2",
     "babel-core": "^6.18.2",

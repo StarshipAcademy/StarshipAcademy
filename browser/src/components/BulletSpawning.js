@@ -10,12 +10,14 @@ AFRAME.registerComponent('spawner', {
   /**
    * Add event listener.
    */
-  update: function(oldData) {
-    this.el.addEventListener(this.data.on, this.spawn.bind(this));
+  init: function() {
+    var me = this.el;
+    var spawner = this;
+    spawner.spawn.bind(spawner)
+    window.addEventListener('click', () => me.emit('shoot'));
+    me.addEventListener('shoot', () => spawner.spawn())
   },
-  /**
-   * Spawn new entity at entity's current position.
-   */
+
   spawn: function() {
 
     var el = this.el;
@@ -27,6 +29,7 @@ AFRAME.registerComponent('spawner', {
     var entityRotation;
     position.setFromMatrixPosition(matrixWorld);
     entity.setAttribute('position', position);
+    entity.setAttribute('class', 'laser');
 
     entity.setAttribute('mixin', this.data.mixin);
 

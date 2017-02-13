@@ -4,9 +4,9 @@ AFRAME.registerComponent('click-list', {
     var el = this.el;
 
     el.addEventListener('click', function() {
-      var newScene = require('../../body.js')
-
-      $('#scene').replaceWith(newScene);
+      var sceneLoadEntity = `<a-entity id="sceneload" scene-load sound="src: url(./src/assets/sounds/Opening.m4a); autoplay: true; volume: 10"></a-entity>`;
+      $('.menupage').remove();
+      $('#menucamera').replaceWith(sceneLoadEntity);
     });
   }
 });

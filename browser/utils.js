@@ -5,6 +5,7 @@ export function putSelfOnDOM(user) {
   //add camera
   scene.appendChild(avatar);
   avatar.setAttribute('id', user.id);
+  avatar.setAttribute('class', 'me')
   avatar.setAttribute('position', `${user.x} ${user.y} ${user.z}`);
   avatar.setAttribute('rotation', `${user.xrot} ${user.yrot} ${user.zrot}`);
   avatar.setAttribute('publish', true);
@@ -12,7 +13,6 @@ export function putSelfOnDOM(user) {
   avatar.setAttribute('mouse-controls', true)
 
   avatar.setAttribute('spawner', 'mixin: laser; on: click');
-  avatar.setAttribute('click-listener', true);
   avatar.bulletsFired = 0;
   avatar.newBullets = [];
   avatar.deadBullets = [];
@@ -170,9 +170,7 @@ export function putSelfOnDOM(user) {
   score.points = 0;
   score.addPoint = function() {
     this.setAttribute('bmfont-text', `text: Score:${++this.points}; fnt: ./src/assets/fonts/DejaVu-sdf.fnt; fntImage: ./src/assets/fonts/DejaVu-sdf.png; color: #f44336; lineHeight:30; letterSpacing: 6`);
-    if (this.points > 19) {
-      $('#scene').replaceWith(require('./endCredits.js'));
-    }
+    if (this.points > 2) endGame();
   }
 
   //add music
@@ -190,6 +188,21 @@ export function putSelfOnDOM(user) {
   return avatar;
 }
 
+function endGame() {
+  window.socket.removeAllListeners();
+  window.socket.disconnect();
+  $('.enemy').remove();
+  $('.laser').remove();
+  $('.me').replaceWith('<a-camera look-controls></a-camera>');
+  $('#scene').append(`
+  <a-image id="gameOver" position="0 3.5 -250" rotation="0 20 0" width="200" depth="200" height="200" material="src: #youWin" sound="src: url(./src/assets/sounds/Closing.m4a); autoplay: true; volume: 10"></a-image>
+  <a-image id="gameOver" position="250 3.5 0" rotation="0 290 0" width="200" depth="200" height="200" material="src: #youWin" sound="src: url(./src/assets/sounds/Closing.m4a); autoplay: true; volume: 10"></a-image>
+  <a-image id="gameOver" position="-250 3.5 0" rotation="0 110 0" width="200" depth="200" height="200" material="src: #youWin" sound="src: url(./src/assets/sounds/Closing.m4a); autoplay: true; volume: 10"></a-image>
+  <a-image id="gameOver" position="0 3.5 250" rotation="0 200 0" width="200" depth="200" height="200" material="src: #youWin"></a-image>`);
+  $('#sky').replaceWith('<a-sky src="./src/assets/images/atmos.jpg"></a-sky>');
+}
+;
+
 function createBullets(userId, bullets) {
 
   if (!bullets) return;
@@ -203,7 +216,7 @@ function createBullets(userId, bullets) {
 
     const bullet = document.createElement('a-entity');
     scene.appendChild(bullet);
-    bullet.setAttribute('class', `${userId}bullet`);
+    bullet.setAttribute('class', `${userId}bullet laser`);
     bullet.setAttribute('id', bulletId);
     bullet.setAttribute('position', bulletData.pos);
     bullet.setAttribute('rotation', {

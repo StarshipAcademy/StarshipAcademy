@@ -39,7 +39,7 @@ AFRAME.registerComponent('collider', {
     let directionVector = topVertex.clone().sub(bottomVertex).normalize();
 
     // Raycast for collision.
-    let raycaster = new THREE.Raycaster(bottomVertex, directionVector, 1);
+    let raycaster = new THREE.Raycaster(bottomVertex, directionVector, 0, 8);
     const collisionResults = raycaster.intersectObjects(this.targets, true);
 
     if (collisionResults.length) {
@@ -66,7 +66,7 @@ AFRAME.registerComponent('collider', {
       target.appendChild(animation);
       setTimeout(() => {
         //console.log('removing asteroid after 1 second');
-        scene.removeChild(target);
+        if (target.parentNode === scene) scene.removeChild(target);
       }, 8000);
 
       //target.emit('hit');
@@ -77,7 +77,7 @@ AFRAME.registerComponent('collider', {
       score.addPoint();
       //console.log('######### removing', el)
       this.pause()
-      scene.removeChild(el);
+      if (el.parentNode === scene) scene.removeChild(el);
     //console.log('######### el removed', el)
     }
   }
