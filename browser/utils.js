@@ -200,8 +200,12 @@ function endGame() {
   <a-image id="gameOver" position="-250 3.5 0" rotation="0 90 0" width="200" depth="200" height="200" material="src: #youWin" sound="src: url(./src/assets/sounds/Closing.m4a); autoplay: true; volume: 10"></a-image>
   <a-image id="gameOver" position="0 3.5 250" rotation="0 180 0" width="200" depth="200" height="200" material="src: #youWin"></a-image>`);
   $('#sky').replaceWith('<a-sky src="./src/assets/images/atmos.jpg"></a-sky>');
+
+  setTimeout(() => {
+    window.addEventListener('click', () => window.location.reload())
+  }, 10000);
 }
-;
+
 
 function createBullets(userId, bullets) {
 
